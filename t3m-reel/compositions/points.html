@@ -1,0 +1,59 @@
+<template>
+  <style>
+    @font-face { font-family: "Cairo"; font-weight: 400; src: url("assets/fonts/cairo-arabic-400-normal.woff2") format("woff2"); unicode-range: U+0600-06FF, U+0750-077F, U+0870-088E, U+0890-0891, U+0897-08E1, U+08E3-08FF, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FE74, U+FE76-FEFC; }
+      @font-face { font-family: "Cairo"; font-weight: 700; src: url("assets/fonts/cairo-arabic-700-normal.woff2") format("woff2"); unicode-range: U+0600-06FF, U+0750-077F, U+0870-088E, U+0890-0891, U+0897-08E1, U+08E3-08FF, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FE74, U+FE76-FEFC; }
+      @font-face { font-family: "Cairo"; font-weight: 900; src: url("assets/fonts/cairo-arabic-900-normal.woff2") format("woff2"); unicode-range: U+0600-06FF, U+0750-077F, U+0870-088E, U+0890-0891, U+0897-08E1, U+08E3-08FF, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FE74, U+FE76-FEFC; }
+      @font-face { font-family: "Cairo"; font-weight: 400; src: url("assets/fonts/cairo-latin-400-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+      @font-face { font-family: "Cairo"; font-weight: 700; src: url("assets/fonts/cairo-latin-700-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+      @font-face { font-family: "Cairo"; font-weight: 900; src: url("assets/fonts/cairo-latin-900-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+    #root { position: absolute; inset: 0; font-family: "Cairo", sans-serif; color: var(--ink, #F6F3EC); direction: rtl; }
+    #pts-kicker { position: absolute; left: 110px; right: 150px; top: 380px; text-align: center; font-weight: 700; font-size: 56px; color: var(--muted, #8E95A8); }
+    .pt { position: absolute; left: 110px; right: 150px; top: 560px; text-align: center; }
+    .pt-badge { width: 200px; height: 200px; margin: 0 auto 50px; border-radius: 50%; background: var(--accent, #FFC531); color: #0A0E1A; font-weight: 900; font-size: 130px; line-height: 200px; text-align: center; }
+    .pt-line { font-weight: 900; font-size: 112px; line-height: 1.4; white-space: nowrap; }
+    .pt-line .hl { color: var(--accent, #FFC531); }
+    #pts-progress { position: absolute; left: 340px; right: 340px; top: 1250px; display: flex; flex-direction: row-reverse; gap: 20px; }
+    .pts-seg { flex: 1; height: 12px; border-radius: 6px; background: rgba(246, 243, 236, 0.18); overflow: hidden; }
+    .pts-fill { width: 100%; height: 100%; background: var(--accent, #FFC531); transform-origin: 100% 50%; }
+  </style>
+  <div data-hf-id="hf-pn7k" id="root" data-composition-id="points" data-width="1080" data-height="1920">
+    <div data-hf-id="hf-0ath" id="pts-kicker" class="clip" data-start="0" data-duration="7.5">٣ أسباب</div>
+
+    <div data-hf-id="hf-s4jg" id="pt1" class="pt clip" data-start="0" data-duration="2.5">
+      <div data-hf-id="hf-syam" id="pt1-badge" class="pt-badge">١</div>
+      <div data-hf-id="hf-yety" id="pt1-a" class="pt-line">يتكلم عنك</div>
+      <div data-hf-id="hf-1iml" id="pt1-b" class="pt-line">مو عن <span data-hf-id="hf-kfqe" class="hl">عميلك</span></div>
+    </div>
+    <div data-hf-id="hf-l9sk" id="pt2" class="pt clip" data-start="2.5" data-duration="2.5">
+      <div data-hf-id="hf-s696" id="pt2-badge" class="pt-badge">٢</div>
+      <div data-hf-id="hf-1ku9" id="pt2-a" class="pt-line">يخاطب الكل</div>
+      <div data-hf-id="hf-j7fq" id="pt2-b" class="pt-line">فما يوصل <span data-hf-id="hf-kakk" class="hl">لأحد</span></div>
+    </div>
+    <div data-hf-id="hf-tc0p" id="pt3" class="pt clip" data-start="5" data-duration="2.5">
+      <div data-hf-id="hf-a1mq" id="pt3-badge" class="pt-badge">٣</div>
+      <div data-hf-id="hf-ijp2" id="pt3-a" class="pt-line">ما فيه خطوة</div>
+      <div data-hf-id="hf-epxc" id="pt3-b" class="pt-line"><span data-hf-id="hf-9m8w" class="hl">واضحة</span> بعده</div>
+    </div>
+
+    <div data-hf-id="hf-e8sh" id="pts-progress" class="clip" data-start="0" data-duration="7.5">
+      <div data-hf-id="hf-838j" class="pts-seg"><div data-hf-id="hf-vapu" id="pts-f1" class="pts-fill"></div></div>
+      <div data-hf-id="hf-lxsz" class="pts-seg"><div data-hf-id="hf-rclt" id="pts-f2" class="pts-fill"></div></div>
+      <div data-hf-id="hf-ljhy" class="pts-seg"><div data-hf-id="hf-qky0" id="pts-f3" class="pts-fill"></div></div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#pts-kicker", { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: "power3.out" }, 0);
+    [1, 2, 3].forEach((n, i) => {
+      const t = i * 2.5;
+      tl.fromTo("#pt" + n + "-badge", { scale: 0, rotation: -90 }, { scale: 1, rotation: 0, duration: 0.4, ease: "back.out(1.8)" }, t);
+      tl.fromTo("#pt" + n + "-a", { x: -80, opacity: 0 }, { x: 0, opacity: 1, duration: 0.32, ease: "power3.out" }, t + 0.08);
+      tl.fromTo("#pt" + n + "-b", { x: -80, opacity: 0 }, { x: 0, opacity: 1, duration: 0.32, ease: "power3.out" }, t + 0.18);
+      tl.fromTo("#pts-f" + n, { scaleX: 0 }, { scaleX: 1, duration: 2.4, ease: "none" }, t);
+      tl.fromTo(["#pt" + n + "-badge", "#pt" + n + "-a", "#pt" + n + "-b"], { y: 0, opacity: 1 },
+        { y: -60, opacity: 0, duration: 0.2, ease: "power2.in", immediateRender: false }, t + 2.25);
+    });
+    tl.fromTo(["#pts-kicker", "#pts-progress"], { opacity: 1 }, { opacity: 0, duration: 0.2, immediateRender: false }, 7.25);
+    window.__timelines["points"] = tl;
+  </script>
+</template>

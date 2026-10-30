@@ -1,0 +1,39 @@
+<template>
+  <style>
+    @font-face { font-family: "Cairo"; font-weight: 400; src: url("assets/fonts/cairo-arabic-400-normal.woff2") format("woff2"); unicode-range: U+0600-06FF, U+0750-077F, U+0870-088E, U+0890-0891, U+0897-08E1, U+08E3-08FF, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FE74, U+FE76-FEFC; }
+      @font-face { font-family: "Cairo"; font-weight: 700; src: url("assets/fonts/cairo-arabic-700-normal.woff2") format("woff2"); unicode-range: U+0600-06FF, U+0750-077F, U+0870-088E, U+0890-0891, U+0897-08E1, U+08E3-08FF, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FE74, U+FE76-FEFC; }
+      @font-face { font-family: "Cairo"; font-weight: 900; src: url("assets/fonts/cairo-arabic-900-normal.woff2") format("woff2"); unicode-range: U+0600-06FF, U+0750-077F, U+0870-088E, U+0890-0891, U+0897-08E1, U+08E3-08FF, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FE74, U+FE76-FEFC; }
+      @font-face { font-family: "Cairo"; font-weight: 400; src: url("assets/fonts/cairo-latin-400-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+      @font-face { font-family: "Cairo"; font-weight: 700; src: url("assets/fonts/cairo-latin-700-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+      @font-face { font-family: "Cairo"; font-weight: 900; src: url("assets/fonts/cairo-latin-900-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+    #root { position: absolute; inset: 0; font-family: "Cairo", sans-serif; color: var(--ink, #F6F3EC); direction: rtl; }
+    #hook-wrap { position: absolute; left: 110px; right: 150px; top: 330px; text-align: center; }
+    .hook-line { font-weight: 900; font-size: 116px; line-height: 1.35; }
+    #hook-why { color: var(--ink, #F6F3EC); }
+    #hook-num { font-weight: 900; font-size: 380px; line-height: 1.05; color: var(--accent, #FFC531); direction: ltr; unicode-bidi: isolate; }
+    #hook-num-inner { display: inline-block; }
+    #hook-last-wrap { display: inline-block; position: relative; padding: 0 10px; white-space: nowrap; font-size: 100px; }
+    #hook-bar { position: absolute; right: 0; bottom: -22px; height: 16px; width: 100%; background: var(--accent, #FFC531); border-radius: 9px; transform-origin: 100% 50%; opacity: 0.9; }
+    #hook-last { position: relative; color: var(--ink, #F6F3EC); }
+  </style>
+  <div data-hf-id="hf-9m0x" id="root" data-composition-id="hook" data-width="1080" data-height="1920"
+    data-composition-variables='[{"id":"hookPre","type":"string","label":"Hook – opening word","default":"ليش"},{"id":"hookNum","type":"string","label":"Hook – number","default":"90%"},{"id":"hookMid","type":"string","label":"Hook – middle","default":"من المحتوى"},{"id":"hookEnd","type":"string","label":"Hook – ending","default":"ما يجيب عملاء؟"}]'>
+    <div data-hf-id="hf-tmqg" id="hook-wrap" class="clip" data-start="0" data-duration="4" data-layout-allow-overlap>
+      <div data-hf-id="hf-5a9x" id="hook-why" class="hook-line" data-var-text="hookPre">ليش</div>
+      <div data-hf-id="hf-3gcn" id="hook-num"><span data-hf-id="hf-897x" id="hook-num-inner" data-var-text="hookNum">90%</span></div>
+      <div data-hf-id="hf-zqil" id="hook-mid" class="hook-line" data-var-text="hookMid">من المحتوى</div>
+      <div data-hf-id="hf-00yc" class="hook-line"><span data-hf-id="hf-cpbh" id="hook-last-wrap"><span data-hf-id="hf-i39r" id="hook-bar"></span><span data-hf-id="hf-raw6" id="hook-last" data-var-text="hookEnd">ما يجيب عملاء؟</span></span></div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    // frame 0 already shows the whole question (thumbnail + muted viewers)
+    tl.fromTo("#hook-num-inner", { scale: 1.22 }, { scale: 1, duration: 0.45, ease: "back.out(2)" }, 0);
+    tl.fromTo("#hook-num-inner", { rotation: 0 }, { rotation: -2, duration: 0.12, ease: "power2.out", yoyo: true, repeat: 3 }, 1.1);
+    tl.fromTo("#hook-bar", { scaleX: 0 }, { scaleX: 1, duration: 0.55, ease: "power3.inOut" }, 0.5);
+    tl.fromTo("#hook-wrap", { scale: 1 }, { scale: 1.05, duration: 3.5, ease: "none" }, 0);
+    tl.fromTo(["#hook-why", "#hook-num", "#hook-mid", "#hook-last-wrap"], { y: 0, opacity: 1 },
+      { y: -90, opacity: 0, duration: 0.3, ease: "power2.in", stagger: 0.04 }, 3.55);
+    window.__timelines["hook"] = tl;
+  </script>
+</template>
