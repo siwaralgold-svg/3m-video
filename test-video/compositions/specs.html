@@ -1,0 +1,27 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; font-family: "Inter", sans-serif; color: var(--ink, #f4f1ea); }
+    #specs-list { position: absolute; left: 120px; right: 120px; top: 480px; }
+    .specs-row { display: flex; justify-content: space-between; align-items: baseline;
+      padding: 44px 0; border-bottom: 3px solid rgba(244,241,234,0.18); }
+    .specs-label { font-family: "Space Mono", monospace; font-size: 38px; color: rgba(244,241,234,0.6); }
+    .specs-value { font-weight: 900; font-size: 88px; }
+    .specs-value.accent { color: var(--accent, #ff5a36); }
+  </style>
+  <div id="root" data-composition-id="specs" data-width="1080" data-height="1920">
+    <div id="specs-list" class="clip" data-start="0" data-duration="3.5">
+      <div id="specs-r1" class="specs-row"><span class="specs-label">SIZE</span><span class="specs-value">1080×1920</span></div>
+      <div id="specs-r2" class="specs-row"><span class="specs-label">RATE</span><span class="specs-value">30 fps</span></div>
+      <div id="specs-r3" class="specs-row"><span class="specs-label">LENGTH</span><span class="specs-value accent">10 s</span></div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    ["#specs-r1", "#specs-r2", "#specs-r3"].forEach((id, i) => {
+      tl.fromTo(id, { x: -120, opacity: 0 }, { x: 0, opacity: 1, duration: 0.45, ease: "power3.out" }, 0.1 + i * 0.35);
+    });
+    tl.fromTo("#specs-list", { y: 0 }, { y: -50, duration: 3.1, ease: "none" }, 0);
+    tl.fromTo("#specs-list", { opacity: 1 }, { opacity: 0, duration: 0.3, ease: "power1.in" }, 3.15);
+    window.__timelines["specs"] = tl;
+  </script>
+</template>
