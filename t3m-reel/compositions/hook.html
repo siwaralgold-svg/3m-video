@@ -1,0 +1,47 @@
+<!-- Kinetic hook, adapted from the registry's caption-kinetic-slam (alternating slam entrances), set in Cairo RTL. -->
+<template>
+  <style>
+    @font-face { font-family: "Cairo"; font-weight: 400; font-style: normal; font-display: block; src: url("assets/fonts/cairo-latin-400-normal.woff2") format("woff2"); }
+    @font-face { font-family: "Cairo"; font-weight: 400; font-style: normal; font-display: block; src: url("assets/fonts/cairo-arabic-400-normal.woff2") format("woff2"); unicode-range: U+0600-06FF, U+0750-077F, U+0870-08FF, U+200C-200E, U+2010-2011, U+FB50-FDFF, U+FE70-FEFC; }
+    @font-face { font-family: "Cairo"; font-weight: 700; font-style: normal; font-display: block; src: url("assets/fonts/cairo-latin-700-normal.woff2") format("woff2"); }
+    @font-face { font-family: "Cairo"; font-weight: 700; font-style: normal; font-display: block; src: url("assets/fonts/cairo-arabic-700-normal.woff2") format("woff2"); unicode-range: U+0600-06FF, U+0750-077F, U+0870-08FF, U+200C-200E, U+2010-2011, U+FB50-FDFF, U+FE70-FEFC; }
+    @font-face { font-family: "Cairo"; font-weight: 900; font-style: normal; font-display: block; src: url("assets/fonts/cairo-latin-900-normal.woff2") format("woff2"); }
+    @font-face { font-family: "Cairo"; font-weight: 900; font-style: normal; font-display: block; src: url("assets/fonts/cairo-arabic-900-normal.woff2") format("woff2"); unicode-range: U+0600-06FF, U+0750-077F, U+0870-08FF, U+200C-200E, U+2010-2011, U+FB50-FDFF, U+FE70-FEFC; }
+    #root { position: absolute; inset: 0; font-family: "Cairo", sans-serif; direction: rtl; color: var(--light, #f4f6f9); }
+    #hook-wrap { position: absolute; left: 70px; right: 70px; top: 470px; height: 760px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+    #hook-line { display: flex; flex-direction: row; gap: 34px; justify-content: center; align-items: baseline; }
+    .hook-w { display: inline-block; font-weight: 900; font-size: 150px; line-height: 1.25; white-space: nowrap; }
+    #hook-big-box { position: relative; margin-top: 10px; }
+    #hook-w3 { font-size: 228px; line-height: 1.2; color: var(--gold, #cea532); }
+    #hook-strike { position: absolute; left: -24px; right: -24px; top: 47%; height: 22px; border-radius: 11px; background: var(--light, #f4f6f9); transform-origin: 100% 50%; box-shadow: 0 6px 24px rgba(0,0,0,.35); }
+  </style>
+  <div data-hf-id="hf-srfg" id="root" data-composition-id="hook" data-width="1080" data-height="1920">
+    <div data-hf-id="hf-3bfh" id="hook-wrap" class="clip" data-start="0" data-duration="3" data-layout-allow-overlap>
+      <div data-hf-id="hf-jhvj" id="hook-line">
+        <span data-hf-id="hf-i3gi" id="hook-w0" class="hook-w">بدون</span>
+        <span data-hf-id="hf-5g99" id="hook-w1" class="hook-w">ولا</span>
+        <span data-hf-id="hf-xslf" id="hook-w2" class="hook-w">درهم</span>
+      </div>
+      <div data-hf-id="hf-4aux" id="hook-big-box">
+        <span data-hf-id="hf-escc" id="hook-w3" class="hook-w" data-var-text="hookWord">إعلانات</span>
+        <div data-hf-id="hf-36a7" id="hook-strike"></div>
+      </div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    // Frame 0 already shows the first word (thumbnail), settling from a slight overscale.
+    tl.fromTo("#hook-w0", { scale: 1.18, opacity: 1 }, { scale: 1, opacity: 1, duration: 0.3, ease: "expo.out" }, 0);
+    tl.fromTo("#hook-w1", { y: -120, opacity: 0 }, { y: 0, opacity: 1, duration: 0.22, ease: "back.out(1.7)" }, 0.32);
+    tl.fromTo("#hook-w2", { x: -260, opacity: 0 }, { x: 0, opacity: 1, duration: 0.2, ease: "expo.out" }, 0.62);
+    // The slam: big gold word lands at 1.1 s (bass impact).
+    tl.fromTo("#hook-w3", { scale: 0.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.24, ease: "back.out(2.2)" }, 1.0);
+    tl.fromTo("#hook-big-box", { y: 0 }, { y: 14, duration: 0.06, ease: "power1.out", yoyo: true, repeat: 1 }, 1.18);
+    // Strike-through: "no ads".
+    tl.fromTo("#hook-strike", { scaleX: 0 }, { scaleX: 1, duration: 0.3, ease: "power3.inOut" }, 1.55);
+    tl.fromTo("#hook-strike", { rotation: 0 }, { rotation: -4, duration: 0.3, ease: "power3.inOut" }, 1.55);
+    // Slow push while it holds.
+    tl.fromTo("#hook-line", { scale: 1 }, { scale: 1.04, duration: 2.0, ease: "none" }, 1.0);
+    window.__timelines["hook"] = tl;
+  </script>
+</template>

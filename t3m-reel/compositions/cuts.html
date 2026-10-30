@@ -1,0 +1,34 @@
+<!-- Brand wipe on every cut (3, 7, 12, 16 s): a gold band leads a deep-navy panel right-to-left;
+     the panel covers the frame exactly on the cut, then exits left to reveal the next scene. -->
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+    #cuts-layer { position: absolute; inset: 0; }
+    .cuts-panel { position: absolute; top: -200px; height: 2320px; left: -300px; width: 1680px; }
+    #cuts-gold { background: var(--gold, #cea532); }
+    #cuts-navy { background: linear-gradient(180deg, #1c385a 0%, #13294b 100%); }
+  </style>
+  <div data-hf-id="hf-nlmi" id="root" data-composition-id="cuts" data-width="1080" data-height="1920">
+    <div data-hf-id="hf-8z2m" id="cuts-layer" class="clip" data-start="0" data-duration="20" data-layout-ignore>
+      <div data-hf-id="hf-ihqy" id="cuts-gold" class="cuts-panel"></div>
+      <div data-hf-id="hf-vws4" id="cuts-navy" class="cuts-panel"></div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      const OFF_R = 2600, OFF_L = -2600;
+      tl.set(["#cuts-gold", "#cuts-navy"], { x: OFF_R, skewX: -12 }, 0);
+      [3, 7, 12, 16].forEach((T) => {
+        // In: gold leads, navy follows and fully covers at T.
+        tl.fromTo("#cuts-gold", { x: OFF_R }, { x: 0, duration: 0.26, ease: "power3.in", immediateRender: false }, T - 0.3);
+        tl.fromTo("#cuts-navy", { x: OFF_R }, { x: 0, duration: 0.26, ease: "power3.in", immediateRender: false }, T - 0.26);
+        // Out: both leave to the left, navy first so the gold edge trails the reveal.
+        tl.fromTo("#cuts-navy", { x: 0 }, { x: OFF_L, duration: 0.34, ease: "power3.out", immediateRender: false }, T);
+        tl.fromTo("#cuts-gold", { x: 0 }, { x: OFF_L, duration: 0.34, ease: "power3.out", immediateRender: false }, T + 0.04);
+        tl.set(["#cuts-gold", "#cuts-navy"], { x: OFF_R }, T + 0.4);
+      });
+      window.__timelines["cuts"] = tl;
+    })();
+  </script>
+</template>
