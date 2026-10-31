@@ -7,7 +7,7 @@
 - Text lives between y 168 and 1330. Decoration only below 1330.
 - Motion: slow. Entrances 0.8–1.4 s, power2/power3 out, sine for drifts. Every scene drifts (scale 1.00→1.04) so no frame is dead. Cuts are 0.6 s dips through parchment.
 - Banned: bouncy back eases on text, fast whips, neon, emoji.
-- Sound: voice at 1.0; coin tick on "ينباع", stamp thud on ١٩٤٦, one riser into the green wipe. No music source in this session.
+- Sound: voice at 1.0. From sfx-library: soft/airy whooshes on every scene cut (whoosh_soft_01, whoosh_air_07, whoosh_soft_13, whoosh_deep_08 into the dark close), pops on ١٩٤٦, ٢٩, ٦٠ and ٣٦, riser_09 hitting the cut into the green wipe. Kept: coin tick on "ينباع", stamp thud on ١٩٤٦. No music.
 
 | # | Abs time | Anchor word | Picture |
 |---|---|---|---|
