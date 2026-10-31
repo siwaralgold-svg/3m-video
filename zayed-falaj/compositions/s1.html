@@ -1,0 +1,152 @@
+<template>
+  <style>
+    @font-face { font-family: "Amiri"; src: url("assets/fonts/Amiri-Bold.ttf"); font-weight: 700; }
+    @font-face { font-family: "Noto Kufi Arabic"; src: url("assets/fonts/NotoKufiArabic.ttf"); font-weight: 100 900; }
+    #root { position: absolute; inset: 0; overflow: hidden; }
+    #s1-wrap { position: absolute; inset: 0; }
+    #s1-svg { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+    .s1-label { font-family: "Noto Kufi Arabic", sans-serif; font-weight: 700; fill: var(--ink); }
+    #s1-word { position: absolute; left: 90px; right: 90px; top: 870px; text-align: center; direction: rtl;
+      font-family: "Amiri", serif; font-weight: 700; font-size: 190px; line-height: 1.2; color: var(--ink); }
+    #s1-sub { position: absolute; left: 90px; right: 90px; top: 1135px; text-align: center; direction: rtl;
+      font-family: "Noto Kufi Arabic", sans-serif; font-weight: 600; font-size: 54px; color: var(--gold); letter-spacing: 0.02em; }
+  </style>
+  <div id="root" data-composition-id="s1" data-width="1080" data-height="1920">
+    <div id="s1-wrap" class="clip" data-start="0" data-duration="14.25" data-layout-allow-overflow>
+      <svg id="s1-svg" viewBox="0 0 1080 1920" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <pattern id="s1-sea" width="22" height="22" patternUnits="userSpaceOnUse" patternTransform="rotate(30)">
+            <line x1="0" y1="0" x2="0" y2="22" stroke="#7d9a92" stroke-width="2" opacity="0.5" />
+          </pattern>
+          <mask id="s1-routemask" maskUnits="userSpaceOnUse" x="0" y="0" width="1080" height="1920">
+            <path id="s1-routereveal" d="M250 420 C 330 600, 560 560, 600 760 S 760 960, 790 1050" fill="none" stroke="#fff" stroke-width="30" />
+          </mask>
+          <linearGradient id="s1-dropfill" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#9fe3ef" />
+            <stop offset="1" stop-color="#2f7d96" />
+          </linearGradient>
+          <g id="s1-camel">
+            <path d="M10 80 L14 50 C14 40 20 34 30 32 C36 18 50 14 58 26 C64 16 76 14 82 30 C88 32 92 30 96 22 L100 10 C102 4 110 2 116 6 L120 12 L110 13 L106 30 C104 40 98 46 92 48 L90 80 L85 80 L84 53 L70 55 L67 80 L62 80 L60 55 L40 55 L36 80 L31 80 L30 57 L22 58 L18 80 Z" />
+          </g>
+          <g id="s1-palm">
+            <path d="M0 0 C -4 -40 4 -80 2 -120" stroke="#6b4f2a" stroke-width="8" fill="none" stroke-linecap="round" />
+            <g transform="translate(2 -120)" fill="#3f6b3a">
+              <path d="M0 0 C 20 -22 52 -24 72 6 C 50 -8 26 -8 0 0Z" />
+              <path d="M0 0 C -20 -22 -52 -24 -72 6 C -50 -8 -26 -8 0 0Z" />
+              <path d="M0 0 C 14 -34 40 -48 62 -36 C 38 -32 20 -20 0 0Z" />
+              <path d="M0 0 C -14 -34 -40 -48 -62 -36 C -38 -32 -20 -20 0 0Z" />
+              <path d="M0 0 C 4 -30 0 -50 -8 -62 C 8 -50 12 -30 0 0Z" />
+            </g>
+          </g>
+        </defs>
+
+        <g id="s1-map">
+          <!-- sea and coast -->
+          <path d="M0 0 H1080 V300 C 960 330, 860 290, 760 330 C 640 380, 560 330, 460 360 C 380 385, 330 350, 270 395 C 220 430, 140 380, 0 420 Z" fill="url(#s1-sea)" />
+          <path d="M1080 300 C 960 330, 860 290, 760 330 C 640 380, 560 330, 460 360 C 380 385, 330 350, 270 395 C 220 430, 140 380, 0 420" fill="none" stroke="#6e5838" stroke-width="4" />
+          <path d="M210 330 C 240 310, 300 315, 310 340 C 290 360, 230 360, 210 330Z" fill="#e3d2ad" stroke="#6e5838" stroke-width="3" />
+          <!-- desert hatching -->
+          <g fill="none" stroke="#a88a58" stroke-width="3" opacity="0.55" stroke-linecap="round">
+            <path d="M120 620 q 40 -26 80 0" /><path d="M170 660 q 30 -20 60 0" />
+            <path d="M380 860 q 40 -26 80 0" /><path d="M430 900 q 30 -20 60 0" />
+            <path d="M760 560 q 40 -26 80 0" /><path d="M810 600 q 30 -20 60 0" />
+            <path d="M200 1050 q 40 -26 80 0" /><path d="M250 1090 q 30 -20 60 0" />
+            <path d="M880 820 q 40 -26 80 0" /><path d="M560 1160 q 40 -26 80 0" />
+          </g>
+          <!-- compass rose -->
+          <g transform="translate(905 560)" stroke="#6e5838" fill="none" opacity="0.75">
+            <circle r="62" stroke-width="2" /><circle r="48" stroke-width="1" stroke-dasharray="3 5" />
+            <path d="M0 -84 L10 0 L0 84 L-10 0 Z" fill="#b8862b" stroke="none" />
+            <path d="M-84 0 L0 -8 L84 0 L0 8 Z" fill="#6e5838" stroke="none" />
+            <text y="-96" text-anchor="middle" class="s1-label" style="font-size:30px" stroke="none">ش</text>
+          </g>
+          <!-- route -->
+          <path id="s1-route" d="M250 420 C 330 600, 560 560, 600 760 S 760 960, 790 1050" fill="none" stroke="#b8862b" stroke-width="9" stroke-linecap="round" stroke-dasharray="1 22" mask="url(#s1-routemask)" />
+          <!-- Abu Dhabi -->
+          <g id="s1-ad" transform="translate(250 420)">
+            <circle r="14" fill="#3b2a17" /><circle r="26" fill="none" stroke="#3b2a17" stroke-width="2" />
+            <text x="-40" y="74" text-anchor="end" class="s1-label" style="font-size:44px">أبو ظبي</text>
+          </g>
+          <!-- Al Ain oasis -->
+          <g id="s1-ain" transform="translate(790 1050)">
+            <ellipse rx="120" ry="34" fill="#3f6b3a" opacity="0.18" />
+            <use href="#s1-palm" transform="translate(-50 10) scale(0.8)" />
+            <use href="#s1-palm" transform="translate(0 0)" />
+            <use href="#s1-palm" transform="translate(52 12) scale(0.75)" />
+            <text id="s1-ainlabel" y="96" text-anchor="middle" class="s1-label" style="font-size:64px; fill:#3f6b3a">العين</text>
+          </g>
+          <!-- caravan marker on the route -->
+          <g id="s1-marker"><g transform="translate(-36 -60) scale(0.6)" fill="#3b2a17"><use href="#s1-camel" /></g></g>
+        </g>
+
+        <!-- foreground dunes and caravan (decor band) -->
+        <g id="s1-fore">
+          <path d="M0 1520 C 200 1440, 420 1450, 600 1500 C 780 1550, 920 1470, 1080 1480 V1920 H0 Z" fill="#d8c08f" />
+          <g id="s1-caravan" fill="#3b2a17">
+            <g class="s1-c" transform="translate(0 0)"><use href="#s1-camel" /><circle cx="56" cy="8" r="9" /><path d="M48 18 L64 18 L60 30 L52 30Z" /></g>
+            <g class="s1-c" transform="translate(-150 6)"><use href="#s1-camel" /></g>
+            <g class="s1-c" transform="translate(-300 2)"><use href="#s1-camel" /></g>
+            <g class="s1-c" transform="translate(-450 8)"><use href="#s1-camel" /></g>
+          </g>
+          <path d="M0 1640 C 260 1580, 480 1620, 700 1660 C 860 1690, 960 1640, 1080 1630 V1920 H0 Z" fill="#c9ad78" />
+          <path d="M0 1790 C 300 1730, 600 1800, 1080 1760 V1920 H0 Z" fill="#b99a64" />
+        </g>
+
+        <!-- drop and coin -->
+        <g id="s1-dropg" transform="translate(540 700)">
+          <g id="s1-drop">
+            <path d="M0 -130 C 40 -60, 90 -10, 90 40 A 90 90 0 0 1 -90 40 C -90 -10, -40 -60, 0 -130Z" fill="url(#s1-dropfill)" stroke="#2a6276" stroke-width="4" />
+            <path d="M-46 30 C -46 0, -30 -20, -20 -30" stroke="#fff" stroke-width="10" fill="none" stroke-linecap="round" opacity="0.6" />
+          </g>
+          <g id="s1-coin">
+            <circle cy="-180" r="46" fill="#c9972f" stroke="#7a5716" stroke-width="5" />
+            <circle cy="-180" r="32" fill="none" stroke="#7a5716" stroke-width="3" stroke-dasharray="4 5" />
+            <ellipse cx="-14" cy="-196" rx="12" ry="7" fill="#f3d58c" opacity="0.8" />
+          </g>
+        </g>
+      </svg>
+      <div id="s1-word" dir="rtl" lang="ar">الماي</div>
+      <div id="s1-sub" dir="rtl" lang="ar">كان ينباع</div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    const route = document.querySelector("#s1-routereveal");
+    const len = route.getTotalLength();
+    gsap.set(route, { strokeDasharray: len });
+    // route draws from the coast to Al Ain
+    tl.fromTo(route, { strokeDashoffset: len }, { strokeDashoffset: 0, duration: 5.6, ease: "sine.inOut" }, 0.4);
+    // caravan marker rides the route
+    const marker = document.querySelector("#s1-marker");
+    const prog = { p: 0 };
+    const place = () => { const pt = route.getPointAtLength(prog.p * len); marker.setAttribute("transform", `translate(${pt.x} ${pt.y})`); };
+    tl.fromTo(prog, { p: 0 }, { p: 1, duration: 5.6, ease: "sine.inOut", onUpdate: place, onStart: place }, 0.4);
+    place();
+    tl.fromTo("#s1-ainlabel", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.9, ease: "power2.out" }, 6.0);
+    tl.fromTo("#s1-ain", { scale: 0.9, transformOrigin: "50% 100%" }, { scale: 1, duration: 1.2, ease: "power2.out" }, 5.6);
+    // foreground caravan walks east
+    tl.fromTo("#s1-caravan", { x: 180, y: 1430 }, { x: 1180, y: 1405, duration: 14.25, ease: "none" }, 0);
+    const bases = [[0, 0], [-150, 6], [-300, 2], [-450, 8]];
+    document.querySelectorAll(".s1-c").forEach((c, i) => {
+      const [bx, by] = bases[i];
+      tl.fromTo(c, { x: bx, y: by }, { x: bx, y: by - 6, duration: 0.55, ease: "sine.inOut", yoyo: true, repeat: 23 }, i * 0.18);
+    });
+    // slow push on the map
+    tl.fromTo("#s1-map", { scale: 1, transformOrigin: "60% 45%" }, { scale: 1.05, duration: 7.8, ease: "none" }, 0);
+    // water beat: map recedes, drop and word arrive
+    tl.to("#s1-map", { opacity: 0.22, scale: 1.12, duration: 1.4, ease: "power2.inOut" }, 7.8);
+    tl.fromTo("#s1-drop", { opacity: 0, scale: 0.6, transformOrigin: "50% 60%" }, { opacity: 1, scale: 1, duration: 1.1, ease: "power3.out" }, 8.4);
+    tl.fromTo("#s1-word", { opacity: 0, y: 30, filter: "blur(10px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 1.3, ease: "power2.out" }, 9.2);
+    // coin lands on ينباع (11.80)
+    tl.fromTo("#s1-coin", { y: -760, opacity: 1 }, { y: 0, duration: 0.5, ease: "power2.in" }, 11.3);
+    tl.to("#s1-coin", { y: -26, duration: 0.18, ease: "power1.out" }, 11.8);
+    tl.to("#s1-coin", { y: 0, duration: 0.2, ease: "power1.in" }, 11.98);
+    tl.fromTo("#s1-drop", { scaleY: 1, scaleX: 1 }, { scaleY: 0.9, scaleX: 1.06, duration: 0.12, ease: "power2.out", immediateRender: false }, 11.8);
+    tl.to("#s1-drop", { scaleY: 1, scaleX: 1, duration: 0.5, ease: "power2.out" }, 11.92);
+    tl.fromTo("#s1-sub", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.9, ease: "power2.out" }, 11.9);
+    tl.to("#s1-dropg", { y: 680, duration: 2.3, ease: "sine.inOut" }, 11.9);
+    // dip out
+    tl.to("#s1-wrap", { opacity: 0, duration: 0.6, ease: "power1.in" }, 13.6);
+    window.__timelines["s1"] = tl;
+  </script>
+</template>
