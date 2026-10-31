@@ -1,0 +1,146 @@
+<template>
+  <style>
+    @font-face { font-family: "Amiri"; src: url("assets/fonts/Amiri-Bold.ttf"); font-weight: 700; }
+    @font-face { font-family: "Amiri"; src: url("assets/fonts/Amiri-Regular.ttf"); font-weight: 400; }
+    @font-face { font-family: "Noto Kufi Arabic"; src: url("assets/fonts/NotoKufiArabic.ttf"); font-weight: 100 900; }
+    #root { position: absolute; inset: 0; overflow: hidden; }
+    .hd { font-family: "Amiri", serif; font-weight: 700; direction: rtl; text-align: center; position: absolute; left: 90px; right: 90px; line-height: 1.25; }
+    .lb { font-family: "Noto Kufi Arabic", sans-serif; font-weight: 600; direction: rtl; text-align: center; position: absolute; line-height: 1.4; }
+
+  </style>
+  <div id="root" data-composition-id="s2" data-width="1080" data-height="1920">
+    <div id="s2-wrap" class="clip" data-start="0" data-duration="7.95" data-layout-allow-overflow style="position:absolute;inset:0">
+<svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg" style="position:absolute;left:0;top:0">
+  <defs>
+    <linearGradient id="s2-wat" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9fe3ef"/><stop offset="1" stop-color="#3d8fa8"/></linearGradient>
+  </defs>
+  <g id="s2-scene">
+    <!-- grounds -->
+    <path d="M560 1240 C 700 1210, 900 1225, 1080 1215 V1920 H560 Z" fill="#9db27a" opacity="0.55" />
+    <path id="s2-dryground" d="M0 1215 C 180 1225, 400 1210, 520 1240 V1920 H0 Z" fill="#9db27a" opacity="0.55" />
+    <g id="s2-cracks" stroke="#6b4f2a" stroke-width="3" fill="none" opacity="0" stroke-linecap="round">
+      <path d="M60 1360 l40 30 l-10 40 l50 20" /><path d="M200 1420 l30 -20 l40 25 l20 -30" /><path d="M330 1350 l-20 40 l35 30" /><path d="M120 1520 l60 -10 l30 30" /><path d="M400 1480 l-40 30 l10 40" />
+    </g>
+    <!-- falaj: main channel from the source, split below the gate -->
+    <path d="M540 470 V820" stroke="#8a7350" stroke-width="58" fill="none" stroke-linecap="round" />
+    <path d="M540 820 C 560 940, 800 980, 830 1330" stroke="#8a7350" stroke-width="44" fill="none" stroke-linecap="round" />
+    <path d="M540 820 C 520 940, 280 980, 250 1330" stroke="#8a7350" stroke-width="44" fill="none" stroke-linecap="round" />
+    <path d="M540 470 V820" stroke="url(#s2-wat)" stroke-width="36" fill="none" stroke-linecap="round" />
+    <path d="M540 820 C 560 940, 800 980, 830 1330" stroke="#5aa9c0" stroke-width="26" fill="none" stroke-linecap="round" />
+    <path id="s2-flow1" d="M540 470 V820" stroke="#d9f5fa" stroke-width="8" fill="none" stroke-linecap="round" stroke-dasharray="18 40" opacity="0.8" />
+    <path id="s2-flow2" d="M540 820 C 560 940, 800 980, 830 1330" stroke="#d9f5fa" stroke-width="7" fill="none" stroke-linecap="round" stroke-dasharray="18 40" opacity="0.8" />
+    <path d="M540 820 C 520 940, 280 980, 250 1330" stroke="#c7ad7c" stroke-width="26" fill="none" stroke-linecap="round" />
+    <!-- closed gate on the dry branch -->
+    <g id="s2-gate" transform="translate(498 892) rotate(-38)">
+      <rect x="-50" y="-16" width="100" height="32" rx="4" fill="#6b4f2a" stroke="#3b2a17" stroke-width="4" />
+      <line x1="-30" y1="-16" x2="-30" y2="16" stroke="#3b2a17" stroke-width="3" /><line x1="0" y1="-16" x2="0" y2="16" stroke="#3b2a17" stroke-width="3" /><line x1="30" y1="-16" x2="30" y2="16" stroke="#3b2a17" stroke-width="3" />
+      <rect x="-62" y="-26" width="14" height="52" fill="#3b2a17" /><rect x="48" y="-26" width="14" height="52" fill="#3b2a17" />
+    </g>
+    <!-- source well -->
+    <circle cx="540" cy="470" r="46" fill="#e3d2ad" stroke="#6e5838" stroke-width="5" />
+    <circle cx="540" cy="470" r="26" fill="#3d8fa8" />
+    <g id="s2-pr0" transform="translate(700 1280) scale(1.35)">
+  <path d="M0 0 C -6 -60 6 -120 3 -180" stroke="#6b4f2a" stroke-width="12" fill="none" stroke-linecap="round" />
+  <path d="M-4 -30 h8 M-3 -70 h8 M-1 -110 h8 M0 -150 h7" stroke="#4e3a1e" stroke-width="3" />
+  <g class="s2-pr0-fr fronds" transform="translate(3 -180)" fill="#3f6b3a">
+    <path d="M0 0 C 30 -34 78 -36 108 10 C 74 -12 40 -12 0 0Z" />
+    <path d="M0 0 C -30 -34 -78 -36 -108 10 C -74 -12 -40 -12 0 0Z" />
+    <path d="M0 0 C 22 -52 60 -72 94 -54 C 58 -48 30 -30 0 0Z" />
+    <path d="M0 0 C -22 -52 -60 -72 -94 -54 C -58 -48 -30 -30 0 0Z" />
+    <path d="M0 0 C 6 -46 0 -76 -12 -94 C 12 -76 18 -46 0 0Z" />
+    <path d="M0 0 C 26 -10 60 4 80 40 C 50 16 26 8 0 0Z" />
+    <path d="M0 0 C -26 -10 -60 4 -80 40 C -50 16 -26 8 0 0Z" />
+  </g>
+</g>
+<g id="s2-pr1" transform="translate(830 1300) scale(1.35)">
+  <path d="M0 0 C -6 -60 6 -120 3 -180" stroke="#6b4f2a" stroke-width="12" fill="none" stroke-linecap="round" />
+  <path d="M-4 -30 h8 M-3 -70 h8 M-1 -110 h8 M0 -150 h7" stroke="#4e3a1e" stroke-width="3" />
+  <g class="s2-pr1-fr fronds" transform="translate(3 -180)" fill="#3f6b3a">
+    <path d="M0 0 C 30 -34 78 -36 108 10 C 74 -12 40 -12 0 0Z" />
+    <path d="M0 0 C -30 -34 -78 -36 -108 10 C -74 -12 -40 -12 0 0Z" />
+    <path d="M0 0 C 22 -52 60 -72 94 -54 C 58 -48 30 -30 0 0Z" />
+    <path d="M0 0 C -22 -52 -60 -72 -94 -54 C -58 -48 -30 -30 0 0Z" />
+    <path d="M0 0 C 6 -46 0 -76 -12 -94 C 12 -76 18 -46 0 0Z" />
+    <path d="M0 0 C 26 -10 60 4 80 40 C 50 16 26 8 0 0Z" />
+    <path d="M0 0 C -26 -10 -60 4 -80 40 C -50 16 -26 8 0 0Z" />
+  </g>
+</g>
+<g id="s2-pr2" transform="translate(960 1275) scale(1.35)">
+  <path d="M0 0 C -6 -60 6 -120 3 -180" stroke="#6b4f2a" stroke-width="12" fill="none" stroke-linecap="round" />
+  <path d="M-4 -30 h8 M-3 -70 h8 M-1 -110 h8 M0 -150 h7" stroke="#4e3a1e" stroke-width="3" />
+  <g class="s2-pr2-fr fronds" transform="translate(3 -180)" fill="#3f6b3a">
+    <path d="M0 0 C 30 -34 78 -36 108 10 C 74 -12 40 -12 0 0Z" />
+    <path d="M0 0 C -30 -34 -78 -36 -108 10 C -74 -12 -40 -12 0 0Z" />
+    <path d="M0 0 C 22 -52 60 -72 94 -54 C 58 -48 30 -30 0 0Z" />
+    <path d="M0 0 C -22 -52 -60 -72 -94 -54 C -58 -48 -30 -30 0 0Z" />
+    <path d="M0 0 C 6 -46 0 -76 -12 -94 C 12 -76 18 -46 0 0Z" />
+    <path d="M0 0 C 26 -10 60 4 80 40 C 50 16 26 8 0 0Z" />
+    <path d="M0 0 C -26 -10 -60 4 -80 40 C -50 16 -26 8 0 0Z" />
+  </g>
+</g>
+    <g id="s2-pl0" transform="translate(120 1275) scale(1.35)">
+  <path d="M0 0 C -6 -60 6 -120 3 -180" stroke="#6b4f2a" stroke-width="12" fill="none" stroke-linecap="round" />
+  <path d="M-4 -30 h8 M-3 -70 h8 M-1 -110 h8 M0 -150 h7" stroke="#4e3a1e" stroke-width="3" />
+  <g class="s2-pl0-fr fronds" transform="translate(3 -180)" fill="#3f6b3a">
+    <path d="M0 0 C 30 -34 78 -36 108 10 C 74 -12 40 -12 0 0Z" />
+    <path d="M0 0 C -30 -34 -78 -36 -108 10 C -74 -12 -40 -12 0 0Z" />
+    <path d="M0 0 C 22 -52 60 -72 94 -54 C 58 -48 30 -30 0 0Z" />
+    <path d="M0 0 C -22 -52 -60 -72 -94 -54 C -58 -48 -30 -30 0 0Z" />
+    <path d="M0 0 C 6 -46 0 -76 -12 -94 C 12 -76 18 -46 0 0Z" />
+    <path d="M0 0 C 26 -10 60 4 80 40 C 50 16 26 8 0 0Z" />
+    <path d="M0 0 C -26 -10 -60 4 -80 40 C -50 16 -26 8 0 0Z" />
+  </g>
+</g>
+<g id="s2-pl1" transform="translate(250 1300) scale(1.35)">
+  <path d="M0 0 C -6 -60 6 -120 3 -180" stroke="#6b4f2a" stroke-width="12" fill="none" stroke-linecap="round" />
+  <path d="M-4 -30 h8 M-3 -70 h8 M-1 -110 h8 M0 -150 h7" stroke="#4e3a1e" stroke-width="3" />
+  <g class="s2-pl1-fr fronds" transform="translate(3 -180)" fill="#3f6b3a">
+    <path d="M0 0 C 30 -34 78 -36 108 10 C 74 -12 40 -12 0 0Z" />
+    <path d="M0 0 C -30 -34 -78 -36 -108 10 C -74 -12 -40 -12 0 0Z" />
+    <path d="M0 0 C 22 -52 60 -72 94 -54 C 58 -48 30 -30 0 0Z" />
+    <path d="M0 0 C -22 -52 -60 -72 -94 -54 C -58 -48 -30 -30 0 0Z" />
+    <path d="M0 0 C 6 -46 0 -76 -12 -94 C 12 -76 18 -46 0 0Z" />
+    <path d="M0 0 C 26 -10 60 4 80 40 C 50 16 26 8 0 0Z" />
+    <path d="M0 0 C -26 -10 -60 4 -80 40 C -50 16 -26 8 0 0Z" />
+  </g>
+</g>
+<g id="s2-pl2" transform="translate(380 1280) scale(1.35)">
+  <path d="M0 0 C -6 -60 6 -120 3 -180" stroke="#6b4f2a" stroke-width="12" fill="none" stroke-linecap="round" />
+  <path d="M-4 -30 h8 M-3 -70 h8 M-1 -110 h8 M0 -150 h7" stroke="#4e3a1e" stroke-width="3" />
+  <g class="s2-pl2-fr fronds" transform="translate(3 -180)" fill="#3f6b3a">
+    <path d="M0 0 C 30 -34 78 -36 108 10 C 74 -12 40 -12 0 0Z" />
+    <path d="M0 0 C -30 -34 -78 -36 -108 10 C -74 -12 -40 -12 0 0Z" />
+    <path d="M0 0 C 22 -52 60 -72 94 -54 C 58 -48 30 -30 0 0Z" />
+    <path d="M0 0 C -22 -52 -60 -72 -94 -54 C -58 -48 -30 -30 0 0Z" />
+    <path d="M0 0 C 6 -46 0 -76 -12 -94 C 12 -76 18 -46 0 0Z" />
+    <path d="M0 0 C 26 -10 60 4 80 40 C 50 16 26 8 0 0Z" />
+    <path d="M0 0 C -26 -10 -60 4 -80 40 C -50 16 -26 8 0 0Z" />
+  </g>
+</g>
+  </g>
+</svg>
+<div class="lb" style="top:250px; right:70px; width:420px; font-size:42px; color:var(--ink)" id="s2-k1" dir="rtl">اللي يملك</div>
+<div class="hd" style="top:300px; right:70px; left:auto; width:420px; font-size:120px; color:var(--palm)" id="s2-h1" dir="rtl">يسقي</div>
+<div class="lb" style="top:250px; left:70px; width:420px; font-size:42px; color:var(--ink)" id="s2-k2" dir="rtl">واللي ما يملك</div>
+<div class="hd" style="top:300px; left:70px; right:auto; width:420px; font-size:120px; color:var(--dry)" id="s2-h2" dir="rtl">يعطش</div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#s2-wrap", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "power1.out" }, 0);
+    tl.fromTo("#s2-scene", { scale: 1, transformOrigin: "50% 60%" }, { scale: 1.045, duration: 7.95, ease: "none" }, 0);
+    tl.fromTo("#s2-flow1", { strokeDashoffset: 0 }, { strokeDashoffset: -470, duration: 7.95, ease: "none" }, 0);
+    tl.fromTo("#s2-flow2", { strokeDashoffset: 0 }, { strokeDashoffset: -470, duration: 7.95, ease: "none" }, 0);
+    tl.fromTo(["#s2-k1", "#s2-h1"], { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 1.0, ease: "power2.out", stagger: 0.3 }, 2.3);
+    tl.fromTo("#s2-k2", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 1.0, ease: "power2.out" }, 4.4);
+    tl.fromTo("#s2-h2", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 1.0, ease: "power2.out" }, 6.0);
+    // the dry side: leaves brown, fronds droop, ground cracks
+    tl.fromTo(".fronds[class*='s2-pl']", { fill: "#3f6b3a" }, { fill: "#8b6a3d", duration: 3.8, ease: "sine.inOut", stagger: 0.25 }, 3.4);
+    tl.fromTo(".fronds[class*='s2-pl']", { scaleY: 1, rotation: 0 }, { scaleY: 0.72, rotation: 6, duration: 3.8, ease: "sine.inOut", stagger: 0.25 }, 3.6);
+    tl.fromTo("#s2-dryground", { fill: "#9db27a" }, { fill: "#b89a66", duration: 3.6, ease: "sine.inOut" }, 3.6);
+    tl.fromTo("#s2-cracks", { opacity: 0 }, { opacity: 0.7, duration: 2.4, ease: "sine.inOut" }, 5.2);
+    tl.fromTo(".fronds[class*='s2-pr']", { rotation: -2 }, { rotation: 2, duration: 1.9, ease: "sine.inOut", yoyo: true, repeat: 3 }, 0);
+    tl.to("#s2-wrap", { opacity: 0, duration: 0.55, ease: "power1.in" }, 7.35);
+    window.__timelines["s2"] = tl;
+  </script>
+</template>

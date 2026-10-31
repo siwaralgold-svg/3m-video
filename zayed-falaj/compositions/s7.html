@@ -1,0 +1,34 @@
+<template>
+  <style>
+    @font-face { font-family: "Amiri"; src: url("assets/fonts/Amiri-Bold.ttf"); font-weight: 700; }
+    @font-face { font-family: "Amiri"; src: url("assets/fonts/Amiri-Regular.ttf"); font-weight: 400; }
+    @font-face { font-family: "Noto Kufi Arabic"; src: url("assets/fonts/NotoKufiArabic.ttf"); font-weight: 100 900; }
+    #root { position: absolute; inset: 0; overflow: hidden; }
+    .hd { font-family: "Amiri", serif; font-weight: 700; direction: rtl; text-align: center; position: absolute; left: 90px; right: 90px; line-height: 1.25; }
+    .lb { font-family: "Noto Kufi Arabic", sans-serif; font-weight: 600; direction: rtl; text-align: center; position: absolute; line-height: 1.4; }
+    #s7-bg { position: absolute; inset: 0; background: radial-gradient(90% 60% at 50% 45%, #241c12 0%, var(--dark) 70%); }
+
+  </style>
+  <div id="root" data-composition-id="s7" data-width="1080" data-height="1920">
+    <div id="s7-wrap" class="clip" data-start="0" data-duration="7.7" data-layout-allow-overflow style="position:absolute;inset:0">
+<div id="s7-bg"></div>
+<div class="hd" id="s7-l1" style="top:640px; font-size:84px; font-weight:400; color:#e9dcc0" dir="rtl">ما قال للناس تنازلوا...</div>
+<div class="hd" id="s7-l2" style="top:790px; font-size:140px; color:#d6a446" dir="rtl">هو تنازل أول.</div>
+<div class="hd" id="s7-l3" style="top:690px; font-size:96px; font-weight:400; color:#e9dcc0" dir="rtl">اللي يبدأ بنفسه...</div>
+<div class="hd" id="s7-l4" style="top:850px; font-size:130px; color:#d6a446" dir="rtl">الناس تمشي وراه.</div>
+<div id="s7-rule" style="position:absolute; left:390px; width:300px; top:1080px; height:3px; background:#d6a446"></div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#s7-bg", { opacity: 0 }, { opacity: 1, duration: 0.7, ease: "power1.inOut" }, 0);
+    tl.fromTo("#s7-l1", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 1.1, ease: "power2.out" }, 0.25);
+    tl.fromTo("#s7-l2", { opacity: 0, y: 24, filter: "blur(8px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 1.1, ease: "power2.out" }, 1.95);
+    tl.to(["#s7-l1", "#s7-l2"], { opacity: 0, y: -24, duration: 0.6, ease: "power2.in", stagger: 0.08 }, 3.0);
+    tl.fromTo("#s7-l3", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 1.1, ease: "power2.out" }, 3.5);
+    tl.fromTo("#s7-l4", { opacity: 0, y: 24, filter: "blur(8px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 1.2, ease: "power2.out" }, 4.7);
+    tl.fromTo("#s7-rule", { scaleX: 0 }, { scaleX: 1, duration: 1.2, ease: "power2.inOut" }, 5.5);
+    tl.fromTo(["#s7-l3", "#s7-l4"], { scale: 1 }, { scale: 1.03, duration: 3.5, ease: "none", immediateRender: false }, 4.2);
+    window.__timelines["s7"] = tl;
+  </script>
+</template>
