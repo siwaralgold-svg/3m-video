@@ -1,0 +1,5722 @@
+{
+ "interface_error_001": {
+  "file": "alerts/interface_error_001.mp3",
+  "category": "alerts",
+  "duration": 0.162,
+  "peak_at": 0.001,
+  "peak_db": -1.0,
+  "description": "Error buzz: a wrong answer, a myth, or a 'don't do this' moment."
+ },
+ "interface_error_002": {
+  "file": "alerts/interface_error_002.mp3",
+  "category": "alerts",
+  "duration": 0.166,
+  "peak_at": 0.002,
+  "peak_db": -1.0,
+  "description": "Error buzz: a wrong answer, a myth, or a 'don't do this' moment."
+ },
+ "interface_error_003": {
+  "file": "alerts/interface_error_003.mp3",
+  "category": "alerts",
+  "duration": 0.528,
+  "peak_at": 0.053,
+  "peak_db": -1.0,
+  "description": "Error buzz: a wrong answer, a myth, or a 'don't do this' moment."
+ },
+ "interface_error_004": {
+  "file": "alerts/interface_error_004.mp3",
+  "category": "alerts",
+  "duration": 0.105,
+  "peak_at": 0.001,
+  "peak_db": -1.0,
+  "description": "Error buzz: a wrong answer, a myth, or a 'don't do this' moment."
+ },
+ "interface_error_005": {
+  "file": "alerts/interface_error_005.mp3",
+  "category": "alerts",
+  "duration": 0.201,
+  "peak_at": 0.018,
+  "peak_db": -1.0,
+  "description": "Error buzz: a wrong answer, a myth, or a 'don't do this' moment."
+ },
+ "interface_error_006": {
+  "file": "alerts/interface_error_006.mp3",
+  "category": "alerts",
+  "duration": 0.256,
+  "peak_at": 0.071,
+  "peak_db": -1.0,
+  "description": "Error buzz: a wrong answer, a myth, or a 'don't do this' moment."
+ },
+ "interface_error_007": {
+  "file": "alerts/interface_error_007.mp3",
+  "category": "alerts",
+  "duration": 0.192,
+  "peak_at": 0.001,
+  "peak_db": -1.0,
+  "description": "Error buzz: a wrong answer, a myth, or a 'don't do this' moment."
+ },
+ "interface_error_008": {
+  "file": "alerts/interface_error_008.mp3",
+  "category": "alerts",
+  "duration": 0.139,
+  "peak_at": 0.016,
+  "peak_db": -1.0,
+  "description": "Error buzz: a wrong answer, a myth, or a 'don't do this' moment."
+ },
+ "digital_high_up": {
+  "file": "chimes-tones/digital_high_up.mp3",
+  "category": "chimes-tones",
+  "duration": 0.401,
+  "peak_at": 0.05,
+  "peak_db": -1.0,
+  "description": "Rising digital tone: going up or increasing."
+ },
+ "digital_low_down": {
+  "file": "chimes-tones/digital_low_down.mp3",
+  "category": "chimes-tones",
+  "duration": 0.651,
+  "peak_at": 0.45,
+  "peak_db": -1.0,
+  "description": "Falling digital tone: going down or decreasing."
+ },
+ "digital_low_three_tone": {
+  "file": "chimes-tones/digital_low_three_tone.mp3",
+  "category": "chimes-tones",
+  "duration": 0.895,
+  "peak_at": 0.501,
+  "peak_db": -1.0,
+  "description": "Low three-tone beep: a tech accent."
+ },
+ "digital_power_up1": {
+  "file": "chimes-tones/digital_power_up1.mp3",
+  "category": "chimes-tones",
+  "duration": 0.982,
+  "peak_at": 0.013,
+  "peak_db": -1.0,
+  "description": "Power up: something unlocking or upgrading."
+ },
+ "digital_power_up10": {
+  "file": "chimes-tones/digital_power_up10.mp3",
+  "category": "chimes-tones",
+  "duration": 0.391,
+  "peak_at": 0.274,
+  "peak_db": -1.0,
+  "description": "Power up: something unlocking or upgrading."
+ },
+ "digital_power_up11": {
+  "file": "chimes-tones/digital_power_up11.mp3",
+  "category": "chimes-tones",
+  "duration": 0.463,
+  "peak_at": 0.221,
+  "peak_db": -1.0,
+  "description": "Power up: something unlocking or upgrading."
+ },
+ "digital_power_up12": {
+  "file": "chimes-tones/digital_power_up12.mp3",
+  "category": "chimes-tones",
+  "duration": 0.666,
+  "peak_at": 0.187,
+  "peak_db": -1.0,
+  "description": "Power up: something unlocking or upgrading."
+ },
+ "digital_power_up2": {
+  "file": "chimes-tones/digital_power_up2.mp3",
+  "category": "chimes-tones",
+  "duration": 0.207,
+  "peak_at": 0.086,
+  "peak_db": -1.0,
+  "description": "Power up: something unlocking or upgrading."
+ },
+ "digital_power_up3": {
+  "file": "chimes-tones/digital_power_up3.mp3",
+  "category": "chimes-tones",
+  "duration": 0.885,
+  "peak_at": 0.098,
+  "peak_db": -1.0,
+  "description": "Power up: something unlocking or upgrading."
+ },
+ "digital_power_up4": {
+  "file": "chimes-tones/digital_power_up4.mp3",
+  "category": "chimes-tones",
+  "duration": 0.351,
+  "peak_at": 0.147,
+  "peak_db": -1.0,
+  "description": "Power up: something unlocking or upgrading."
+ },
+ "digital_power_up5": {
+  "file": "chimes-tones/digital_power_up5.mp3",
+  "category": "chimes-tones",
+  "duration": 0.267,
+  "peak_at": 0.157,
+  "peak_db": -1.0,
+  "description": "Power up: something unlocking or upgrading."
+ },
+ "digital_power_up6": {
+  "file": "chimes-tones/digital_power_up6.mp3",
+  "category": "chimes-tones",
+  "duration": 0.201,
+  "peak_at": 0.1,
+  "peak_db": -1.0,
+  "description": "Power up: something unlocking or upgrading."
+ },
+ "digital_power_up7": {
+  "file": "chimes-tones/digital_power_up7.mp3",
+  "category": "chimes-tones",
+  "duration": 0.313,
+  "peak_at": 0.013,
+  "peak_db": -1.0,
+  "description": "Power up: something unlocking or upgrading."
+ },
+ "digital_power_up8": {
+  "file": "chimes-tones/digital_power_up8.mp3",
+  "category": "chimes-tones",
+  "duration": 0.287,
+  "peak_at": 0.009,
+  "peak_db": -1.0,
+  "description": "Power up: something unlocking or upgrading."
+ },
+ "digital_power_up9": {
+  "file": "chimes-tones/digital_power_up9.mp3",
+  "category": "chimes-tones",
+  "duration": 0.321,
+  "peak_at": 0.013,
+  "peak_db": -1.0,
+  "description": "Power up: something unlocking or upgrading."
+ },
+ "digital_three_tone1": {
+  "file": "chimes-tones/digital_three_tone1.mp3",
+  "category": "chimes-tones",
+  "duration": 0.517,
+  "peak_at": 0.125,
+  "peak_db": -1.0,
+  "description": "Three-tone digital beep: a tech or UI accent."
+ },
+ "digital_three_tone2": {
+  "file": "chimes-tones/digital_three_tone2.mp3",
+  "category": "chimes-tones",
+  "duration": 0.6,
+  "peak_at": 0.008,
+  "peak_db": -1.0,
+  "description": "Three-tone digital beep: a tech or UI accent."
+ },
+ "digital_tone1": {
+  "file": "chimes-tones/digital_tone1.mp3",
+  "category": "chimes-tones",
+  "duration": 0.163,
+  "peak_at": 0.008,
+  "peak_db": -1.0,
+  "description": "Digital beep: a tech or UI accent."
+ },
+ "digital_two_tone1": {
+  "file": "chimes-tones/digital_two_tone1.mp3",
+  "category": "chimes-tones",
+  "duration": 0.396,
+  "peak_at": 0.021,
+  "peak_db": -1.0,
+  "description": "Two-tone digital beep: a tech or UI accent."
+ },
+ "digital_two_tone2": {
+  "file": "chimes-tones/digital_two_tone2.mp3",
+  "category": "chimes-tones",
+  "duration": 0.41,
+  "peak_at": 0.009,
+  "peak_db": -1.0,
+  "description": "Two-tone digital beep: a tech or UI accent."
+ },
+ "digital_zap_three_tone_down": {
+  "file": "chimes-tones/digital_zap_three_tone_down.mp3",
+  "category": "chimes-tones",
+  "duration": 1.239,
+  "peak_at": 0.122,
+  "peak_db": -1.0,
+  "description": "Falling zap: going down or level down."
+ },
+ "digital_zap_three_tone_up": {
+  "file": "chimes-tones/digital_zap_three_tone_up.mp3",
+  "category": "chimes-tones",
+  "duration": 1.105,
+  "peak_at": 0.025,
+  "peak_db": -1.0,
+  "description": "Rising zap: going up or level up."
+ },
+ "digital_zap_two_tone": {
+  "file": "chimes-tones/digital_zap_two_tone.mp3",
+  "category": "chimes-tones",
+  "duration": 1.18,
+  "peak_at": 0.116,
+  "peak_db": -1.0,
+  "description": "Two-tone zap: a techy accent."
+ },
+ "digital_zap_two_tone2": {
+  "file": "chimes-tones/digital_zap_two_tone2.mp3",
+  "category": "chimes-tones",
+  "duration": 1.12,
+  "peak_at": 0.217,
+  "peak_db": -1.0,
+  "description": "Two-tone zap: a techy accent."
+ },
+ "ding": {
+  "file": "chimes-tones/ding.mp3",
+  "category": "chimes-tones",
+  "duration": 0.869,
+  "peak_at": 0.02,
+  "peak_db": -1.0,
+  "description": "Ding: a positive moment or correct answer."
+ },
+ "impact_bell_heavy_000": {
+  "file": "chimes-tones/impact_bell_heavy_000.mp3",
+  "category": "chimes-tones",
+  "duration": 1.374,
+  "peak_at": 0.001,
+  "peak_db": -1.0,
+  "description": "Heavy bell hit: dramatic emphasis."
+ },
+ "impact_bell_heavy_001": {
+  "file": "chimes-tones/impact_bell_heavy_001.mp3",
+  "category": "chimes-tones",
+  "duration": 1.697,
+  "peak_at": 0.001,
+  "peak_db": -1.0,
+  "description": "Heavy bell hit: dramatic emphasis."
+ },
+ "impact_bell_heavy_002": {
+  "file": "chimes-tones/impact_bell_heavy_002.mp3",
+  "category": "chimes-tones",
+  "duration": 0.697,
+  "peak_at": 0.001,
+  "peak_db": -1.0,
+  "description": "Heavy bell hit: dramatic emphasis."
+ },
+ "impact_bell_heavy_003": {
+  "file": "chimes-tones/impact_bell_heavy_003.mp3",
+  "category": "chimes-tones",
+  "duration": 0.654,
+  "peak_at": 0.001,
+  "peak_db": -1.0,
+  "description": "Heavy bell hit: dramatic emphasis."
+ },
+ "impact_bell_heavy_004": {
+  "file": "chimes-tones/impact_bell_heavy_004.mp3",
+  "category": "chimes-tones",
+  "duration": 0.299,
+  "peak_at": 0.002,
+  "peak_db": -1.0,
+  "description": "Heavy bell hit: dramatic emphasis."
+ },
+ "interface_bong_001": {
+  "file": "chimes-tones/interface_bong_001.mp3",
+  "category": "chimes-tones",
+  "duration": 0.12,
+  "peak_at": 0.002,
+  "peak_db": -1.0,
+  "description": "Bong: a clear attention accent."
+ },
+ "interface_confirmation_001": {
+  "file": "chimes-tones/interface_confirmation_001.mp3",
+  "category": "chimes-tones",
+  "duration": 0.29,
+  "peak_at": 0.001,
+  "peak_db": -1.0,
+  "description": "Confirmation tone: success or task done."
+ },
+ "interface_confirmation_002": {
+  "file": "chimes-tones/interface_confirmation_002.mp3",
+  "category": "chimes-tones",
+  "duration": 0.539,
+  "peak_at": 0.0,
+  "peak_db": -1.0,
+  "description": "Confirmation tone: success or task done."
+ },
+ "interface_confirmation_003": {
+  "file": "chimes-tones/interface_confirmation_003.mp3",
+  "category": "chimes-tones",
+  "duration": 0.322,
+  "peak_at": 0.001,
+  "peak_db": -1.0,
+  "description": "Confirmation tone: success or task done."
+ },
+ "interface_confirmation_004": {
+  "file": "chimes-tones/interface_confirmation_004.mp3",
+  "category": "chimes-tones",
+  "duration": 0.49,
+  "peak_at": 0.168,
+  "peak_db": -1.0,
+  "description": "Confirmation tone: success or task done."
+ },
+ "interface_question_001": {
+  "file": "chimes-tones/interface_question_001.mp3",
+  "category": "chimes-tones",
+  "duration": 0.491,
+  "peak_at": 0.168,
+  "peak_db": -1.0,
+  "description": "Question tone: curiosity or a question on screen."
+ },
+ "interface_question_002": {
+  "file": "chimes-tones/interface_question_002.mp3",
+  "category": "chimes-tones",
+  "duration": 0.333,
+  "peak_at": 0.048,
+  "peak_db": -1.0,
+  "description": "Question tone: curiosity or a question on screen."
+ },
+ "interface_question_003": {
+  "file": "chimes-tones/interface_question_003.mp3",
+  "category": "chimes-tones",
+  "duration": 0.33,
+  "peak_at": 0.047,
+  "peak_db": -1.0,
+  "description": "Question tone: curiosity or a question on screen."
+ },
+ "interface_question_004": {
+  "file": "chimes-tones/interface_question_004.mp3",
+  "category": "chimes-tones",
+  "duration": 0.333,
+  "peak_at": 0.047,
+  "peak_db": -1.0,
+  "description": "Question tone: curiosity or a question on screen."
+ },
+ "soft_chime": {
+  "file": "chimes-tones/soft_chime.mp3",
+  "category": "chimes-tones",
+  "duration": 1.476,
+  "peak_at": 0.032,
+  "peak_db": -1.0,
+  "description": "Soft chime: gentle success or a calm reveal."
+ },
+ "sparkle": {
+  "file": "chimes-tones/sparkle.mp3",
+  "category": "chimes-tones",
+  "duration": 0.655,
+  "peak_at": 0.105,
+  "peak_db": -1.0,
+  "description": "Sparkle: something shiny or premium appearing."
+ },
+ "casino_card_fan_1": {
+  "file": "foley/casino_card_fan_1.mp3",
+  "category": "foley",
+  "duration": 0.721,
+  "peak_at": 0.585,
+  "peak_db": -1.0,
+  "description": "Playing cards: dealing, sliding or shuffling (offers, deals, picks)."
+ },
+ "casino_card_fan_2": {
+  "file": "foley/casino_card_fan_2.mp3",
+  "category": "foley",
+  "duration": 1.307,
+  "peak_at": 1.055,
+  "peak_db": -1.0,
+  "description": "Playing cards: dealing, sliding or shuffling (offers, deals, picks)."
+ },
+ "casino_card_place_1": {
+  "file": "foley/casino_card_place_1.mp3",
+  "category": "foley",
+  "duration": 0.624,
+  "peak_at": 0.094,
+  "peak_db": -1.0,
+  "description": "Playing cards: dealing, sliding or shuffling (offers, deals, picks)."
+ },
+ "casino_card_place_2": {
+  "file": "foley/casino_card_place_2.mp3",
+  "category": "foley",
+  "duration": 0.439,
+  "peak_at": 0.198,
+  "peak_db": -1.0,
+  "description": "Playing cards: dealing, sliding or shuffling (offers, deals, picks)."
+ },
+ "casino_card_place_3": {
+  "file": "foley/casino_card_place_3.mp3",
+  "category": "foley",
+  "duration": 0.884,
+  "peak_at": 0.461,
+  "peak_db": -1.0,
+  "description": "Playing cards: dealing, sliding or shuffling (offers, deals, picks)."
+ },
+ "casino_card_place_4": {
+  "file": "foley/casino_card_place_4.mp3",
+  "category": "foley",
+  "duration": 0.601,
+  "peak_at": 0.337,
+  "peak_db": -1.0,
+  "description": "Playing cards: dealing, sliding or shuffling (offers, deals, picks)."
+ },
+ "casino_card_shove_1": {
+  "file": "foley/casino_card_shove_1.mp3",
+  "category": "foley",
+  "duration": 0.766,
+  "peak_at": 0.12,
+  "peak_db": -1.0,
+  "description": "Playing cards: dealing, sliding or shuffling (offers, deals, picks)."
+ },
+ "casino_card_shove_2": {
+  "file": "foley/casino_card_shove_2.mp3",
+  "category": "foley",
+  "duration": 0.767,
+  "peak_at": 0.21,
+  "peak_db": -1.0,
+  "description": "Playing cards: dealing, sliding or shuffling (offers, deals, picks)."
+ },
+ "casino_card_shove_3": {
+  "file": "foley/casino_card_shove_3.mp3",
+  "category": "foley",
+  "duration": 0.693,
+  "peak_at": 0.142,
+  "peak_db": -1.0,
+  "description": "Playing cards: dealing, sliding or shuffling (offers, deals, picks)."
+ },
+ "casino_card_shove_4": {
+  "file": "foley/casino_card_shove_4.mp3",
+  "category": "foley",
+  "duration": 0.809,
+  "peak_at": 0.225,
+  "peak_db": -1.0,
+  "description": "Playing cards: dealing, sliding or shuffling (offers, deals, picks)."
+ },
+ "casino_card_shuffle": {
+  "file": "foley/casino_card_shuffle.mp3",
+  "category": "foley",
+  "duration": 3.064,
+  "peak_at": 0.257,
+  "peak_db": -1.0,
+  "description": "Playing cards: dealing, sliding or shuffling (offers, deals, picks)."
+ },
+ "casino_card_slide_1": {
+  "file": "foley/casino_card_slide_1.mp3",
+  "category": "foley",
+  "duration": 0.511,
+  "peak_at": 0.07,
+  "peak_db": -1.0,
+  "description": "Playing cards: dealing, sliding or shuffling (offers, deals, picks)."
+ },
+ "casino_card_slide_2": {
+  "file": "foley/casino_card_slide_2.mp3",
+  "category": "foley",
+  "duration": 0.584,
+  "peak_at": 0.072,
+  "peak_db": -1.0,
+  "description": "Playing cards: dealing, sliding or shuffling (offers, deals, picks)."
+ },
+ "casino_card_slide_3": {
+  "file": "foley/casino_card_slide_3.mp3",
+  "category": "foley",
+  "duration": 0.598,
+  "peak_at": 0.085,
+  "peak_db": -1.0,
+  "description": "Playing cards: dealing, sliding or shuffling (offers, deals, picks)."
+ },
+ "casino_card_slide_4": {
+  "file": "foley/casino_card_slide_4.mp3",
+  "category": "foley",
+  "duration": 0.457,
+  "peak_at": 0.106,
+  "peak_db": -1.0,
+  "description": "Playing cards: dealing, sliding or shuffling (offers, deals, picks)."
+ },
+ "casino_card_slide_5": {
+  "file": "foley/casino_card_slide_5.mp3",
+  "category": "foley",
+  "duration": 0.601,
+  "peak_at": 0.125,
+  "peak_db": -1.0,
+  "description": "Playing cards: dealing, sliding or shuffling (offers, deals, picks)."
+ },
+ "casino_card_slide_6": {
+  "file": "foley/casino_card_slide_6.mp3",
+  "category": "foley",
+  "duration": 0.593,
+  "peak_at": 0.162,
+  "peak_db": -1.0,
+  "description": "Playing cards: dealing, sliding or shuffling (offers, deals, picks)."
+ },
+ "casino_card_slide_7": {
+  "file": "foley/casino_card_slide_7.mp3",
+  "category": "foley",
+  "duration": 0.636,
+  "peak_at": 0.336,
+  "peak_db": -1.0,
+  "description": "Playing cards: dealing, sliding or shuffling (offers, deals, picks)."
+ },
+ "casino_card_slide_8": {
+  "file": "foley/casino_card_slide_8.mp3",
+  "category": "foley",
+  "duration": 0.671,
+  "peak_at": 0.272,
+  "peak_db": -1.0,
+  "description": "Playing cards: dealing, sliding or shuffling (offers, deals, picks)."
+ },
+ "casino_cards_pack_open_1": {
+  "file": "foley/casino_cards_pack_open_1.mp3",
+  "category": "foley",
+  "duration": 0.937,
+  "peak_at": 0.409,
+  "peak_db": -1.0,
+  "description": "Playing cards: dealing, sliding or shuffling (offers, deals, picks)."
+ },
+ "casino_cards_pack_open_2": {
+  "file": "foley/casino_cards_pack_open_2.mp3",
+  "category": "foley",
+  "duration": 0.732,
+  "peak_at": 0.221,
+  "peak_db": -1.0,
+  "description": "Playing cards: dealing, sliding or shuffling (offers, deals, picks)."
+ },
+ "casino_cards_pack_take_out_1": {
+  "file": "foley/casino_cards_pack_take_out_1.mp3",
+  "category": "foley",
+  "duration": 0.493,
+  "peak_at": 0.183,
+  "peak_db": -1.0,
+  "description": "Playing cards: dealing, sliding or shuffling (offers, deals, picks)."
+ },
+ "casino_cards_pack_take_out_2": {
+  "file": "foley/casino_cards_pack_take_out_2.mp3",
+  "category": "foley",
+  "duration": 0.631,
+  "peak_at": 0.221,
+  "peak_db": -1.0,
+  "description": "Playing cards: dealing, sliding or shuffling (offers, deals, picks)."
+ },
+ "casino_chip_lay_1": {
+  "file": "foley/casino_chip_lay_1.mp3",
+  "category": "foley",
+  "duration": 0.13,
+  "peak_at": 0.01,
+  "peak_db": -1.0,
+  "description": "Casino chips: money, betting or counting."
+ },
+ "casino_chip_lay_2": {
+  "file": "foley/casino_chip_lay_2.mp3",
+  "category": "foley",
+  "duration": 0.227,
+  "peak_at": 0.083,
+  "peak_db": -1.0,
+  "description": "Casino chips: money, betting or counting."
+ },
+ "casino_chip_lay_3": {
+  "file": "foley/casino_chip_lay_3.mp3",
+  "category": "foley",
+  "duration": 0.26,
+  "peak_at": 0.096,
+  "peak_db": -1.0,
+  "description": "Casino chips: money, betting or counting."
+ },
+ "casino_chips_collide_1": {
+  "file": "foley/casino_chips_collide_1.mp3",
+  "category": "foley",
+  "duration": 0.18,
+  "peak_at": 0.008,
+  "peak_db": -1.0,
+  "description": "Casino chips: money, betting or counting."
+ },
+ "casino_chips_collide_2": {
+  "file": "foley/casino_chips_collide_2.mp3",
+  "category": "foley",
+  "duration": 0.157,
+  "peak_at": 0.01,
+  "peak_db": -1.0,
+  "description": "Casino chips: money, betting or counting."
+ },
+ "casino_chips_collide_3": {
+  "file": "foley/casino_chips_collide_3.mp3",
+  "category": "foley",
+  "duration": 0.14,
+  "peak_at": 0.012,
+  "peak_db": -1.0,
+  "description": "Casino chips: money, betting or counting."
+ },
+ "casino_chips_collide_4": {
+  "file": "foley/casino_chips_collide_4.mp3",
+  "category": "foley",
+  "duration": 0.171,
+  "peak_at": 0.009,
+  "peak_db": -1.0,
+  "description": "Casino chips: money, betting or counting."
+ },
+ "casino_chips_handle_1": {
+  "file": "foley/casino_chips_handle_1.mp3",
+  "category": "foley",
+  "duration": 0.58,
+  "peak_at": 0.077,
+  "peak_db": -1.0,
+  "description": "Casino chips: money, betting or counting."
+ },
+ "casino_chips_handle_2": {
+  "file": "foley/casino_chips_handle_2.mp3",
+  "category": "foley",
+  "duration": 0.546,
+  "peak_at": 0.382,
+  "peak_db": -1.0,
+  "description": "Casino chips: money, betting or counting."
+ },
+ "casino_chips_handle_3": {
+  "file": "foley/casino_chips_handle_3.mp3",
+  "category": "foley",
+  "duration": 0.227,
+  "peak_at": 0.032,
+  "peak_db": -1.0,
+  "description": "Casino chips: money, betting or counting."
+ },
+ "casino_chips_handle_4": {
+  "file": "foley/casino_chips_handle_4.mp3",
+  "category": "foley",
+  "duration": 0.356,
+  "peak_at": 0.062,
+  "peak_db": -1.0,
+  "description": "Casino chips: money, betting or counting."
+ },
+ "casino_chips_handle_5": {
+  "file": "foley/casino_chips_handle_5.mp3",
+  "category": "foley",
+  "duration": 0.834,
+  "peak_at": 0.74,
+  "peak_db": -1.0,
+  "description": "Casino chips: money, betting or counting."
+ },
+ "casino_chips_handle_6": {
+  "file": "foley/casino_chips_handle_6.mp3",
+  "category": "foley",
+  "duration": 0.408,
+  "peak_at": 0.221,
+  "peak_db": -1.0,
+  "description": "Casino chips: money, betting or counting."
+ },
+ "casino_chips_stack_1": {
+  "file": "foley/casino_chips_stack_1.mp3",
+  "category": "foley",
+  "duration": 0.142,
+  "peak_at": 0.015,
+  "peak_db": -1.0,
+  "description": "Casino chips: money, betting or counting."
+ },
+ "casino_chips_stack_2": {
+  "file": "foley/casino_chips_stack_2.mp3",
+  "category": "foley",
+  "duration": 0.164,
+  "peak_at": 0.011,
+  "peak_db": -1.0,
+  "description": "Casino chips: money, betting or counting."
+ },
+ "casino_chips_stack_3": {
+  "file": "foley/casino_chips_stack_3.mp3",
+  "category": "foley",
+  "duration": 0.371,
+  "peak_at": 0.036,
+  "peak_db": -1.0,
+  "description": "Casino chips: money, betting or counting."
+ },
+ "casino_chips_stack_4": {
+  "file": "foley/casino_chips_stack_4.mp3",
+  "category": "foley",
+  "duration": 0.19,
+  "peak_at": 0.01,
+  "peak_db": -1.0,
+  "description": "Casino chips: money, betting or counting."
+ },
+ "casino_chips_stack_5": {
+  "file": "foley/casino_chips_stack_5.mp3",
+  "category": "foley",
+  "duration": 0.153,
+  "peak_at": 0.01,
+  "peak_db": -1.0,
+  "description": "Casino chips: money, betting or counting."
+ },
+ "casino_chips_stack_6": {
+  "file": "foley/casino_chips_stack_6.mp3",
+  "category": "foley",
+  "duration": 0.146,
+  "peak_at": 0.008,
+  "peak_db": -1.0,
+  "description": "Casino chips: money, betting or counting."
+ },
+ "casino_dice_grab_1": {
+  "file": "foley/casino_dice_grab_1.mp3",
+  "category": "foley",
+  "duration": 0.704,
+  "peak_at": 0.275,
+  "peak_db": -1.0,
+  "description": "Dice: chance, a random pick or a roll."
+ },
+ "casino_dice_grab_2": {
+  "file": "foley/casino_dice_grab_2.mp3",
+  "category": "foley",
+  "duration": 0.74,
+  "peak_at": 0.541,
+  "peak_db": -1.0,
+  "description": "Dice: chance, a random pick or a roll."
+ },
+ "casino_dice_shake_1": {
+  "file": "foley/casino_dice_shake_1.mp3",
+  "category": "foley",
+  "duration": 1.346,
+  "peak_at": 0.819,
+  "peak_db": -1.0,
+  "description": "Dice: chance, a random pick or a roll."
+ },
+ "casino_dice_shake_2": {
+  "file": "foley/casino_dice_shake_2.mp3",
+  "category": "foley",
+  "duration": 1.293,
+  "peak_at": 0.439,
+  "peak_db": -1.0,
+  "description": "Dice: chance, a random pick or a roll."
+ },
+ "casino_dice_shake_3": {
+  "file": "foley/casino_dice_shake_3.mp3",
+  "category": "foley",
+  "duration": 1.513,
+  "peak_at": 0.392,
+  "peak_db": -1.0,
+  "description": "Dice: chance, a random pick or a roll."
+ },
+ "casino_dice_throw_1": {
+  "file": "foley/casino_dice_throw_1.mp3",
+  "category": "foley",
+  "duration": 0.633,
+  "peak_at": 0.058,
+  "peak_db": -1.0,
+  "description": "Dice: chance, a random pick or a roll."
+ },
+ "casino_dice_throw_2": {
+  "file": "foley/casino_dice_throw_2.mp3",
+  "category": "foley",
+  "duration": 0.389,
+  "peak_at": 0.03,
+  "peak_db": -1.0,
+  "description": "Dice: chance, a random pick or a roll."
+ },
+ "casino_dice_throw_3": {
+  "file": "foley/casino_dice_throw_3.mp3",
+  "category": "foley",
+  "duration": 0.575,
+  "peak_at": 0.069,
+  "peak_db": -1.0,
+  "description": "Dice: chance, a random pick or a roll."
+ },
+ "casino_die_throw_1": {
+  "file": "foley/casino_die_throw_1.mp3",
+  "category": "foley",
+  "duration": 0.379,
+  "peak_at": 0.008,
+  "peak_db": -1.0,
+  "description": "Dice: chance, a random pick or a roll."
+ },
+ "casino_die_throw_2": {
+  "file": "foley/casino_die_throw_2.mp3",
+  "category": "foley",
+  "duration": 0.645,
+  "peak_at": 0.078,
+  "peak_db": -1.0,
+  "description": "Dice: chance, a random pick or a roll."
+ },
+ "casino_die_throw_3": {
+  "file": "foley/casino_die_throw_3.mp3",
+  "category": "foley",
+  "duration": 0.65,
+  "peak_at": 0.007,
+  "peak_db": -1.0,
+  "description": "Dice: chance, a random pick or a roll."
+ },
+ "casino_die_throw_4": {
+  "file": "foley/casino_die_throw_4.mp3",
+  "category": "foley",
+  "duration": 0.435,
+  "peak_at": 0.09,
+  "peak_db": -1.0,
+  "description": "Dice: chance, a random pick or a roll."
+ },
+ "impact_footstep_carpet_000": {
+  "file": "foley/impact_footstep_carpet_000.mp3",
+  "category": "foley",
+  "duration": 0.164,
+  "peak_at": 0.005,
+  "peak_db": -1.0,
+  "description": "Footsteps: walking or a person arriving."
+ },
+ "impact_footstep_carpet_001": {
+  "file": "foley/impact_footstep_carpet_001.mp3",
+  "category": "foley",
+  "duration": 0.142,
+  "peak_at": 0.003,
+  "peak_db": -1.0,
+  "description": "Footsteps: walking or a person arriving."
+ },
+ "impact_footstep_carpet_002": {
+  "file": "foley/impact_footstep_carpet_002.mp3",
+  "category": "foley",
+  "duration": 0.142,
+  "peak_at": 0.003,
+  "peak_db": -1.0,
+  "description": "Footsteps: walking or a person arriving."
+ },
+ "impact_footstep_carpet_003": {
+  "file": "foley/impact_footstep_carpet_003.mp3",
+  "category": "foley",
+  "duration": 0.142,
+  "peak_at": 0.005,
+  "peak_db": -1.0,
+  "description": "Footsteps: walking or a person arriving."
+ },
+ "impact_footstep_carpet_004": {
+  "file": "foley/impact_footstep_carpet_004.mp3",
+  "category": "foley",
+  "duration": 0.142,
+  "peak_at": 0.005,
+  "peak_db": -1.0,
+  "description": "Footsteps: walking or a person arriving."
+ },
+ "impact_footstep_concrete_000": {
+  "file": "foley/impact_footstep_concrete_000.mp3",
+  "category": "foley",
+  "duration": 0.103,
+  "peak_at": 0.001,
+  "peak_db": -1.0,
+  "description": "Footsteps: walking or a person arriving."
+ },
+ "impact_footstep_concrete_001": {
+  "file": "foley/impact_footstep_concrete_001.mp3",
+  "category": "foley",
+  "duration": 0.105,
+  "peak_at": 0.001,
+  "peak_db": -1.0,
+  "description": "Footsteps: walking or a person arriving."
+ },
+ "impact_footstep_concrete_002": {
+  "file": "foley/impact_footstep_concrete_002.mp3",
+  "category": "foley",
+  "duration": 0.11,
+  "peak_at": 0.001,
+  "peak_db": -1.0,
+  "description": "Footsteps: walking or a person arriving."
+ },
+ "impact_footstep_concrete_003": {
+  "file": "foley/impact_footstep_concrete_003.mp3",
+  "category": "foley",
+  "duration": 0.108,
+  "peak_at": 0.001,
+  "peak_db": -1.0,
+  "description": "Footsteps: walking or a person arriving."
+ },
+ "impact_footstep_concrete_004": {
+  "file": "foley/impact_footstep_concrete_004.mp3",
+  "category": "foley",
+  "duration": 0.112,
+  "peak_at": 0.001,
+  "peak_db": -1.0,
+  "description": "Footsteps: walking or a person arriving."
+ },
+ "impact_footstep_grass_000": {
+  "file": "foley/impact_footstep_grass_000.mp3",
+  "category": "foley",
+  "duration": 0.775,
+  "peak_at": 0.001,
+  "peak_db": -1.0,
+  "description": "Footsteps: walking or a person arriving."
+ },
+ "impact_footstep_grass_001": {
+  "file": "foley/impact_footstep_grass_001.mp3",
+  "category": "foley",
+  "duration": 0.671,
+  "peak_at": 0.001,
+  "peak_db": -1.0,
+  "description": "Footsteps: walking or a person arriving."
+ },
+ "impact_footstep_grass_002": {
+  "file": "foley/impact_footstep_grass_002.mp3",
+  "category": "foley",
+  "duration": 0.69,
+  "peak_at": 0.001,
+  "peak_db": -1.0,
+  "description": "Footsteps: walking or a person arriving."
+ },
+ "impact_footstep_grass_003": {
+  "file": "foley/impact_footstep_grass_003.mp3",
+  "category": "foley",
+  "duration": 0.666,
+  "peak_at": 0.001,
+  "peak_db": -1.0,
+  "description": "Footsteps: walking or a person arriving."
+ },
+ "impact_footstep_grass_004": {
+  "file": "foley/impact_footstep_grass_004.mp3",
+  "category": "foley",
+  "duration": 0.587,
+  "peak_at": 0.001,
+  "peak_db": -1.0,
+  "description": "Footsteps: walking or a person arriving."
+ },
+ "impact_footstep_snow_000": {
+  "file": "foley/impact_footstep_snow_000.mp3",
+  "category": "foley",
+  "duration": 0.371,
+  "peak_at": 0.035,
+  "peak_db": -1.0,
+  "description": "Footsteps: walking or a person arriving."
+ },
+ "impact_footstep_snow_001": {
+  "file": "foley/impact_footstep_snow_001.mp3",
+  "category": "foley",
+  "duration": 0.371,
+  "peak_at": 0.011,
+  "peak_db": -1.0,
+  "description": "Footsteps: walking or a person arriving."
+ },
+ "impact_footstep_snow_002": {
+  "file": "foley/impact_footstep_snow_002.mp3",
+  "category": "foley",
+  "duration": 0.371,
+  "peak_at": 0.017,
+  "peak_db": -1.0,
+  "description": "Footsteps: walking or a person arriving."
+ },
+ "impact_footstep_snow_003": {
+  "file": "foley/impact_footstep_snow_003.mp3",
+  "category": "foley",
+  "duration": 0.371,
+  "peak_at": 0.003,
+  "peak_db": -1.0,
+  "description": "Footsteps: walking or a person arriving."
+ },
+ "impact_footstep_snow_004": {
+  "file": "foley/impact_footstep_snow_004.mp3",
+  "category": "foley",
+  "duration": 0.371,
+  "peak_at": 0.039,
+  "peak_db": -1.0,
+  "description": "Footsteps: walking or a person arriving."
+ },
+ "impact_footstep_wood_000": {
+  "file": "foley/impact_footstep_wood_000.mp3",
+  "category": "foley",
+  "duration": 0.271,
+  "peak_at": 0.003,
+  "peak_db": -1.0,
+  "description": "Footsteps: walking or a person arriving."
+ },
+ "impact_footstep_wood_001": {
+  "file": "foley/impact_footstep_wood_001.mp3",
+  "category": "foley",
+  "duration": 0.249,
+  "peak_at": 0.003,
+  "peak_db": -1.0,
+  "description": "Footsteps: walking or a person arriving."
+ },
+ "impact_footstep_wood_002": {
+  "file": "foley/impact_footstep_wood_002.mp3",
+  "category": "foley",
+  "duration": 0.249,
+  "peak_at": 0.003,
+  "peak_db": -1.0,
+  "description": "Footsteps: walking or a person arriving."
+ },
+ "impact_footstep_wood_003": {
+  "file": "foley/impact_footstep_wood_003.mp3",
+  "category": "foley",
+  "duration": 0.249,
+  "peak_at": 0.002,
+  "peak_db": -1.0,
+  "description": "Footsteps: walking or a person arriving."
+ },
+ "impact_footstep_wood_004": {
+  "file": "foley/impact_footstep_wood_004.mp3",
+  "category": "foley",
+  "duration": 0.245,
+  "peak_at": 0.004,
+  "peak_db": -1.0,
+  "description": "Footsteps: walking or a person arriving."
+ },
+ "rpg_belt_handle1": {
+  "file": "foley/rpg_belt_handle1.mp3",
+  "category": "foley",
+  "duration": 0.248,
+  "peak_at": 0.104,
+  "peak_db": -1.0,
+  "description": "Cloth or leather handling: a soft movement."
+ },
+ "rpg_belt_handle2": {
+  "file": "foley/rpg_belt_handle2.mp3",
+  "category": "foley",
+  "duration": 0.346,
+  "peak_at": 0.198,
+  "peak_db": -1.0,
+  "description": "Cloth or leather handling: a soft movement."
+ },
+ "rpg_book_close": {
+  "file": "foley/rpg_book_close.mp3",
+  "category": "foley",
+  "duration": 0.231,
+  "peak_at": 0.077,
+  "peak_db": -1.0,
+  "description": "Book closing: a story or chapter ending."
+ },
+ "rpg_book_flip1": {
+  "file": "foley/rpg_book_flip1.mp3",
+  "category": "foley",
+  "duration": 0.659,
+  "peak_at": 0.521,
+  "peak_db": -1.0,
+  "description": "Page flip: turning to the next point."
+ },
+ "rpg_book_flip2": {
+  "file": "foley/rpg_book_flip2.mp3",
+  "category": "foley",
+  "duration": 0.394,
+  "peak_at": 0.038,
+  "peak_db": -1.0,
+  "description": "Page flip: turning to the next point."
+ },
+ "rpg_book_flip3": {
+  "file": "foley/rpg_book_flip3.mp3",
+  "category": "foley",
+  "duration": 0.231,
+  "peak_at": 0.033,
+  "peak_db": -1.0,
+  "description": "Page flip: turning to the next point."
+ },
+ "rpg_book_open": {
+  "file": "foley/rpg_book_open.mp3",
+  "category": "foley",
+  "duration": 0.151,
+  "peak_at": 0.06,
+  "peak_db": -1.0,
+  "description": "Book opening: a story or chapter starting."
+ },
+ "rpg_book_place1": {
+  "file": "foley/rpg_book_place1.mp3",
+  "category": "foley",
+  "duration": 0.277,
+  "peak_at": 0.064,
+  "peak_db": -1.0,
+  "description": "Book set down: a heavy item placed."
+ },
+ "rpg_book_place2": {
+  "file": "foley/rpg_book_place2.mp3",
+  "category": "foley",
+  "duration": 0.294,
+  "peak_at": 0.082,
+  "peak_db": -1.0,
+  "description": "Book set down: a heavy item placed."
+ },
+ "rpg_book_place3": {
+  "file": "foley/rpg_book_place3.mp3",
+  "category": "foley",
+  "duration": 0.261,
+  "peak_at": 0.04,
+  "peak_db": -1.0,
+  "description": "Book set down: a heavy item placed."
+ },
+ "rpg_cloth1": {
+  "file": "foley/rpg_cloth1.mp3",
+  "category": "foley",
+  "duration": 0.616,
+  "peak_at": 0.113,
+  "peak_db": -1.0,
+  "description": "Cloth or leather handling: a soft movement."
+ },
+ "rpg_cloth2": {
+  "file": "foley/rpg_cloth2.mp3",
+  "category": "foley",
+  "duration": 0.357,
+  "peak_at": 0.08,
+  "peak_db": -1.0,
+  "description": "Cloth or leather handling: a soft movement."
+ },
+ "rpg_cloth3": {
+  "file": "foley/rpg_cloth3.mp3",
+  "category": "foley",
+  "duration": 0.466,
+  "peak_at": 0.159,
+  "peak_db": -1.0,
+  "description": "Cloth or leather handling: a soft movement."
+ },
+ "rpg_cloth4": {
+  "file": "foley/rpg_cloth4.mp3",
+  "category": "foley",
+  "duration": 0.384,
+  "peak_at": 0.091,
+  "peak_db": -1.0,
+  "description": "Cloth or leather handling: a soft movement."
+ },
+ "rpg_cloth_belt": {
+  "file": "foley/rpg_cloth_belt.mp3",
+  "category": "foley",
+  "duration": 0.712,
+  "peak_at": 0.552,
+  "peak_db": -1.0,
+  "description": "Cloth or leather handling: a soft movement."
+ },
+ "rpg_cloth_belt2": {
+  "file": "foley/rpg_cloth_belt2.mp3",
+  "category": "foley",
+  "duration": 0.566,
+  "peak_at": 0.121,
+  "peak_db": -1.0,
+  "description": "Cloth or leather handling: a soft movement."
+ },
+ "rpg_creak1": {
+  "file": "foley/rpg_creak1.mp3",
+  "category": "foley",
+  "duration": 0.597,
+  "peak_at": 0.373,
+  "peak_db": -1.0,
+  "description": "Creak: wood or door creak, suspense."
+ },
+ "rpg_creak2": {
+  "file": "foley/rpg_creak2.mp3",
+  "category": "foley",
+  "duration": 0.763,
+  "peak_at": 0.564,
+  "peak_db": -1.0,
+  "description": "Creak: wood or door creak, suspense."
+ },
+ "rpg_creak3": {
+  "file": "foley/rpg_creak3.mp3",
+  "category": "foley",
+  "duration": 0.291,
+  "peak_at": 0.083,
+  "peak_db": -1.0,
+  "description": "Creak: wood or door creak, suspense."
+ },
+ "rpg_door_close_1": {
+  "file": "foley/rpg_door_close_1.mp3",
+  "category": "foley",
+  "duration": 0.674,
+  "peak_at": 0.199,
+  "peak_db": -1.0,
+  "description": "Door closing: an ending or exit."
+ },
+ "rpg_door_close_2": {
+  "file": "foley/rpg_door_close_2.mp3",
+  "category": "foley",
+  "duration": 0.589,
+  "peak_at": 0.056,
+  "peak_db": -1.0,
+  "description": "Door closing: an ending or exit."
+ },
+ "rpg_door_close_3": {
+  "file": "foley/rpg_door_close_3.mp3",
+  "category": "foley",
+  "duration": 0.714,
+  "peak_at": 0.026,
+  "peak_db": -1.0,
+  "description": "Door closing: an ending or exit."
+ },
+ "rpg_door_close_4": {
+  "file": "foley/rpg_door_close_4.mp3",
+  "category": "foley",
+  "duration": 0.598,
+  "peak_at": 0.102,
+  "peak_db": -1.0,
+  "description": "Door closing: an ending or exit."
+ },
+ "rpg_door_open_1": {
+  "file": "foley/rpg_door_open_1.mp3",
+  "category": "foley",
+  "duration": 0.919,
+  "peak_at": 0.171,
+  "peak_db": -1.0,
+  "description": "Door opening: entering or revealing."
+ },
+ "rpg_door_open_2": {
+  "file": "foley/rpg_door_open_2.mp3",
+  "category": "foley",
+  "duration": 1.413,
+  "peak_at": 0.219,
+  "peak_db": -1.0,
+  "description": "Door opening: entering or revealing."
+ },
+ "rpg_drop_leather": {
+  "file": "foley/rpg_drop_leather.mp3",
+  "category": "foley",
+  "duration": 0.353,
+  "peak_at": 0.122,
+  "peak_db": -1.0,
+  "description": "Cloth or leather handling: a soft movement."
+ },
+ "rpg_footstep00": {
+  "file": "foley/rpg_footstep00.mp3",
+  "category": "foley",
+  "duration": 0.239,
+  "peak_at": 0.021,
+  "peak_db": -1.0,
+  "description": "Footsteps: walking or a person arriving."
+ },
+ "rpg_footstep01": {
+  "file": "foley/rpg_footstep01.mp3",
+  "category": "foley",
+  "duration": 0.281,
+  "peak_at": 0.036,
+  "peak_db": -1.0,
+  "description": "Footsteps: walking or a person arriving."
+ },
+ "rpg_footstep02": {
+  "file": "foley/rpg_footstep02.mp3",
+  "category": "foley",
+  "duration": 0.242,
+  "peak_at": 0.017,
+  "peak_db": -1.0,
+  "description": "Footsteps: walking or a person arriving."
+ },
+ "rpg_footstep03": {
+  "file": "foley/rpg_footstep03.mp3",
+  "category": "foley",
+  "duration": 0.261,
+  "peak_at": 0.093,
+  "peak_db": -1.0,
+  "description": "Footsteps: walking or a person arriving."
+ },
+ "rpg_footstep04": {
+  "file": "foley/rpg_footstep04.mp3",
+  "category": "foley",
+  "duration": 0.278,
+  "peak_at": 0.087,
+  "peak_db": -1.0,
+  "description": "Footsteps: walking or a person arriving."
+ },
+ "rpg_footstep05": {
+  "file": "foley/rpg_footstep05.mp3",
+  "category": "foley",
+  "duration": 0.276,
+  "peak_at": 0.021,
+  "peak_db": -1.0,
+  "description": "Footsteps: walking or a person arriving."
+ },
+ "rpg_footstep06": {
+  "file": "foley/rpg_footstep06.mp3",
+  "category": "foley",
+  "duration": 0.242,
+  "peak_at": 0.01,
+  "peak_db": -1.0,
+  "description": "Footsteps: walking or a person arriving."
+ },
+ "rpg_footstep07": {
+  "file": "foley/rpg_footstep07.mp3",
+  "category": "foley",
+  "duration": 0.24,
+  "peak_at": 0.028,
+  "peak_db": -1.0,
+  "description": "Footsteps: walking or a person arriving."
+ },
+ "rpg_footstep08": {
+  "file": "foley/rpg_footstep08.mp3",
+  "category": "foley",
+  "duration": 0.256,
+  "peak_at": 0.012,
+  "peak_db": -1.0,
+  "description": "Footsteps: walking or a person arriving."
+ },
+ "rpg_footstep09": {
+  "file": "foley/rpg_footstep09.mp3",
+  "category": "foley",
+  "duration": 0.215,
+  "peak_at": 0.021,
+  "peak_db": -1.0,
+  "description": "Footsteps: walking or a person arriving."
+ },
+ "rpg_handle_coins": {
+  "file": "foley/rpg_handle_coins.mp3",
+  "category": "foley",
+  "duration": 0.717,
+  "peak_at": 0.106,
+  "peak_db": -1.0,
+  "description": "Coins: money, price or savings moments."
+ },
+ "rpg_handle_coins2": {
+  "file": "foley/rpg_handle_coins2.mp3",
+  "category": "foley",
+  "duration": 0.299,
+  "peak_at": 0.059,
+  "peak_db": -1.0,
+  "description": "Coins: money, price or savings moments."
+ },
+ "rpg_handle_small_leather": {
+  "file": "foley/rpg_handle_small_leather.mp3",
+  "category": "foley",
+  "duration": 0.194,
+  "peak_at": 0.09,
+  "peak_db": -1.0,
+  "description": "Cloth or leather handling: a soft movement."
+ },
+ "rpg_handle_small_leather2": {
+  "file": "foley/rpg_handle_small_leather2.mp3",
+  "category": "foley",
+  "duration": 0.191,
+  "peak_at": 0.078,
+  "peak_db": -1.0,
+  "description": "Cloth or leather handling: a soft movement."
+ },
+ "rpg_metal_click": {
+  "file": "foley/rpg_metal_click.mp3",
+  "category": "foley",
+  "duration": 0.371,
+  "peak_at": 0.272,
+  "peak_db": -1.0,
+  "description": "Metal click or latch: locking or securing."
+ },
+ "rpg_metal_latch": {
+  "file": "foley/rpg_metal_latch.mp3",
+  "category": "foley",
+  "duration": 0.234,
+  "peak_at": 0.045,
+  "peak_db": -1.0,
+  "description": "Metal click or latch: locking or securing."
+ },
+ "rpg_metal_pot1": {
+  "file": "foley/rpg_metal_pot1.mp3",
+  "category": "foley",
+  "duration": 1.392,
+  "peak_at": 0.026,
+  "peak_db": -1.0,
+  "description": "Metal pot clang: kitchen or food moments."
+ },
+ "rpg_metal_pot2": {
+  "file": "foley/rpg_metal_pot2.mp3",
+  "category": "foley",
+  "duration": 0.841,
+  "peak_at": 0.249,
+  "peak_db": -1.0,
+  "description": "Metal pot clang: kitchen or food moments."
+ },
+ "rpg_metal_pot3": {
+  "file": "foley/rpg_metal_pot3.mp3",
+  "category": "foley",
+  "duration": 0.83,
+  "peak_at": 0.066,
+  "peak_db": -1.0,
+  "description": "Metal pot clang: kitchen or food moments."
+ },
+ "bass_drop": {
+  "file": "impacts/bass_drop.mp3",
+  "category": "impacts",
+  "duration": 0.9,
+  "peak_at": 0.005,
+  "peak_db": -1.0,
+  "description": "Bass drop: the payoff right after a riser."
+ },
+ "boom": {
+  "file": "impacts/boom.mp3",
+  "category": "impacts",
+  "duration": 1.918,
+  "peak_at": 0.047,
+  "peak_db": -1.0,
+  "description": "Big cinematic boom: logo reveal or the payoff moment (once per video)."
+ },
+ "hit": {
+  "file": "impacts/hit.mp3",
+  "category": "impacts",
+  "duration": 1.134,
+  "peak_at": 0.012,
+  "peak_db": -1.0,
+  "description": "Punchy hit: a headline slam or a big number landing."
+ },
+ "impact": {
+  "file": "impacts/impact.mp3",
+  "category": "impacts",
+  "duration": 0.9,
+  "peak_at": 0.591,
+  "peak_db": -1.0,
+  "description": "Solid impact: a headline or card slamming into place."
+ },
+ "impact_2": {
+  "file": "impacts/impact_2.mp3",
+  "category": "impacts",
+  "duration": 0.9,
+  "peak_at": 0.37,
+  "peak_db": -1.0,
+  "description": "Solid impact: a headline or card slamming into place."
+ },
+ "impact_generic_light_000": {
+  "file": "impacts/impact_generic_light_000.mp3",
+  "category": "impacts",
+  "duration": 0.159,
+  "peak_at": 0.001,
+  "peak_db": -1.0,
+  "description": "Light generic tap: a small element landing."
+ },
+ "impact_generic_light_001": {
+  "file": "impacts/impact_generic_light_001.mp3",
+  "category": "impacts",
+  "duration": 0.115,
+  "peak_at": 0.002,
+  "peak_db": -1.0,
+  "description": "Light generic tap: a small element landing."
+ },
+ "impact_generic_light_002": {
+  "file": "impacts/impact_generic_light_002.mp3",
+  "category": "impacts",
+  "duration": 0.161,
+  "peak_at": 0.001,
+  "peak_db": -1.0,
+  "description": "Light generic tap: a small element landing."
+ },
+ "impact_generic_light_003": {
+  "file": "impacts/impact_generic_light_003.mp3",
+  "category": "impacts",
+  "duration": 0.135,
+  "peak_at": 0.002,
+  "peak_db": -1.0,
+  "description": "Light generic tap: a small element landing."
+ },
+ "impact_generic_light_004": {
+  "file": "impacts/impact_generic_light_004.mp3",
+  "category": "impacts",
+  "duration": 0.138,
+  "peak_at": 0.002,
+  "peak_db": -1.0,
+  "description": "Light generic tap: a small element landing."
+ },
+ "impact_glass_heavy_000": {
+  "file": "impacts/impact_glass_heavy_000.mp3",
+  "category": "impacts",
+  "duration": 0.238,
+  "peak_at": 0.002,
+  "peak_db": -1.0,
+  "description": "Physical glass impact (heavy): an object landing or a hit."
+ },
+ "impact_glass_heavy_001": {
+  "file": "impacts/impact_glass_heavy_001.mp3",
+  "category": "impacts",
+  "duration": 0.429,
+  "peak_at": 0.002,
+  "peak_db": -1.0,
+  "description": "Physical glass impact (heavy): an object landing or a hit."
+ },
+ "impact_glass_heavy_002": {
+  "file": "impacts/impact_glass_heavy_002.mp3",
+  "category": "impacts",
+  "duration": 0.244,
+  "peak_at": 0.001,
+  "peak_db": -1.0,
+  "description": "Physical glass impact (heavy): an object landing or a hit."
+ },
+ "impact_glass_heavy_003": {
+  "file": "impacts/impact_glass_heavy_003.mp3",
+  "category": "impacts",
+  "duration": 0.169,
+  "peak_at": 0.001,
+  "peak_db": -1.0,
+  "description": "Physical glass impact (heavy): an object landing or a hit."
+ },
+ "impact_glass_heavy_004": {
+  "file": "impacts/impact_glass_heavy_004.mp3",
+  "category": "impacts",
+  "duration": 0.396,
+  "peak_at": 0.002,
+  "peak_db": -1.0,
+  "description": "Physical glass impact (heavy): an object landing or a hit."
+ },
+ "impact_glass_light_000": {
+  "file": "impacts/impact_glass_light_000.mp3",
+  "category": "impacts",
+  "duration": 0.219,
+  "peak_at": 0.0,
+  "peak_db": -1.0,
+  "description": "Physical glass impact (light): an object landing or a hit."
+ },
+ "impact_glass_light_001": {
+  "file": "impacts/impact_glass_light_001.mp3",
+  "category": "impacts",
+  "duration": 0.207,
+  "peak_at": 0.0,
+  "peak_db": -1.0,
+  "description": "Physical glass impact (light): an object landing or a hit."
+ },
+ "impact_glass_light_002": {
+  "file": "impacts/impact_glass_light_002.mp3",
+  "category": "impacts",
+  "duration": 0.207,
+  "peak_at": 0.0,
+  "peak_db": -1.0,
+  "description": "Physical glass impact (light): an object landing or a hit."
+ },
+ "impact_glass_light_003": {
+  "file": "impacts/impact_glass_light_003.mp3",
+  "category": "impacts",
+  "duration": 0.207,
+  "peak_at": 0.0,
+  "peak_db": -1.0,
+  "description": "Physical glass impact (light): an object landing or a hit."
+ },
+ "impact_glass_light_004": {
+  "file": "impacts/impact_glass_light_004.mp3",
+  "category": "impacts",
+  "duration": 0.207,
+  "peak_at": 0.0,
+  "peak_db": -1.0,
+  "description": "Physical glass impact (light): an object landing or a hit."
+ },
+ "impact_glass_medium_000": {
+  "file": "impacts/impact_glass_medium_000.mp3",
+  "category": "impacts",
+  "duration": 0.54,
+  "peak_at": 0.002,
+  "peak_db": -1.0,
+  "description": "Physical glass impact (medium): an object landing or a hit."
+ },
+ "impact_glass_medium_001": {
+  "file": "impacts/impact_glass_medium_001.mp3",
+  "category": "impacts",
+  "duration": 0.54,
+  "peak_at": 0.002,
+  "peak_db": -1.0,
+  "description": "Physical glass impact (medium): an object landing or a hit."
+ },
+ "impact_glass_medium_002": {
+  "file": "impacts/impact_glass_medium_002.mp3",
+  "category": "impacts",
+  "duration": 0.54,
+  "peak_at": 0.002,
+  "peak_db": -1.0,
+  "description": "Physical glass impact (medium): an object landing or a hit."
+ },
+ "impact_glass_medium_003": {
+  "file": "impacts/impact_glass_medium_003.mp3",
+  "category": "impacts",
+  "duration": 0.54,
+  "peak_at": 0.002,
+  "peak_db": -1.0,
+  "description": "Physical glass impact (medium): an object landing or a hit."
+ },
+ "impact_glass_medium_004": {
+  "file": "impacts/impact_glass_medium_004.mp3",
+  "category": "impacts",
+  "duration": 0.54,
+  "peak_at": 0.001,
+  "peak_db": -1.0,
+  "description": "Physical glass impact (medium): an object landing or a hit."
+ },
+ "impact_metal_heavy_000": {
+  "file": "impacts/impact_metal_heavy_000.mp3",
+  "category": "impacts",
+  "duration": 0.165,
+  "peak_at": 0.002,
+  "peak_db": -1.0,
+  "description": "Physical metal impact (heavy): an object landing or a hit."
+ },
+ "impact_metal_heavy_001": {
+  "file": "impacts/impact_metal_heavy_001.mp3",
+  "category": "impacts",
+  "duration": 0.356,
+  "peak_at": 0.002,
+  "peak_db": -1.0,
+  "description": "Physical metal impact (heavy): an object landing or a hit."
+ },
+ "impact_metal_heavy_002": {
+  "file": "impacts/impact_metal_heavy_002.mp3",
+  "category": "impacts",
+  "duration": 0.114,
+  "peak_at": 0.002,
+  "peak_db": -1.0,
+  "description": "Physical metal impact (heavy): an object landing or a hit."
+ },
+ "impact_metal_heavy_003": {
+  "file": "impacts/impact_metal_heavy_003.mp3",
+  "category": "impacts",
+  "duration": 0.204,
+  "peak_at": 0.002,
+  "peak_db": -1.0,
+  "description": "Physical metal impact (heavy): an object landing or a hit."
+ },
+ "impact_metal_heavy_004": {
+  "file": "impacts/impact_metal_heavy_004.mp3",
+  "category": "impacts",
+  "duration": 0.131,
+  "peak_at": 0.002,
+  "peak_db": -1.0,
+  "description": "Physical metal impact (heavy): an object landing or a hit."
+ },
+ "impact_metal_light_000": {
+  "file": "impacts/impact_metal_light_000.mp3",
+  "category": "impacts",
+  "duration": 0.361,
+  "peak_at": 0.002,
+  "peak_db": -1.0,
+  "description": "Physical metal impact (light): an object landing or a hit."
+ },
+ "impact_metal_light_001": {
+  "file": "impacts/impact_metal_light_001.mp3",
+  "category": "impacts",
+  "duration": 0.249,
+  "peak_at": 0.0,
+  "peak_db": -1.0,
+  "description": "Physical metal impact (light): an object landing or a hit."
+ },
+ "impact_metal_light_002": {
+  "file": "impacts/impact_metal_light_002.mp3",
+  "category": "impacts",
+  "duration": 0.233,
+  "peak_at": 0.001,
+  "peak_db": -1.0,
+  "description": "Physical metal impact (light): an object landing or a hit."
+ },
+ "impact_metal_light_003": {
+  "file": "impacts/impact_metal_light_003.mp3",
+  "category": "impacts",
+  "duration": 0.433,
+  "peak_at": 0.001,
+  "peak_db": -1.0,
+  "description": "Physical metal impact (light): an object landing or a hit."
+ },
+ "impact_metal_light_004": {
+  "file": "impacts/impact_metal_light_004.mp3",
+  "category": "impacts",
+  "duration": 0.211,
+  "peak_at": 0.0,
+  "peak_db": -1.0,
+  "description": "Physical metal impact (light): an object landing or a hit."
+ },
+ "impact_metal_medium_000": {
+  "file": "impacts/impact_metal_medium_000.mp3",
+  "category": "impacts",
+  "duration": 0.269,
+  "peak_at": 0.001,
+  "peak_db": -1.0,
+  "description": "Physical metal impact (medium): an object landing or a hit."
+ },
+ "impact_metal_medium_001": {
+  "file": "impacts/impact_metal_medium_001.mp3",
+  "category": "impacts",
+  "duration": 0.141,
+  "peak_at": 0.001,
+  "peak_db": -1.0,
+  "description": "Physical metal impact (medium): an object landing or a hit."
+ },
+ "impact_metal_medium_002": {
+  "file": "impacts/impact_metal_medium_002.mp3",
+  "category": "impacts",
+  "duration": 0.116,
+  "peak_at": 0.001,
+  "peak_db": -1.0,
+  "description": "Physical metal impact (medium): an object landing or a hit."
+ },
+ "impact_metal_medium_003": {
+  "file": "impacts/impact_metal_medium_003.mp3",
+  "category": "impacts",
+  "duration": 0.251,
+  "peak_at": 0.001,
+  "peak_db": -1.0,
+  "description": "Physical metal impact (medium): an object landing or a hit."
+ },
+ "impact_metal_medium_004": {
+  "file": "impacts/impact_metal_medium_004.mp3",
+  "category": "impacts",
+  "duration": 0.107,
+  "peak_at": 0.001,
+  "peak_db": -1.0,
+  "description": "Physical metal impact (medium): an object landing or a hit."
+ },
+ "impact_mining_000": {
+  "file": "impacts/impact_mining_000.mp3",
+  "category": "impacts",
+  "duration": 0.729,
+  "peak_at": 0.013,
+  "peak_db": -1.0,
+  "description": "Physical mining impact: an object landing or a hit."
+ },
+ "impact_mining_001": {
+  "file": "impacts/impact_mining_001.mp3",
+  "category": "impacts",
+  "duration": 0.675,
+  "peak_at": 0.005,
+  "peak_db": -1.0,
+  "description": "Physical mining impact: an object landing or a hit."
+ },
+ "impact_mining_002": {
+  "file": "impacts/impact_mining_002.mp3",
+  "category": "impacts",
+  "duration": 0.678,
+  "peak_at": 0.008,
+  "peak_db": -1.0,
+  "description": "Physical mining impact: an object landing or a hit."
+ },
+ "impact_mining_003": {
+  "file": "impacts/impact_mining_003.mp3",
+  "category": "impacts",
+  "duration": 0.72,
+  "peak_at": 0.006,
+  "peak_db": -1.0,
+  "description": "Physical mining impact: an object landing or a hit."
+ },
+ "impact_mining_004": {
+  "file": "impacts/impact_mining_004.mp3",
+  "category": "impacts",
+  "duration": 0.726,
+  "peak_at": 0.011,
+  "peak_db": -1.0,
+  "description": "Physical mining impact: an object landing or a hit."
+ },
+ "impact_plank_medium_000": {
+  "file": "impacts/impact_plank_medium_000.mp3",
+  "category": "impacts",
+  "duration": 0.443,
+  "peak_at": 0.009,
+  "peak_db": -1.0,
+  "description": "Physical plank impact (medium): an object landing or a hit."
+ },
+ "impact_plank_medium_001": {
+  "file": "impacts/impact_plank_medium_001.mp3",
+  "category": "impacts",
+  "duration": 0.485,
+  "peak_at": 0.024,
+  "peak_db": -1.0,
+  "description": "Physical plank impact (medium): an object landing or a hit."
+ },
+ "impact_plank_medium_002": {
+  "file": "impacts/impact_plank_medium_002.mp3",
+  "category": "impacts",
+  "duration": 0.451,
+  "peak_at": 0.005,
+  "peak_db": -1.0,
+  "description": "Physical plank impact (medium): an object landing or a hit."
+ },
+ "impact_plank_medium_003": {
+  "file": "impacts/impact_plank_medium_003.mp3",
+  "category": "impacts",
+  "duration": 0.449,
+  "peak_at": 0.014,
+  "peak_db": -1.0,
+  "description": "Physical plank impact (medium): an object landing or a hit."
+ },
+ "impact_plank_medium_004": {
+  "file": "impacts/impact_plank_medium_004.mp3",
+  "category": "impacts",
+  "duration": 0.418,
+  "peak_at": 0.003,
+  "peak_db": -1.0,
+  "description": "Physical plank impact (medium): an object landing or a hit."
+ },
+ "impact_plate_heavy_000": {
+  "file": "impacts/impact_plate_heavy_000.mp3",
+  "category": "impacts",
+  "duration": 0.489,
+  "peak_at": 0.001,
+  "peak_db": -1.0,
+  "description": "Physical plate impact (heavy): an object landing or a hit."
+ },
+ "impact_plate_heavy_001": {
+  "file": "impacts/impact_plate_heavy_001.mp3",
+  "category": "impacts",
+  "duration": 0.349,
+  "peak_at": 0.004,
+  "peak_db": -1.0,
+  "description": "Physical plate impact (heavy): an object landing or a hit."
+ },
+ "impact_plate_heavy_002": {
+  "file": "impacts/impact_plate_heavy_002.mp3",
+  "category": "impacts",
+  "duration": 0.494,
+  "peak_at": 0.005,
+  "peak_db": -1.0,
+  "description": "Physical plate impact (heavy): an object landing or a hit."
+ },
+ "impact_plate_heavy_003": {
+  "file": "impacts/impact_plate_heavy_003.mp3",
+  "category": "impacts",
+  "duration": 0.344,
+  "peak_at": 0.003,
+  "peak_db": -1.0,
+  "description": "Physical plate impact (heavy): an object landing or a hit."
+ },
+ "impact_plate_heavy_004": {
+  "file": "impacts/impact_plate_heavy_004.mp3",
+  "category": "impacts",
+  "duration": 0.559,
+  "peak_at": 0.003,
+  "peak_db": -1.0,
+  "description": "Physical plate impact (heavy): an object landing or a hit."
+ },
+ "impact_plate_light_000": {
+  "file": "impacts/impact_plate_light_000.mp3",
+  "category": "impacts",
+  "duration": 0.502,
+  "peak_at": 0.002,
+  "peak_db": -1.0,
+  "description": "Physical plate impact (light): an object landing or a hit."
+ },
+ "impact_plate_light_001": {
+  "file": "impacts/impact_plate_light_001.mp3",
+  "category": "impacts",
+  "duration": 0.635,
+  "peak_at": 0.001,
+  "peak_db": -1.0,
+  "description": "Physical plate impact (light): an object landing or a hit."
+ },
+ "impact_plate_light_002": {
+  "file": "impacts/impact_plate_light_002.mp3",
+  "category": "impacts",
+  "duration": 0.478,
+  "peak_at": 0.003,
+  "peak_db": -1.0,
+  "description": "Physical plate impact (light): an object landing or a hit."
+ },
+ "impact_plate_light_003": {
+  "file": "impacts/impact_plate_light_003.mp3",
+  "category": "impacts",
+  "duration": 0.528,
+  "peak_at": 0.001,
+  "peak_db": -1.0,
+  "description": "Physical plate impact (light): an object landing or a hit."
+ },
+ "impact_plate_light_004": {
+  "file": "impacts/impact_plate_light_004.mp3",
+  "category": "impacts",
+  "duration": 0.6,
+  "peak_at": 0.001,
+  "peak_db": -1.0,
+  "description": "Physical plate impact (light): an object landing or a hit."
+ },
+ "impact_plate_medium_000": {
+  "file": "impacts/impact_plate_medium_000.mp3",
+  "category": "impacts",
+  "duration": 0.609,
+  "peak_at": 0.001,
+  "peak_db": -1.0,
+  "description": "Physical plate impact (medium): an object landing or a hit."
+ },
+ "impact_plate_medium_001": {
+  "file": "impacts/impact_plate_medium_001.mp3",
+  "category": "impacts",
+  "duration": 0.616,
+  "peak_at": 0.01,
+  "peak_db": -1.0,
+  "description": "Physical plate impact (medium): an object landing or a hit."
+ },
+ "impact_plate_medium_002": {
+  "file": "impacts/impact_plate_medium_002.mp3",
+  "category": "impacts",
+  "duration": 0.515,
+  "peak_at": 0.001,
+  "peak_db": -1.0,
+  "description": "Physical plate impact (medium): an object landing or a hit."
+ },
+ "impact_plate_medium_003": {
+  "file": "impacts/impact_plate_medium_003.mp3",
+  "category": "impacts",
+  "duration": 0.59,
+  "peak_at": 0.003,
+  "peak_db": -1.0,
+  "description": "Physical plate impact (medium): an object landing or a hit."
+ },
+ "impact_plate_medium_004": {
+  "file": "impacts/impact_plate_medium_004.mp3",
+  "category": "impacts",
+  "duration": 0.534,
+  "peak_at": 0.005,
+  "peak_db": -1.0,
+  "description": "Physical plate impact (medium): an object landing or a hit."
+ },
+ "impact_punch_heavy_000": {
+  "file": "impacts/impact_punch_heavy_000.mp3",
+  "category": "impacts",
+  "duration": 0.563,
+  "peak_at": 0.024,
+  "peak_db": -1.0,
+  "description": "Physical punch impact (heavy): an object landing or a hit."
+ },
+ "impact_punch_heavy_001": {
+  "file": "impacts/impact_punch_heavy_001.mp3",
+  "category": "impacts",
+  "duration": 0.47,
+  "peak_at": 0.02,
+  "peak_db": -1.0,
+  "description": "Physical punch impact (heavy): an object landing or a hit."
+ },
+ "impact_punch_heavy_002": {
+  "file": "impacts/impact_punch_heavy_002.mp3",
+  "category": "impacts",
+  "duration": 0.414,
+  "peak_at": 0.018,
+  "peak_db": -1.0,
+  "description": "Physical punch impact (heavy): an object landing or a hit."
+ },
+ "impact_punch_heavy_003": {
+  "file": "impacts/impact_punch_heavy_003.mp3",
+  "category": "impacts",
+  "duration": 0.421,
+  "peak_at": 0.018,
+  "peak_db": -1.0,
+  "description": "Physical punch impact (heavy): an object landing or a hit."
+ },
+ "impact_punch_heavy_004": {
+  "file": "impacts/impact_punch_heavy_004.mp3",
+  "category": "impacts",
+  "duration": 0.475,
+  "peak_at": 0.02,
+  "peak_db": -1.0,
+  "description": "Physical punch impact (heavy): an object landing or a hit."
+ },
+ "impact_punch_medium_000": {
+  "file": "impacts/impact_punch_medium_000.mp3",
+  "category": "impacts",
+  "duration": 0.303,
+  "peak_at": 0.032,
+  "peak_db": -1.0,
+  "description": "Physical punch impact (medium): an object landing or a hit."
+ },
+ "impact_punch_medium_001": {
+  "file": "impacts/impact_punch_medium_001.mp3",
+  "category": "impacts",
+  "duration": 0.287,
+  "peak_at": 0.031,
+  "peak_db": -1.0,
+  "description": "Physical punch impact (medium): an object landing or a hit."
+ },
+ "impact_punch_medium_002": {
+  "file": "impacts/impact_punch_medium_002.mp3",
+  "category": "impacts",
+  "duration": 0.374,
+  "peak_at": 0.04,
+  "peak_db": -1.0,
+  "description": "Physical punch impact (medium): an object landing or a hit."
+ },
+ "impact_punch_medium_003": {
+  "file": "impacts/impact_punch_medium_003.mp3",
+  "category": "impacts",
+  "duration": 0.319,
+  "peak_at": 0.034,
+  "peak_db": -1.0,
+  "description": "Physical punch impact (medium): an object landing or a hit."
+ },
+ "impact_punch_medium_004": {
+  "file": "impacts/impact_punch_medium_004.mp3",
+  "category": "impacts",
+  "duration": 0.376,
+  "peak_at": 0.041,
+  "peak_db": -1.0,
+  "description": "Physical punch impact (medium): an object landing or a hit."
+ },
+ "impact_soft": {
+  "file": "impacts/impact_soft.mp3",
+  "category": "impacts",
+  "duration": 1.1,
+  "peak_at": 0.029,
+  "peak_db": -1.0,
+  "description": "Soft impact: a gentle landing of a card or text block."
+ },
+ "impact_soft_2": {
+  "file": "impacts/impact_soft_2.mp3",
+  "category": "impacts",
+  "duration": 1.1,
+  "peak_at": 0.076,
+  "peak_db": -1.0,
+  "description": "Soft impact: a gentle landing of a card or text block."
+ },
+ "impact_soft_heavy_000": {
+  "file": "impacts/impact_soft_heavy_000.mp3",
+  "category": "impacts",
+  "duration": 0.526,
+  "peak_at": 0.006,
+  "peak_db": -1.0,
+  "description": "Physical soft impact (heavy): an object landing or a hit."
+ },
+ "impact_soft_heavy_001": {
+  "file": "impacts/impact_soft_heavy_001.mp3",
+  "category": "impacts",
+  "duration": 0.569,
+  "peak_at": 0.006,
+  "peak_db": -1.0,
+  "description": "Physical soft impact (heavy): an object landing or a hit."
+ },
+ "impact_soft_heavy_002": {
+  "file": "impacts/impact_soft_heavy_002.mp3",
+  "category": "impacts",
+  "duration": 0.569,
+  "peak_at": 0.006,
+  "peak_db": -1.0,
+  "description": "Physical soft impact (heavy): an object landing or a hit."
+ },
+ "impact_soft_heavy_003": {
+  "file": "impacts/impact_soft_heavy_003.mp3",
+  "category": "impacts",
+  "duration": 0.541,
+  "peak_at": 0.007,
+  "peak_db": -1.0,
+  "description": "Physical soft impact (heavy): an object landing or a hit."
+ },
+ "impact_soft_heavy_004": {
+  "file": "impacts/impact_soft_heavy_004.mp3",
+  "category": "impacts",
+  "duration": 0.498,
+  "peak_at": 0.006,
+  "peak_db": -1.0,
+  "description": "Physical soft impact (heavy): an object landing or a hit."
+ },
+ "impact_soft_medium_000": {
+  "file": "impacts/impact_soft_medium_000.mp3",
+  "category": "impacts",
+  "duration": 0.115,
+  "peak_at": 0.005,
+  "peak_db": -1.0,
+  "description": "Physical soft impact (medium): an object landing or a hit."
+ },
+ "impact_soft_medium_001": {
+  "file": "impacts/impact_soft_medium_001.mp3",
+  "category": "impacts",
+  "duration": 0.18,
+  "peak_at": 0.005,
+  "peak_db": -1.0,
+  "description": "Physical soft impact (medium): an object landing or a hit."
+ },
+ "impact_soft_medium_002": {
+  "file": "impacts/impact_soft_medium_002.mp3",
+  "category": "impacts",
+  "duration": 0.132,
+  "peak_at": 0.005,
+  "peak_db": -1.0,
+  "description": "Physical soft impact (medium): an object landing or a hit."
+ },
+ "impact_soft_medium_003": {
+  "file": "impacts/impact_soft_medium_003.mp3",
+  "category": "impacts",
+  "duration": 0.137,
+  "peak_at": 0.005,
+  "peak_db": -1.0,
+  "description": "Physical soft impact (medium): an object landing or a hit."
+ },
+ "impact_soft_medium_004": {
+  "file": "impacts/impact_soft_medium_004.mp3",
+  "category": "impacts",
+  "duration": 0.144,
+  "peak_at": 0.005,
+  "peak_db": -1.0,
+  "description": "Physical soft impact (medium): an object landing or a hit."
+ },
+ "impact_tin_medium_000": {
+  "file": "impacts/impact_tin_medium_000.mp3",
+  "category": "impacts",
+  "duration": 0.156,
+  "peak_at": 0.001,
+  "peak_db": -1.0,
+  "description": "Physical tin impact (medium): an object landing or a hit."
+ },
+ "impact_tin_medium_001": {
+  "file": "impacts/impact_tin_medium_001.mp3",
+  "category": "impacts",
+  "duration": 0.171,
+  "peak_at": 0.001,
+  "peak_db": -1.0,
+  "description": "Physical tin impact (medium): an object landing or a hit."
+ },
+ "impact_tin_medium_002": {
+  "file": "impacts/impact_tin_medium_002.mp3",
+  "category": "impacts",
+  "duration": 0.131,
+  "peak_at": 0.001,
+  "peak_db": -1.0,
+  "description": "Physical tin impact (medium): an object landing or a hit."
+ },
+ "impact_tin_medium_003": {
+  "file": "impacts/impact_tin_medium_003.mp3",
+  "category": "impacts",
+  "duration": 0.212,
+  "peak_at": 0.001,
+  "peak_db": -1.0,
+  "description": "Physical tin impact (medium): an object landing or a hit."
+ },
+ "impact_tin_medium_004": {
+  "file": "impacts/impact_tin_medium_004.mp3",
+  "category": "impacts",
+  "duration": 0.2,
+  "peak_at": 0.001,
+  "peak_db": -1.0,
+  "description": "Physical tin impact (medium): an object landing or a hit."
+ },
+ "impact_wood_heavy_000": {
+  "file": "impacts/impact_wood_heavy_000.mp3",
+  "category": "impacts",
+  "duration": 0.31,
+  "peak_at": 0.004,
+  "peak_db": -1.0,
+  "description": "Physical wood impact (heavy): an object landing or a hit."
+ },
+ "impact_wood_heavy_001": {
+  "file": "impacts/impact_wood_heavy_001.mp3",
+  "category": "impacts",
+  "duration": 0.31,
+  "peak_at": 0.004,
+  "peak_db": -1.0,
+  "description": "Physical wood impact (heavy): an object landing or a hit."
+ },
+ "impact_wood_heavy_002": {
+  "file": "impacts/impact_wood_heavy_002.mp3",
+  "category": "impacts",
+  "duration": 0.31,
+  "peak_at": 0.005,
+  "peak_db": -1.0,
+  "description": "Physical wood impact (heavy): an object landing or a hit."
+ },
+ "impact_wood_heavy_003": {
+  "file": "impacts/impact_wood_heavy_003.mp3",
+  "category": "impacts",
+  "duration": 0.31,
+  "peak_at": 0.003,
+  "peak_db": -1.0,
+  "description": "Physical wood impact (heavy): an object landing or a hit."
+ },
+ "impact_wood_heavy_004": {
+  "file": "impacts/impact_wood_heavy_004.mp3",
+  "category": "impacts",
+  "duration": 0.31,
+  "peak_at": 0.003,
+  "peak_db": -1.0,
+  "description": "Physical wood impact (heavy): an object landing or a hit."
+ },
+ "impact_wood_light_000": {
+  "file": "impacts/impact_wood_light_000.mp3",
+  "category": "impacts",
+  "duration": 0.263,
+  "peak_at": 0.001,
+  "peak_db": -1.0,
+  "description": "Physical wood impact (light): an object landing or a hit."
+ },
+ "impact_wood_light_001": {
+  "file": "impacts/impact_wood_light_001.mp3",
+  "category": "impacts",
+  "duration": 0.263,
+  "peak_at": 0.001,
+  "peak_db": -1.0,
+  "description": "Physical wood impact (light): an object landing or a hit."
+ },
+ "impact_wood_light_002": {
+  "file": "impacts/impact_wood_light_002.mp3",
+  "category": "impacts",
+  "duration": 0.263,
+  "peak_at": 0.001,
+  "peak_db": -1.0,
+  "description": "Physical wood impact (light): an object landing or a hit."
+ },
+ "impact_wood_light_003": {
+  "file": "impacts/impact_wood_light_003.mp3",
+  "category": "impacts",
+  "duration": 0.263,
+  "peak_at": 0.001,
+  "peak_db": -1.0,
+  "description": "Physical wood impact (light): an object landing or a hit."
+ },
+ "impact_wood_light_004": {
+  "file": "impacts/impact_wood_light_004.mp3",
+  "category": "impacts",
+  "duration": 0.263,
+  "peak_at": 0.001,
+  "peak_db": -1.0,
+  "description": "Physical wood impact (light): an object landing or a hit."
+ },
+ "impact_wood_medium_000": {
+  "file": "impacts/impact_wood_medium_000.mp3",
+  "category": "impacts",
+  "duration": 0.33,
+  "peak_at": 0.002,
+  "peak_db": -1.0,
+  "description": "Physical wood impact (medium): an object landing or a hit."
+ },
+ "impact_wood_medium_001": {
+  "file": "impacts/impact_wood_medium_001.mp3",
+  "category": "impacts",
+  "duration": 0.33,
+  "peak_at": 0.002,
+  "peak_db": -1.0,
+  "description": "Physical wood impact (medium): an object landing or a hit."
+ },
+ "impact_wood_medium_002": {
+  "file": "impacts/impact_wood_medium_002.mp3",
+  "category": "impacts",
+  "duration": 0.33,
+  "peak_at": 0.002,
+  "peak_db": -1.0,
+  "description": "Physical wood impact (medium): an object landing or a hit."
+ },
+ "impact_wood_medium_003": {
+  "file": "impacts/impact_wood_medium_003.mp3",
+  "category": "impacts",
+  "duration": 0.33,
+  "peak_at": 0.002,
+  "peak_db": -1.0,
+  "description": "Physical wood impact (medium): an object landing or a hit."
+ },
+ "impact_wood_medium_004": {
+  "file": "impacts/impact_wood_medium_004.mp3",
+  "category": "impacts",
+  "duration": 0.33,
+  "peak_at": 0.002,
+  "peak_db": -1.0,
+  "description": "Physical wood impact (medium): an object landing or a hit."
+ },
+ "low_thud": {
+  "file": "impacts/low_thud.mp3",
+  "category": "impacts",
+  "duration": 0.669,
+  "peak_at": 0.009,
+  "peak_db": -1.0,
+  "description": "Low thud: a heavy element landing, subtle."
+ },
+ "rpg_chop": {
+  "file": "impacts/rpg_chop.mp3",
+  "category": "impacts",
+  "duration": 0.24,
+  "peak_at": 0.053,
+  "peak_db": -1.0,
+  "description": "Short chop: a quick hard cut or stamp."
+ },
+ "sci_explosion_crunch_000": {
+  "file": "impacts/sci_explosion_crunch_000.mp3",
+  "category": "impacts",
+  "duration": 0.778,
+  "peak_at": 0.001,
+  "peak_db": -1.0,
+  "description": "Crunchy sci-fi explosion: dramatic, glitchy reveal."
+ },
+ "sci_explosion_crunch_001": {
+  "file": "impacts/sci_explosion_crunch_001.mp3",
+  "category": "impacts",
+  "duration": 1.357,
+  "peak_at": 0.003,
+  "peak_db": -1.0,
+  "description": "Crunchy sci-fi explosion: dramatic, glitchy reveal."
+ },
+ "sci_explosion_crunch_002": {
+  "file": "impacts/sci_explosion_crunch_002.mp3",
+  "category": "impacts",
+  "duration": 1.245,
+  "peak_at": 0.001,
+  "peak_db": -1.0,
+  "description": "Crunchy sci-fi explosion: dramatic, glitchy reveal."
+ },
+ "sci_explosion_crunch_003": {
+  "file": "impacts/sci_explosion_crunch_003.mp3",
+  "category": "impacts",
+  "duration": 1.553,
+  "peak_at": 0.002,
+  "peak_db": -1.0,
+  "description": "Crunchy sci-fi explosion: dramatic, glitchy reveal."
+ },
+ "sci_explosion_crunch_004": {
+  "file": "impacts/sci_explosion_crunch_004.mp3",
+  "category": "impacts",
+  "duration": 1.98,
+  "peak_at": 0.052,
+  "peak_db": -1.0,
+  "description": "Crunchy sci-fi explosion: dramatic, glitchy reveal."
+ },
+ "sci_impact_metal_000": {
+  "file": "impacts/sci_impact_metal_000.mp3",
+  "category": "impacts",
+  "duration": 0.635,
+  "peak_at": 0.002,
+  "peak_db": -1.0,
+  "description": "Metallic sci-fi hit: techy element locking into place."
+ },
+ "sci_impact_metal_001": {
+  "file": "impacts/sci_impact_metal_001.mp3",
+  "category": "impacts",
+  "duration": 0.688,
+  "peak_at": 0.004,
+  "peak_db": -1.0,
+  "description": "Metallic sci-fi hit: techy element locking into place."
+ },
+ "sci_impact_metal_002": {
+  "file": "impacts/sci_impact_metal_002.mp3",
+  "category": "impacts",
+  "duration": 0.471,
+  "peak_at": 0.003,
+  "peak_db": -1.0,
+  "description": "Metallic sci-fi hit: techy element locking into place."
+ },
+ "sci_impact_metal_003": {
+  "file": "impacts/sci_impact_metal_003.mp3",
+  "category": "impacts",
+  "duration": 0.777,
+  "peak_at": 0.001,
+  "peak_db": -1.0,
+  "description": "Metallic sci-fi hit: techy element locking into place."
+ },
+ "sci_impact_metal_004": {
+  "file": "impacts/sci_impact_metal_004.mp3",
+  "category": "impacts",
+  "duration": 0.39,
+  "peak_at": 0.002,
+  "peak_db": -1.0,
+  "description": "Metallic sci-fi hit: techy element locking into place."
+ },
+ "sci_low_frequency_explosion_000": {
+  "file": "impacts/sci_low_frequency_explosion_000.mp3",
+  "category": "impacts",
+  "duration": 2.0,
+  "peak_at": 0.228,
+  "peak_db": -1.0,
+  "description": "Low rumbling explosion: heavy dramatic reveal."
+ },
+ "sci_low_frequency_explosion_001": {
+  "file": "impacts/sci_low_frequency_explosion_001.mp3",
+  "category": "impacts",
+  "duration": 1.0,
+  "peak_at": 0.083,
+  "peak_db": -1.0,
+  "description": "Low rumbling explosion: heavy dramatic reveal."
+ },
+ "stinger": {
+  "file": "impacts/stinger.mp3",
+  "category": "impacts",
+  "duration": 2.261,
+  "peak_at": 0.052,
+  "peak_db": -1.0,
+  "description": "Dramatic stinger: a reveal or a punchline accent."
+ },
+ "jingle_hit_00": {
+  "file": "jingles/jingle_hit_00.mp3",
+  "category": "jingles",
+  "duration": 0.258,
+  "peak_at": 0.132,
+  "peak_db": -1.0,
+  "description": "Short musical jingle (punchy hits): end card or logo sting. Music, not an effect."
+ },
+ "jingle_hit_01": {
+  "file": "jingles/jingle_hit_01.mp3",
+  "category": "jingles",
+  "duration": 0.488,
+  "peak_at": 0.016,
+  "peak_db": -1.0,
+  "description": "Short musical jingle (punchy hits): end card or logo sting. Music, not an effect."
+ },
+ "jingle_hit_02": {
+  "file": "jingles/jingle_hit_02.mp3",
+  "category": "jingles",
+  "duration": 0.489,
+  "peak_at": 0.36,
+  "peak_db": -1.0,
+  "description": "Short musical jingle (punchy hits): end card or logo sting. Music, not an effect."
+ },
+ "jingle_hit_03": {
+  "file": "jingles/jingle_hit_03.mp3",
+  "category": "jingles",
+  "duration": 0.719,
+  "peak_at": 0.359,
+  "peak_db": -1.0,
+  "description": "Short musical jingle (punchy hits): end card or logo sting. Music, not an effect."
+ },
+ "jingle_hit_04": {
+  "file": "jingles/jingle_hit_04.mp3",
+  "category": "jingles",
+  "duration": 0.604,
+  "peak_at": 0.015,
+  "peak_db": -1.0,
+  "description": "Short musical jingle (punchy hits): end card or logo sting. Music, not an effect."
+ },
+ "jingle_hit_05": {
+  "file": "jingles/jingle_hit_05.mp3",
+  "category": "jingles",
+  "duration": 0.605,
+  "peak_at": 0.481,
+  "peak_db": -1.0,
+  "description": "Short musical jingle (punchy hits): end card or logo sting. Music, not an effect."
+ },
+ "jingle_hit_06": {
+  "file": "jingles/jingle_hit_06.mp3",
+  "category": "jingles",
+  "duration": 0.488,
+  "peak_at": 0.128,
+  "peak_db": -1.0,
+  "description": "Short musical jingle (punchy hits): end card or logo sting. Music, not an effect."
+ },
+ "jingle_hit_07": {
+  "file": "jingles/jingle_hit_07.mp3",
+  "category": "jingles",
+  "duration": 0.259,
+  "peak_at": 0.127,
+  "peak_db": -1.0,
+  "description": "Short musical jingle (punchy hits): end card or logo sting. Music, not an effect."
+ },
+ "jingle_hit_08": {
+  "file": "jingles/jingle_hit_08.mp3",
+  "category": "jingles",
+  "duration": 0.258,
+  "peak_at": 0.132,
+  "peak_db": -1.0,
+  "description": "Short musical jingle (punchy hits): end card or logo sting. Music, not an effect."
+ },
+ "jingle_hit_09": {
+  "file": "jingles/jingle_hit_09.mp3",
+  "category": "jingles",
+  "duration": 0.721,
+  "peak_at": 0.129,
+  "peak_db": -1.0,
+  "description": "Short musical jingle (punchy hits): end card or logo sting. Music, not an effect."
+ },
+ "jingle_hit_10": {
+  "file": "jingles/jingle_hit_10.mp3",
+  "category": "jingles",
+  "duration": 0.72,
+  "peak_at": 0.018,
+  "peak_db": -1.0,
+  "description": "Short musical jingle (punchy hits): end card or logo sting. Music, not an effect."
+ },
+ "jingle_hit_11": {
+  "file": "jingles/jingle_hit_11.mp3",
+  "category": "jingles",
+  "duration": 0.948,
+  "peak_at": 0.017,
+  "peak_db": -1.0,
+  "description": "Short musical jingle (punchy hits): end card or logo sting. Music, not an effect."
+ },
+ "jingle_hit_12": {
+  "file": "jingles/jingle_hit_12.mp3",
+  "category": "jingles",
+  "duration": 0.257,
+  "peak_at": 0.02,
+  "peak_db": -1.0,
+  "description": "Short musical jingle (punchy hits): end card or logo sting. Music, not an effect."
+ },
+ "jingle_hit_13": {
+  "file": "jingles/jingle_hit_13.mp3",
+  "category": "jingles",
+  "duration": 0.258,
+  "peak_at": 0.014,
+  "peak_db": -1.0,
+  "description": "Short musical jingle (punchy hits): end card or logo sting. Music, not an effect."
+ },
+ "jingle_hit_14": {
+  "file": "jingles/jingle_hit_14.mp3",
+  "category": "jingles",
+  "duration": 0.374,
+  "peak_at": 0.135,
+  "peak_db": -1.0,
+  "description": "Short musical jingle (punchy hits): end card or logo sting. Music, not an effect."
+ },
+ "jingle_hit_15": {
+  "file": "jingles/jingle_hit_15.mp3",
+  "category": "jingles",
+  "duration": 1.153,
+  "peak_at": 0.705,
+  "peak_db": -1.0,
+  "description": "Short musical jingle (punchy hits): end card or logo sting. Music, not an effect."
+ },
+ "jingle_hit_16": {
+  "file": "jingles/jingle_hit_16.mp3",
+  "category": "jingles",
+  "duration": 0.258,
+  "peak_at": 0.131,
+  "peak_db": -1.0,
+  "description": "Short musical jingle (punchy hits): end card or logo sting. Music, not an effect."
+ },
+ "jingle_nes_00": {
+  "file": "jingles/jingle_nes_00.mp3",
+  "category": "jingles",
+  "duration": 1.725,
+  "peak_at": 0.234,
+  "peak_db": -1.0,
+  "description": "Short 8-bit retro jingle: playful end card or win moment."
+ },
+ "jingle_nes_01": {
+  "file": "jingles/jingle_nes_01.mp3",
+  "category": "jingles",
+  "duration": 0.345,
+  "peak_at": 0.123,
+  "peak_db": -1.0,
+  "description": "Short 8-bit retro jingle: playful end card or win moment."
+ },
+ "jingle_nes_02": {
+  "file": "jingles/jingle_nes_02.mp3",
+  "category": "jingles",
+  "duration": 0.344,
+  "peak_at": 0.215,
+  "peak_db": -1.0,
+  "description": "Short 8-bit retro jingle: playful end card or win moment."
+ },
+ "jingle_nes_03": {
+  "file": "jingles/jingle_nes_03.mp3",
+  "category": "jingles",
+  "duration": 0.575,
+  "peak_at": 0.238,
+  "peak_db": -1.0,
+  "description": "Short 8-bit retro jingle: playful end card or win moment."
+ },
+ "jingle_nes_04": {
+  "file": "jingles/jingle_nes_04.mp3",
+  "category": "jingles",
+  "duration": 0.576,
+  "peak_at": 0.239,
+  "peak_db": -1.0,
+  "description": "Short 8-bit retro jingle: playful end card or win moment."
+ },
+ "jingle_nes_05": {
+  "file": "jingles/jingle_nes_05.mp3",
+  "category": "jingles",
+  "duration": 0.807,
+  "peak_at": 0.123,
+  "peak_db": -1.0,
+  "description": "Short 8-bit retro jingle: playful end card or win moment."
+ },
+ "jingle_nes_06": {
+  "file": "jingles/jingle_nes_06.mp3",
+  "category": "jingles",
+  "duration": 0.691,
+  "peak_at": 0.109,
+  "peak_db": -1.0,
+  "description": "Short 8-bit retro jingle: playful end card or win moment."
+ },
+ "jingle_nes_07": {
+  "file": "jingles/jingle_nes_07.mp3",
+  "category": "jingles",
+  "duration": 0.692,
+  "peak_at": 0.239,
+  "peak_db": -1.0,
+  "description": "Short 8-bit retro jingle: playful end card or win moment."
+ },
+ "jingle_nes_08": {
+  "file": "jingles/jingle_nes_08.mp3",
+  "category": "jingles",
+  "duration": 0.575,
+  "peak_at": 0.238,
+  "peak_db": -1.0,
+  "description": "Short 8-bit retro jingle: playful end card or win moment."
+ },
+ "jingle_nes_09": {
+  "file": "jingles/jingle_nes_09.mp3",
+  "category": "jingles",
+  "duration": 0.344,
+  "peak_at": 0.122,
+  "peak_db": -1.0,
+  "description": "Short 8-bit retro jingle: playful end card or win moment."
+ },
+ "jingle_nes_10": {
+  "file": "jingles/jingle_nes_10.mp3",
+  "category": "jingles",
+  "duration": 0.345,
+  "peak_at": 0.126,
+  "peak_db": -1.0,
+  "description": "Short 8-bit retro jingle: playful end card or win moment."
+ },
+ "jingle_nes_11": {
+  "file": "jingles/jingle_nes_11.mp3",
+  "category": "jingles",
+  "duration": 0.806,
+  "peak_at": 0.585,
+  "peak_db": -1.0,
+  "description": "Short 8-bit retro jingle: playful end card or win moment."
+ },
+ "jingle_nes_12": {
+  "file": "jingles/jingle_nes_12.mp3",
+  "category": "jingles",
+  "duration": 0.805,
+  "peak_at": 0.354,
+  "peak_db": -1.0,
+  "description": "Short 8-bit retro jingle: playful end card or win moment."
+ },
+ "jingle_nes_13": {
+  "file": "jingles/jingle_nes_13.mp3",
+  "category": "jingles",
+  "duration": 1.02,
+  "peak_at": 0.355,
+  "peak_db": -1.0,
+  "description": "Short 8-bit retro jingle: playful end card or win moment."
+ },
+ "jingle_nes_14": {
+  "file": "jingles/jingle_nes_14.mp3",
+  "category": "jingles",
+  "duration": 0.345,
+  "peak_at": 0.122,
+  "peak_db": -1.0,
+  "description": "Short 8-bit retro jingle: playful end card or win moment."
+ },
+ "jingle_nes_15": {
+  "file": "jingles/jingle_nes_15.mp3",
+  "category": "jingles",
+  "duration": 0.345,
+  "peak_at": 0.161,
+  "peak_db": -1.0,
+  "description": "Short 8-bit retro jingle: playful end card or win moment."
+ },
+ "jingle_nes_16": {
+  "file": "jingles/jingle_nes_16.mp3",
+  "category": "jingles",
+  "duration": 0.46,
+  "peak_at": 0.239,
+  "peak_db": -1.0,
+  "description": "Short 8-bit retro jingle: playful end card or win moment."
+ },
+ "jingle_pizzi_00": {
+  "file": "jingles/jingle_pizzi_00.mp3",
+  "category": "jingles",
+  "duration": 0.494,
+  "peak_at": 0.156,
+  "peak_db": -1.0,
+  "description": "Short pizzicato strings jingle: playful, light end card."
+ },
+ "jingle_pizzi_01": {
+  "file": "jingles/jingle_pizzi_01.mp3",
+  "category": "jingles",
+  "duration": 0.991,
+  "peak_at": 0.622,
+  "peak_db": -1.0,
+  "description": "Short pizzicato strings jingle: playful, light end card."
+ },
+ "jingle_pizzi_02": {
+  "file": "jingles/jingle_pizzi_02.mp3",
+  "category": "jingles",
+  "duration": 0.95,
+  "peak_at": 0.132,
+  "peak_db": -1.0,
+  "description": "Short pizzicato strings jingle: playful, light end card."
+ },
+ "jingle_pizzi_03": {
+  "file": "jingles/jingle_pizzi_03.mp3",
+  "category": "jingles",
+  "duration": 1.142,
+  "peak_at": 0.249,
+  "peak_db": -1.0,
+  "description": "Short pizzicato strings jingle: playful, light end card."
+ },
+ "jingle_pizzi_04": {
+  "file": "jingles/jingle_pizzi_04.mp3",
+  "category": "jingles",
+  "duration": 0.558,
+  "peak_at": 0.125,
+  "peak_db": -1.0,
+  "description": "Short pizzicato strings jingle: playful, light end card."
+ },
+ "jingle_pizzi_05": {
+  "file": "jingles/jingle_pizzi_05.mp3",
+  "category": "jingles",
+  "duration": 0.531,
+  "peak_at": 0.139,
+  "peak_db": -1.0,
+  "description": "Short pizzicato strings jingle: playful, light end card."
+ },
+ "jingle_pizzi_06": {
+  "file": "jingles/jingle_pizzi_06.mp3",
+  "category": "jingles",
+  "duration": 0.689,
+  "peak_at": 0.128,
+  "peak_db": -1.0,
+  "description": "Short pizzicato strings jingle: playful, light end card."
+ },
+ "jingle_pizzi_07": {
+  "file": "jingles/jingle_pizzi_07.mp3",
+  "category": "jingles",
+  "duration": 1.324,
+  "peak_at": 0.265,
+  "peak_db": -1.0,
+  "description": "Short pizzicato strings jingle: playful, light end card."
+ },
+ "jingle_pizzi_08": {
+  "file": "jingles/jingle_pizzi_08.mp3",
+  "category": "jingles",
+  "duration": 0.565,
+  "peak_at": 0.133,
+  "peak_db": -1.0,
+  "description": "Short pizzicato strings jingle: playful, light end card."
+ },
+ "jingle_pizzi_09": {
+  "file": "jingles/jingle_pizzi_09.mp3",
+  "category": "jingles",
+  "duration": 0.563,
+  "peak_at": 0.134,
+  "peak_db": -1.0,
+  "description": "Short pizzicato strings jingle: playful, light end card."
+ },
+ "jingle_pizzi_10": {
+  "file": "jingles/jingle_pizzi_10.mp3",
+  "category": "jingles",
+  "duration": 0.797,
+  "peak_at": 0.143,
+  "peak_db": -1.0,
+  "description": "Short pizzicato strings jingle: playful, light end card."
+ },
+ "jingle_pizzi_11": {
+  "file": "jingles/jingle_pizzi_11.mp3",
+  "category": "jingles",
+  "duration": 0.793,
+  "peak_at": 0.361,
+  "peak_db": -1.0,
+  "description": "Short pizzicato strings jingle: playful, light end card."
+ },
+ "jingle_pizzi_12": {
+  "file": "jingles/jingle_pizzi_12.mp3",
+  "category": "jingles",
+  "duration": 0.993,
+  "peak_at": 0.376,
+  "peak_db": -1.0,
+  "description": "Short pizzicato strings jingle: playful, light end card."
+ },
+ "jingle_pizzi_13": {
+  "file": "jingles/jingle_pizzi_13.mp3",
+  "category": "jingles",
+  "duration": 0.874,
+  "peak_at": 0.265,
+  "peak_db": -1.0,
+  "description": "Short pizzicato strings jingle: playful, light end card."
+ },
+ "jingle_pizzi_14": {
+  "file": "jingles/jingle_pizzi_14.mp3",
+  "category": "jingles",
+  "duration": 0.922,
+  "peak_at": 0.364,
+  "peak_db": -1.0,
+  "description": "Short pizzicato strings jingle: playful, light end card."
+ },
+ "jingle_pizzi_15": {
+  "file": "jingles/jingle_pizzi_15.mp3",
+  "category": "jingles",
+  "duration": 0.801,
+  "peak_at": 0.132,
+  "peak_db": -1.0,
+  "description": "Short pizzicato strings jingle: playful, light end card."
+ },
+ "jingle_pizzi_16": {
+  "file": "jingles/jingle_pizzi_16.mp3",
+  "category": "jingles",
+  "duration": 0.46,
+  "peak_at": 0.146,
+  "peak_db": -1.0,
+  "description": "Short pizzicato strings jingle: playful, light end card."
+ },
+ "jingle_sax_00": {
+  "file": "jingles/jingle_sax_00.mp3",
+  "category": "jingles",
+  "duration": 0.359,
+  "peak_at": 0.116,
+  "peak_db": -1.0,
+  "description": "Short saxophone jingle: jazzy end card."
+ },
+ "jingle_sax_01": {
+  "file": "jingles/jingle_sax_01.mp3",
+  "category": "jingles",
+  "duration": 0.835,
+  "peak_at": 0.152,
+  "peak_db": -1.0,
+  "description": "Short saxophone jingle: jazzy end card."
+ },
+ "jingle_sax_02": {
+  "file": "jingles/jingle_sax_02.mp3",
+  "category": "jingles",
+  "duration": 0.827,
+  "peak_at": 0.387,
+  "peak_db": -1.0,
+  "description": "Short saxophone jingle: jazzy end card."
+ },
+ "jingle_sax_03": {
+  "file": "jingles/jingle_sax_03.mp3",
+  "category": "jingles",
+  "duration": 1.058,
+  "peak_at": 0.568,
+  "peak_db": -1.0,
+  "description": "Short saxophone jingle: jazzy end card."
+ },
+ "jingle_sax_04": {
+  "file": "jingles/jingle_sax_04.mp3",
+  "category": "jingles",
+  "duration": 0.368,
+  "peak_at": 0.162,
+  "peak_db": -1.0,
+  "description": "Short saxophone jingle: jazzy end card."
+ },
+ "jingle_sax_05": {
+  "file": "jingles/jingle_sax_05.mp3",
+  "category": "jingles",
+  "duration": 0.376,
+  "peak_at": 0.089,
+  "peak_db": -1.0,
+  "description": "Short saxophone jingle: jazzy end card."
+ },
+ "jingle_sax_06": {
+  "file": "jingles/jingle_sax_06.mp3",
+  "category": "jingles",
+  "duration": 0.482,
+  "peak_at": 0.105,
+  "peak_db": -1.0,
+  "description": "Short saxophone jingle: jazzy end card."
+ },
+ "jingle_sax_07": {
+  "file": "jingles/jingle_sax_07.mp3",
+  "category": "jingles",
+  "duration": 1.74,
+  "peak_at": 0.082,
+  "peak_db": -1.0,
+  "description": "Short saxophone jingle: jazzy end card."
+ },
+ "jingle_sax_08": {
+  "file": "jingles/jingle_sax_08.mp3",
+  "category": "jingles",
+  "duration": 0.367,
+  "peak_at": 0.196,
+  "peak_db": -1.0,
+  "description": "Short saxophone jingle: jazzy end card."
+ },
+ "jingle_sax_09": {
+  "file": "jingles/jingle_sax_09.mp3",
+  "category": "jingles",
+  "duration": 0.37,
+  "peak_at": 0.09,
+  "peak_db": -1.0,
+  "description": "Short saxophone jingle: jazzy end card."
+ },
+ "jingle_sax_10": {
+  "file": "jingles/jingle_sax_10.mp3",
+  "category": "jingles",
+  "duration": 0.591,
+  "peak_at": 0.271,
+  "peak_db": -1.0,
+  "description": "Short saxophone jingle: jazzy end card."
+ },
+ "jingle_sax_11": {
+  "file": "jingles/jingle_sax_11.mp3",
+  "category": "jingles",
+  "duration": 0.604,
+  "peak_at": 0.321,
+  "peak_db": -1.0,
+  "description": "Short saxophone jingle: jazzy end card."
+ },
+ "jingle_sax_12": {
+  "file": "jingles/jingle_sax_12.mp3",
+  "category": "jingles",
+  "duration": 0.832,
+  "peak_at": 0.432,
+  "peak_db": -1.0,
+  "description": "Short saxophone jingle: jazzy end card."
+ },
+ "jingle_sax_13": {
+  "file": "jingles/jingle_sax_13.mp3",
+  "category": "jingles",
+  "duration": 0.714,
+  "peak_at": 0.315,
+  "peak_db": -1.0,
+  "description": "Short saxophone jingle: jazzy end card."
+ },
+ "jingle_sax_14": {
+  "file": "jingles/jingle_sax_14.mp3",
+  "category": "jingles",
+  "duration": 0.719,
+  "peak_at": 0.156,
+  "peak_db": -1.0,
+  "description": "Short saxophone jingle: jazzy end card."
+ },
+ "jingle_sax_15": {
+  "file": "jingles/jingle_sax_15.mp3",
+  "category": "jingles",
+  "duration": 0.599,
+  "peak_at": 0.272,
+  "peak_db": -1.0,
+  "description": "Short saxophone jingle: jazzy end card."
+ },
+ "jingle_sax_16": {
+  "file": "jingles/jingle_sax_16.mp3",
+  "category": "jingles",
+  "duration": 0.366,
+  "peak_at": 0.152,
+  "peak_db": -1.0,
+  "description": "Short saxophone jingle: jazzy end card."
+ },
+ "jingle_steel_00": {
+  "file": "jingles/jingle_steel_00.mp3",
+  "category": "jingles",
+  "duration": 0.933,
+  "peak_at": 0.144,
+  "peak_db": -1.0,
+  "description": "Short steel drum jingle: tropical, cheerful end card."
+ },
+ "jingle_steel_01": {
+  "file": "jingles/jingle_steel_01.mp3",
+  "category": "jingles",
+  "duration": 1.375,
+  "peak_at": 0.246,
+  "peak_db": -1.0,
+  "description": "Short steel drum jingle: tropical, cheerful end card."
+ },
+ "jingle_steel_02": {
+  "file": "jingles/jingle_steel_02.mp3",
+  "category": "jingles",
+  "duration": 1.387,
+  "peak_at": 0.373,
+  "peak_db": -1.0,
+  "description": "Short steel drum jingle: tropical, cheerful end card."
+ },
+ "jingle_steel_03": {
+  "file": "jingles/jingle_steel_03.mp3",
+  "category": "jingles",
+  "duration": 1.387,
+  "peak_at": 0.418,
+  "peak_db": -1.0,
+  "description": "Short steel drum jingle: tropical, cheerful end card."
+ },
+ "jingle_steel_04": {
+  "file": "jingles/jingle_steel_04.mp3",
+  "category": "jingles",
+  "duration": 0.909,
+  "peak_at": 0.139,
+  "peak_db": -1.0,
+  "description": "Short steel drum jingle: tropical, cheerful end card."
+ },
+ "jingle_steel_05": {
+  "file": "jingles/jingle_steel_05.mp3",
+  "category": "jingles",
+  "duration": 0.945,
+  "peak_at": 0.161,
+  "peak_db": -1.0,
+  "description": "Short steel drum jingle: tropical, cheerful end card."
+ },
+ "jingle_steel_06": {
+  "file": "jingles/jingle_steel_06.mp3",
+  "category": "jingles",
+  "duration": 1.375,
+  "peak_at": 0.241,
+  "peak_db": -1.0,
+  "description": "Short steel drum jingle: tropical, cheerful end card."
+ },
+ "jingle_steel_07": {
+  "file": "jingles/jingle_steel_07.mp3",
+  "category": "jingles",
+  "duration": 1.555,
+  "peak_at": 0.74,
+  "peak_db": -1.0,
+  "description": "Short steel drum jingle: tropical, cheerful end card."
+ },
+ "jingle_steel_08": {
+  "file": "jingles/jingle_steel_08.mp3",
+  "category": "jingles",
+  "duration": 0.801,
+  "peak_at": 0.181,
+  "peak_db": -1.0,
+  "description": "Short steel drum jingle: tropical, cheerful end card."
+ },
+ "jingle_steel_09": {
+  "file": "jingles/jingle_steel_09.mp3",
+  "category": "jingles",
+  "duration": 0.586,
+  "peak_at": 0.153,
+  "peak_db": -1.0,
+  "description": "Short steel drum jingle: tropical, cheerful end card."
+ },
+ "jingle_steel_10": {
+  "file": "jingles/jingle_steel_10.mp3",
+  "category": "jingles",
+  "duration": 0.909,
+  "peak_at": 0.393,
+  "peak_db": -1.0,
+  "description": "Short steel drum jingle: tropical, cheerful end card."
+ },
+ "jingle_steel_11": {
+  "file": "jingles/jingle_steel_11.mp3",
+  "category": "jingles",
+  "duration": 0.825,
+  "peak_at": 0.282,
+  "peak_db": -1.0,
+  "description": "Short steel drum jingle: tropical, cheerful end card."
+ },
+ "jingle_steel_12": {
+  "file": "jingles/jingle_steel_12.mp3",
+  "category": "jingles",
+  "duration": 1.256,
+  "peak_at": 0.404,
+  "peak_db": -1.0,
+  "description": "Short steel drum jingle: tropical, cheerful end card."
+ },
+ "jingle_steel_13": {
+  "file": "jingles/jingle_steel_13.mp3",
+  "category": "jingles",
+  "duration": 1.052,
+  "peak_at": 0.271,
+  "peak_db": -1.0,
+  "description": "Short steel drum jingle: tropical, cheerful end card."
+ },
+ "jingle_steel_14": {
+  "file": "jingles/jingle_steel_14.mp3",
+  "category": "jingles",
+  "duration": 1.375,
+  "peak_at": 0.37,
+  "peak_db": -1.0,
+  "description": "Short steel drum jingle: tropical, cheerful end card."
+ },
+ "jingle_steel_15": {
+  "file": "jingles/jingle_steel_15.mp3",
+  "category": "jingles",
+  "duration": 0.945,
+  "peak_at": 0.383,
+  "peak_db": -1.0,
+  "description": "Short steel drum jingle: tropical, cheerful end card."
+ },
+ "jingle_steel_16": {
+  "file": "jingles/jingle_steel_16.mp3",
+  "category": "jingles",
+  "duration": 0.909,
+  "peak_at": 0.125,
+  "peak_db": -1.0,
+  "description": "Short steel drum jingle: tropical, cheerful end card."
+ },
+ "air_swell": {
+  "file": "risers/air_swell.mp3",
+  "category": "risers",
+  "duration": 1.541,
+  "peak_at": 1.076,
+  "peak_db": -1.0,
+  "description": "Airy swell: soft build or atmosphere under a reveal."
+ },
+ "downlifter_01": {
+  "file": "risers/downlifter_01.mp3",
+  "category": "risers",
+  "duration": 0.935,
+  "peak_at": 0.039,
+  "peak_db": -1.0,
+  "description": "Downlifter: energy dropping after a payoff, into a calm part or the end card."
+ },
+ "downlifter_02": {
+  "file": "risers/downlifter_02.mp3",
+  "category": "risers",
+  "duration": 1.189,
+  "peak_at": 0.009,
+  "peak_db": -1.0,
+  "description": "Downlifter: energy dropping after a payoff, into a calm part or the end card."
+ },
+ "downlifter_03": {
+  "file": "risers/downlifter_03.mp3",
+  "category": "risers",
+  "duration": 1.001,
+  "peak_at": 0.028,
+  "peak_db": -1.0,
+  "description": "Downlifter: energy dropping after a payoff, into a calm part or the end card."
+ },
+ "downlifter_04": {
+  "file": "risers/downlifter_04.mp3",
+  "category": "risers",
+  "duration": 1.297,
+  "peak_at": 0.023,
+  "peak_db": -1.0,
+  "description": "Downlifter: energy dropping after a payoff, into a calm part or the end card."
+ },
+ "downlifter_05": {
+  "file": "risers/downlifter_05.mp3",
+  "category": "risers",
+  "duration": 1.651,
+  "peak_at": 0.036,
+  "peak_db": -1.0,
+  "description": "Downlifter: energy dropping after a payoff, into a calm part or the end card."
+ },
+ "downlifter_06": {
+  "file": "risers/downlifter_06.mp3",
+  "category": "risers",
+  "duration": 2.008,
+  "peak_at": 0.063,
+  "peak_db": -1.0,
+  "description": "Downlifter: energy dropping after a payoff, into a calm part or the end card."
+ },
+ "downlifter_07": {
+  "file": "risers/downlifter_07.mp3",
+  "category": "risers",
+  "duration": 1.59,
+  "peak_at": 0.086,
+  "peak_db": -1.0,
+  "description": "Downlifter: energy dropping after a payoff, into a calm part or the end card."
+ },
+ "downlifter_08": {
+  "file": "risers/downlifter_08.mp3",
+  "category": "risers",
+  "duration": 1.52,
+  "peak_at": 0.028,
+  "peak_db": -1.0,
+  "description": "Downlifter: energy dropping after a payoff, into a calm part or the end card."
+ },
+ "reverse_swell": {
+  "file": "risers/reverse_swell.mp3",
+  "category": "risers",
+  "duration": 0.704,
+  "peak_at": 0.649,
+  "peak_db": -1.0,
+  "description": "Reverse swell: short suck-in that ends on a cut or reveal."
+ },
+ "reverse_swell_01": {
+  "file": "risers/reverse_swell_01.mp3",
+  "category": "risers",
+  "duration": 0.825,
+  "peak_at": 0.782,
+  "peak_db": -1.0,
+  "description": "Reverse swell: short suck-in that ends on a cut or reveal."
+ },
+ "reverse_swell_02": {
+  "file": "risers/reverse_swell_02.mp3",
+  "category": "risers",
+  "duration": 0.634,
+  "peak_at": 0.585,
+  "peak_db": -1.0,
+  "description": "Reverse swell: short suck-in that ends on a cut or reveal."
+ },
+ "reverse_swell_03": {
+  "file": "risers/reverse_swell_03.mp3",
+  "category": "risers",
+  "duration": 0.994,
+  "peak_at": 0.957,
+  "peak_db": -1.0,
+  "description": "Reverse swell: short suck-in that ends on a cut or reveal."
+ },
+ "reverse_swell_04": {
+  "file": "risers/reverse_swell_04.mp3",
+  "category": "risers",
+  "duration": 0.863,
+  "peak_at": 0.829,
+  "peak_db": -1.0,
+  "description": "Reverse swell: short suck-in that ends on a cut or reveal."
+ },
+ "reverse_swell_05": {
+  "file": "risers/reverse_swell_05.mp3",
+  "category": "risers",
+  "duration": 0.904,
+  "peak_at": 0.874,
+  "peak_db": -1.0,
+  "description": "Reverse swell: short suck-in that ends on a cut or reveal."
+ },
+ "reverse_swell_06": {
+  "file": "risers/reverse_swell_06.mp3",
+  "category": "risers",
+  "duration": 0.836,
+  "peak_at": 0.81,
+  "peak_db": -1.0,
+  "description": "Reverse swell: short suck-in that ends on a cut or reveal."
+ },
+ "riser": {
+  "file": "risers/riser.mp3",
+  "category": "risers",
+  "duration": 1.232,
+  "peak_at": 1.202,
+  "peak_db": -1.0,
+  "description": "Riser: tension build into the payoff. Start it at (hit time - duration) so it ends on the impact."
+ },
+ "riser_01": {
+  "file": "risers/riser_01.mp3",
+  "category": "risers",
+  "duration": 2.2,
+  "peak_at": 2.162,
+  "peak_db": -1.0,
+  "description": "Riser: tension build into the payoff. Start it at (hit time - duration) so it ends on the impact."
+ },
+ "riser_02": {
+  "file": "risers/riser_02.mp3",
+  "category": "risers",
+  "duration": 2.212,
+  "peak_at": 2.167,
+  "peak_db": -1.0,
+  "description": "Riser: tension build into the payoff. Start it at (hit time - duration) so it ends on the impact."
+ },
+ "riser_03": {
+  "file": "risers/riser_03.mp3",
+  "category": "risers",
+  "duration": 2.145,
+  "peak_at": 2.071,
+  "peak_db": -1.0,
+  "description": "Riser: tension build into the payoff. Start it at (hit time - duration) so it ends on the impact."
+ },
+ "riser_04": {
+  "file": "risers/riser_04.mp3",
+  "category": "risers",
+  "duration": 2.342,
+  "peak_at": 2.27,
+  "peak_db": -1.0,
+  "description": "Riser: tension build into the payoff. Start it at (hit time - duration) so it ends on the impact."
+ },
+ "riser_05": {
+  "file": "risers/riser_05.mp3",
+  "category": "risers",
+  "duration": 2.021,
+  "peak_at": 1.966,
+  "peak_db": -1.0,
+  "description": "Riser: tension build into the payoff. Start it at (hit time - duration) so it ends on the impact."
+ },
+ "riser_06": {
+  "file": "risers/riser_06.mp3",
+  "category": "risers",
+  "duration": 1.573,
+  "peak_at": 1.527,
+  "peak_db": -1.0,
+  "description": "Riser: tension build into the payoff. Start it at (hit time - duration) so it ends on the impact."
+ },
+ "riser_07": {
+  "file": "risers/riser_07.mp3",
+  "category": "risers",
+  "duration": 2.311,
+  "peak_at": 2.132,
+  "peak_db": -1.0,
+  "description": "Riser: tension build into the payoff. Start it at (hit time - duration) so it ends on the impact."
+ },
+ "riser_08": {
+  "file": "risers/riser_08.mp3",
+  "category": "risers",
+  "duration": 2.339,
+  "peak_at": 2.29,
+  "peak_db": -1.0,
+  "description": "Riser: tension build into the payoff. Start it at (hit time - duration) so it ends on the impact."
+ },
+ "riser_09": {
+  "file": "risers/riser_09.mp3",
+  "category": "risers",
+  "duration": 3.023,
+  "peak_at": 2.96,
+  "peak_db": -1.0,
+  "description": "Riser: tension build into the payoff. Start it at (hit time - duration) so it ends on the impact."
+ },
+ "riser_10": {
+  "file": "risers/riser_10.mp3",
+  "category": "risers",
+  "duration": 1.512,
+  "peak_at": 1.475,
+  "peak_db": -1.0,
+  "description": "Riser: tension build into the payoff. Start it at (hit time - duration) so it ends on the impact."
+ },
+ "riser_soft": {
+  "file": "risers/riser_soft.mp3",
+  "category": "risers",
+  "duration": 1.125,
+  "peak_at": 1.108,
+  "peak_db": -1.0,
+  "description": "Soft riser: gentle build before a reveal."
+ },
+ "digital_high_down": {
+  "file": "sci-fi/digital_high_down.mp3",
+  "category": "sci-fi",
+  "duration": 0.419,
+  "peak_at": 0.12,
+  "peak_db": -1.0,
+  "description": "Falling digital sweep."
+ },
+ "digital_laser1": {
+  "file": "sci-fi/digital_laser1.mp3",
+  "category": "sci-fi",
+  "duration": 0.915,
+  "peak_at": 0.203,
+  "peak_db": -1.0,
+  "description": "Laser zap: a fast techy accent."
+ },
+ "digital_laser2": {
+  "file": "sci-fi/digital_laser2.mp3",
+  "category": "sci-fi",
+  "duration": 0.758,
+  "peak_at": 0.148,
+  "peak_db": -1.0,
+  "description": "Laser zap: a fast techy accent."
+ },
+ "digital_laser3": {
+  "file": "sci-fi/digital_laser3.mp3",
+  "category": "sci-fi",
+  "duration": 0.665,
+  "peak_at": 0.08,
+  "peak_db": -1.0,
+  "description": "Laser zap: a fast techy accent."
+ },
+ "digital_laser4": {
+  "file": "sci-fi/digital_laser4.mp3",
+  "category": "sci-fi",
+  "duration": 0.756,
+  "peak_at": 0.144,
+  "peak_db": -1.0,
+  "description": "Laser zap: a fast techy accent."
+ },
+ "digital_laser5": {
+  "file": "sci-fi/digital_laser5.mp3",
+  "category": "sci-fi",
+  "duration": 0.66,
+  "peak_at": 0.081,
+  "peak_db": -1.0,
+  "description": "Laser zap: a fast techy accent."
+ },
+ "digital_laser6": {
+  "file": "sci-fi/digital_laser6.mp3",
+  "category": "sci-fi",
+  "duration": 0.793,
+  "peak_at": 0.066,
+  "peak_db": -1.0,
+  "description": "Laser zap: a fast techy accent."
+ },
+ "digital_laser7": {
+  "file": "sci-fi/digital_laser7.mp3",
+  "category": "sci-fi",
+  "duration": 0.762,
+  "peak_at": 0.011,
+  "peak_db": -1.0,
+  "description": "Laser zap: a fast techy accent."
+ },
+ "digital_laser8": {
+  "file": "sci-fi/digital_laser8.mp3",
+  "category": "sci-fi",
+  "duration": 0.748,
+  "peak_at": 0.056,
+  "peak_db": -1.0,
+  "description": "Laser zap: a fast techy accent."
+ },
+ "digital_laser9": {
+  "file": "sci-fi/digital_laser9.mp3",
+  "category": "sci-fi",
+  "duration": 0.817,
+  "peak_at": 0.095,
+  "peak_db": -1.0,
+  "description": "Laser zap: a fast techy accent."
+ },
+ "digital_low_random": {
+  "file": "sci-fi/digital_low_random.mp3",
+  "category": "sci-fi",
+  "duration": 0.427,
+  "peak_at": 0.237,
+  "peak_db": -1.0,
+  "description": "Random low digital blips: data or computing."
+ },
+ "digital_pep_sound1": {
+  "file": "sci-fi/digital_pep_sound1.mp3",
+  "category": "sci-fi",
+  "duration": 0.35,
+  "peak_at": 0.079,
+  "peak_db": -1.0,
+  "description": "Peppy digital blip: a playful tech accent."
+ },
+ "digital_pep_sound2": {
+  "file": "sci-fi/digital_pep_sound2.mp3",
+  "category": "sci-fi",
+  "duration": 0.396,
+  "peak_at": 0.218,
+  "peak_db": -1.0,
+  "description": "Peppy digital blip: a playful tech accent."
+ },
+ "digital_pep_sound3": {
+  "file": "sci-fi/digital_pep_sound3.mp3",
+  "category": "sci-fi",
+  "duration": 0.352,
+  "peak_at": 0.068,
+  "peak_db": -1.0,
+  "description": "Peppy digital blip: a playful tech accent."
+ },
+ "digital_pep_sound4": {
+  "file": "sci-fi/digital_pep_sound4.mp3",
+  "category": "sci-fi",
+  "duration": 0.463,
+  "peak_at": 0.263,
+  "peak_db": -1.0,
+  "description": "Peppy digital blip: a playful tech accent."
+ },
+ "digital_pep_sound5": {
+  "file": "sci-fi/digital_pep_sound5.mp3",
+  "category": "sci-fi",
+  "duration": 0.463,
+  "peak_at": 0.137,
+  "peak_db": -1.0,
+  "description": "Peppy digital blip: a playful tech accent."
+ },
+ "digital_phase_jump1": {
+  "file": "sci-fi/digital_phase_jump1.mp3",
+  "category": "sci-fi",
+  "duration": 0.372,
+  "peak_at": 0.057,
+  "peak_db": -1.0,
+  "description": "Phase jump: a teleport or quick swap."
+ },
+ "digital_phase_jump2": {
+  "file": "sci-fi/digital_phase_jump2.mp3",
+  "category": "sci-fi",
+  "duration": 0.337,
+  "peak_at": 0.049,
+  "peak_db": -1.0,
+  "description": "Phase jump: a teleport or quick swap."
+ },
+ "digital_phase_jump3": {
+  "file": "sci-fi/digital_phase_jump3.mp3",
+  "category": "sci-fi",
+  "duration": 0.441,
+  "peak_at": 0.075,
+  "peak_db": -1.0,
+  "description": "Phase jump: a teleport or quick swap."
+ },
+ "digital_phase_jump4": {
+  "file": "sci-fi/digital_phase_jump4.mp3",
+  "category": "sci-fi",
+  "duration": 0.467,
+  "peak_at": 0.109,
+  "peak_db": -1.0,
+  "description": "Phase jump: a teleport or quick swap."
+ },
+ "digital_phase_jump5": {
+  "file": "sci-fi/digital_phase_jump5.mp3",
+  "category": "sci-fi",
+  "duration": 0.415,
+  "peak_at": 0.145,
+  "peak_db": -1.0,
+  "description": "Phase jump: a teleport or quick swap."
+ },
+ "digital_phaser_down1": {
+  "file": "sci-fi/digital_phaser_down1.mp3",
+  "category": "sci-fi",
+  "duration": 0.357,
+  "peak_at": 0.102,
+  "peak_db": -1.0,
+  "description": "Falling phaser: a techy drop."
+ },
+ "digital_phaser_down2": {
+  "file": "sci-fi/digital_phaser_down2.mp3",
+  "category": "sci-fi",
+  "duration": 0.259,
+  "peak_at": 0.051,
+  "peak_db": -1.0,
+  "description": "Falling phaser: a techy drop."
+ },
+ "digital_phaser_down3": {
+  "file": "sci-fi/digital_phaser_down3.mp3",
+  "category": "sci-fi",
+  "duration": 0.436,
+  "peak_at": 0.267,
+  "peak_db": -1.0,
+  "description": "Falling phaser: a techy drop."
+ },
+ "digital_phaser_up1": {
+  "file": "sci-fi/digital_phaser_up1.mp3",
+  "category": "sci-fi",
+  "duration": 0.411,
+  "peak_at": 0.079,
+  "peak_db": -1.0,
+  "description": "Rising phaser: a techy build or level up."
+ },
+ "digital_phaser_up2": {
+  "file": "sci-fi/digital_phaser_up2.mp3",
+  "category": "sci-fi",
+  "duration": 0.335,
+  "peak_at": 0.008,
+  "peak_db": -1.0,
+  "description": "Rising phaser: a techy build or level up."
+ },
+ "digital_phaser_up3": {
+  "file": "sci-fi/digital_phaser_up3.mp3",
+  "category": "sci-fi",
+  "duration": 0.414,
+  "peak_at": 0.101,
+  "peak_db": -1.0,
+  "description": "Rising phaser: a techy build or level up."
+ },
+ "digital_phaser_up4": {
+  "file": "sci-fi/digital_phaser_up4.mp3",
+  "category": "sci-fi",
+  "duration": 0.293,
+  "peak_at": 0.031,
+  "peak_db": -1.0,
+  "description": "Rising phaser: a techy build or level up."
+ },
+ "digital_phaser_up5": {
+  "file": "sci-fi/digital_phaser_up5.mp3",
+  "category": "sci-fi",
+  "duration": 0.227,
+  "peak_at": 0.007,
+  "peak_db": -1.0,
+  "description": "Rising phaser: a techy build or level up."
+ },
+ "digital_phaser_up6": {
+  "file": "sci-fi/digital_phaser_up6.mp3",
+  "category": "sci-fi",
+  "duration": 0.271,
+  "peak_at": 0.007,
+  "peak_db": -1.0,
+  "description": "Rising phaser: a techy build or level up."
+ },
+ "digital_phaser_up7": {
+  "file": "sci-fi/digital_phaser_up7.mp3",
+  "category": "sci-fi",
+  "duration": 0.308,
+  "peak_at": 0.01,
+  "peak_db": -1.0,
+  "description": "Rising phaser: a techy build or level up."
+ },
+ "digital_space_trash1": {
+  "file": "sci-fi/digital_space_trash1.mp3",
+  "category": "sci-fi",
+  "duration": 1.358,
+  "peak_at": 0.01,
+  "peak_db": -1.0,
+  "description": "Space debris zap: a quirky sci-fi accent."
+ },
+ "digital_space_trash2": {
+  "file": "sci-fi/digital_space_trash2.mp3",
+  "category": "sci-fi",
+  "duration": 1.358,
+  "peak_at": 0.36,
+  "peak_db": -1.0,
+  "description": "Space debris zap: a quirky sci-fi accent."
+ },
+ "digital_space_trash3": {
+  "file": "sci-fi/digital_space_trash3.mp3",
+  "category": "sci-fi",
+  "duration": 1.368,
+  "peak_at": 0.512,
+  "peak_db": -1.0,
+  "description": "Space debris zap: a quirky sci-fi accent."
+ },
+ "digital_space_trash4": {
+  "file": "sci-fi/digital_space_trash4.mp3",
+  "category": "sci-fi",
+  "duration": 1.263,
+  "peak_at": 0.172,
+  "peak_db": -1.0,
+  "description": "Space debris zap: a quirky sci-fi accent."
+ },
+ "digital_space_trash5": {
+  "file": "sci-fi/digital_space_trash5.mp3",
+  "category": "sci-fi",
+  "duration": 1.098,
+  "peak_at": 0.267,
+  "peak_db": -1.0,
+  "description": "Space debris zap: a quirky sci-fi accent."
+ },
+ "digital_zap1": {
+  "file": "sci-fi/digital_zap1.mp3",
+  "category": "sci-fi",
+  "duration": 0.912,
+  "peak_at": 0.068,
+  "peak_db": -1.0,
+  "description": "Digital zap: a quick electric accent."
+ },
+ "digital_zap2": {
+  "file": "sci-fi/digital_zap2.mp3",
+  "category": "sci-fi",
+  "duration": 1.159,
+  "peak_at": 0.035,
+  "peak_db": -1.0,
+  "description": "Digital zap: a quick electric accent."
+ },
+ "glitch": {
+  "file": "sci-fi/glitch.mp3",
+  "category": "sci-fi",
+  "duration": 0.35,
+  "peak_at": 0.021,
+  "peak_db": -1.0,
+  "description": "Glitch: a digital hard cut or glitch effect."
+ },
+ "interface_glitch_001": {
+  "file": "sci-fi/interface_glitch_001.mp3",
+  "category": "sci-fi",
+  "duration": 0.017,
+  "peak_at": 0.002,
+  "peak_db": -1.0,
+  "description": "Glitch blip: a short digital glitch accent."
+ },
+ "interface_glitch_002": {
+  "file": "sci-fi/interface_glitch_002.mp3",
+  "category": "sci-fi",
+  "duration": 0.027,
+  "peak_at": 0.003,
+  "peak_db": -1.0,
+  "description": "Glitch blip: a short digital glitch accent."
+ },
+ "interface_glitch_004": {
+  "file": "sci-fi/interface_glitch_004.mp3",
+  "category": "sci-fi",
+  "duration": 0.02,
+  "peak_at": 0.01,
+  "peak_db": -2.1,
+  "description": "Glitch blip: a short digital glitch accent."
+ },
+ "sci_computer_noise_000": {
+  "file": "sci-fi/sci_computer_noise_000.mp3",
+  "category": "sci-fi",
+  "duration": 5.0,
+  "peak_at": 0.608,
+  "peak_db": -1.0,
+  "description": "Computer processing noise: a data or AI moment."
+ },
+ "sci_computer_noise_001": {
+  "file": "sci-fi/sci_computer_noise_001.mp3",
+  "category": "sci-fi",
+  "duration": 5.0,
+  "peak_at": 0.305,
+  "peak_db": -1.0,
+  "description": "Computer processing noise: a data or AI moment."
+ },
+ "sci_computer_noise_002": {
+  "file": "sci-fi/sci_computer_noise_002.mp3",
+  "category": "sci-fi",
+  "duration": 5.0,
+  "peak_at": 3.811,
+  "peak_db": -1.0,
+  "description": "Computer processing noise: a data or AI moment."
+ },
+ "sci_computer_noise_003": {
+  "file": "sci-fi/sci_computer_noise_003.mp3",
+  "category": "sci-fi",
+  "duration": 5.0,
+  "peak_at": 2.493,
+  "peak_db": -1.0,
+  "description": "Computer processing noise: a data or AI moment."
+ },
+ "sci_door_close_000": {
+  "file": "sci-fi/sci_door_close_000.mp3",
+  "category": "sci-fi",
+  "duration": 0.521,
+  "peak_at": 0.51,
+  "peak_db": -2.4,
+  "description": "Sci-fi door closing: a panel or screen closing."
+ },
+ "sci_door_close_001": {
+  "file": "sci-fi/sci_door_close_001.mp3",
+  "category": "sci-fi",
+  "duration": 0.521,
+  "peak_at": 0.509,
+  "peak_db": -2.4,
+  "description": "Sci-fi door closing: a panel or screen closing."
+ },
+ "sci_door_close_002": {
+  "file": "sci-fi/sci_door_close_002.mp3",
+  "category": "sci-fi",
+  "duration": 0.525,
+  "peak_at": 0.51,
+  "peak_db": -2.8,
+  "description": "Sci-fi door closing: a panel or screen closing."
+ },
+ "sci_door_open_000": {
+  "file": "sci-fi/sci_door_open_000.mp3",
+  "category": "sci-fi",
+  "duration": 0.532,
+  "peak_at": 0.002,
+  "peak_db": -1.0,
+  "description": "Sci-fi door opening: a panel or screen opening."
+ },
+ "sci_door_open_001": {
+  "file": "sci-fi/sci_door_open_001.mp3",
+  "category": "sci-fi",
+  "duration": 0.529,
+  "peak_at": 0.0,
+  "peak_db": -1.0,
+  "description": "Sci-fi door opening: a panel or screen opening."
+ },
+ "sci_door_open_002": {
+  "file": "sci-fi/sci_door_open_002.mp3",
+  "category": "sci-fi",
+  "duration": 0.533,
+  "peak_at": 0.001,
+  "peak_db": -1.0,
+  "description": "Sci-fi door opening: a panel or screen opening."
+ },
+ "sci_engine_circular_000": {
+  "file": "sci-fi/sci_engine_circular_000.mp3",
+  "category": "sci-fi",
+  "duration": 5.0,
+  "peak_at": 0.737,
+  "peak_db": -1.0,
+  "description": "Circular engine hum: a background tech texture."
+ },
+ "sci_engine_circular_001": {
+  "file": "sci-fi/sci_engine_circular_001.mp3",
+  "category": "sci-fi",
+  "duration": 5.0,
+  "peak_at": 4.328,
+  "peak_db": -1.0,
+  "description": "Circular engine hum: a background tech texture."
+ },
+ "sci_engine_circular_002": {
+  "file": "sci-fi/sci_engine_circular_002.mp3",
+  "category": "sci-fi",
+  "duration": 5.0,
+  "peak_at": 0.932,
+  "peak_db": -1.0,
+  "description": "Circular engine hum: a background tech texture."
+ },
+ "sci_engine_circular_003": {
+  "file": "sci-fi/sci_engine_circular_003.mp3",
+  "category": "sci-fi",
+  "duration": 5.0,
+  "peak_at": 2.113,
+  "peak_db": -1.0,
+  "description": "Circular engine hum: a background tech texture."
+ },
+ "sci_engine_circular_004": {
+  "file": "sci-fi/sci_engine_circular_004.mp3",
+  "category": "sci-fi",
+  "duration": 5.0,
+  "peak_at": 2.655,
+  "peak_db": -1.0,
+  "description": "Circular engine hum: a background tech texture."
+ },
+ "sci_force_field_000": {
+  "file": "sci-fi/sci_force_field_000.mp3",
+  "category": "sci-fi",
+  "duration": 0.837,
+  "peak_at": 0.139,
+  "peak_db": -1.0,
+  "description": "Force field hum: a shield or glowing element."
+ },
+ "sci_force_field_001": {
+  "file": "sci-fi/sci_force_field_001.mp3",
+  "category": "sci-fi",
+  "duration": 0.838,
+  "peak_at": 0.138,
+  "peak_db": -1.0,
+  "description": "Force field hum: a shield or glowing element."
+ },
+ "sci_force_field_002": {
+  "file": "sci-fi/sci_force_field_002.mp3",
+  "category": "sci-fi",
+  "duration": 0.844,
+  "peak_at": 0.138,
+  "peak_db": -1.0,
+  "description": "Force field hum: a shield or glowing element."
+ },
+ "sci_force_field_003": {
+  "file": "sci-fi/sci_force_field_003.mp3",
+  "category": "sci-fi",
+  "duration": 0.84,
+  "peak_at": 0.14,
+  "peak_db": -1.0,
+  "description": "Force field hum: a shield or glowing element."
+ },
+ "sci_force_field_004": {
+  "file": "sci-fi/sci_force_field_004.mp3",
+  "category": "sci-fi",
+  "duration": 0.842,
+  "peak_at": 0.138,
+  "peak_db": -1.0,
+  "description": "Force field hum: a shield or glowing element."
+ },
+ "sci_laser_large_000": {
+  "file": "sci-fi/sci_laser_large_000.mp3",
+  "category": "sci-fi",
+  "duration": 0.677,
+  "peak_at": 0.003,
+  "peak_db": -1.0,
+  "description": "Big laser: a strong techy hit."
+ },
+ "sci_laser_large_001": {
+  "file": "sci-fi/sci_laser_large_001.mp3",
+  "category": "sci-fi",
+  "duration": 0.721,
+  "peak_at": 0.003,
+  "peak_db": -1.0,
+  "description": "Big laser: a strong techy hit."
+ },
+ "sci_laser_large_002": {
+  "file": "sci-fi/sci_laser_large_002.mp3",
+  "category": "sci-fi",
+  "duration": 0.744,
+  "peak_at": 0.002,
+  "peak_db": -1.0,
+  "description": "Big laser: a strong techy hit."
+ },
+ "sci_laser_large_003": {
+  "file": "sci-fi/sci_laser_large_003.mp3",
+  "category": "sci-fi",
+  "duration": 0.716,
+  "peak_at": 0.002,
+  "peak_db": -1.0,
+  "description": "Big laser: a strong techy hit."
+ },
+ "sci_laser_large_004": {
+  "file": "sci-fi/sci_laser_large_004.mp3",
+  "category": "sci-fi",
+  "duration": 0.693,
+  "peak_at": 0.008,
+  "peak_db": -1.0,
+  "description": "Big laser: a strong techy hit."
+ },
+ "sci_laser_retro_000": {
+  "file": "sci-fi/sci_laser_retro_000.mp3",
+  "category": "sci-fi",
+  "duration": 0.235,
+  "peak_at": 0.002,
+  "peak_db": -1.0,
+  "description": "Retro laser: an 8-bit style zap."
+ },
+ "sci_laser_retro_001": {
+  "file": "sci-fi/sci_laser_retro_001.mp3",
+  "category": "sci-fi",
+  "duration": 0.236,
+  "peak_at": 0.006,
+  "peak_db": -1.0,
+  "description": "Retro laser: an 8-bit style zap."
+ },
+ "sci_laser_retro_002": {
+  "file": "sci-fi/sci_laser_retro_002.mp3",
+  "category": "sci-fi",
+  "duration": 0.255,
+  "peak_at": 0.001,
+  "peak_db": -1.0,
+  "description": "Retro laser: an 8-bit style zap."
+ },
+ "sci_laser_retro_003": {
+  "file": "sci-fi/sci_laser_retro_003.mp3",
+  "category": "sci-fi",
+  "duration": 0.255,
+  "peak_at": 0.002,
+  "peak_db": -1.0,
+  "description": "Retro laser: an 8-bit style zap."
+ },
+ "sci_laser_retro_004": {
+  "file": "sci-fi/sci_laser_retro_004.mp3",
+  "category": "sci-fi",
+  "duration": 0.272,
+  "peak_at": 0.013,
+  "peak_db": -1.0,
+  "description": "Retro laser: an 8-bit style zap."
+ },
+ "sci_laser_small_000": {
+  "file": "sci-fi/sci_laser_small_000.mp3",
+  "category": "sci-fi",
+  "duration": 0.236,
+  "peak_at": 0.001,
+  "peak_db": -1.0,
+  "description": "Small laser: a light techy accent."
+ },
+ "sci_laser_small_001": {
+  "file": "sci-fi/sci_laser_small_001.mp3",
+  "category": "sci-fi",
+  "duration": 0.244,
+  "peak_at": 0.003,
+  "peak_db": -1.0,
+  "description": "Small laser: a light techy accent."
+ },
+ "sci_laser_small_002": {
+  "file": "sci-fi/sci_laser_small_002.mp3",
+  "category": "sci-fi",
+  "duration": 0.344,
+  "peak_at": 0.0,
+  "peak_db": -1.0,
+  "description": "Small laser: a light techy accent."
+ },
+ "sci_laser_small_003": {
+  "file": "sci-fi/sci_laser_small_003.mp3",
+  "category": "sci-fi",
+  "duration": 0.298,
+  "peak_at": 0.0,
+  "peak_db": -1.0,
+  "description": "Small laser: a light techy accent."
+ },
+ "sci_laser_small_004": {
+  "file": "sci-fi/sci_laser_small_004.mp3",
+  "category": "sci-fi",
+  "duration": 0.411,
+  "peak_at": 0.008,
+  "peak_db": -1.0,
+  "description": "Small laser: a light techy accent."
+ },
+ "sci_slime_000": {
+  "file": "sci-fi/sci_slime_000.mp3",
+  "category": "sci-fi",
+  "duration": 0.5,
+  "peak_at": 0.411,
+  "peak_db": -1.0,
+  "description": "Slime squelch: a gooey, playful accent."
+ },
+ "sci_slime_001": {
+  "file": "sci-fi/sci_slime_001.mp3",
+  "category": "sci-fi",
+  "duration": 4.71,
+  "peak_at": 4.616,
+  "peak_db": -1.0,
+  "description": "Slime squelch: a gooey, playful accent."
+ },
+ "sci_space_engine_000": {
+  "file": "sci-fi/sci_space_engine_000.mp3",
+  "category": "sci-fi",
+  "duration": 5.0,
+  "peak_at": 4.572,
+  "peak_db": -1.0,
+  "description": "Space engine rumble: a background texture."
+ },
+ "sci_space_engine_001": {
+  "file": "sci-fi/sci_space_engine_001.mp3",
+  "category": "sci-fi",
+  "duration": 5.0,
+  "peak_at": 2.991,
+  "peak_db": -1.0,
+  "description": "Space engine rumble: a background texture."
+ },
+ "sci_space_engine_002": {
+  "file": "sci-fi/sci_space_engine_002.mp3",
+  "category": "sci-fi",
+  "duration": 5.0,
+  "peak_at": 4.985,
+  "peak_db": -2.5,
+  "description": "Space engine rumble: a background texture."
+ },
+ "sci_space_engine_003": {
+  "file": "sci-fi/sci_space_engine_003.mp3",
+  "category": "sci-fi",
+  "duration": 5.0,
+  "peak_at": 0.008,
+  "peak_db": -1.0,
+  "description": "Space engine rumble: a background texture."
+ },
+ "sci_space_engine_large_000": {
+  "file": "sci-fi/sci_space_engine_large_000.mp3",
+  "category": "sci-fi",
+  "duration": 5.0,
+  "peak_at": 3.838,
+  "peak_db": -1.0,
+  "description": "Large engine rumble: a heavy background texture."
+ },
+ "sci_space_engine_large_001": {
+  "file": "sci-fi/sci_space_engine_large_001.mp3",
+  "category": "sci-fi",
+  "duration": 5.0,
+  "peak_at": 2.331,
+  "peak_db": -1.0,
+  "description": "Large engine rumble: a heavy background texture."
+ },
+ "sci_space_engine_large_002": {
+  "file": "sci-fi/sci_space_engine_large_002.mp3",
+  "category": "sci-fi",
+  "duration": 5.0,
+  "peak_at": 4.004,
+  "peak_db": -1.0,
+  "description": "Large engine rumble: a heavy background texture."
+ },
+ "sci_space_engine_large_003": {
+  "file": "sci-fi/sci_space_engine_large_003.mp3",
+  "category": "sci-fi",
+  "duration": 5.0,
+  "peak_at": 2.108,
+  "peak_db": -1.0,
+  "description": "Large engine rumble: a heavy background texture."
+ },
+ "sci_space_engine_large_004": {
+  "file": "sci-fi/sci_space_engine_large_004.mp3",
+  "category": "sci-fi",
+  "duration": 5.0,
+  "peak_at": 4.349,
+  "peak_db": -1.0,
+  "description": "Large engine rumble: a heavy background texture."
+ },
+ "sci_space_engine_low_000": {
+  "file": "sci-fi/sci_space_engine_low_000.mp3",
+  "category": "sci-fi",
+  "duration": 5.0,
+  "peak_at": 2.011,
+  "peak_db": -1.0,
+  "description": "Low engine rumble: a deep background texture."
+ },
+ "sci_space_engine_low_001": {
+  "file": "sci-fi/sci_space_engine_low_001.mp3",
+  "category": "sci-fi",
+  "duration": 5.0,
+  "peak_at": 3.808,
+  "peak_db": -1.0,
+  "description": "Low engine rumble: a deep background texture."
+ },
+ "sci_space_engine_low_002": {
+  "file": "sci-fi/sci_space_engine_low_002.mp3",
+  "category": "sci-fi",
+  "duration": 5.0,
+  "peak_at": 4.306,
+  "peak_db": -1.0,
+  "description": "Low engine rumble: a deep background texture."
+ },
+ "sci_space_engine_low_003": {
+  "file": "sci-fi/sci_space_engine_low_003.mp3",
+  "category": "sci-fi",
+  "duration": 5.0,
+  "peak_at": 1.543,
+  "peak_db": -1.0,
+  "description": "Low engine rumble: a deep background texture."
+ },
+ "sci_space_engine_low_004": {
+  "file": "sci-fi/sci_space_engine_low_004.mp3",
+  "category": "sci-fi",
+  "duration": 5.0,
+  "peak_at": 0.697,
+  "peak_db": -1.0,
+  "description": "Low engine rumble: a deep background texture."
+ },
+ "sci_space_engine_small_000": {
+  "file": "sci-fi/sci_space_engine_small_000.mp3",
+  "category": "sci-fi",
+  "duration": 5.0,
+  "peak_at": 0.547,
+  "peak_db": -1.0,
+  "description": "Small engine hum: a light background texture."
+ },
+ "sci_space_engine_small_001": {
+  "file": "sci-fi/sci_space_engine_small_001.mp3",
+  "category": "sci-fi",
+  "duration": 5.0,
+  "peak_at": 4.371,
+  "peak_db": -1.0,
+  "description": "Small engine hum: a light background texture."
+ },
+ "sci_space_engine_small_002": {
+  "file": "sci-fi/sci_space_engine_small_002.mp3",
+  "category": "sci-fi",
+  "duration": 5.0,
+  "peak_at": 0.236,
+  "peak_db": -1.0,
+  "description": "Small engine hum: a light background texture."
+ },
+ "sci_space_engine_small_003": {
+  "file": "sci-fi/sci_space_engine_small_003.mp3",
+  "category": "sci-fi",
+  "duration": 5.0,
+  "peak_at": 0.127,
+  "peak_db": -1.0,
+  "description": "Small engine hum: a light background texture."
+ },
+ "sci_space_engine_small_004": {
+  "file": "sci-fi/sci_space_engine_small_004.mp3",
+  "category": "sci-fi",
+  "duration": 5.0,
+  "peak_at": 3.922,
+  "peak_db": -1.0,
+  "description": "Small engine hum: a light background texture."
+ },
+ "sci_thruster_fire_000": {
+  "file": "sci-fi/sci_thruster_fire_000.mp3",
+  "category": "sci-fi",
+  "duration": 5.0,
+  "peak_at": 1.137,
+  "peak_db": -1.0,
+  "description": "Thruster fire: launch or blast-off."
+ },
+ "sci_thruster_fire_001": {
+  "file": "sci-fi/sci_thruster_fire_001.mp3",
+  "category": "sci-fi",
+  "duration": 5.0,
+  "peak_at": 1.137,
+  "peak_db": -1.0,
+  "description": "Thruster fire: launch or blast-off."
+ },
+ "sci_thruster_fire_002": {
+  "file": "sci-fi/sci_thruster_fire_002.mp3",
+  "category": "sci-fi",
+  "duration": 5.0,
+  "peak_at": 1.137,
+  "peak_db": -1.0,
+  "description": "Thruster fire: launch or blast-off."
+ },
+ "sci_thruster_fire_003": {
+  "file": "sci-fi/sci_thruster_fire_003.mp3",
+  "category": "sci-fi",
+  "duration": 5.0,
+  "peak_at": 1.138,
+  "peak_db": -1.0,
+  "description": "Thruster fire: launch or blast-off."
+ },
+ "sci_thruster_fire_004": {
+  "file": "sci-fi/sci_thruster_fire_004.mp3",
+  "category": "sci-fi",
+  "duration": 5.0,
+  "peak_at": 1.138,
+  "peak_db": -1.0,
+  "description": "Thruster fire: launch or blast-off."
+ },
+ "rpg_draw_knife1": {
+  "file": "transitions/rpg_draw_knife1.mp3",
+  "category": "transitions",
+  "duration": 0.232,
+  "peak_at": 0.092,
+  "peak_db": -1.0,
+  "description": "Metallic blade draw: a sharp wipe or slash transition."
+ },
+ "rpg_draw_knife2": {
+  "file": "transitions/rpg_draw_knife2.mp3",
+  "category": "transitions",
+  "duration": 0.331,
+  "peak_at": 0.106,
+  "peak_db": -1.0,
+  "description": "Metallic blade draw: a sharp wipe or slash transition."
+ },
+ "rpg_draw_knife3": {
+  "file": "transitions/rpg_draw_knife3.mp3",
+  "category": "transitions",
+  "duration": 0.272,
+  "peak_at": 0.076,
+  "peak_db": -1.0,
+  "description": "Metallic blade draw: a sharp wipe or slash transition."
+ },
+ "rpg_knife_slice": {
+  "file": "transitions/rpg_knife_slice.mp3",
+  "category": "transitions",
+  "duration": 0.389,
+  "peak_at": 0.161,
+  "peak_db": -1.0,
+  "description": "Blade slice: a slash wipe or a split-screen cut."
+ },
+ "rpg_knife_slice2": {
+  "file": "transitions/rpg_knife_slice2.mp3",
+  "category": "transitions",
+  "duration": 0.477,
+  "peak_at": 0.008,
+  "peak_db": -1.0,
+  "description": "Blade slice: a slash wipe or a split-screen cut."
+ },
+ "swipe": {
+  "file": "transitions/swipe.mp3",
+  "category": "transitions",
+  "duration": 0.35,
+  "peak_at": 0.119,
+  "peak_db": -1.0,
+  "description": "Quick swipe: a card or panel sliding in or out, or a fast scene cut."
+ },
+ "swipe_01": {
+  "file": "transitions/swipe_01.mp3",
+  "category": "transitions",
+  "duration": 0.192,
+  "peak_at": 0.056,
+  "peak_db": -1.0,
+  "description": "Quick swipe: a card or panel sliding in or out, or a fast scene cut."
+ },
+ "swipe_02": {
+  "file": "transitions/swipe_02.mp3",
+  "category": "transitions",
+  "duration": 0.184,
+  "peak_at": 0.056,
+  "peak_db": -1.0,
+  "description": "Quick swipe: a card or panel sliding in or out, or a fast scene cut."
+ },
+ "swipe_03": {
+  "file": "transitions/swipe_03.mp3",
+  "category": "transitions",
+  "duration": 0.286,
+  "peak_at": 0.088,
+  "peak_db": -1.0,
+  "description": "Quick swipe: a card or panel sliding in or out, or a fast scene cut."
+ },
+ "swipe_04": {
+  "file": "transitions/swipe_04.mp3",
+  "category": "transitions",
+  "duration": 0.329,
+  "peak_at": 0.103,
+  "peak_db": -1.0,
+  "description": "Quick swipe: a card or panel sliding in or out, or a fast scene cut."
+ },
+ "swipe_05": {
+  "file": "transitions/swipe_05.mp3",
+  "category": "transitions",
+  "duration": 0.328,
+  "peak_at": 0.099,
+  "peak_db": -1.0,
+  "description": "Quick swipe: a card or panel sliding in or out, or a fast scene cut."
+ },
+ "swipe_06": {
+  "file": "transitions/swipe_06.mp3",
+  "category": "transitions",
+  "duration": 0.161,
+  "peak_at": 0.053,
+  "peak_db": -1.0,
+  "description": "Quick swipe: a card or panel sliding in or out, or a fast scene cut."
+ },
+ "swipe_07": {
+  "file": "transitions/swipe_07.mp3",
+  "category": "transitions",
+  "duration": 0.272,
+  "peak_at": 0.087,
+  "peak_db": -1.0,
+  "description": "Quick swipe: a card or panel sliding in or out, or a fast scene cut."
+ },
+ "swipe_08": {
+  "file": "transitions/swipe_08.mp3",
+  "category": "transitions",
+  "duration": 0.284,
+  "peak_at": 0.09,
+  "peak_db": -1.0,
+  "description": "Quick swipe: a card or panel sliding in or out, or a fast scene cut."
+ },
+ "swipe_09": {
+  "file": "transitions/swipe_09.mp3",
+  "category": "transitions",
+  "duration": 0.33,
+  "peak_at": 0.143,
+  "peak_db": -1.0,
+  "description": "Quick swipe: a card or panel sliding in or out, or a fast scene cut."
+ },
+ "swipe_10": {
+  "file": "transitions/swipe_10.mp3",
+  "category": "transitions",
+  "duration": 0.152,
+  "peak_at": 0.045,
+  "peak_db": -1.0,
+  "description": "Quick swipe: a card or panel sliding in or out, or a fast scene cut."
+ },
+ "swipe_11": {
+  "file": "transitions/swipe_11.mp3",
+  "category": "transitions",
+  "duration": 0.278,
+  "peak_at": 0.098,
+  "peak_db": -1.0,
+  "description": "Quick swipe: a card or panel sliding in or out, or a fast scene cut."
+ },
+ "swipe_12": {
+  "file": "transitions/swipe_12.mp3",
+  "category": "transitions",
+  "duration": 0.282,
+  "peak_at": 0.104,
+  "peak_db": -1.0,
+  "description": "Quick swipe: a card or panel sliding in or out, or a fast scene cut."
+ },
+ "whoosh": {
+  "file": "transitions/whoosh.mp3",
+  "category": "transitions",
+  "duration": 0.549,
+  "peak_at": 0.2,
+  "peak_db": -1.0,
+  "description": "Whoosh: a scene cut or a large element flying across the frame."
+ },
+ "whoosh_air": {
+  "file": "transitions/whoosh_air.mp3",
+  "category": "transitions",
+  "duration": 0.688,
+  "peak_at": 0.485,
+  "peak_db": -1.0,
+  "description": "Airy, light whoosh: text or a light element sliding in."
+ },
+ "whoosh_air_03": {
+  "file": "transitions/whoosh_air_03.mp3",
+  "category": "transitions",
+  "duration": 0.929,
+  "peak_at": 0.523,
+  "peak_db": -1.0,
+  "description": "Airy, light whoosh: text or a light element sliding in."
+ },
+ "whoosh_air_07": {
+  "file": "transitions/whoosh_air_07.mp3",
+  "category": "transitions",
+  "duration": 0.656,
+  "peak_at": 0.405,
+  "peak_db": -1.0,
+  "description": "Airy, light whoosh: text or a light element sliding in."
+ },
+ "whoosh_air_11": {
+  "file": "transitions/whoosh_air_11.mp3",
+  "category": "transitions",
+  "duration": 1.18,
+  "peak_at": 0.593,
+  "peak_db": -1.0,
+  "description": "Airy, light whoosh: text or a light element sliding in."
+ },
+ "whoosh_air_15": {
+  "file": "transitions/whoosh_air_15.mp3",
+  "category": "transitions",
+  "duration": 1.049,
+  "peak_at": 0.694,
+  "peak_db": -1.0,
+  "description": "Airy, light whoosh: text or a light element sliding in."
+ },
+ "whoosh_air_19": {
+  "file": "transitions/whoosh_air_19.mp3",
+  "category": "transitions",
+  "duration": 0.79,
+  "peak_at": 0.518,
+  "peak_db": -1.0,
+  "description": "Airy, light whoosh: text or a light element sliding in."
+ },
+ "whoosh_air_2": {
+  "file": "transitions/whoosh_air_2.mp3",
+  "category": "transitions",
+  "duration": 0.631,
+  "peak_at": 0.425,
+  "peak_db": -1.0,
+  "description": "Airy, light whoosh: text or a light element sliding in."
+ },
+ "whoosh_air_23": {
+  "file": "transitions/whoosh_air_23.mp3",
+  "category": "transitions",
+  "duration": 1.056,
+  "peak_at": 0.687,
+  "peak_db": -1.0,
+  "description": "Airy, light whoosh: text or a light element sliding in."
+ },
+ "whoosh_air_3": {
+  "file": "transitions/whoosh_air_3.mp3",
+  "category": "transitions",
+  "duration": 0.774,
+  "peak_at": 0.526,
+  "peak_db": -1.0,
+  "description": "Airy, light whoosh: text or a light element sliding in."
+ },
+ "whoosh_deep_04": {
+  "file": "transitions/whoosh_deep_04.mp3",
+  "category": "transitions",
+  "duration": 0.497,
+  "peak_at": 0.248,
+  "peak_db": -1.0,
+  "description": "Deep, heavy whoosh: a big scene change or cinematic cut."
+ },
+ "whoosh_deep_08": {
+  "file": "transitions/whoosh_deep_08.mp3",
+  "category": "transitions",
+  "duration": 1.091,
+  "peak_at": 0.457,
+  "peak_db": -1.0,
+  "description": "Deep, heavy whoosh: a big scene change or cinematic cut."
+ },
+ "whoosh_deep_12": {
+  "file": "transitions/whoosh_deep_12.mp3",
+  "category": "transitions",
+  "duration": 0.611,
+  "peak_at": 0.297,
+  "peak_db": -1.0,
+  "description": "Deep, heavy whoosh: a big scene change or cinematic cut."
+ },
+ "whoosh_deep_16": {
+  "file": "transitions/whoosh_deep_16.mp3",
+  "category": "transitions",
+  "duration": 0.653,
+  "peak_at": 0.389,
+  "peak_db": -1.0,
+  "description": "Deep, heavy whoosh: a big scene change or cinematic cut."
+ },
+ "whoosh_deep_20": {
+  "file": "transitions/whoosh_deep_20.mp3",
+  "category": "transitions",
+  "duration": 0.619,
+  "peak_at": 0.27,
+  "peak_db": -1.0,
+  "description": "Deep, heavy whoosh: a big scene change or cinematic cut."
+ },
+ "whoosh_deep_24": {
+  "file": "transitions/whoosh_deep_24.mp3",
+  "category": "transitions",
+  "duration": 0.449,
+  "peak_at": 0.186,
+  "peak_db": -1.0,
+  "description": "Deep, heavy whoosh: a big scene change or cinematic cut."
+ },
+ "whoosh_fast": {
+  "file": "transitions/whoosh_fast.mp3",
+  "category": "transitions",
+  "duration": 0.458,
+  "peak_at": 0.359,
+  "peak_db": -1.0,
+  "description": "Fast, sharp whoosh: quick scene cut or a card moving fast."
+ },
+ "whoosh_fast_02": {
+  "file": "transitions/whoosh_fast_02.mp3",
+  "category": "transitions",
+  "duration": 0.82,
+  "peak_at": 0.322,
+  "peak_db": -1.0,
+  "description": "Fast, sharp whoosh: quick scene cut or a card moving fast."
+ },
+ "whoosh_fast_06": {
+  "file": "transitions/whoosh_fast_06.mp3",
+  "category": "transitions",
+  "duration": 1.089,
+  "peak_at": 0.435,
+  "peak_db": -1.0,
+  "description": "Fast, sharp whoosh: quick scene cut or a card moving fast."
+ },
+ "whoosh_fast_10": {
+  "file": "transitions/whoosh_fast_10.mp3",
+  "category": "transitions",
+  "duration": 0.71,
+  "peak_at": 0.384,
+  "peak_db": -1.0,
+  "description": "Fast, sharp whoosh: quick scene cut or a card moving fast."
+ },
+ "whoosh_fast_14": {
+  "file": "transitions/whoosh_fast_14.mp3",
+  "category": "transitions",
+  "duration": 0.975,
+  "peak_at": 0.563,
+  "peak_db": -1.0,
+  "description": "Fast, sharp whoosh: quick scene cut or a card moving fast."
+ },
+ "whoosh_fast_18": {
+  "file": "transitions/whoosh_fast_18.mp3",
+  "category": "transitions",
+  "duration": 0.795,
+  "peak_at": 0.482,
+  "peak_db": -1.0,
+  "description": "Fast, sharp whoosh: quick scene cut or a card moving fast."
+ },
+ "whoosh_fast_2": {
+  "file": "transitions/whoosh_fast_2.mp3",
+  "category": "transitions",
+  "duration": 0.413,
+  "peak_at": 0.328,
+  "peak_db": -1.0,
+  "description": "Fast, sharp whoosh: quick scene cut or a card moving fast."
+ },
+ "whoosh_fast_22": {
+  "file": "transitions/whoosh_fast_22.mp3",
+  "category": "transitions",
+  "duration": 0.975,
+  "peak_at": 0.476,
+  "peak_db": -1.0,
+  "description": "Fast, sharp whoosh: quick scene cut or a card moving fast."
+ },
+ "whoosh_fast_3": {
+  "file": "transitions/whoosh_fast_3.mp3",
+  "category": "transitions",
+  "duration": 0.521,
+  "peak_at": 0.398,
+  "peak_db": -1.0,
+  "description": "Fast, sharp whoosh: quick scene cut or a card moving fast."
+ },
+ "whoosh_rev": {
+  "file": "transitions/whoosh_rev.mp3",
+  "category": "transitions",
+  "duration": 0.551,
+  "peak_at": 0.49,
+  "peak_db": -1.0,
+  "description": "Reversed whoosh that builds into a cut: place it so it ends on the cut."
+ },
+ "whoosh_short": {
+  "file": "transitions/whoosh_short.mp3",
+  "category": "transitions",
+  "duration": 0.3,
+  "peak_at": 0.098,
+  "peak_db": -1.0,
+  "description": "Short whoosh: a small fast move or quick cut."
+ },
+ "whoosh_soft": {
+  "file": "transitions/whoosh_soft.mp3",
+  "category": "transitions",
+  "duration": 0.82,
+  "peak_at": 0.326,
+  "peak_db": -1.0,
+  "description": "Soft whoosh: subtle transition that sits under a voiceover."
+ },
+ "whoosh_soft_01": {
+  "file": "transitions/whoosh_soft_01.mp3",
+  "category": "transitions",
+  "duration": 0.928,
+  "peak_at": 0.372,
+  "peak_db": -1.0,
+  "description": "Soft whoosh: subtle transition that sits under a voiceover."
+ },
+ "whoosh_soft_05": {
+  "file": "transitions/whoosh_soft_05.mp3",
+  "category": "transitions",
+  "duration": 0.783,
+  "peak_at": 0.42,
+  "peak_db": -1.0,
+  "description": "Soft whoosh: subtle transition that sits under a voiceover."
+ },
+ "whoosh_soft_09": {
+  "file": "transitions/whoosh_soft_09.mp3",
+  "category": "transitions",
+  "duration": 0.443,
+  "peak_at": 0.267,
+  "peak_db": -1.0,
+  "description": "Soft whoosh: subtle transition that sits under a voiceover."
+ },
+ "whoosh_soft_13": {
+  "file": "transitions/whoosh_soft_13.mp3",
+  "category": "transitions",
+  "duration": 0.676,
+  "peak_at": 0.283,
+  "peak_db": -1.0,
+  "description": "Soft whoosh: subtle transition that sits under a voiceover."
+ },
+ "whoosh_soft_17": {
+  "file": "transitions/whoosh_soft_17.mp3",
+  "category": "transitions",
+  "duration": 0.852,
+  "peak_at": 0.543,
+  "peak_db": -1.0,
+  "description": "Soft whoosh: subtle transition that sits under a voiceover."
+ },
+ "whoosh_soft_2": {
+  "file": "transitions/whoosh_soft_2.mp3",
+  "category": "transitions",
+  "duration": 0.631,
+  "peak_at": 0.425,
+  "peak_db": -1.0,
+  "description": "Soft whoosh: subtle transition that sits under a voiceover."
+ },
+ "whoosh_soft_21": {
+  "file": "transitions/whoosh_soft_21.mp3",
+  "category": "transitions",
+  "duration": 1.048,
+  "peak_at": 0.495,
+  "peak_db": -1.0,
+  "description": "Soft whoosh: subtle transition that sits under a voiceover."
+ },
+ "whoosh_soft_3": {
+  "file": "transitions/whoosh_soft_3.mp3",
+  "category": "transitions",
+  "duration": 0.774,
+  "peak_at": 0.526,
+  "peak_db": -1.0,
+  "description": "Soft whoosh: subtle transition that sits under a voiceover."
+ },
+ "zip_soft": {
+  "file": "transitions/zip_soft.mp3",
+  "category": "transitions",
+  "duration": 0.28,
+  "peak_at": 0.015,
+  "peak_db": -1.0,
+  "description": "Soft zip: a small element or line sliding quickly."
+ },
+ "check": {
+  "file": "ui-clicks/check.mp3",
+  "category": "ui-clicks",
+  "duration": 0.154,
+  "peak_at": 0.029,
+  "peak_db": -1.0,
+  "description": "Check: a checkmark or task done."
+ },
+ "click": {
+  "file": "ui-clicks/click.mp3",
+  "category": "ui-clicks",
+  "duration": 0.05,
+  "peak_at": 0.002,
+  "peak_db": -1.0,
+  "description": "Click: an on-screen button tap."
+ },
+ "interface_back_001": {
+  "file": "ui-clicks/interface_back_001.mp3",
+  "category": "ui-clicks",
+  "duration": 0.061,
+  "peak_at": 0.008,
+  "peak_db": -1.0,
+  "description": "UI back: going back or closing a step."
+ },
+ "interface_back_002": {
+  "file": "ui-clicks/interface_back_002.mp3",
+  "category": "ui-clicks",
+  "duration": 0.089,
+  "peak_at": 0.008,
+  "peak_db": -1.0,
+  "description": "UI back: going back or closing a step."
+ },
+ "interface_back_003": {
+  "file": "ui-clicks/interface_back_003.mp3",
+  "category": "ui-clicks",
+  "duration": 0.09,
+  "peak_at": 0.005,
+  "peak_db": -1.0,
+  "description": "UI back: going back or closing a step."
+ },
+ "interface_back_004": {
+  "file": "ui-clicks/interface_back_004.mp3",
+  "category": "ui-clicks",
+  "duration": 0.092,
+  "peak_at": 0.001,
+  "peak_db": -1.0,
+  "description": "UI back: going back or closing a step."
+ },
+ "interface_click_001": {
+  "file": "ui-clicks/interface_click_001.mp3",
+  "category": "ui-clicks",
+  "duration": 0.097,
+  "peak_at": 0.001,
+  "peak_db": -1.0,
+  "description": "UI click: an on-screen button tap."
+ },
+ "interface_click_004": {
+  "file": "ui-clicks/interface_click_004.mp3",
+  "category": "ui-clicks",
+  "duration": 0.022,
+  "peak_at": 0.0,
+  "peak_db": -1.0,
+  "description": "UI click: an on-screen button tap."
+ },
+ "interface_close_001": {
+  "file": "ui-clicks/interface_close_001.mp3",
+  "category": "ui-clicks",
+  "duration": 0.148,
+  "peak_at": 0.001,
+  "peak_db": -1.0,
+  "description": "UI close: a panel or popup closing."
+ },
+ "interface_close_002": {
+  "file": "ui-clicks/interface_close_002.mp3",
+  "category": "ui-clicks",
+  "duration": 0.314,
+  "peak_at": 0.0,
+  "peak_db": -1.0,
+  "description": "UI close: a panel or popup closing."
+ },
+ "interface_close_003": {
+  "file": "ui-clicks/interface_close_003.mp3",
+  "category": "ui-clicks",
+  "duration": 0.314,
+  "peak_at": 0.0,
+  "peak_db": -1.0,
+  "description": "UI close: a panel or popup closing."
+ },
+ "interface_close_004": {
+  "file": "ui-clicks/interface_close_004.mp3",
+  "category": "ui-clicks",
+  "duration": 0.323,
+  "peak_at": 0.001,
+  "peak_db": -1.0,
+  "description": "UI close: a panel or popup closing."
+ },
+ "interface_drop_001": {
+  "file": "ui-clicks/interface_drop_001.mp3",
+  "category": "ui-clicks",
+  "duration": 0.13,
+  "peak_at": 0.0,
+  "peak_db": -1.0,
+  "description": "UI drop: an item dropped into place."
+ },
+ "interface_drop_002": {
+  "file": "ui-clicks/interface_drop_002.mp3",
+  "category": "ui-clicks",
+  "duration": 0.188,
+  "peak_at": 0.0,
+  "peak_db": -1.0,
+  "description": "UI drop: an item dropped into place."
+ },
+ "interface_drop_003": {
+  "file": "ui-clicks/interface_drop_003.mp3",
+  "category": "ui-clicks",
+  "duration": 0.188,
+  "peak_at": 0.0,
+  "peak_db": -1.0,
+  "description": "UI drop: an item dropped into place."
+ },
+ "interface_drop_004": {
+  "file": "ui-clicks/interface_drop_004.mp3",
+  "category": "ui-clicks",
+  "duration": 0.284,
+  "peak_at": 0.001,
+  "peak_db": -1.0,
+  "description": "UI drop: an item dropped into place."
+ },
+ "interface_glass_001": {
+  "file": "ui-clicks/interface_glass_001.mp3",
+  "category": "ui-clicks",
+  "duration": 0.276,
+  "peak_at": 0.0,
+  "peak_db": -1.0,
+  "description": "Glassy tap: a clean, premium UI accent."
+ },
+ "interface_glass_002": {
+  "file": "ui-clicks/interface_glass_002.mp3",
+  "category": "ui-clicks",
+  "duration": 0.122,
+  "peak_at": 0.0,
+  "peak_db": -1.0,
+  "description": "Glassy tap: a clean, premium UI accent."
+ },
+ "interface_glass_003": {
+  "file": "ui-clicks/interface_glass_003.mp3",
+  "category": "ui-clicks",
+  "duration": 0.121,
+  "peak_at": 0.046,
+  "peak_db": -1.0,
+  "description": "Glassy tap: a clean, premium UI accent."
+ },
+ "interface_glass_004": {
+  "file": "ui-clicks/interface_glass_004.mp3",
+  "category": "ui-clicks",
+  "duration": 0.692,
+  "peak_at": 0.0,
+  "peak_db": -1.0,
+  "description": "Glassy tap: a clean, premium UI accent."
+ },
+ "interface_glass_005": {
+  "file": "ui-clicks/interface_glass_005.mp3",
+  "category": "ui-clicks",
+  "duration": 0.087,
+  "peak_at": 0.0,
+  "peak_db": -1.0,
+  "description": "Glassy tap: a clean, premium UI accent."
+ },
+ "interface_glass_006": {
+  "file": "ui-clicks/interface_glass_006.mp3",
+  "category": "ui-clicks",
+  "duration": 0.091,
+  "peak_at": 0.0,
+  "peak_db": -1.0,
+  "description": "Glassy tap: a clean, premium UI accent."
+ },
+ "interface_maximize_001": {
+  "file": "ui-clicks/interface_maximize_001.mp3",
+  "category": "ui-clicks",
+  "duration": 0.258,
+  "peak_at": 0.246,
+  "peak_db": -1.9,
+  "description": "UI expand: a card or window growing."
+ },
+ "interface_maximize_002": {
+  "file": "ui-clicks/interface_maximize_002.mp3",
+  "category": "ui-clicks",
+  "duration": 0.258,
+  "peak_at": 0.25,
+  "peak_db": -1.7,
+  "description": "UI expand: a card or window growing."
+ },
+ "interface_maximize_003": {
+  "file": "ui-clicks/interface_maximize_003.mp3",
+  "category": "ui-clicks",
+  "duration": 0.21,
+  "peak_at": 0.162,
+  "peak_db": -7.6,
+  "description": "UI expand: a card or window growing."
+ },
+ "interface_maximize_004": {
+  "file": "ui-clicks/interface_maximize_004.mp3",
+  "category": "ui-clicks",
+  "duration": 0.401,
+  "peak_at": 0.352,
+  "peak_db": -1.0,
+  "description": "UI expand: a card or window growing."
+ },
+ "interface_maximize_005": {
+  "file": "ui-clicks/interface_maximize_005.mp3",
+  "category": "ui-clicks",
+  "duration": 0.517,
+  "peak_at": 0.467,
+  "peak_db": -1.0,
+  "description": "UI expand: a card or window growing."
+ },
+ "interface_maximize_006": {
+  "file": "ui-clicks/interface_maximize_006.mp3",
+  "category": "ui-clicks",
+  "duration": 0.38,
+  "peak_at": 0.064,
+  "peak_db": -1.0,
+  "description": "UI expand: a card or window growing."
+ },
+ "interface_maximize_007": {
+  "file": "ui-clicks/interface_maximize_007.mp3",
+  "category": "ui-clicks",
+  "duration": 0.183,
+  "peak_at": 0.001,
+  "peak_db": -1.0,
+  "description": "UI expand: a card or window growing."
+ },
+ "interface_maximize_008": {
+  "file": "ui-clicks/interface_maximize_008.mp3",
+  "category": "ui-clicks",
+  "duration": 0.225,
+  "peak_at": 0.154,
+  "peak_db": -1.0,
+  "description": "UI expand: a card or window growing."
+ },
+ "interface_maximize_009": {
+  "file": "ui-clicks/interface_maximize_009.mp3",
+  "category": "ui-clicks",
+  "duration": 0.222,
+  "peak_at": 0.03,
+  "peak_db": -1.0,
+  "description": "UI expand: a card or window growing."
+ },
+ "interface_minimize_001": {
+  "file": "ui-clicks/interface_minimize_001.mp3",
+  "category": "ui-clicks",
+  "duration": 0.258,
+  "peak_at": 0.001,
+  "peak_db": -1.0,
+  "description": "UI shrink: a card or window shrinking away."
+ },
+ "interface_minimize_002": {
+  "file": "ui-clicks/interface_minimize_002.mp3",
+  "category": "ui-clicks",
+  "duration": 0.258,
+  "peak_at": 0.001,
+  "peak_db": -1.0,
+  "description": "UI shrink: a card or window shrinking away."
+ },
+ "interface_minimize_003": {
+  "file": "ui-clicks/interface_minimize_003.mp3",
+  "category": "ui-clicks",
+  "duration": 0.212,
+  "peak_at": 0.0,
+  "peak_db": -1.0,
+  "description": "UI shrink: a card or window shrinking away."
+ },
+ "interface_minimize_004": {
+  "file": "ui-clicks/interface_minimize_004.mp3",
+  "category": "ui-clicks",
+  "duration": 0.418,
+  "peak_at": 0.049,
+  "peak_db": -1.0,
+  "description": "UI shrink: a card or window shrinking away."
+ },
+ "interface_minimize_005": {
+  "file": "ui-clicks/interface_minimize_005.mp3",
+  "category": "ui-clicks",
+  "duration": 0.526,
+  "peak_at": 0.05,
+  "peak_db": -1.0,
+  "description": "UI shrink: a card or window shrinking away."
+ },
+ "interface_minimize_006": {
+  "file": "ui-clicks/interface_minimize_006.mp3",
+  "category": "ui-clicks",
+  "duration": 0.371,
+  "peak_at": 0.307,
+  "peak_db": -1.0,
+  "description": "UI shrink: a card or window shrinking away."
+ },
+ "interface_minimize_007": {
+  "file": "ui-clicks/interface_minimize_007.mp3",
+  "category": "ui-clicks",
+  "duration": 0.177,
+  "peak_at": 0.17,
+  "peak_db": -2.3,
+  "description": "UI shrink: a card or window shrinking away."
+ },
+ "interface_minimize_008": {
+  "file": "ui-clicks/interface_minimize_008.mp3",
+  "category": "ui-clicks",
+  "duration": 0.212,
+  "peak_at": 0.058,
+  "peak_db": -1.0,
+  "description": "UI shrink: a card or window shrinking away."
+ },
+ "interface_minimize_009": {
+  "file": "ui-clicks/interface_minimize_009.mp3",
+  "category": "ui-clicks",
+  "duration": 0.207,
+  "peak_at": 0.18,
+  "peak_db": -1.0,
+  "description": "UI shrink: a card or window shrinking away."
+ },
+ "interface_open_001": {
+  "file": "ui-clicks/interface_open_001.mp3",
+  "category": "ui-clicks",
+  "duration": 0.148,
+  "peak_at": 0.103,
+  "peak_db": -4.8,
+  "description": "UI open: a panel or popup opening."
+ },
+ "interface_open_002": {
+  "file": "ui-clicks/interface_open_002.mp3",
+  "category": "ui-clicks",
+  "duration": 0.314,
+  "peak_at": 0.271,
+  "peak_db": -5.1,
+  "description": "UI open: a panel or popup opening."
+ },
+ "interface_open_003": {
+  "file": "ui-clicks/interface_open_003.mp3",
+  "category": "ui-clicks",
+  "duration": 0.314,
+  "peak_at": 0.213,
+  "peak_db": -5.4,
+  "description": "UI open: a panel or popup opening."
+ },
+ "interface_open_004": {
+  "file": "ui-clicks/interface_open_004.mp3",
+  "category": "ui-clicks",
+  "duration": 0.32,
+  "peak_at": 0.301,
+  "peak_db": -2.7,
+  "description": "UI open: a panel or popup opening."
+ },
+ "interface_pluck_001": {
+  "file": "ui-clicks/interface_pluck_001.mp3",
+  "category": "ui-clicks",
+  "duration": 0.1,
+  "peak_at": 0.002,
+  "peak_db": -1.0,
+  "description": "Plucky pop: a playful item appearing."
+ },
+ "interface_pluck_002": {
+  "file": "ui-clicks/interface_pluck_002.mp3",
+  "category": "ui-clicks",
+  "duration": 0.146,
+  "peak_at": 0.001,
+  "peak_db": -1.0,
+  "description": "Plucky pop: a playful item appearing."
+ },
+ "interface_scratch_001": {
+  "file": "ui-clicks/interface_scratch_001.mp3",
+  "category": "ui-clicks",
+  "duration": 0.139,
+  "peak_at": 0.02,
+  "peak_db": -1.0,
+  "description": "Scratch: a rough, quick UI accent."
+ },
+ "interface_scratch_002": {
+  "file": "ui-clicks/interface_scratch_002.mp3",
+  "category": "ui-clicks",
+  "duration": 0.139,
+  "peak_at": 0.052,
+  "peak_db": -1.0,
+  "description": "Scratch: a rough, quick UI accent."
+ },
+ "interface_scratch_003": {
+  "file": "ui-clicks/interface_scratch_003.mp3",
+  "category": "ui-clicks",
+  "duration": 0.123,
+  "peak_at": 0.008,
+  "peak_db": -1.0,
+  "description": "Scratch: a rough, quick UI accent."
+ },
+ "interface_scratch_004": {
+  "file": "ui-clicks/interface_scratch_004.mp3",
+  "category": "ui-clicks",
+  "duration": 0.312,
+  "peak_at": 0.02,
+  "peak_db": -1.0,
+  "description": "Scratch: a rough, quick UI accent."
+ },
+ "interface_scratch_005": {
+  "file": "ui-clicks/interface_scratch_005.mp3",
+  "category": "ui-clicks",
+  "duration": 0.325,
+  "peak_at": 0.034,
+  "peak_db": -1.0,
+  "description": "Scratch: a rough, quick UI accent."
+ },
+ "interface_scroll_001": {
+  "file": "ui-clicks/interface_scroll_001.mp3",
+  "category": "ui-clicks",
+  "duration": 1.0,
+  "peak_at": 0.0,
+  "peak_db": -1.0,
+  "description": "Scroll: a list or feed scrolling."
+ },
+ "interface_scroll_002": {
+  "file": "ui-clicks/interface_scroll_002.mp3",
+  "category": "ui-clicks",
+  "duration": 1.0,
+  "peak_at": 0.5,
+  "peak_db": -1.0,
+  "description": "Scroll: a list or feed scrolling."
+ },
+ "interface_scroll_003": {
+  "file": "ui-clicks/interface_scroll_003.mp3",
+  "category": "ui-clicks",
+  "duration": 1.0,
+  "peak_at": 0.0,
+  "peak_db": -1.0,
+  "description": "Scroll: a list or feed scrolling."
+ },
+ "interface_scroll_004": {
+  "file": "ui-clicks/interface_scroll_004.mp3",
+  "category": "ui-clicks",
+  "duration": 0.98,
+  "peak_at": 0.0,
+  "peak_db": -1.0,
+  "description": "Scroll: a list or feed scrolling."
+ },
+ "interface_scroll_005": {
+  "file": "ui-clicks/interface_scroll_005.mp3",
+  "category": "ui-clicks",
+  "duration": 0.98,
+  "peak_at": 0.0,
+  "peak_db": -1.0,
+  "description": "Scroll: a list or feed scrolling."
+ },
+ "interface_select_001": {
+  "file": "ui-clicks/interface_select_001.mp3",
+  "category": "ui-clicks",
+  "duration": 0.04,
+  "peak_at": 0.002,
+  "peak_db": -1.0,
+  "description": "Select: an option being chosen."
+ },
+ "interface_select_002": {
+  "file": "ui-clicks/interface_select_002.mp3",
+  "category": "ui-clicks",
+  "duration": 0.04,
+  "peak_at": 0.002,
+  "peak_db": -1.0,
+  "description": "Select: an option being chosen."
+ },
+ "interface_select_003": {
+  "file": "ui-clicks/interface_select_003.mp3",
+  "category": "ui-clicks",
+  "duration": 0.236,
+  "peak_at": 0.016,
+  "peak_db": -1.0,
+  "description": "Select: an option being chosen."
+ },
+ "interface_select_004": {
+  "file": "ui-clicks/interface_select_004.mp3",
+  "category": "ui-clicks",
+  "duration": 0.234,
+  "peak_at": 0.014,
+  "peak_db": -1.0,
+  "description": "Select: an option being chosen."
+ },
+ "interface_select_005": {
+  "file": "ui-clicks/interface_select_005.mp3",
+  "category": "ui-clicks",
+  "duration": 0.235,
+  "peak_at": 0.014,
+  "peak_db": -1.0,
+  "description": "Select: an option being chosen."
+ },
+ "interface_select_006": {
+  "file": "ui-clicks/interface_select_006.mp3",
+  "category": "ui-clicks",
+  "duration": 0.234,
+  "peak_at": 0.008,
+  "peak_db": -1.0,
+  "description": "Select: an option being chosen."
+ },
+ "interface_select_007": {
+  "file": "ui-clicks/interface_select_007.mp3",
+  "category": "ui-clicks",
+  "duration": 0.06,
+  "peak_at": 0.0,
+  "peak_db": -1.0,
+  "description": "Select: an option being chosen."
+ },
+ "interface_select_008": {
+  "file": "ui-clicks/interface_select_008.mp3",
+  "category": "ui-clicks",
+  "duration": 0.06,
+  "peak_at": 0.002,
+  "peak_db": -1.0,
+  "description": "Select: an option being chosen."
+ },
+ "interface_switch_001": {
+  "file": "ui-clicks/interface_switch_001.mp3",
+  "category": "ui-clicks",
+  "duration": 0.151,
+  "peak_at": 0.108,
+  "peak_db": -1.0,
+  "description": "Switch: a toggle flipping."
+ },
+ "interface_switch_002": {
+  "file": "ui-clicks/interface_switch_002.mp3",
+  "category": "ui-clicks",
+  "duration": 0.157,
+  "peak_at": 0.001,
+  "peak_db": -1.0,
+  "description": "Switch: a toggle flipping."
+ },
+ "interface_switch_003": {
+  "file": "ui-clicks/interface_switch_003.mp3",
+  "category": "ui-clicks",
+  "duration": 0.5,
+  "peak_at": 0.009,
+  "peak_db": -1.0,
+  "description": "Switch: a toggle flipping."
+ },
+ "interface_switch_004": {
+  "file": "ui-clicks/interface_switch_004.mp3",
+  "category": "ui-clicks",
+  "duration": 0.171,
+  "peak_at": 0.107,
+  "peak_db": -1.0,
+  "description": "Switch: a toggle flipping."
+ },
+ "interface_switch_005": {
+  "file": "ui-clicks/interface_switch_005.mp3",
+  "category": "ui-clicks",
+  "duration": 0.17,
+  "peak_at": 0.004,
+  "peak_db": -1.0,
+  "description": "Switch: a toggle flipping."
+ },
+ "interface_switch_006": {
+  "file": "ui-clicks/interface_switch_006.mp3",
+  "category": "ui-clicks",
+  "duration": 0.155,
+  "peak_at": 0.003,
+  "peak_db": -1.0,
+  "description": "Switch: a toggle flipping."
+ },
+ "interface_switch_007": {
+  "file": "ui-clicks/interface_switch_007.mp3",
+  "category": "ui-clicks",
+  "duration": 0.158,
+  "peak_at": 0.001,
+  "peak_db": -1.0,
+  "description": "Switch: a toggle flipping."
+ },
+ "interface_tick_001": {
+  "file": "ui-clicks/interface_tick_001.mp3",
+  "category": "ui-clicks",
+  "duration": 0.029,
+  "peak_at": 0.001,
+  "peak_db": -1.0,
+  "description": "UI tick: a small item landing."
+ },
+ "interface_tick_002": {
+  "file": "ui-clicks/interface_tick_002.mp3",
+  "category": "ui-clicks",
+  "duration": 0.02,
+  "peak_at": 0.001,
+  "peak_db": -1.0,
+  "description": "UI tick: a small item landing."
+ },
+ "interface_tick_004": {
+  "file": "ui-clicks/interface_tick_004.mp3",
+  "category": "ui-clicks",
+  "duration": 0.055,
+  "peak_at": 0.048,
+  "peak_db": -1.0,
+  "description": "UI tick: a small item landing."
+ },
+ "interface_toggle_001": {
+  "file": "ui-clicks/interface_toggle_001.mp3",
+  "category": "ui-clicks",
+  "duration": 0.119,
+  "peak_at": 0.007,
+  "peak_db": -1.0,
+  "description": "Toggle: a switch turning on or off."
+ },
+ "interface_toggle_002": {
+  "file": "ui-clicks/interface_toggle_002.mp3",
+  "category": "ui-clicks",
+  "duration": 0.117,
+  "peak_at": 0.001,
+  "peak_db": -1.0,
+  "description": "Toggle: a switch turning on or off."
+ },
+ "interface_toggle_003": {
+  "file": "ui-clicks/interface_toggle_003.mp3",
+  "category": "ui-clicks",
+  "duration": 0.119,
+  "peak_at": 0.014,
+  "peak_db": -1.0,
+  "description": "Toggle: a switch turning on or off."
+ },
+ "interface_toggle_004": {
+  "file": "ui-clicks/interface_toggle_004.mp3",
+  "category": "ui-clicks",
+  "duration": 0.063,
+  "peak_at": 0.0,
+  "peak_db": -1.0,
+  "description": "Toggle: a switch turning on or off."
+ },
+ "key_press": {
+  "file": "ui-clicks/key_press.mp3",
+  "category": "ui-clicks",
+  "duration": 0.112,
+  "peak_at": 0.001,
+  "peak_db": -1.0,
+  "description": "Single key press: one keystroke."
+ },
+ "key_press_2": {
+  "file": "ui-clicks/key_press_2.mp3",
+  "category": "ui-clicks",
+  "duration": 0.111,
+  "peak_at": 0.002,
+  "peak_db": -1.0,
+  "description": "Single key press: one keystroke."
+ },
+ "notify": {
+  "file": "ui-clicks/notify.mp3",
+  "category": "ui-clicks",
+  "duration": 0.5,
+  "peak_at": 0.093,
+  "peak_db": -1.0,
+  "description": "Notification sound: a message or alert popping up."
+ },
+ "pop": {
+  "file": "ui-clicks/pop.mp3",
+  "category": "ui-clicks",
+  "duration": 0.12,
+  "peak_at": 0.014,
+  "peak_db": -1.0,
+  "description": "Pop: a badge, chip, icon or number appearing."
+ },
+ "pop_soft": {
+  "file": "ui-clicks/pop_soft.mp3",
+  "category": "ui-clicks",
+  "duration": 0.08,
+  "peak_at": 0.005,
+  "peak_db": -1.0,
+  "description": "Soft pop: a small item appearing, subtle."
+ },
+ "shutter": {
+  "file": "ui-clicks/shutter.mp3",
+  "category": "ui-clicks",
+  "duration": 0.144,
+  "peak_at": 0.005,
+  "peak_db": -1.0,
+  "description": "Camera shutter: a photo or screenshot moment."
+ },
+ "soft_tick": {
+  "file": "ui-clicks/soft_tick.mp3",
+  "category": "ui-clicks",
+  "duration": 0.052,
+  "peak_at": 0.005,
+  "peak_db": -1.0,
+  "description": "Soft tick: a subtle list item or bullet appearing."
+ },
+ "soft_tick_2": {
+  "file": "ui-clicks/soft_tick_2.mp3",
+  "category": "ui-clicks",
+  "duration": 0.052,
+  "peak_at": 0.004,
+  "peak_db": -1.0,
+  "description": "Soft tick: a subtle list item or bullet appearing."
+ },
+ "soft_tick_3": {
+  "file": "ui-clicks/soft_tick_3.mp3",
+  "category": "ui-clicks",
+  "duration": 0.053,
+  "peak_at": 0.002,
+  "peak_db": -1.0,
+  "description": "Soft tick: a subtle list item or bullet appearing."
+ },
+ "swap_tick": {
+  "file": "ui-clicks/swap_tick.mp3",
+  "category": "ui-clicks",
+  "duration": 0.188,
+  "peak_at": 0.108,
+  "peak_db": -1.0,
+  "description": "Swap tick: two items switching place."
+ },
+ "swap_tick_2": {
+  "file": "ui-clicks/swap_tick_2.mp3",
+  "category": "ui-clicks",
+  "duration": 0.192,
+  "peak_at": 0.113,
+  "peak_db": -1.0,
+  "description": "Swap tick: two items switching place."
+ },
+ "tick": {
+  "file": "ui-clicks/tick.mp3",
+  "category": "ui-clicks",
+  "duration": 0.04,
+  "peak_at": 0.001,
+  "peak_db": -1.0,
+  "description": "Tick: a small item landing, a list item or checkmark."
+ },
+ "type_tick": {
+  "file": "ui-clicks/type_tick.mp3",
+  "category": "ui-clicks",
+  "duration": 0.045,
+  "peak_at": 0.005,
+  "peak_db": -1.0,
+  "description": "Typewriter tick: text arriving letter by letter."
+ },
+ "type_tick_2": {
+  "file": "ui-clicks/type_tick_2.mp3",
+  "category": "ui-clicks",
+  "duration": 0.045,
+  "peak_at": 0.002,
+  "peak_db": -1.0,
+  "description": "Typewriter tick: text arriving letter by letter."
+ },
+ "type_tick_3": {
+  "file": "ui-clicks/type_tick_3.mp3",
+  "category": "ui-clicks",
+  "duration": 0.045,
+  "peak_at": 0.002,
+  "peak_db": -1.0,
+  "description": "Typewriter tick: text arriving letter by letter."
+ },
+ "type_tick_4": {
+  "file": "ui-clicks/type_tick_4.mp3",
+  "category": "ui-clicks",
+  "duration": 0.045,
+  "peak_at": 0.005,
+  "peak_db": -1.0,
+  "description": "Typewriter tick: text arriving letter by letter."
+ },
+ "typing": {
+  "file": "ui-clicks/typing.mp3",
+  "category": "ui-clicks",
+  "duration": 0.985,
+  "peak_at": 0.282,
+  "peak_db": -1.0,
+  "description": "Typing: text being typed on screen."
+ },
+ "ui_click": {
+  "file": "ui-clicks/ui_click.mp3",
+  "category": "ui-clicks",
+  "duration": 0.03,
+  "peak_at": 0.0,
+  "peak_db": -1.0,
+  "description": "UI click: an on-screen button tap."
+ },
+ "ui_click1": {
+  "file": "ui-clicks/ui_click1.mp3",
+  "category": "ui-clicks",
+  "duration": 0.091,
+  "peak_at": 0.019,
+  "peak_db": -1.0,
+  "description": "UI click: an on-screen button tap."
+ },
+ "ui_click2": {
+  "file": "ui-clicks/ui_click2.mp3",
+  "category": "ui-clicks",
+  "duration": 0.053,
+  "peak_at": 0.011,
+  "peak_db": -1.0,
+  "description": "UI click: an on-screen button tap."
+ },
+ "ui_click3": {
+  "file": "ui-clicks/ui_click3.mp3",
+  "category": "ui-clicks",
+  "duration": 0.083,
+  "peak_at": 0.028,
+  "peak_db": -1.0,
+  "description": "UI click: an on-screen button tap."
+ },
+ "ui_click4": {
+  "file": "ui-clicks/ui_click4.mp3",
+  "category": "ui-clicks",
+  "duration": 0.038,
+  "peak_at": 0.009,
+  "peak_db": -1.0,
+  "description": "UI click: an on-screen button tap."
+ },
+ "ui_click5": {
+  "file": "ui-clicks/ui_click5.mp3",
+  "category": "ui-clicks",
+  "duration": 0.035,
+  "peak_at": 0.011,
+  "peak_db": -1.0,
+  "description": "UI click: an on-screen button tap."
+ },
+ "ui_click_2": {
+  "file": "ui-clicks/ui_click_2.mp3",
+  "category": "ui-clicks",
+  "duration": 0.03,
+  "peak_at": 0.001,
+  "peak_db": -1.0,
+  "description": "UI click: an on-screen button tap."
+ },
+ "ui_click_3": {
+  "file": "ui-clicks/ui_click_3.mp3",
+  "category": "ui-clicks",
+  "duration": 0.03,
+  "peak_at": 0.002,
+  "peak_db": -1.0,
+  "description": "UI click: an on-screen button tap."
+ },
+ "ui_mouseclick1": {
+  "file": "ui-clicks/ui_mouseclick1.mp3",
+  "category": "ui-clicks",
+  "duration": 0.057,
+  "peak_at": 0.015,
+  "peak_db": -1.0,
+  "description": "Mouse click: a real cursor click on screen."
+ },
+ "ui_mouserelease1": {
+  "file": "ui-clicks/ui_mouserelease1.mp3",
+  "category": "ui-clicks",
+  "duration": 0.066,
+  "peak_at": 0.026,
+  "peak_db": -1.0,
+  "description": "Mouse release: the release after a cursor click."
+ },
+ "ui_rollover1": {
+  "file": "ui-clicks/ui_rollover1.mp3",
+  "category": "ui-clicks",
+  "duration": 0.208,
+  "peak_at": 0.06,
+  "peak_db": -1.0,
+  "description": "Rollover: a cursor hovering over an item."
+ },
+ "ui_rollover2": {
+  "file": "ui-clicks/ui_rollover2.mp3",
+  "category": "ui-clicks",
+  "duration": 0.054,
+  "peak_at": 0.023,
+  "peak_db": -1.0,
+  "description": "Rollover: a cursor hovering over an item."
+ },
+ "ui_rollover3": {
+  "file": "ui-clicks/ui_rollover3.mp3",
+  "category": "ui-clicks",
+  "duration": 0.066,
+  "peak_at": 0.039,
+  "peak_db": -1.0,
+  "description": "Rollover: a cursor hovering over an item."
+ },
+ "ui_rollover4": {
+  "file": "ui-clicks/ui_rollover4.mp3",
+  "category": "ui-clicks",
+  "duration": 0.081,
+  "peak_at": 0.039,
+  "peak_db": -1.0,
+  "description": "Rollover: a cursor hovering over an item."
+ },
+ "ui_rollover5": {
+  "file": "ui-clicks/ui_rollover5.mp3",
+  "category": "ui-clicks",
+  "duration": 0.109,
+  "peak_at": 0.024,
+  "peak_db": -1.0,
+  "description": "Rollover: a cursor hovering over an item."
+ },
+ "ui_rollover6": {
+  "file": "ui-clicks/ui_rollover6.mp3",
+  "category": "ui-clicks",
+  "duration": 0.172,
+  "peak_at": 0.03,
+  "peak_db": -1.0,
+  "description": "Rollover: a cursor hovering over an item."
+ },
+ "ui_switch1": {
+  "file": "ui-clicks/ui_switch1.mp3",
+  "category": "ui-clicks",
+  "duration": 0.184,
+  "peak_at": 0.009,
+  "peak_db": -1.0,
+  "description": "Switch click: a toggle or small mechanical click."
+ },
+ "ui_switch10": {
+  "file": "ui-clicks/ui_switch10.mp3",
+  "category": "ui-clicks",
+  "duration": 0.169,
+  "peak_at": 0.02,
+  "peak_db": -1.0,
+  "description": "Switch click: a toggle or small mechanical click."
+ },
+ "ui_switch11": {
+  "file": "ui-clicks/ui_switch11.mp3",
+  "category": "ui-clicks",
+  "duration": 0.176,
+  "peak_at": 0.041,
+  "peak_db": -1.0,
+  "description": "Switch click: a toggle or small mechanical click."
+ },
+ "ui_switch12": {
+  "file": "ui-clicks/ui_switch12.mp3",
+  "category": "ui-clicks",
+  "duration": 0.051,
+  "peak_at": 0.008,
+  "peak_db": -1.0,
+  "description": "Switch click: a toggle or small mechanical click."
+ },
+ "ui_switch13": {
+  "file": "ui-clicks/ui_switch13.mp3",
+  "category": "ui-clicks",
+  "duration": 0.025,
+  "peak_at": 0.005,
+  "peak_db": -1.0,
+  "description": "Switch click: a toggle or small mechanical click."
+ },
+ "ui_switch14": {
+  "file": "ui-clicks/ui_switch14.mp3",
+  "category": "ui-clicks",
+  "duration": 0.035,
+  "peak_at": 0.007,
+  "peak_db": -1.0,
+  "description": "Switch click: a toggle or small mechanical click."
+ },
+ "ui_switch15": {
+  "file": "ui-clicks/ui_switch15.mp3",
+  "category": "ui-clicks",
+  "duration": 0.253,
+  "peak_at": 0.085,
+  "peak_db": -1.0,
+  "description": "Switch click: a toggle or small mechanical click."
+ },
+ "ui_switch16": {
+  "file": "ui-clicks/ui_switch16.mp3",
+  "category": "ui-clicks",
+  "duration": 0.356,
+  "peak_at": 0.144,
+  "peak_db": -1.0,
+  "description": "Switch click: a toggle or small mechanical click."
+ },
+ "ui_switch17": {
+  "file": "ui-clicks/ui_switch17.mp3",
+  "category": "ui-clicks",
+  "duration": 0.248,
+  "peak_at": 0.025,
+  "peak_db": -1.0,
+  "description": "Switch click: a toggle or small mechanical click."
+ },
+ "ui_switch18": {
+  "file": "ui-clicks/ui_switch18.mp3",
+  "category": "ui-clicks",
+  "duration": 0.374,
+  "peak_at": 0.085,
+  "peak_db": -1.0,
+  "description": "Switch click: a toggle or small mechanical click."
+ },
+ "ui_switch19": {
+  "file": "ui-clicks/ui_switch19.mp3",
+  "category": "ui-clicks",
+  "duration": 0.381,
+  "peak_at": 0.125,
+  "peak_db": -1.0,
+  "description": "Switch click: a toggle or small mechanical click."
+ },
+ "ui_switch2": {
+  "file": "ui-clicks/ui_switch2.mp3",
+  "category": "ui-clicks",
+  "duration": 0.161,
+  "peak_at": 0.02,
+  "peak_db": -1.0,
+  "description": "Switch click: a toggle or small mechanical click."
+ },
+ "ui_switch20": {
+  "file": "ui-clicks/ui_switch20.mp3",
+  "category": "ui-clicks",
+  "duration": 0.356,
+  "peak_at": 0.164,
+  "peak_db": -1.0,
+  "description": "Switch click: a toggle or small mechanical click."
+ },
+ "ui_switch21": {
+  "file": "ui-clicks/ui_switch21.mp3",
+  "category": "ui-clicks",
+  "duration": 0.407,
+  "peak_at": 0.173,
+  "peak_db": -1.0,
+  "description": "Switch click: a toggle or small mechanical click."
+ },
+ "ui_switch22": {
+  "file": "ui-clicks/ui_switch22.mp3",
+  "category": "ui-clicks",
+  "duration": 0.356,
+  "peak_at": 0.099,
+  "peak_db": -1.0,
+  "description": "Switch click: a toggle or small mechanical click."
+ },
+ "ui_switch23": {
+  "file": "ui-clicks/ui_switch23.mp3",
+  "category": "ui-clicks",
+  "duration": 0.306,
+  "peak_at": 0.076,
+  "peak_db": -1.0,
+  "description": "Switch click: a toggle or small mechanical click."
+ },
+ "ui_switch24": {
+  "file": "ui-clicks/ui_switch24.mp3",
+  "category": "ui-clicks",
+  "duration": 0.279,
+  "peak_at": 0.105,
+  "peak_db": -1.0,
+  "description": "Switch click: a toggle or small mechanical click."
+ },
+ "ui_switch25": {
+  "file": "ui-clicks/ui_switch25.mp3",
+  "category": "ui-clicks",
+  "duration": 0.369,
+  "peak_at": 0.17,
+  "peak_db": -1.0,
+  "description": "Switch click: a toggle or small mechanical click."
+ },
+ "ui_switch26": {
+  "file": "ui-clicks/ui_switch26.mp3",
+  "category": "ui-clicks",
+  "duration": 0.228,
+  "peak_at": 0.059,
+  "peak_db": -1.0,
+  "description": "Switch click: a toggle or small mechanical click."
+ },
+ "ui_switch27": {
+  "file": "ui-clicks/ui_switch27.mp3",
+  "category": "ui-clicks",
+  "duration": 0.279,
+  "peak_at": 0.094,
+  "peak_db": -1.0,
+  "description": "Switch click: a toggle or small mechanical click."
+ },
+ "ui_switch28": {
+  "file": "ui-clicks/ui_switch28.mp3",
+  "category": "ui-clicks",
+  "duration": 0.193,
+  "peak_at": 0.055,
+  "peak_db": -1.0,
+  "description": "Switch click: a toggle or small mechanical click."
+ },
+ "ui_switch29": {
+  "file": "ui-clicks/ui_switch29.mp3",
+  "category": "ui-clicks",
+  "duration": 0.304,
+  "peak_at": 0.116,
+  "peak_db": -1.0,
+  "description": "Switch click: a toggle or small mechanical click."
+ },
+ "ui_switch3": {
+  "file": "ui-clicks/ui_switch3.mp3",
+  "category": "ui-clicks",
+  "duration": 0.209,
+  "peak_at": 0.015,
+  "peak_db": -1.0,
+  "description": "Switch click: a toggle or small mechanical click."
+ },
+ "ui_switch30": {
+  "file": "ui-clicks/ui_switch30.mp3",
+  "category": "ui-clicks",
+  "duration": 0.356,
+  "peak_at": 0.174,
+  "peak_db": -1.0,
+  "description": "Switch click: a toggle or small mechanical click."
+ },
+ "ui_switch31": {
+  "file": "ui-clicks/ui_switch31.mp3",
+  "category": "ui-clicks",
+  "duration": 0.432,
+  "peak_at": 0.151,
+  "peak_db": -1.0,
+  "description": "Switch click: a toggle or small mechanical click."
+ },
+ "ui_switch32": {
+  "file": "ui-clicks/ui_switch32.mp3",
+  "category": "ui-clicks",
+  "duration": 0.432,
+  "peak_at": 0.128,
+  "peak_db": -1.0,
+  "description": "Switch click: a toggle or small mechanical click."
+ },
+ "ui_switch33": {
+  "file": "ui-clicks/ui_switch33.mp3",
+  "category": "ui-clicks",
+  "duration": 0.512,
+  "peak_at": 0.168,
+  "peak_db": -1.0,
+  "description": "Switch click: a toggle or small mechanical click."
+ },
+ "ui_switch34": {
+  "file": "ui-clicks/ui_switch34.mp3",
+  "category": "ui-clicks",
+  "duration": 0.475,
+  "peak_at": 0.116,
+  "peak_db": -1.0,
+  "description": "Switch click: a toggle or small mechanical click."
+ },
+ "ui_switch35": {
+  "file": "ui-clicks/ui_switch35.mp3",
+  "category": "ui-clicks",
+  "duration": 0.33,
+  "peak_at": 0.121,
+  "peak_db": -1.0,
+  "description": "Switch click: a toggle or small mechanical click."
+ },
+ "ui_switch36": {
+  "file": "ui-clicks/ui_switch36.mp3",
+  "category": "ui-clicks",
+  "duration": 0.327,
+  "peak_at": 0.128,
+  "peak_db": -1.0,
+  "description": "Switch click: a toggle or small mechanical click."
+ },
+ "ui_switch37": {
+  "file": "ui-clicks/ui_switch37.mp3",
+  "category": "ui-clicks",
+  "duration": 0.304,
+  "peak_at": 0.138,
+  "peak_db": -1.0,
+  "description": "Switch click: a toggle or small mechanical click."
+ },
+ "ui_switch38": {
+  "file": "ui-clicks/ui_switch38.mp3",
+  "category": "ui-clicks",
+  "duration": 0.311,
+  "peak_at": 0.035,
+  "peak_db": -1.0,
+  "description": "Switch click: a toggle or small mechanical click."
+ },
+ "ui_switch4": {
+  "file": "ui-clicks/ui_switch4.mp3",
+  "category": "ui-clicks",
+  "duration": 0.162,
+  "peak_at": 0.015,
+  "peak_db": -1.0,
+  "description": "Switch click: a toggle or small mechanical click."
+ },
+ "ui_switch5": {
+  "file": "ui-clicks/ui_switch5.mp3",
+  "category": "ui-clicks",
+  "duration": 0.204,
+  "peak_at": 0.031,
+  "peak_db": -1.0,
+  "description": "Switch click: a toggle or small mechanical click."
+ },
+ "ui_switch6": {
+  "file": "ui-clicks/ui_switch6.mp3",
+  "category": "ui-clicks",
+  "duration": 0.259,
+  "peak_at": 0.117,
+  "peak_db": -1.0,
+  "description": "Switch click: a toggle or small mechanical click."
+ },
+ "ui_switch7": {
+  "file": "ui-clicks/ui_switch7.mp3",
+  "category": "ui-clicks",
+  "duration": 0.19,
+  "peak_at": 0.025,
+  "peak_db": -1.0,
+  "description": "Switch click: a toggle or small mechanical click."
+ },
+ "ui_switch8": {
+  "file": "ui-clicks/ui_switch8.mp3",
+  "category": "ui-clicks",
+  "duration": 0.128,
+  "peak_at": 0.009,
+  "peak_db": -1.0,
+  "description": "Switch click: a toggle or small mechanical click."
+ },
+ "ui_switch9": {
+  "file": "ui-clicks/ui_switch9.mp3",
+  "category": "ui-clicks",
+  "duration": 0.134,
+  "peak_at": 0.018,
+  "peak_db": -1.0,
+  "description": "Switch click: a toggle or small mechanical click."
+ }
+}
