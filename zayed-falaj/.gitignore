@@ -4,3 +4,4 @@ renders/
 node_modules/
 work-*/
 *.mp4
+.*.hf-transaction-*/
