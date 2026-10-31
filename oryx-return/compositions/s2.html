@@ -1,0 +1,43 @@
+<template>
+  <style>
+    @font-face { font-family: "Noto Kufi Arabic"; src: url("assets/fonts/NotoKufiArabic.ttf"); font-weight: 100 900; }
+    #root { position: absolute; inset: 0; overflow: hidden; }
+    .t { position: absolute; left: 100px; right: 100px; font-family: "Noto Kufi Arabic", sans-serif; direction: rtl; text-align: center; color: #513D2C; }
+    .w { display: inline-block; }
+    .node { position: absolute; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: "Noto Kufi Arabic", sans-serif; font-weight: 800; direction: rtl; }
+  </style>
+  <div id="root" data-composition-id="s2" data-width="1080" data-height="1920">
+    <div id="s2-wrap" class="clip" data-start="0" data-duration="1.95" data-layout-allow-overflow style="position:absolute;inset:0">
+     <div id="s2-in" style="position:absolute;inset:0">
+      <div class="t" id="s2-eb" style="top:250px;font-size:38px;font-weight:600;color:#8B6F52">بداية العودة</div>
+      <div class="t" id="s2-hl" style="top:330px;font-size:104px;font-weight:800;line-height:1.3">
+        <span class="w" id="s2-w1">وأبوظبي</span><br /><span class="w" id="s2-w2">ساعدته</span> <span class="w" id="s2-w3" style="color:#A87A2C">يرجع</span>
+      </div>
+      <div id="s2-map" style="position:absolute;inset:0">
+        <svg viewBox="0 0 1080 1920" width="1080" height="1920" style="position:absolute;left:0;top:0">
+          <defs><mask id="s2-mask" maskUnits="userSpaceOnUse" x="0" y="0" width="1080" height="1920"><path id="s2-mp" d="M690 900 C 640 1060, 470 1010, 420 1150" fill="none" stroke="#fff" stroke-width="24" stroke-dasharray="600" stroke-dashoffset="600" /></mask></defs>
+          <path id="s2-path" d="M690 900 C 640 1060, 470 1010, 420 1150" fill="none" stroke="#A6AD90" stroke-width="9" stroke-linecap="round" stroke-dasharray="2 22" mask="url(#s2-mask)" />
+          <path id="s2-head" d="M392 1118 L420 1150 L446 1112" fill="none" stroke="#A6AD90" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+        <div class="node" id="s2-ad" style="left:575px;top:700px;width:250px;height:250px;background:#513D2C;color:#FAF6ED;font-size:50px;box-shadow:0 0 0 16px #EFE6D3">أبوظبي</div>
+        <div class="node" id="s2-td" style="left:305px;top:1150px;width:220px;height:220px;background:#C5AC86;color:#513D2C;font-size:50px;box-shadow:0 0 0 16px #F0E7D6">تشاد</div>
+      </div>
+     </div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    // dashed line as a growing mask: the dash pattern stays, the visible length grows
+    tl.fromTo("#s2-eb", { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power2.out" }, 0.0);
+    tl.fromTo("#s2-w1", { opacity: 0, filter: "blur(10px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.25, ease: "power2.out" }, 0.1);
+    tl.fromTo("#s2-ad", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.45, ease: "expo.out" }, 0.12);
+    tl.fromTo("#s2-w2", { opacity: 0, filter: "blur(10px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.25, ease: "power2.out" }, 0.8);
+    tl.fromTo("#s2-mp", { attr: { "stroke-dashoffset": 600 } }, { attr: { "stroke-dashoffset": 0 }, duration: 0.75, ease: "power2.inOut" }, 0.6);
+    tl.fromTo("#s2-head", { opacity: 0 }, { opacity: 1, duration: 0.15, ease: "none" }, 1.3);
+    tl.fromTo("#s2-w3", { opacity: 0, filter: "blur(10px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.25, ease: "power2.out" }, 1.38);
+    tl.fromTo("#s2-td", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.45, ease: "expo.out" }, 1.36);
+    // exit: everything lifts out
+    tl.to("#s2-in", { y: -220, opacity: 0, filter: "blur(10px)", duration: 0.25, ease: "power3.in" }, 1.7);
+    window.__timelines["s2"] = tl;
+  </script>
+</template>

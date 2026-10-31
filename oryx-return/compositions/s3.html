@@ -1,0 +1,61 @@
+<template>
+  <style>
+    @font-face { font-family: "Noto Kufi Arabic"; src: url("assets/fonts/NotoKufiArabic.ttf"); font-weight: 100 900; }
+    #root { position: absolute; inset: 0; overflow: hidden; }
+    .t { position: absolute; left: 100px; right: 100px; font-family: "Noto Kufi Arabic", sans-serif; direction: rtl; text-align: center; color: #513D2C; }
+    .w { display: inline-block; }
+    .pc { position: absolute; display: block; }
+  </style>
+  <div id="root" data-composition-id="s3" data-width="1080" data-height="1920">
+    <div id="s3-wrap" class="clip" data-start="0" data-duration="7.4" data-layout-allow-overflow style="position:absolute;inset:0">
+     <div id="s3-in" style="position:absolute;inset:0">
+      <div id="s3-world" style="position:absolute;inset:0">
+        <div id="s3-cam" style="position:absolute;inset:0">
+          <img id="s3-plate" src="assets/art/03_care_plate.jpg" class="pc" style="left:0;top:0;width:1080px;height:1920px" />
+          <img id="s3-herd" src="assets/art/03_care_p0.png" class="pc" style="left:50px;top:888px;width:636px;height:635px" />
+          <img id="s3-graze" src="assets/art/03_care_p2.png" class="pc" style="left:556px;top:1134px;width:346px;height:289px" />
+          <img id="s3-keeper" src="assets/art/03_care_p1.png" class="pc" style="left:897px;top:1003px;width:148px;height:426px" />
+        </div>
+      </div>
+      <!-- the name: big first, then it becomes the scene's eyebrow -->
+      <div id="s3-name" style="position:absolute;left:0;right:0;top:640px;height:320px">
+        <div class="t" id="s3-latin" style="top:0;font-family:Inter, sans-serif;font-size:38px;font-weight:700;letter-spacing:4px;color:#8B6F52;direction:ltr">ORYX DAMMAH</div>
+        <div class="t" style="top:60px;font-size:120px;white-space:nowrap;font-weight:800;line-height:1.3"><span class="w" id="s3-n1">المها</span> <span class="w" id="s3-n2">أبو حراب</span></div>
+      </div>
+      <div class="t" id="s3-hl" style="top:420px;font-size:96px;font-weight:800;line-height:1.3">
+        <span class="w" id="s3-h1">بقي</span> <span class="w" id="s3-h2">تحت</span><br /><span class="w" id="s3-h3">رعاية</span> <span class="w" id="s3-h4">البشر</span>
+      </div>
+      <div class="t" id="s3-sub" style="top:710px;font-size:46px;font-weight:600;color:#8B6F52">لكن اختفى من موطنه الطبيعي</div>
+     </div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    // enter: the ivory stage lifts in from below
+    tl.fromTo("#s3-in", { y: 120, opacity: 0, filter: "blur(10px)" }, { y: 0, opacity: 1, filter: "blur(0px)", duration: 0.35, ease: "power3.out" }, 0);
+    // the name on «المها أبو حراب» (5.5–6.8 abs)
+    tl.fromTo("#s3-n1", { opacity: 0, filter: "blur(10px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.3, ease: "power2.out" }, 0.4);
+    tl.fromTo("#s3-n2", { opacity: 0, filter: "blur(10px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.3, ease: "power2.out" }, 1.15);
+    tl.fromTo("#s3-latin", { opacity: 0 }, { opacity: 1, duration: 0.35, ease: "power2.out" }, 0.05);
+    tl.to("#s3-latin", { opacity: 0, duration: 0.3, ease: "power2.in" }, 2.2);
+    // «كان باقي منه…» (7.39 abs): the name rises to the top and shrinks, the care pen comes up
+    tl.fromTo("#s3-name", { y: 0, scale: 1, transformOrigin: "540px 0px" }, { y: -470, scale: 0.48, duration: 0.8, ease: "power3.inOut" }, 2.25);
+    tl.fromTo("#s3-world", { y: 260, opacity: 0 }, { y: 0, opacity: 1, duration: 1.0, ease: "expo.out" }, 2.3);
+    tl.fromTo("#s3-cam", { scale: 1.0, transformOrigin: "540px 1200px" }, { scale: 1.05, duration: 5.1, ease: "none" }, 2.3);
+    tl.fromTo("#s3-herd", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.7, ease: "expo.out" }, 2.55);
+    tl.fromTo("#s3-graze", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.7, ease: "expo.out" }, 2.8);
+    tl.fromTo("#s3-keeper", { opacity: 0, x: 70 }, { opacity: 1, x: 0, duration: 0.8, ease: "expo.out" }, 3.1);
+    // grazer lowers its head a touch while the line reads
+    tl.fromTo("#s3-graze", { rotation: 0, transformOrigin: "80% 85%" }, { rotation: -2.5, duration: 2.4, ease: "sine.inOut", immediateRender: false }, 4.0);
+    // «بقي تحت رعاية البشر» (8.8 abs)
+    tl.fromTo("#s3-h1", { opacity: 0, filter: "blur(10px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.25, ease: "power2.out" }, 2.35);
+    tl.fromTo("#s3-h2", { opacity: 0, filter: "blur(10px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.25, ease: "power2.out" }, 3.6);
+    tl.fromTo("#s3-h3", { opacity: 0, filter: "blur(10px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.25, ease: "power2.out" }, 3.95);
+    tl.fromTo("#s3-h4", { opacity: 0, filter: "blur(10px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.25, ease: "power2.out" }, 4.45);
+    // «لكن اختفى من موطنه الطبيعي» (10.5 abs)
+    tl.fromTo("#s3-sub", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.3, ease: "power2.out" }, 5.45);
+    // exit: whip left
+    tl.to("#s3-in", { x: -320, opacity: 0, filter: "blur(14px)", duration: 0.3, ease: "power3.in" }, 7.1);
+    window.__timelines["s3"] = tl;
+  </script>
+</template>

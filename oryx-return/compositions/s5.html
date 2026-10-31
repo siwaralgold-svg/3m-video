@@ -1,0 +1,40 @@
+<template>
+  <style>
+    @font-face { font-family: "Noto Kufi Arabic"; src: url("assets/fonts/NotoKufiArabic.ttf"); font-weight: 100 900; }
+    #root { position: absolute; inset: 0; overflow: hidden; }
+    .t { position: absolute; left: 100px; right: 100px; font-family: "Noto Kufi Arabic", sans-serif; direction: rtl; text-align: center; color: #513D2C; }
+    .pc { position: absolute; display: block; }
+    .num { font-family: Inter, sans-serif; font-weight: 900; direction: ltr; unicode-bidi: isolate; }
+  </style>
+  <div id="root" data-composition-id="s5" data-width="1080" data-height="1920">
+    <div id="s5-wrap" class="clip" data-start="0" data-duration="2.95" data-layout-allow-overflow style="position:absolute;inset:0">
+     <div id="s5-in" style="position:absolute;inset:0">
+      <div id="s5-cam" style="position:absolute;inset:0">
+        <img id="s5-plate" src="assets/art/05_release_plate.jpg" class="pc" style="left:0;top:0;width:1080px;height:1920px" />
+        <img id="s5-a" src="assets/art/05_release_p0.png" class="pc" style="left:97px;top:920px;width:369px;height:557px" />
+        <img id="s5-b" src="assets/art/05_release_p1.png" class="pc" style="left:450px;top:987px;width:494px;height:520px" />
+      </div>
+      <div class="t" id="s5-eb" style="top:240px;font-size:40px;font-weight:600;color:#8B6F52">العودة إلى البرية</div>
+      <div class="t num" id="s5-year" style="top:290px;font-size:230px;line-height:1.15;color:#513D2C;text-align:center">2016</div>
+      <div class="t" id="s5-sub" style="top:600px;font-size:54px;font-weight:700">بدأ إطلاقه في <span style="color:#A87A2C">تشاد</span></div>
+      <div id="s5-dip" style="position:absolute;inset:0;background:#2a1f16;opacity:0"></div>
+     </div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#s5-in", { x: 320, opacity: 0, filter: "blur(14px)" }, { x: 0, opacity: 1, filter: "blur(0px)", duration: 0.3, ease: "power3.out" }, 0);
+    tl.fromTo("#s5-cam", { scale: 1.0, transformOrigin: "700px 1250px" }, { scale: 1.05, duration: 2.95, ease: "none" }, 0);
+    tl.fromTo("#s5-eb", { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power2.out" }, 0.12);
+    // «2016» 0.5
+    tl.fromTo("#s5-year", { opacity: 0, scale: 1.18, filter: "blur(12px)", transformOrigin: "540px 150px" }, { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.32, ease: "power3.out" }, 0.48);
+    // the oryx walk out through the gate into open land
+    tl.fromTo("#s5-b", { x: -60 }, { x: 40, duration: 2.95, ease: "none" }, 0);
+    tl.fromTo("#s5-b", { y: 0 }, { y: -5, duration: 0.3, ease: "sine.inOut", yoyo: true, repeat: 8 }, 0);
+    // «بدأ إطلاقه في تشاد» 1.56
+    tl.fromTo("#s5-sub", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.3, ease: "power2.out" }, 1.56);
+    // dip cut out
+    tl.fromTo("#s5-dip", { opacity: 0 }, { opacity: 0.4, duration: 0.1, ease: "none" }, 2.85);
+    window.__timelines["s5"] = tl;
+  </script>
+</template>

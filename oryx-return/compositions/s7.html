@@ -1,0 +1,66 @@
+<template>
+  <style>
+    @font-face { font-family: "Noto Kufi Arabic"; src: url("assets/fonts/NotoKufiArabic.ttf"); font-weight: 100 900; }
+    #root { position: absolute; inset: 0; overflow: hidden; }
+    .t { position: absolute; left: 100px; right: 100px; font-family: "Noto Kufi Arabic", sans-serif; direction: rtl; text-align: center; color: #513D2C; }
+    .w { display: inline-block; }
+    .num { font-family: Inter, sans-serif; font-weight: 800; direction: ltr; unicode-bidi: isolate; }
+    .card { position: absolute; left: 150px; width: 780px; height: 250px; border-radius: 28px; text-align: center; direction: rtl; font-family: "Noto Kufi Arabic", sans-serif; }
+    .card .k { position: absolute; left: 0; right: 0; top: 26px; font-size: 32px; font-weight: 600; }
+    .card .v { position: absolute; left: 0; right: 0; top: 74px; font-size: 72px; font-weight: 800; line-height: 1.3; }
+    .card .e { position: absolute; left: 0; right: 0; top: 182px; font-family: Inter, sans-serif; font-size: 30px; font-weight: 700; letter-spacing: 3px; direction: ltr; }
+  </style>
+  <div id="root" data-composition-id="s7" data-width="1080" data-height="1920">
+    <div id="s7-wrap" class="clip" data-start="0" data-duration="6.25" data-layout-allow-overflow style="position:absolute;inset:0">
+     <div id="s7-in" style="position:absolute;inset:0">
+      <!-- quiet ground and a lone oryx below the text band -->
+      <div id="s7-ground" style="position:absolute;inset:0">
+        <svg viewBox="0 0 1080 1920" width="1080" height="1920" style="position:absolute;left:0;top:0">
+          <path d="M0 1700 C 260 1650, 520 1690, 760 1660 C 900 1645, 1000 1655, 1080 1670 L1080 1920 L0 1920 Z" fill="#E4D3B3" />
+          <path d="M0 1760 C 300 1730, 640 1770, 1080 1740 L1080 1920 L0 1920 Z" fill="#D6C09A" />
+        </svg>
+        <img id="s7-oryx" src="assets/art/01_hook_p0.png" style="position:absolute;left:400px;top:1405px;width:320px;height:334px;display:block" />
+      </div>
+      <div class="t" id="s7-eb" style="top:200px;font-size:38px;font-weight:600;color:#8B6F52">القائمة الحمراء • <span class="num">2023</span></div>
+      <div class="t" style="top:255px;font-size:96px;font-weight:800;line-height:1.3"><span class="w" id="s7-h1">تحسّن</span> <span class="w" id="s7-h2">التصنيف</span></div>
+
+      <div class="card" id="s7-old" style="top:450px;background:#EADDD3;border:3px solid #CDB0A2;color:#7A4E3E">
+        <div class="k">قبل إعادة التوطين</div>
+        <div class="v">منقرض في البرية</div>
+        <div class="e">EXTINCT IN THE WILD</div>
+      </div>
+      <svg id="s7-arrow" viewBox="0 0 1080 1920" width="1080" height="1920" style="position:absolute;left:0;top:0">
+        <defs><mask id="s7-mask" maskUnits="userSpaceOnUse" x="0" y="0" width="1080" height="1920"><path id="s7-mp" d="M540 722 L540 812" stroke="#fff" stroke-width="40" stroke-dasharray="100" stroke-dashoffset="100" /></mask></defs>
+        <g mask="url(#s7-mask)" fill="none" stroke="#A6AD90" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M540 726 L540 800" /><path d="M512 774 L540 802 L568 774" />
+        </g>
+      </svg>
+      <div class="card" id="s7-new" style="top:830px;background:#EFE0BF;border:3px solid #D9B978;color:#6B4B1F">
+        <div class="k">بعد إعادة التوطين · <span class="num">2023</span></div>
+        <div class="v">مهدد بالانقراض</div>
+        <div class="e">ENDANGERED</div>
+      </div>
+      <div class="t" id="s7-note" style="top:1150px;font-size:56px;font-weight:700"><span class="w" id="s7-n1">ما زال</span> <span class="w" id="s7-n2">يحتاج</span> <span class="w" id="s7-n3" style="color:#A87A2C">حماية</span></div>
+     </div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#s7-ground", { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.8, ease: "expo.out" }, 0.05);
+    tl.fromTo("#s7-eb", { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power2.out" }, 0.1);
+    // «وتغيّر تصنيفه» 0.13
+    tl.fromTo("#s7-h1", { opacity: 0, filter: "blur(10px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.25, ease: "power2.out" }, 0.15);
+    tl.fromTo("#s7-h2", { opacity: 0, filter: "blur(10px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.25, ease: "power2.out" }, 0.55);
+    // «منقرض في البرية» 1.2
+    tl.fromTo("#s7-old", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.5, ease: "expo.out" }, 1.2);
+    // «إلى» 2.92: arrow draws, «مهدد بالانقراض» 3.2
+    tl.fromTo("#s7-mp", { attr: { "stroke-dashoffset": 100 } }, { attr: { "stroke-dashoffset": 0 }, duration: 0.3, ease: "power2.out" }, 2.85);
+    tl.fromTo("#s7-new", { opacity: 0, y: -50, scale: 0.94, transformOrigin: "50% 0%" }, { opacity: 1, y: 0, scale: 1, duration: 0.55, ease: "expo.out" }, 3.12);
+    tl.to("#s7-old", { opacity: 0.45, duration: 0.5, ease: "power2.out" }, 3.3);
+    // «ما زال يحتاج حماية» 4.7
+    tl.fromTo("#s7-n1", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.25, ease: "power2.out" }, 4.7);
+    tl.fromTo("#s7-n2", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.25, ease: "power2.out" }, 5.05);
+    tl.fromTo("#s7-n3", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.25, ease: "power2.out" }, 5.4);
+    window.__timelines["s7"] = tl;
+  </script>
+</template>

@@ -1,0 +1,53 @@
+<template>
+  <style>
+    @font-face { font-family: "Noto Kufi Arabic"; src: url("assets/fonts/NotoKufiArabic.ttf"); font-weight: 100 900; }
+    #root { position: absolute; inset: 0; overflow: hidden; }
+    .t { position: absolute; left: 100px; right: 100px; font-family: "Noto Kufi Arabic", sans-serif; direction: rtl; text-align: center; color: #513D2C; }
+    .w { display: inline-block; }
+    .pc { position: absolute; display: block; }
+  </style>
+  <div id="root" data-composition-id="s8" data-width="1080" data-height="1920">
+    <div id="s8-wrap" class="clip" data-start="0" data-duration="6.75" data-layout-allow-overflow style="position:absolute;inset:0">
+     <div id="s8-in" style="position:absolute;inset:0">
+      <div id="s8-cam" style="position:absolute;inset:0">
+        <img id="s8-plate" src="assets/art/08_return_plate.jpg" class="pc" style="left:0;top:0;width:1080px;height:1920px" />
+        <div id="s8-glow" style="position:absolute;left:0;top:0;width:1080px;height:1300px;background:linear-gradient(180deg,#F1E2C2 0%,#F5EBD6 55%,rgba(250,246,237,0) 100%);opacity:0"></div>
+        <img id="s8-pair" src="assets/art/08_return_p0.png" class="pc" style="left:128px;top:720px;width:859px;height:859px" />
+      </div>
+      <!-- homecoming -->
+      <div id="s8-a">
+        <div class="t" style="top:270px;font-size:104px;font-weight:800;line-height:1.3"><span class="w" id="s8-a1">عاد</span> <span class="w" id="s8-a2">إلى</span> <span class="w" id="s8-a3">موطنه</span></div>
+        <div class="t" id="s8-a4" style="top:500px;font-size:50px;font-weight:600;color:#8B6F52">يعيش ويتكاثر من جديد</div>
+      </div>
+      <!-- the closing message -->
+      <div id="s8-b">
+        <div class="t" style="top:250px;font-size:96px;font-weight:800;line-height:1.3;white-space:nowrap"><span class="w" id="s8-b1">الأمل</span> <span class="w" id="s8-b2">ما</span> <span class="w" id="s8-b3">يختفي…</span></div>
+        <div class="t" style="top:450px;font-size:74px;font-weight:700;line-height:1.3;color:#6B5240"><span class="w" id="s8-b4">إذا</span> <span class="w" id="s8-b5">لقى</span> <span class="w" id="s8-b6">أحد</span> <span class="w" id="s8-b7" style="color:#A87A2C;font-weight:800">يحميه</span></div>
+      </div>
+     </div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    // hard cut in on «لكن رجع»; the world pushes in slowly through the end
+    tl.fromTo("#s8-cam", { scale: 1.0, transformOrigin: "560px 1300px" }, { scale: 1.07, duration: 6.75, ease: "none" }, 0);
+    tl.fromTo("#s8-pair", { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 0.8, ease: "expo.out" }, 0.0);
+    // «رجع» 0.3, «يعيش ويتكاثر» 0.7
+    tl.fromTo("#s8-a1", { opacity: 0, filter: "blur(10px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.25, ease: "power2.out" }, 0.3);
+    tl.fromTo("#s8-a2", { opacity: 0, filter: "blur(10px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.25, ease: "power2.out" }, 0.42);
+    tl.fromTo("#s8-a3", { opacity: 0, filter: "blur(10px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.25, ease: "power2.out" }, 0.54);
+    tl.fromTo("#s8-a4", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.3, ease: "power2.out" }, 1.15);
+    // hand over to the closing line, sky warms
+    tl.to(["#s8-a1", "#s8-a2", "#s8-a3", "#s8-a4"], { opacity: 0, filter: "blur(8px)", duration: 0.18, ease: "power2.in", stagger: 0.04 }, 2.7);
+    tl.fromTo("#s8-glow", { opacity: 0 }, { opacity: 1, duration: 1.0, ease: "power2.inOut" }, 2.8);
+    // «الأمل» 3.05 · «ما يختفي» 4.02 · «إذا لقى أحد يحميه» 5.05
+    tl.fromTo("#s8-b1", { opacity: 0, filter: "blur(10px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.3, ease: "power2.out" }, 3.05);
+    tl.fromTo("#s8-b2", { opacity: 0, filter: "blur(10px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.25, ease: "power2.out" }, 4.0);
+    tl.fromTo("#s8-b3", { opacity: 0, filter: "blur(10px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.25, ease: "power2.out" }, 4.15);
+    tl.fromTo("#s8-b4", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.22, ease: "power2.out" }, 5.05);
+    tl.fromTo("#s8-b5", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.22, ease: "power2.out" }, 5.2);
+    tl.fromTo("#s8-b6", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.22, ease: "power2.out" }, 5.5);
+    tl.fromTo("#s8-b7", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.28, ease: "power2.out" }, 5.8);
+    window.__timelines["s8"] = tl;
+  </script>
+</template>
