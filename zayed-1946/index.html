@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="ar" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="assets/vendor/gsap.min.js"></script>
+    <style>
+      @font-face { font-family: "Amiri"; src: url("assets/fonts/Amiri-Bold.ttf"); font-weight: 700; }
+      @font-face { font-family: "Noto Kufi Arabic"; src: url("assets/fonts/NotoKufiArabic.ttf"); font-weight: 100 900; }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: #2a1a10; }
+      #ground { position: absolute; inset: 0; background: #2a1a10; }
+      #vignette {
+        position: absolute; inset: 0; pointer-events: none; z-index: 90;
+        background: radial-gradient(125% 90% at 50% 45%, transparent 58%, rgba(70,35,10,0.42) 100%);
+      }
+      @keyframes hf-grain-noise {
+        0%, 100% { transform: translate(0, 0); } 10% { transform: translate(-5%, -5%); }
+        20% { transform: translate(-10%, 5%); } 30% { transform: translate(5%, -10%); }
+        40% { transform: translate(-5%, 15%); } 50% { transform: translate(-10%, 5%); }
+        60% { transform: translate(15%, 0); } 70% { transform: translate(0, 10%); }
+        80% { transform: translate(-15%, 0); } 90% { transform: translate(10%, 5%); }
+      }
+      #grain-overlay { position: absolute; inset: 0; pointer-events: none; z-index: 100; overflow: hidden; }
+      #grain-overlay .grain-texture {
+        position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+        background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+        opacity: 0.14; mix-blend-mode: overlay;
+        animation: hf-grain-noise 0.5s steps(1) infinite;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="33" data-width="1080" data-height="1920">
+      <div id="ground" class="clip" data-start="0" data-duration="33" data-track-index="0" data-layout-ignore style="z-index:1"></div>
+      <div id="s1" data-composition-id="s1" data-composition-src="compositions/s1.html" data-start="0" data-duration="6" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index:2"></div>
+      <div id="s2" data-composition-id="s2" data-composition-src="compositions/s2.html" data-start="6" data-duration="6" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index:2"></div>
+      <div id="s3" data-composition-id="s3" data-composition-src="compositions/s3.html" data-start="12" data-duration="7" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index:2"></div>
+      <div id="s4" data-composition-id="s4" data-composition-src="compositions/s4.html" data-start="19" data-duration="7" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index:2"></div>
+      <div id="s5" data-composition-id="s5" data-composition-src="compositions/s5.html" data-start="26" data-duration="7" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index:2"></div>
+      <div id="vignette" class="clip" data-start="0" data-duration="33" data-track-index="2" data-layout-ignore></div>
+      <div id="grain-overlay" class="clip" data-start="0" data-duration="33" data-track-index="3" data-layout-ignore><div class="grain-texture"></div></div>
+
+      <!-- Voiceover: export from ElevenLabs as assets/voiceover.mp3 and add <audio id="voiceover" class="clip" src="assets/voiceover.mp3" data-start="0" data-track-index="10" data-volume="1"> here. -->
+      <audio id="sfx-wind" class="clip" src="assets/sfx/air_swell.mp3" data-start="0" data-duration="1.541" data-track-index="11" data-volume="0.3"></audio>
+      <audio id="sfx-cut1" class="clip" src="assets/sfx/whoosh_deep_08.mp3" data-start="5.576" data-duration="1.091" data-track-index="12" data-volume="0.35"></audio>
+      <audio id="sfx-cloth" class="clip" src="assets/sfx/rpg_cloth1.mp3" data-start="7.17" data-duration="0.616" data-track-index="13" data-volume="0.4"></audio>
+      <audio id="sfx-creak" class="clip" src="assets/sfx/rpg_creak2.mp3" data-start="8.219" data-duration="0.763" data-track-index="11" data-volume="0.4"></audio>
+      <audio id="sfx-break1" class="clip" src="assets/sfx/impact_plank_medium_000.mp3" data-start="9.024" data-duration="0.443" data-track-index="12" data-volume="0.45"></audio>
+      <audio id="sfx-break2" class="clip" src="assets/sfx/impact_wood_heavy_001.mp3" data-start="9.079" data-duration="0.31" data-track-index="13" data-volume="0.4"></audio>
+      <audio id="sfx-break3" class="clip" src="assets/sfx/impact_wood_light_002.mp3" data-start="9.482" data-duration="0.263" data-track-index="11" data-volume="0.3"></audio>
+      <audio id="sfx-cut2" class="clip" src="assets/sfx/whoosh_soft_01.mp3" data-start="11.661" data-duration="0.928" data-track-index="12" data-volume="0.32"></audio>
+      <audio id="sfx-pick1" class="clip" src="assets/sfx/impact_mining_000.mp3" data-start="12.82" data-duration="0.729" data-track-index="13" data-volume="0.4"></audio>
+      <audio id="sfx-hoe1" class="clip" src="assets/sfx/impact_soft_heavy_000.mp3" data-start="13.427" data-duration="0.526" data-track-index="11" data-volume="0.4"></audio>
+      <audio id="sfx-pick2" class="clip" src="assets/sfx/impact_mining_001.mp3" data-start="14.028" data-duration="0.675" data-track-index="12" data-volume="0.4"></audio>
+      <audio id="sfx-hoe2" class="clip" src="assets/sfx/impact_soft_heavy_001.mp3" data-start="14.627" data-duration="0.569" data-track-index="13" data-volume="0.4"></audio>
+      <audio id="sfx-pick3" class="clip" src="assets/sfx/impact_mining_002.mp3" data-start="15.225" data-duration="0.678" data-track-index="11" data-volume="0.4"></audio>
+      <audio id="sfx-hoe3" class="clip" src="assets/sfx/impact_soft_heavy_000.mp3" data-start="15.827" data-duration="0.526" data-track-index="12" data-volume="0.36"></audio>
+      <audio id="sfx-suck" class="clip" src="assets/sfx/reverse_swell_01.mp3" data-start="15.651" data-duration="0.825" data-track-index="13" data-volume="0.35"></audio>
+      <audio id="sfx-pick4" class="clip" src="assets/sfx/impact_mining_001.mp3" data-start="16.428" data-duration="0.675" data-track-index="11" data-volume="0.45"></audio>
+      <audio id="sfx-gush" class="clip" src="assets/sfx/whoosh_air_03.mp3" data-start="16.41" data-duration="0.929" data-track-index="12" data-volume="0.4"></audio>
+      <audio id="sfx-cut3" class="clip" src="assets/sfx/whoosh_fast_02.mp3" data-start="18.711" data-duration="0.82" data-track-index="13" data-volume="0.3"></audio>
+      <audio id="sfx-flow" class="clip" src="assets/sfx/whoosh_air_07.mp3" data-start="19.528" data-duration="0.656" data-track-index="11" data-volume="0.35"></audio>
+      <audio id="sfx-pop1" class="clip" src="assets/sfx/pop_soft.mp3" data-start="23.628" data-duration="0.08" data-track-index="12" data-volume="0.35"></audio>
+      <audio id="sfx-pop2" class="clip" src="assets/sfx/interface_pluck_001.mp3" data-start="23.931" data-duration="0.1" data-track-index="13" data-volume="0.3"></audio>
+      <audio id="sfx-pop3" class="clip" src="assets/sfx/interface_pluck_002.mp3" data-start="24.232" data-duration="0.146" data-track-index="11" data-volume="0.3"></audio>
+      <audio id="sfx-cut4" class="clip" src="assets/sfx/whoosh_deep_04.mp3" data-start="25.785" data-duration="0.497" data-track-index="12" data-volume="0.3"></audio>
+      <audio id="sfx-riser" class="clip" src="assets/sfx/riser_01.mp3" data-start="27.4" data-duration="2.2" data-track-index="13" data-volume="0.3"></audio>
+      <audio id="sfx-boom" class="clip" src="assets/sfx/boom.mp3" data-start="29.586" data-duration="1.918" data-track-index="11" data-volume="0.4"></audio>
+    </div>
+    <script>
+      window.__timelines["main"] = gsap.timeline({ paused: true });
+    </script>
+  </body>
+</html>
