@@ -1,52 +1,91 @@
-"""Builds the running herd for scene 1 and its gallop sound.
+"""Builds the running herd for scene 1 and its hoof sound.
 
-Writes compositions/s1.html (markup + seekable gallop motion) and
+Writes compositions/s1.html (markup + seekable motion) and
 assets/sfx/herd_gallop.wav (one hoof rhythm per animal, each stopping when
 that animal vanishes). Seeded, so it is the same on every run.
 Run from the project folder:  python3 tools/make_herd.py
+
+Story of the shot (scene time):
+  0.0 – 2.7  the herd gallops (the six poses of assets/art/gallop_*.png)
+  2.7 – 4.8  everyone eases down to a slow walk (the jointed walk rig, run_*.png)
+  4.8 – 6.0  back row, then middle, then front fade one by one
+  6.0 – 6.3  one oryx in front takes its last slow steps and fades; empty land
 """
-import json, math, random, subprocess, wave
+import json, math, os, random, subprocess, wave
 import numpy as np
 
-SEED = 7
-N = 32
-DUR = 6.6            # scene length (s)
-VANISH = (4.1, 6.05) # «اختفى» … end of the line + pause
+SEED = 11
+DUR = 6.6
+T_RUN_END, T_WALK = 2.7, 4.8          # slow-down window
+SPEED_WALK = 0.2                      # walk speed as a share of run speed
+CAD_RUN, CAD_WALK = 1 / 0.43, 1 / 1.1 # strides per second
 SR = 44100
-SPRITE_W, SPRITE_H = 895, 916
+
+# walk rig sprite (units = pixels of the rig art)
+RIG_W, RIG_H, SPAN = 895, 916, 873    # SPAN: tail tip to nose
+# gallop frames placed in rig units so both read as the same animal
+G_W, G_H, G_L, G_T = 1107, 956, -78, 101
 
 rnd = random.Random(SEED)
-vanish_times = sorted(rnd.uniform(*VANISH) for _ in range(N))
-rnd.shuffle(vanish_times)
 
+# three depth rows: (count, nose-tail width px, feet y, run speed px/s, fade window)
+ROWS = [
+    ("back", 12, (105, 135), (1075, 1150), 70, (4.80, 5.35)),
+    ("mid", 9, (210, 260), (1230, 1330), 105, (5.20, 5.70)),
+    ("front", 1, (380, 400), (1590, 1620), 135, (5.50, 5.60)),
+]
 runners = []
-slots = list(range(N)); rnd.shuffle(slots)      # spread across the width
-for i in range(N):
-    d = rnd.random() ** 2.0                     # depth 0 far … 1 near (mostly far)
-    s = 0.11 + 0.23 * d                         # scale
-    feet = 1070 + 520 * d                       # ground line of this animal
-    v = 18 + 38 * d                             # px/s (parallax; the land pans too)
-    tv = vanish_times[i]
-    w = SPRITE_W * s
-    xm = (slots[i] + rnd.uniform(0.1, 0.9)) / N * (1080 + 0.3 * w) - 0.65 * w  # place at mid-scene
-    x0 = xm - v * 3.3
-    runners.append(dict(i=i, d=d, s=s, top=feet - SPRITE_H * s, x0=x0, v=v,
-                        P=rnd.uniform(0.34, 0.40), ph=rnd.random(), tv=tv))
-runners.sort(key=lambda r: r["d"])              # far first, near on top
+
+def travelled(t, v):
+    """screen distance after t seconds for an animal with run speed v (matches the JS)."""
+    n = int(t * 200); dt = t / max(n, 1); x = 0.0
+    for i in range(n):
+        tt = (i + 0.5) * dt
+        x += v * speed_shape(tt) * dt
+    return x
+
+def smooth(u):
+    u = min(1, max(0, u)); return u * u * (3 - 2 * u)
+
+def speed_shape(t):
+    return 1 - (1 - SPEED_WALK) * smooth((t - T_RUN_END) / (T_WALK - T_RUN_END))
+
+uid = 0
+for name, count, wr, fr, v, (f0, f1) in ROWS:
+    fades = sorted(rnd.uniform(f0, f1) for _ in range(count))
+    slots = list(range(count)); rnd.shuffle(slots)
+    for j in range(count):
+        w = rnd.uniform(*wr)
+        s = w / SPAN
+        tv = fades[j]
+        xe = (slots[j] + rnd.uniform(0.15, 0.85)) / count * (1080 - 0.4 * w) - 0.25 * w  # where it fades
+        if name == "front": xe = 640                 # right of the last one, never on top of it
+        vv = v * rnd.uniform(0.9, 1.1)
+        runners.append(dict(id=uid, row=name, s=s, w=w, feet=rnd.uniform(*fr), v=vv,
+                            x0=xe - travelled(tv, vv), tv=tv, ph=rnd.random(),
+                            cad=rnd.uniform(0.93, 1.07), ts=rnd.uniform(3.05, 3.7)))
+        uid += 1
+# the last one: front, left of centre, walks alone at the end
+hero = dict(id=uid, row="front", s=440 / SPAN, w=440, feet=1720, v=125, tv=5.88, ph=0.3, cad=0.95, ts=3.4)
+hero["x0"] = 150 - travelled(hero["tv"], hero["v"])
+runners.append(hero)
+runners.sort(key=lambda r: r["feet"])
 
 # ---------- markup ----------
 legs = [("h1", 75, 616, 90, 300, 46, 40), ("h2", 165, 616, 155, 300, 35, 40),
         ("f1", 445, 616, 105, 300, 71, 40), ("f2", 550, 616, 130, 300, 32, 40)]
 rows = []
 for r in runners:
-    imgs = [f'<img src="assets/art/run_body.png" style="left:0;top:0;width:{SPRITE_W}px;height:{SPRITE_H}px" />']
+    gal = "".join(f'<img class="g g{k}" src="assets/art/gallop_{k}.png" style="left:{G_L}px;top:{G_T}px;width:{G_W}px;height:{G_H}px;opacity:{1 if k == 0 else 0}" />' for k in range(6))
+    walk = []
     for k, x, y, w, h, ox, oy in legs:
-        imgs.insert(0 if k in ("h1", "f2") else len(imgs),
-                    f'<img class="lg lg-{k}" data-ox="{ox}" data-oy="{oy}" src="assets/art/run_{k}.png" style="left:{x}px;top:{y}px;width:{w}px;height:{h}px" />')
+        walk.append(f'<img class="lg lg-{k}" data-ox="{ox}" data-oy="{oy}" src="assets/art/run_{k}.png" style="left:{x}px;top:{y}px;width:{w}px;height:{h}px" />')
+    walk = walk[0:1] + walk[3:4] + [f'<img src="assets/art/run_body.png" style="left:0;top:0;width:{RIG_W}px;height:{RIG_H}px" />'] + walk[1:3]
     rows.append(
-        f'<div class="run" id="s1-r{r["i"]}" data-v="{r["v"]:.2f}" data-p="{r["P"]:.3f}" data-ph="{r["ph"]:.3f}" data-tv="{r["tv"]:.3f}" '
-        f'style="left:{r["x0"]:.1f}px;top:{r["top"]:.1f}px;width:{SPRITE_W * r["s"]:.1f}px;height:{SPRITE_H * r["s"]:.1f}px">'
-        f'<div class="rs" style="transform:scale({r["s"]:.4f})"><div class="rb">' + "".join(imgs) + "</div></div></div>")
+        f'<div class="run" id="s1-r{r["id"]}" data-v="{r["v"]:.2f}" data-ph="{r["ph"]:.3f}" data-cad="{r["cad"]:.3f}" data-ts="{r["ts"]:.3f}" data-tv="{r["tv"]:.3f}" '
+        f'style="left:{r["x0"]:.1f}px;top:{r["feet"] - 906 * r["s"]:.1f}px;width:{RIG_W * r["s"]:.1f}px;height:{RIG_H * r["s"]:.1f}px">'
+        f'<div class="rs" style="transform:scale({r["s"]:.4f})">'
+        f'<div class="gal">{gal}</div><div class="walk" style="opacity:0">{"".join(walk)}</div></div></div>')
 
 html = f'''<template>
   <style>
@@ -55,9 +94,9 @@ html = f'''<template>
     .t {{ position: absolute; left: 100px; right: 100px; font-family: "Noto Kufi Arabic", sans-serif; direction: rtl; text-align: center; color: #513D2C; }}
     .w {{ display: inline-block; }}
     .run {{ position: absolute; }}
-    .rs {{ position: absolute; left: 0; top: 0; width: {SPRITE_W}px; height: {SPRITE_H}px; transform-origin: 0 0; }}
-    .rb {{ position: absolute; inset: 0; }}
-    .rb img {{ position: absolute; display: block; }}
+    .rs {{ position: absolute; left: 0; top: 0; width: {RIG_W}px; height: {RIG_H}px; transform-origin: 0 0; }}
+    .gal, .walk {{ position: absolute; inset: 0; }}
+    .rs img {{ position: absolute; display: block; }}
   </style>
   <!-- generated by tools/make_herd.py: edit the script, not this markup -->
   <div id="root" data-composition-id="s1" data-width="1080" data-height="1920">
@@ -65,7 +104,7 @@ html = f'''<template>
       <div id="s1-cam" style="position:absolute;inset:0">
         <img id="s1-plate" src="assets/art/06_herd_plate.jpg" style="position:absolute;left:0;top:0;width:1080px;height:1920px;display:block" />
         <div id="s1-herd" data-layout-ignore style="position:absolute;inset:0">
-          {chr(10).join("          " + x for x in rows).strip()}
+{chr(10).join("          " + x for x in rows)}
         </div>
       </div>
       <div class="t" id="s1-l1" style="top:330px;font-size:64px;font-weight:600;color:#8B6F52">هذا الحيوان…</div>
@@ -74,33 +113,52 @@ html = f'''<template>
   </div>
   <script>
     const tl = gsap.timeline({{ paused: true }});
+    // speed and stride profiles: full gallop, then a smooth ease down to a walk
+    const T1 = {T_RUN_END}, T2 = {T_WALK}, SW = {SPEED_WALK}, CR = {CAD_RUN:.4f}, CW = {CAD_WALK:.4f}, DT = 1 / 200;
+    const sm = (u) => {{ u = Math.min(1, Math.max(0, u)); return u * u * (3 - 2 * u); }};
+    const shapeV = (t) => 1 - (1 - SW) * sm((t - T1) / (T2 - T1));
+    const shapeC = (t) => CR - (CR - CW) * sm((t - T1) / (T2 - T1));
+    const FV = [0], FC = [0];
+    for (let i = 1; i <= {DUR} / DT + 2; i++) {{
+      const tt = (i - 0.5) * DT;
+      FV.push(FV[i - 1] + shapeV(tt) * DT);
+      FC.push(FC[i - 1] + shapeC(tt) * DT);
+    }}
+    const look = (F, t) => {{ const x = t / DT, i = Math.floor(x), f = x - i; return F[i] + (F[i + 1] - F[i]) * f; }};
     const runs = Array.from(document.querySelectorAll("#s1-herd .run")).map((el) => ({{
-      el, v: +el.dataset.v, p: +el.dataset.p, ph: +el.dataset.ph,
-      body: el.querySelector(".rb"),
+      el, v: +el.dataset.v, ph: +el.dataset.ph, cad: +el.dataset.cad, ts: +el.dataset.ts, last: -1,
+      gal: el.querySelector(".gal"), walk: el.querySelector(".walk"),
+      frames: Array.from(el.querySelectorAll(".g")),
       legs: Array.from(el.querySelectorAll(".lg")).map((lg) => ({{ lg, k: lg.className.slice(-2) }})),
     }}));
     runs.forEach((r) => r.legs.forEach((l) => gsap.set(l.lg, {{ transformOrigin: l.lg.dataset.ox + "px " + l.lg.dataset.oy + "px" }})));
-    const LEG = {{ h1: [26, 0], h2: [26, 0.7], f1: [30, Math.PI], f2: [30, Math.PI + 0.7] }};
-    // gallop: every pose is a function of scene time, so any frame renders on its own
+    const LEG = {{ h1: [17, 0], h2: [17, Math.PI], f1: [19, Math.PI * 0.5], f2: [19, Math.PI * 1.5] }};
+    // every pose is a function of scene time, so any frame renders on its own
     function pose(t) {{
+      const fv = look(FV, t), fc = look(FC, t);
       for (const r of runs) {{
-        const a = 2 * Math.PI * (t / r.p + r.ph);
-        gsap.set(r.el, {{ x: r.v * t }});
-        gsap.set(r.body, {{ y: -26 * Math.abs(Math.sin(a)), rotation: 3.5 * Math.sin(a + 0.4), transformOrigin: "450px 500px" }});
+        const cyc = r.ph + fc * r.cad, frac = cyc - Math.floor(cyc), a = 2 * Math.PI * cyc;
+        const blend = Math.min(1, Math.max(0, (t - r.ts) / 0.2));
+        gsap.set(r.el, {{ x: r.v * fv }});
+        const k = Math.floor(frac * 6) % 6;
+        if (k !== r.last) {{ r.frames.forEach((f, i) => gsap.set(f, {{ opacity: i === k ? 1 : 0 }})); r.last = k; }}
+        gsap.set(r.gal, {{ opacity: 1 - blend, y: -18 * Math.abs(Math.sin(a)) }});
+        gsap.set(r.walk, {{ opacity: blend, y: -7 * Math.abs(Math.sin(a)) }});
         for (const l of r.legs) gsap.set(l.lg, {{ rotation: LEG[l.k][0] * Math.sin(a + LEG[l.k][1]) }});
       }}
     }}
     const clock = {{ t: 0 }};
     tl.fromTo(clock, {{ t: 0 }}, {{ t: {DUR}, duration: {DUR}, ease: "none", onUpdate: () => pose(clock.t) }}, 0);
-    // the land tracks with the herd
-    tl.fromTo("#s1-plate", {{ scale: 1.12, x: 70, transformOrigin: "540px 1150px" }}, {{ scale: 1.12, x: -70, duration: {DUR}, ease: "none" }}, 0);
+    // the land tracks with the herd: fast while it gallops, almost still once it walks
+    const pan = {{ t: 0 }};
+    tl.fromTo(pan, {{ t: 0 }}, {{ t: {DUR}, duration: {DUR}, ease: "none", onUpdate: () => gsap.set("#s1-plate", {{ scale: 1.2, x: 95 - 52 * look(FV, pan.t), transformOrigin: "540px 1150px" }}) }}, 0);
     // «هذا الحيوان…» 2.6 · «اختفى من البرية» 4.1
     tl.fromTo("#s1-l1", {{ opacity: 0, filter: "blur(10px)" }}, {{ opacity: 1, filter: "blur(0px)", duration: 0.3, ease: "power2.out" }}, 2.55);
     tl.fromTo("#s1-w1", {{ opacity: 0, filter: "blur(10px)" }}, {{ opacity: 1, filter: "blur(0px)", duration: 0.28, ease: "power2.out" }}, 4.08);
     tl.fromTo("#s1-w2", {{ opacity: 0, filter: "blur(10px)" }}, {{ opacity: 1, filter: "blur(0px)", duration: 0.25, ease: "power2.out" }}, 4.45);
     tl.fromTo("#s1-w3", {{ opacity: 0, filter: "blur(10px)" }}, {{ opacity: 1, filter: "blur(0px)", duration: 0.25, ease: "power2.out" }}, 4.62);
-    // the herd disappears one by one
-    runs.forEach((r) => tl.fromTo(r.el, {{ opacity: 1, filter: "blur(0px)" }}, {{ opacity: 0, filter: "blur(5px)", duration: 0.4, ease: "power2.in" }}, +r.el.dataset.tv));
+    // the herd disappears one by one: back, middle, front, the last one alone
+    runs.forEach((r) => tl.fromTo(r.el, {{ opacity: 1, filter: "blur(0px)" }}, {{ opacity: 0, filter: "blur(5px)", duration: 0.35, ease: "power2.in" }}, +r.el.dataset.tv));
     // exit: blur swap on the ivory stage
     tl.to("#s1-cam", {{ opacity: 0, filter: "blur(12px)", duration: 0.22, ease: "power2.in" }}, {DUR - 0.25:.2f});
     tl.to(["#s1-l1", "#s1-l2"], {{ opacity: 0, filter: "blur(10px)", duration: 0.18, ease: "power2.in", stagger: 0.04 }}, {DUR - 0.25:.2f});
@@ -110,7 +168,7 @@ html = f'''<template>
 '''
 open("compositions/s1.html", "w").write(html)
 
-# ---------- gallop sound ----------
+# ---------- hoof sound ----------
 def load(path):
     raw = subprocess.run(["ffmpeg", "-v", "error", "-i", path, "-ac", "1", "-ar", str(SR), "-f", "f32le", "-"],
                          capture_output=True, check=True).stdout
@@ -118,35 +176,46 @@ def load(path):
 lib = "../sfx-library/foley/"
 taks = [load(lib + f"impact_footstep_concrete_00{k}.mp3") for k in range(5)] + \
        [load(lib + f"impact_footstep_wood_00{k}.mp3") for k in range(5)]
+soft = [load(lib + f"impact_footstep_grass_00{k}.mp3") for k in range(5)]
 taks = [t / (np.abs(t).max() + 1e-9) for t in taks]
+soft = [t / (np.abs(t).max() + 1e-9) for t in soft]
+
+def cad_shape(t):
+    return CAD_RUN - (CAD_RUN - CAD_WALK) * smooth((t - T_RUN_END) / (T_WALK - T_RUN_END))
+
 out = np.zeros((int(SR * (DUR + 1)), 2), np.float32)
 srnd = random.Random(SEED + 1)
+dt = 1 / 400
+size = {"back": 0.18, "mid": 0.5, "front": 1.0}
 for r in runners:
-    near = 0.12 + 0.88 * r["d"] ** 1.6
-    t = -r["ph"] * r["P"]
-    while t < r["tv"] + 0.4:
-        for frac in (0.0, 0.11, 0.24):           # three-beat gallop: ta-ta-tak … ta-ta-tak
-            h = t + frac * r["P"]
-            if h < 0 or h > r["tv"] + 0.4: continue
-            fade = 1.0 if h < r["tv"] else max(0.0, 1 - (h - r["tv"]) / 0.4)
-            g = near * fade * srnd.uniform(0.6, 1.0) * (1.25 if frac == 0.24 else 1.0)
-            x = r["x0"] + r["v"] * h + SPRITE_W * r["s"] / 2
-            pan = min(1, max(0, x / 1080))
-            smp = taks[srnd.randrange(len(taks))]
-            i0 = int(h * SR); seg = smp[: len(out) - i0]
-            out[i0:i0 + len(seg), 0] += seg * g * math.cos(pan * math.pi / 2)
-            out[i0:i0 + len(seg), 1] += seg * g * math.sin(pan * math.pi / 2)
-        t += r["P"]
+    near = size[r["row"]]
+    cyc, x, t, last_beat = r["ph"], r["x0"], 0.0, None
+    while t < r["tv"] + 0.35:
+        walking = t > r["ts"] + 0.1
+        beats = (0.0, 0.25, 0.5, 0.75) if walking else (0.0, 0.11, 0.24)
+        c0 = cyc
+        cyc += cad_shape(t) * r["cad"] * dt
+        x += r["v"] * speed_shape(t) * dt
+        for b in beats:                          # a hoof lands when the cycle passes a beat
+            if math.floor(c0 - b) != math.floor(cyc - b):
+                fade = 1.0 if t < r["tv"] else max(0.0, 1 - (t - r["tv"]) / 0.35)
+                g = near * fade * srnd.uniform(0.6, 1.0)
+                g *= 0.55 if walking else (1.25 if b == 0.24 else 1.0)
+                pan = min(1, max(0, (x + r["w"] / 2) / 1080))
+                smp = (soft if walking else taks)[srnd.randrange(5 if walking else 10)]
+                i0 = int(t * SR); seg = smp[: len(out) - i0]
+                out[i0:i0 + len(seg), 0] += seg * g * math.cos(pan * math.pi / 2)
+                out[i0:i0 + len(seg), 1] += seg * g * math.sin(pan * math.pi / 2)
+        t += dt
 tt = np.arange(len(out)) / SR
-env = np.clip(tt / 0.25, 0, 1) * np.where(tt < 2.35, 1.0, np.interp(tt, [2.35, 2.6], [1.0, 0.55]))
+env = np.clip(tt / 0.2, 0, 1) * np.interp(tt, [0, 2.35, 2.6, 7.6], [1.0, 1.0, 0.6, 0.6])
 out *= env[:, None]
 out /= np.abs(out).max() / 0.7
 with wave.open("assets/sfx/herd_gallop.wav", "wb") as w:
     w.setnchannels(2); w.setsampwidth(2); w.setframerate(SR)
     w.writeframes((np.clip(out, -1, 1) * 32767).astype("<i2").tobytes())
-print(json.dumps({"runners": N, "vanish": [round(min(vanish_times), 2), round(max(vanish_times), 2)]}))
-
 # loudness: about −19 LUFS with a −2 dB true-peak ceiling, so the hooves read clearly before the voice
 subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", "assets/sfx/herd_gallop.wav", "-af",
                 "loudnorm=I=-19:TP=-2:LRA=11", "-ar", str(SR), "assets/sfx/herd_gallop_n.wav"], check=True)
-import os; os.replace("assets/sfx/herd_gallop_n.wav", "assets/sfx/herd_gallop.wav")
+os.replace("assets/sfx/herd_gallop_n.wav", "assets/sfx/herd_gallop.wav")
+print(json.dumps({"animals": len(runners), "last_fade": max(r["tv"] for r in runners)}))
