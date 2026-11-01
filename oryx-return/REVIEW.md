@@ -15,8 +15,12 @@
 - 2.7–4.8 s the herd eases to a walk (jointed walk rig); 4.8–5.9 s back, middle and front fade in turn; one oryx in front walks alone and fades by 6.2 s; empty land until the cut.
 - Hoof track follows the same clock: gallop taks while running, soft grass steps while walking, each animal's steps stop when it fades.
 
+## Revision 4 (requested)
+- Gallop poses re-cut in the kit's ink colour with crisp edges and scaled to the walk rig, so running and walking read as one animal; each oryx switches to walking on its legs-under-body stride (no crossfade ghosting).
+- Intro shortened: voice starts at 2.0 s; slow-down 2.2–4.3 s, fades 4.3–5.4 s, empty land to the cut at 6.1 s. Film is 43.5 s.
+
 ## Measured
-- `check`: passes. Rendered file: 1080×1920, 30 fps, 44.0 s, −16.8 LUFS integrated, −1.5 dBFS peak; gallop intro −20.9 LUFS.
+- `check`: passes. Rendered file: 1080×1920, 30 fps, 43.5 s, −16.8 LUFS integrated, −1.6 dBFS peak; gallop intro −20.6 LUFS.
 - Beat, seam and phone sheets looked at; text inside the 168–1330 band.
 - The sound was measured, not heard: effect timings come from the manifest's `peak_at`.
 

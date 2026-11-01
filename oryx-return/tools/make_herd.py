@@ -15,8 +15,8 @@ import json, math, os, random, subprocess, wave
 import numpy as np
 
 SEED = 11
-DUR = 6.6
-T_RUN_END, T_WALK = 2.7, 4.8          # slow-down window
+DUR = 6.1
+T_RUN_END, T_WALK = 2.2, 4.3          # slow-down window
 SPEED_WALK = 0.2                      # walk speed as a share of run speed
 CAD_RUN, CAD_WALK = 1 / 0.43, 1 / 1.1 # strides per second
 SR = 44100
@@ -24,15 +24,15 @@ SR = 44100
 # walk rig sprite (units = pixels of the rig art)
 RIG_W, RIG_H, SPAN = 895, 916, 873    # SPAN: tail tip to nose
 # gallop frames placed in rig units so both read as the same animal
-G_W, G_H, G_L, G_T = 1107, 956, -78, 101
+G_W, G_H, G_L, G_T = 1307, 1129, -94, -44
 
 rnd = random.Random(SEED)
 
 # three depth rows: (count, nose-tail width px, feet y, run speed px/s, fade window)
 ROWS = [
-    ("back", 12, (105, 135), (1075, 1150), 70, (4.80, 5.35)),
-    ("mid", 9, (210, 260), (1230, 1330), 105, (5.20, 5.70)),
-    ("front", 1, (380, 400), (1590, 1620), 135, (5.50, 5.60)),
+    ("back", 12, (105, 135), (1075, 1150), 70, (4.30, 4.85)),
+    ("mid", 9, (210, 260), (1230, 1330), 105, (4.70, 5.20)),
+    ("front", 1, (380, 400), (1590, 1620), 135, (5.00, 5.10)),
 ]
 runners = []
 
@@ -63,10 +63,10 @@ for name, count, wr, fr, v, (f0, f1) in ROWS:
         vv = v * rnd.uniform(0.9, 1.1)
         runners.append(dict(id=uid, row=name, s=s, w=w, feet=rnd.uniform(*fr), v=vv,
                             x0=xe - travelled(tv, vv), tv=tv, ph=rnd.random(),
-                            cad=rnd.uniform(0.93, 1.07), ts=rnd.uniform(3.05, 3.7)))
+                            cad=rnd.uniform(0.93, 1.07), ts=rnd.uniform(2.55, 3.2)))
         uid += 1
 # the last one: front, left of centre, walks alone at the end
-hero = dict(id=uid, row="front", s=440 / SPAN, w=440, feet=1720, v=125, tv=5.88, ph=0.3, cad=0.95, ts=3.4)
+hero = dict(id=uid, row="front", s=440 / SPAN, w=440, feet=1720, v=125, tv=5.38, ph=0.3, cad=0.95, ts=2.9)
 hero["x0"] = 150 - travelled(hero["tv"], hero["v"])
 runners.append(hero)
 runners.sort(key=lambda r: r["feet"])
@@ -126,25 +126,33 @@ html = f'''<template>
     }}
     const look = (F, t) => {{ const x = t / DT, i = Math.floor(x), f = x - i; return F[i] + (F[i + 1] - F[i]) * f; }};
     const runs = Array.from(document.querySelectorAll("#s1-herd .run")).map((el) => ({{
-      el, v: +el.dataset.v, ph: +el.dataset.ph, cad: +el.dataset.cad, ts: +el.dataset.ts, last: -1,
+      el, v: +el.dataset.v, ph: +el.dataset.ph, cad: +el.dataset.cad, ts: +el.dataset.ts, last: -1, sw: 0, cs: 0,
       gal: el.querySelector(".gal"), walk: el.querySelector(".walk"),
       frames: Array.from(el.querySelectorAll(".g")),
       legs: Array.from(el.querySelectorAll(".lg")).map((lg) => ({{ lg, k: lg.className.slice(-2) }})),
     }}));
     runs.forEach((r) => r.legs.forEach((l) => gsap.set(l.lg, {{ transformOrigin: l.lg.dataset.ox + "px " + l.lg.dataset.oy + "px" }})));
+    // each animal changes to walking on the stride where its legs are under the body (gallop pose 3)
+    runs.forEach((r) => {{
+      for (let t = r.ts; t < {DUR}; t += DT) {{
+        const c = r.ph + look(FC, t) * r.cad, f = c - Math.floor(c);
+        if (f >= 3 / 6 && f < 4 / 6) {{ r.sw = t; r.cs = c; break; }}
+      }}
+      if (!r.sw) r.sw = r.ts;
+    }});
     const LEG = {{ h1: [17, 0], h2: [17, Math.PI], f1: [19, Math.PI * 0.5], f2: [19, Math.PI * 1.5] }};
     // every pose is a function of scene time, so any frame renders on its own
     function pose(t) {{
       const fv = look(FV, t), fc = look(FC, t);
       for (const r of runs) {{
         const cyc = r.ph + fc * r.cad, frac = cyc - Math.floor(cyc), a = 2 * Math.PI * cyc;
-        const blend = Math.min(1, Math.max(0, (t - r.ts) / 0.2));
+        const walking = t >= r.sw, aw = 2 * Math.PI * (cyc - r.cs);
         gsap.set(r.el, {{ x: r.v * fv }});
         const k = Math.floor(frac * 6) % 6;
         if (k !== r.last) {{ r.frames.forEach((f, i) => gsap.set(f, {{ opacity: i === k ? 1 : 0 }})); r.last = k; }}
-        gsap.set(r.gal, {{ opacity: 1 - blend, y: -18 * Math.abs(Math.sin(a)) }});
-        gsap.set(r.walk, {{ opacity: blend, y: -7 * Math.abs(Math.sin(a)) }});
-        for (const l of r.legs) gsap.set(l.lg, {{ rotation: LEG[l.k][0] * Math.sin(a + LEG[l.k][1]) }});
+        gsap.set(r.gal, {{ opacity: walking ? 0 : 1, y: -18 * Math.abs(Math.sin(a)) }});
+        gsap.set(r.walk, {{ opacity: walking ? 1 : 0, y: -6 * Math.abs(Math.sin(aw)) }});
+        for (const l of r.legs) gsap.set(l.lg, {{ rotation: walking ? LEG[l.k][0] * Math.min(1, (t - r.sw) / 0.25) * Math.sin(aw + LEG[l.k][1]) : 0 }});
       }}
     }}
     const clock = {{ t: 0 }};
@@ -152,11 +160,11 @@ html = f'''<template>
     // the land tracks with the herd: fast while it gallops, almost still once it walks
     const pan = {{ t: 0 }};
     tl.fromTo(pan, {{ t: 0 }}, {{ t: {DUR}, duration: {DUR}, ease: "none", onUpdate: () => gsap.set("#s1-plate", {{ scale: 1.2, x: 95 - 52 * look(FV, pan.t), transformOrigin: "540px 1150px" }}) }}, 0);
-    // «هذا الحيوان…» 2.6 · «اختفى من البرية» 4.1
-    tl.fromTo("#s1-l1", {{ opacity: 0, filter: "blur(10px)" }}, {{ opacity: 1, filter: "blur(0px)", duration: 0.3, ease: "power2.out" }}, 2.55);
-    tl.fromTo("#s1-w1", {{ opacity: 0, filter: "blur(10px)" }}, {{ opacity: 1, filter: "blur(0px)", duration: 0.28, ease: "power2.out" }}, 4.08);
-    tl.fromTo("#s1-w2", {{ opacity: 0, filter: "blur(10px)" }}, {{ opacity: 1, filter: "blur(0px)", duration: 0.25, ease: "power2.out" }}, 4.45);
-    tl.fromTo("#s1-w3", {{ opacity: 0, filter: "blur(10px)" }}, {{ opacity: 1, filter: "blur(0px)", duration: 0.25, ease: "power2.out" }}, 4.62);
+    // «هذا الحيوان…» 2.1 · «اختفى من البرية» 3.6
+    tl.fromTo("#s1-l1", {{ opacity: 0, filter: "blur(10px)" }}, {{ opacity: 1, filter: "blur(0px)", duration: 0.3, ease: "power2.out" }}, 2.05);
+    tl.fromTo("#s1-w1", {{ opacity: 0, filter: "blur(10px)" }}, {{ opacity: 1, filter: "blur(0px)", duration: 0.28, ease: "power2.out" }}, 3.58);
+    tl.fromTo("#s1-w2", {{ opacity: 0, filter: "blur(10px)" }}, {{ opacity: 1, filter: "blur(0px)", duration: 0.25, ease: "power2.out" }}, 3.95);
+    tl.fromTo("#s1-w3", {{ opacity: 0, filter: "blur(10px)" }}, {{ opacity: 1, filter: "blur(0px)", duration: 0.25, ease: "power2.out" }}, 4.12);
     // the herd disappears one by one: back, middle, front, the last one alone
     runs.forEach((r) => tl.fromTo(r.el, {{ opacity: 1, filter: "blur(0px)" }}, {{ opacity: 0, filter: "blur(5px)", duration: 0.35, ease: "power2.in" }}, +r.el.dataset.tv));
     // exit: blur swap on the ivory stage
@@ -208,7 +216,7 @@ for r in runners:
                 out[i0:i0 + len(seg), 1] += seg * g * math.sin(pan * math.pi / 2)
         t += dt
 tt = np.arange(len(out)) / SR
-env = np.clip(tt / 0.2, 0, 1) * np.interp(tt, [0, 2.35, 2.6, 7.6], [1.0, 1.0, 0.6, 0.6])
+env = np.clip(tt / 0.2, 0, 1) * np.interp(tt, [0, 1.85, 2.1, 7.1], [1.0, 1.0, 0.6, 0.6])
 out *= env[:, None]
 out /= np.abs(out).max() / 0.7
 with wave.open("assets/sfx/herd_gallop.wav", "wb") as w:
