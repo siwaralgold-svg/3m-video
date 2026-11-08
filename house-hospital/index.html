@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ar" data-resolution="landscape">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <title>البيت اللي صار مستشفى</title>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script src="assets/rigs.js"></script>
+    <script src="assets/rig.js"></script>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1920px; height: 1080px; overflow: hidden; background: #140e09; }
+      #film-ground { position: absolute; inset: 0; background: #140e09; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-fps="24" data-start="0" data-duration="151.0" data-width="1920" data-height="1080">
+      <div id="film-ground" class="clip" data-start="0" data-duration="151.0" data-track-index="0" style="z-index:1"></div>
+      <div id="sc01" data-composition-id="sc01" data-composition-src="compositions/sc01.html" data-start="0" data-duration="12.74" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080" style="z-index:2"></div>
+      <div id="sc02" data-composition-id="sc02" data-composition-src="compositions/sc02.html" data-start="12.74" data-duration="3.51" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080" style="z-index:2"></div>
+      <div id="sc03" data-composition-id="sc03" data-composition-src="compositions/sc03.html" data-start="16.25" data-duration="7.85" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080" style="z-index:2"></div>
+      <div id="sc04" data-composition-id="sc04" data-composition-src="compositions/sc04.html" data-start="24.1" data-duration="12.9" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080" style="z-index:2"></div>
+      <div id="sc05" data-composition-id="sc05" data-composition-src="compositions/sc05.html" data-start="37.0" data-duration="10.0" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080" style="z-index:2"></div>
+      <div id="sc06" data-composition-id="sc06" data-composition-src="compositions/sc06.html" data-start="47.0" data-duration="1.4" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080" style="z-index:2"></div>
+      <div id="sc07" data-composition-id="sc07" data-composition-src="compositions/sc07.html" data-start="48.4" data-duration="7.2" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080" style="z-index:2"></div>
+      <div id="sc08" data-composition-id="sc08" data-composition-src="compositions/sc08.html" data-start="55.6" data-duration="10.3" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080" style="z-index:2"></div>
+      <div id="sc09" data-composition-id="sc09" data-composition-src="compositions/sc09.html" data-start="65.9" data-duration="26.7" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080" style="z-index:2"></div>
+      <div id="sc10" data-composition-id="sc10" data-composition-src="compositions/sc10.html" data-start="92.6" data-duration="2.9" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080" style="z-index:2"></div>
+      <div id="sc11" data-composition-id="sc11" data-composition-src="compositions/sc11.html" data-start="95.5" data-duration="4.4" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080" style="z-index:2"></div>
+      <div id="sc12" data-composition-id="sc12" data-composition-src="compositions/sc12.html" data-start="99.9" data-duration="3.1" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080" style="z-index:2"></div>
+      <div id="sc13" data-composition-id="sc13" data-composition-src="compositions/sc13.html" data-start="103.0" data-duration="1.4" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080" style="z-index:2"></div>
+      <div id="sc14" data-composition-id="sc14" data-composition-src="compositions/sc14.html" data-start="104.4" data-duration="9.1" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080" style="z-index:2"></div>
+      <div id="sc15" data-composition-id="sc15" data-composition-src="compositions/sc15.html" data-start="113.5" data-duration="13.5" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080" style="z-index:2"></div>
+      <div id="sc16" data-composition-id="sc16" data-composition-src="compositions/sc16.html" data-start="127.0" data-duration="17.6" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080" style="z-index:2"></div>
+      <div id="sc17" data-composition-id="sc17" data-composition-src="compositions/sc17.html" data-start="144.6" data-duration="6.4" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080" style="z-index:2"></div>
+      <audio id="voice" src="assets/audio/voice.mp3" data-start="3.0" data-volume="1" data-track-index="2"></audio>
+      <audio id="sfx-hoe1" src="assets/sfx/impact_footstep_grass_000.mp3" data-start="17.641" data-duration="0.78" data-volume="0.3" data-fade-in="0" data-fade-out="0.05" data-track-index="3"></audio>
+      <audio id="sfx-hoe2" src="assets/sfx/impact_footstep_grass_002.mp3" data-start="18.991" data-duration="0.69" data-volume="0.28" data-fade-in="0" data-fade-out="0.05" data-track-index="4"></audio>
+      <audio id="sfx-hoe3" src="assets/sfx/impact_footstep_grass_003.mp3" data-start="20.341" data-duration="0.67" data-volume="0.3" data-fade-in="0" data-fade-out="0.05" data-track-index="3"></audio>
+      <audio id="sfx-hoe4" src="assets/sfx/impact_footstep_grass_000.mp3" data-start="105.791" data-duration="0.78" data-volume="0.3" data-fade-in="0" data-fade-out="0.05" data-track-index="4"></audio>
+      <audio id="sfx-bag" src="assets/sfx/rpg_belt_handle1.mp3" data-start="66.238" data-duration="0.25" data-volume="0.35" data-fade-in="0" data-fade-out="0.05" data-track-index="3"></audio>
+      <audio id="sfx-stetho" src="assets/sfx/rpg_cloth2.mp3" data-start="67.562" data-duration="0.36" data-volume="0.3" data-fade-in="0" data-fade-out="0.05" data-track-index="4"></audio>
+      <audio id="sfx-hand" src="assets/sfx/rpg_cloth3.mp3" data-start="90.233" data-duration="0.47" data-volume="0.28" data-fade-in="0" data-fade-out="0.05" data-track-index="3"></audio>
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = gsap.timeline({ paused: true });
+    </script>
+  </body>
+</html>

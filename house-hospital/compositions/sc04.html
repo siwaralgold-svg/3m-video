@@ -1,0 +1,83 @@
+<template>
+  <style>
+    @font-face { font-family: "Amiri"; src: url("assets/fonts/Amiri-Bold.ttf"); font-weight: 700; }
+    @font-face { font-family: "Amiri"; src: url("assets/fonts/Amiri-Regular.ttf"); font-weight: 400; }
+    #root { position: absolute; inset: 0; overflow: hidden; background: #140e09; }
+    .stage { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    .bgimg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    .actor { position: absolute; left: 0; top: 0; }
+    .prop { position: absolute; left: 0; top: 0; transform-origin: 0 0; }
+    .grade { position: absolute; inset: 0; pointer-events: none; z-index: 40; }
+    .title { position: absolute; left: 0; right: 0; top: 150px; text-align: center; direction: rtl; z-index: 50;
+      font-family: "Amiri", serif; font-weight: 700; font-size: 104px; color: #fff6e6;
+      text-shadow: 0 3px 18px rgba(60,30,10,.55), 0 1px 2px rgba(60,30,10,.6); }
+    .place { position: absolute; right: 150px; bottom: 120px; direction: rtl; z-index: 50;
+      font-family: "Amiri", serif; font-weight: 700; font-size: 54px; color: #fff6e6; text-shadow: 0 2px 12px rgba(40,20,5,.6); }
+    .card { position: absolute; left: 260px; right: 260px; top: 420px; text-align: center; direction: rtl; z-index: 50;
+      font-family: "Amiri", serif; font-weight: 400; font-size: 54px; line-height: 1.75; color: #f1e4cc; }
+  </style>
+  <div id="root" data-composition-id="sc04" data-width="1920" data-height="1080">
+    <div id="sc04-wrap" class="clip" data-start="0" data-duration="12.9" data-layout-allow-overflow data-layout-allow-overlap style="position:absolute;inset:0">
+      <div id="sc04-cam" class="stage">
+        <img id="sc04-bg" class="bgimg" src="assets/bg/04_salem_home_interior.png">
+        <div id="sc04-father" class="actor" style="z-index:14"></div>
+        <div id="sc04-blanket" style="position:absolute;z-index:16;left:0;top:0;width:620px;height:120px;transform-origin:0 0"><svg width="620" height="120" viewBox="0 0 620 120"><path d="M8 40 Q40 8 120 14 L560 18 Q612 22 612 70 L610 110 L10 110 Q2 80 8 40 Z" fill="#7a4f33" stroke="#5c3a24" stroke-width="3"/><path d="M440 18 L452 110 M470 19 L482 110" stroke="#e7d6b8" stroke-width="7" opacity=".85"/><path d="M60 40 Q300 30 600 46" stroke="#5c3a24" stroke-width="2" fill="none" opacity=".5"/></svg></div>
+        <div id="sc04-salemw" class="actor" style="z-index:20"></div>
+        <div id="sc04-salem" class="actor" style="z-index:20"></div>
+      </div>
+      <div id="sc04-dark" class="grade" style="background:rgba(40,30,45,1)"></div><div id="sc04-sun" class="grade" style="background:linear-gradient(115deg,rgba(255,214,140,.0) 10%,rgba(255,214,140,.35) 22%,rgba(255,214,140,0) 34%,rgba(255,214,140,.25) 40%,rgba(255,214,140,0) 52%);mix-blend-mode:screen"></div>
+    </div>
+  </div>
+  <script>
+  (function () {
+    const q = (i) => document.getElementById(i);
+    const T = Rig.track;
+    const DUR = 12.9;
+    // voice time (seconds into voice.mp3) -> scene time
+    const at = (a) => a + 3.0 - 24.1;
+    const tl = gsap.timeline({ paused: true });
+
+const fa = Rig.make(q('sc04-father'), 'father_side', {seed: 9});
+const sw = Rig.make(q('sc04-salemw'), 'salem_side', {seed: 4});
+const ss = Rig.make(q('sc04-salem'), 'salem_q34', {seed: 6, lap: {y: 430}});
+const cam = Rig.camera(q('sc04-cam'));
+const sun = T([[0,0.05],[at(22.9),0.05],[at(24.1),0.85]]);
+const dark = T([[0,0.42],[at(22.9),0.42],[at(24.1),0.08]]);
+const cutB = at(25.75), cutC = at(27.6);
+const swx = T([[0,1720],[at(25.9),1720],[at(27.4),1260,'lin']]);
+const swset = T([[0,0],[at(27.4),0],[at(27.8),1]]);
+// Salem seated: lean in on «يبه», proud bounce on «اليوم أنا سبقتك»
+const sLean = T([[0,2],[at(28.1),2],[at(28.45),10],[at(28.9),4],[at(30.0),2]]);
+const sArm = T([[0,0],[at(28.0),0],[at(28.45),1],[at(29.0),1],[at(29.4),0]]);
+const sHead = T([[0,4],[at(28.6),4],[at(29.0),-6],[at(29.5),-3],[at(30.1),2],[at(31.5),6]]);
+const sDy = T([[0,0],[at(29.05),0],[at(29.25),-7],[at(29.45),0],[at(29.65),-5],[at(29.85),0]]);
+// father: head turns to Salem («ابتسم لي»), tries to rise («ما قدر يقوم»)
+const fHead = T([[0,0],[at(30.7),0],[at(31.2),14],[at(31.45),10],[at(31.65),15],[at(33.5),12]]);
+const fLean = T([[0,0],[at(31.95),0],[at(32.45),13,'out'],[at(32.65),12],[at(33.2),1,'in']]);
+const fArm = T([[0,0],[at(31.9),0],[at(32.4),-18],[at(33.2),0]]);
+Rig.drive(tl, DUR, (t) => {
+  if (t < cutB) cam.render({cx: 900 - t * 8, cy: 560, z: 1.05});
+  else if (t < cutC) cam.render({cx: 1150, cy: 600, z: 1.15});
+  else cam.render({cx: 760 + (t - cutC) * 4, cy: 650, z: 1.75 + (t - cutC) * 0.012});
+  q('sc04-sun').style.opacity = sun(t);
+  q('sc04-dark').style.opacity = dark(t);
+  const fst = {t, x: 1030, y: 712, h: 600, dir: 1, rot: -90, d: 0, settle: 1, head: fHead(t), lean: fLean(t),
+               arm: [fArm(t), -10], idle: 0.3, shadow: 0, swing: 0};
+  fa.render(fst);
+  // blanket covers him from the chest down
+  const p = Rig.pt(fa, fst, fa.ox, fa.R.waist * 0.62);
+  q('sc04-blanket').style.transform = `translate(${p.x - 24}px, ${p.y - 46}px) scale(0.66, 0.85)`;
+  const walking = t < cutC;
+  sw.render({t, x: swx(t), x0: 1720, y: 880, h: 600, dir: -1, settle: swset(t), op: walking ? 1 : 0});
+  const sst = {t, x: 700, y: 850, h: 540, dir: -1, lean: sLean(t), head: sHead(t), dy: sDy(t), op: walking ? 0 : 1, shadow: 0.6};
+  // hand to father's shoulder
+  const target = Rig.pt(fa, fst, fa.ox + 40, fa.R.arms[0].shoulder[1]);
+  const reachA = Rig.reach(ss, sst, 0, target.x + 20, target.y - 18, 1);
+  sst.arm = Rig.mixArm([4, -6], reachA, Rig.smooth(sArm(t)));
+  ss.render(sst);
+});
+
+    window.__timelines["sc04"] = tl;
+  })();
+  </script>
+</template>

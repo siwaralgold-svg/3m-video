@@ -1,0 +1,158 @@
+<template>
+  <style>
+    @font-face { font-family: "Amiri"; src: url("assets/fonts/Amiri-Bold.ttf"); font-weight: 700; }
+    @font-face { font-family: "Amiri"; src: url("assets/fonts/Amiri-Regular.ttf"); font-weight: 400; }
+    #root { position: absolute; inset: 0; overflow: hidden; background: #140e09; }
+    .stage { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    .bgimg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    .actor { position: absolute; left: 0; top: 0; }
+    .prop { position: absolute; left: 0; top: 0; transform-origin: 0 0; }
+    .grade { position: absolute; inset: 0; pointer-events: none; z-index: 40; }
+    .title { position: absolute; left: 0; right: 0; top: 150px; text-align: center; direction: rtl; z-index: 50;
+      font-family: "Amiri", serif; font-weight: 700; font-size: 104px; color: #fff6e6;
+      text-shadow: 0 3px 18px rgba(60,30,10,.55), 0 1px 2px rgba(60,30,10,.6); }
+    .place { position: absolute; right: 150px; bottom: 120px; direction: rtl; z-index: 50;
+      font-family: "Amiri", serif; font-weight: 700; font-size: 54px; color: #fff6e6; text-shadow: 0 2px 12px rgba(40,20,5,.6); }
+    .card { position: absolute; left: 260px; right: 260px; top: 420px; text-align: center; direction: rtl; z-index: 50;
+      font-family: "Amiri", serif; font-weight: 400; font-size: 54px; line-height: 1.75; color: #f1e4cc; }
+  </style>
+  <div id="root" data-composition-id="sc09" data-width="1920" data-height="1080">
+    <div id="sc09-wrap" class="clip" data-start="0" data-duration="26.7" data-layout-allow-overflow data-layout-allow-overlap style="position:absolute;inset:0">
+      <div id="sc09-cam" class="stage">
+        <img id="sc09-bg" class="bgimg" src="assets/bg/07_clinic_interior.png">
+        <img id="sc09-bagc" class="prop" src="assets/props/prop_bag_closed.png" style="z-index:12;width:1512px;height:1152px">
+        <img id="sc09-bago" class="prop" src="assets/props/prop_bag_open.png" style="z-index:12;width:1392px;height:1312px">
+        <img id="sc09-stetho-in" class="prop" src="assets/props/prop_stetho.png" style="z-index:11;width:1272px;height:1344px">
+        <div id="sc09-marian" class="actor" style="z-index:14"></div>
+        <div id="sc09-father" class="actor" style="z-index:16"></div>
+        <div id="sc09-pat" class="actor" style="z-index:18"></div>
+        <img id="sc09-stetho" class="prop" src="assets/props/prop_stetho.png" style="z-index:19;width:1272px;height:1344px">
+        <svg id="sc09-tube" style="position:absolute;left:0;top:0;width:1920px;height:1080px;overflow:visible;z-index:19"><path id="sc09-tube-p" d="" fill="none" stroke="#2c2a2a" stroke-width="5" stroke-linecap="round"/><circle id="sc09-bell" r="11" fill="#c9cdd1" stroke="#6d7277" stroke-width="3"/></svg>
+        <div id="sc09-uncle" class="actor" style="z-index:22"></div>
+        <div id="sc09-salem" class="actor" style="z-index:24"></div>
+        <div id="sc09-farm" style="position:absolute;z-index:26;left:0;top:0"></div>
+      </div>
+      
+    </div>
+  </div>
+  <script>
+  (function () {
+    const q = (i) => document.getElementById(i);
+    const T = Rig.track;
+    const DUR = 26.7;
+    // voice time (seconds into voice.mp3) -> scene time
+    const at = (a) => a + 3.0 - 65.9;
+    const tl = gsap.timeline({ paused: true });
+
+const fa = Rig.make(q('sc09-father'), 'father_front', {seed: 3, armLayer: q('sc09-farm')});
+const pat = Rig.make(q('sc09-pat'), 'pat_q34', {seed: 5});
+const ma = Rig.figure(q('sc09-marian'), 'assets/chars/marian_front.png', 648, 1644, {seed: 2, amp: 0.4});
+const un = Rig.make(q('sc09-uncle'), 'uncle_q34', {seed: 6});
+const sa = Rig.make(q('sc09-salem'), 'salem_q34', {seed: 9});
+const cam = Rig.camera(q('sc09-cam'));
+const place = (id, x, y, w, op) => { const e = q(id); e.style.transformOrigin = '0 0'; e.style.transform = `translate(${x}px,${y}px) scale(${w / e.width})`; e.style.opacity = op; };
+// shot cuts (scene time)
+const S2 = at(65.95), S3 = at(68.5), S4a = at(72.95), S4b = at(74.3), S5 = at(78.7), S6 = at(85.05);
+// --- shot 1: Pat at the desk opens the bag and lifts the stethoscope
+const open = T([[0,0],[at(63.1),0],[at(63.5),1]]);
+const p1 = T([[0,0],[at(62.95),0.25],[at(63.2),1],[at(63.6),0.5],[at(64.2),1],[at(64.7),1],[at(65.4),0.15]]);
+const lifted = (t) => t >= at(64.6);
+// --- shot 2: to the chest
+const toChest = T([[0,0],[at(66.0),0],[at(66.9),1,'out'],[at(78.6),1],[at(79.4),0]]);
+const reposition = T([[0,0],[at(76.6),0],[at(77.0),1],[at(77.4),0]]);
+// --- shot 3: whisper
+const sLean = T([[0,0],[at(68.6),0],[at(69.3),9],[at(70.7),11],[at(71.4),7],[at(72.4),3]]);
+const sDy = T([[0,0],[at(69.0),0],[at(69.3),-10],[at(71.5),-10],[at(71.9),0]]);
+const sHead = T([[0,0],[at(70.6),0],[at(70.85),-12],[at(71.4),-6],[at(72.9),-2]]);
+const uHead = T([[0,0],[at(71.3),0],[at(71.6),10],[at(72.5),8],[at(73.0),2]]);
+const uArm = T([[0,0],[at(71.5),0],[at(71.9),-28],[at(72.6),-30],[at(73.2),0]]);
+// --- shot 5: watching
+const s5lean = (t) => Rig.wob(t, 4, 2.3, 2.2);
+const s5head = T([[0,-6],[at(81.3),-6],[at(81.7),-11],[at(83.0),-9],[at(83.6),-13],[at(85),-9]]);
+const patNod = T([[0,0],[at(81.6),0],[at(81.85),6],[at(82.1),0],[at(82.35),5],[at(82.7),0]]);
+// --- shot 6: the hand
+const hand = T([[0,0],[at(86.35),0],[at(87.35),1,'io']]);
+const fNod = T([[0,0],[at(87.9),0],[at(88.25),7],[at(88.55),1],[at(88.85),6],[at(89.6),2]]);
+const fLean = T([[0,0],[at(87.9),0],[at(88.6),-4],[at(89.6),-3]]);
+const salHand = T([[0,0],[at(86.5),0],[at(87.2),1]]);
+Rig.drive(tl, DUR, (t) => {
+  const shot = t < S2 ? 1 : t < S3 ? 2 : t < S4a ? 3 : t < S4b ? 4 : t < S5 ? 5 : t < S6 ? 6 : 7;
+  if (shot === 1) cam.render({cx: 640, cy: 520, z: 1.8 + t * 0.02});
+  else if (shot === 2) cam.render({cx: 1480, cy: 520, z: 1.55});
+  else if (shot === 3) cam.render({cx: 960, cy: 560, z: 1.02});
+  else if (shot === 4) cam.render({cx: 600, cy: 600, z: 2.0});
+  else if (shot === 5) { const c = Rig.pt(fa, {x: 1660, y: 860, h: 610, dir: -1}, 202, 330); cam.render({cx: c.x - 60, cy: c.y + 10, z: 3.0 + (t - S4b) * 0.03}); }
+  else if (shot === 6) cam.render({cx: 1350, cy: 540, z: 1.45});
+  else cam.render({cx: 1420, cy: 560, z: 1.6 + (t - S6) * 0.01});
+  // father seated on the bed edge, facing camera (mirrored so his free arm is toward Salem)
+  const fst = {t, x: 1660, y: 860, h: 610, dir: -1, head: fNod(t), lean: fLean(t), idle: 0.6};
+  // Pat: at the desk in shot 1 (facing the bag), at the bed afterwards
+  const pst = shot === 1 ? {t, x: 760, y: 900, h: 640, dir: -1} : {t, x: 1365, y: 900, h: 640, dir: 1, head: patNod(t)};
+  // bag on the desk
+  place('sc09-bagc', 412, 432, 165, open(t) < 0.5 ? 1 : 0);
+  place('sc09-bago', 418, 414, 154, open(t) >= 0.5 ? 1 : 0);
+  place('sc09-stetho-in', 466, 432, 66, open(t) >= 0.5 && !lifted(t) ? 1 : 0);
+  if (shot === 1) {
+    const bagPt = {x: 500, y: 470};
+    const restA = [0, -6];
+    const ra = Rig.reach(pat, pst, 0, bagPt.x + 40, bagPt.y - 10, 1);
+    const up = Rig.reach(pat, pst, 0, 690, 380, 1);
+    const u = p1(t);
+    pst.arm = t < at(64.7) ? Rig.mixArm(restA, ra, Rig.smooth(Math.min(1, u))) : Rig.mixArm(up, ra, Rig.smooth(u));
+    pst.idle = 0.2;
+  } else {
+    const chest = Rig.pt(fa, fst, 202, 330);
+    const target = {x: chest.x - 20 + reposition(t) * 18, y: chest.y + 16 - reposition(t) * 22};
+    const ra = Rig.reach(pat, pst, 0, target.x - 38, target.y + 4, 1);
+    pst.arm = Rig.mixArm([0, -6], ra, Rig.smooth(toChest(t)));
+    pst.idle = 0.2;
+  }
+  pat.render(pst);
+  fst.arm = [0, 0];
+  // the hand: both hands meet at one point between them
+  const sst7 = {x: 1475, y: 905, h: 640, dir: 1};
+  const fS = Rig.pt(fa, fst, fa.R.arms[0].shoulder[0], fa.R.arms[0].shoulder[1]);
+  const sS = Rig.pt(sa, sst7, sa.R.arms[0].shoulder[0], sa.R.arms[0].shoulder[1]);
+  const fC = Rig.pt(fa, fst, fa.R.arms[0].cuff[0], fa.R.arms[0].cuff[1]);
+  const Lf = Math.hypot(fC.x - fS.x, fC.y - fS.y) * 0.97;
+  const aim = {x: sS.x - fS.x, y: sS.y + 150 - fS.y}, aL = Math.hypot(aim.x, aim.y);
+  const meet = {x: fS.x + aim.x / aL * Lf, y: fS.y + aim.y / aL * Lf};
+  if (shot === 7) {
+    fst.arm = Rig.mixArm([0, 0], Rig.reach(fa, fst, 0, meet.x, meet.y, 1), Rig.smooth(hand(t)));
+    fst.idle = 0;
+  }
+  fa.render(fst);
+  // stethoscope: dangling in hand after lifting (shot 1), on the chest afterwards
+  const hw = pat.handWorld(0);
+  const inHand = shot === 1 && lifted(t);
+  q('sc09-stetho').style.opacity = inHand ? 1 : 0;
+  if (inHand) Rig.attach(q('sc09-stetho'), pat, 0, {grip: [330, 120], rot: 0, scale: 0.42, dy: 60});
+  const onChest = shot >= 2 && shot !== 4 && toChest(t) > 0.02;
+  const tube = q('sc09-tube');
+  tube.style.opacity = onChest ? 1 : 0;
+  if (onChest) {
+    const ar = hw.ang * Math.PI / 180;
+    const bx = hw.x - Math.sin(ar) * 62 * hw.sc * hw.dir, by = hw.y + Math.cos(ar) * 62 * hw.sc;
+    const neck = Rig.pt(pat, pst, pat.R.head.pivot[0] + 6, pat.R.head.pivot[1] + 30);
+    q('sc09-bell').setAttribute('cx', bx); q('sc09-bell').setAttribute('cy', by);
+    q('sc09-tube-p').setAttribute('d', `M ${bx} ${by} C ${bx - 30} ${by + 120}, ${neck.x + 40} ${neck.y + 160}, ${neck.x + 8} ${neck.y + 20} M ${neck.x + 8} ${neck.y + 20} L ${neck.x - 10} ${neck.y - 8} M ${neck.x + 8} ${neck.y + 20} L ${neck.x + 26} ${neck.y - 6}`);
+  }
+  ma.render({t, x: 1880, y: 840, h: 640, dir: -1});
+  // uncle + Salem by the door
+  const uDir = 1;
+  const ust = (shot === 7 || shot === 1) ? {t, x: 980, y: 930, h: 640, dir: uDir, op: 0} : {t, x: 470, y: 960, h: 640, dir: uDir, head: uHead(t), arm: [uArm(t), -10]};
+  un.render(ust);
+  let sst;
+  if (shot <= 3) sst = {t, x: 640, y: 975, h: 640, dir: -1, lean: sLean(t), dy: sDy(t), head: sHead(t), op: shot === 1 ? 0 : 1};
+  else if (shot === 4) sst = {t, x: 640, y: 975, h: 640, dir: 1, head: T([[S4a,-2],[S4a+0.5,-9]])(t)};
+  else if (shot === 5) sst = {t, x: 1210, y: 975, h: 640, dir: 1, op: 0};
+  else if (shot === 6) sst = {t, x: 1150, y: 980, h: 640, dir: 1, lean: s5lean(t), head: s5head(t), arm: [Rig.wob(t, 2, 1.7, 6), -10]};
+  else sst = Object.assign({t, head: -8, idle: 0}, sst7);
+  if (shot === 7) sst.arm = Rig.mixArm([0, 0], Rig.reach(sa, sst, 0, meet.x - 4, meet.y + 26, 1), Rig.smooth(salHand(t)));
+  sa.render(sst);
+});
+
+    window.__timelines["sc09"] = tl;
+  })();
+  </script>
+</template>

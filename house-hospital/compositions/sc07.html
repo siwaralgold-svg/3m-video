@@ -1,0 +1,88 @@
+<template>
+  <style>
+    @font-face { font-family: "Amiri"; src: url("assets/fonts/Amiri-Bold.ttf"); font-weight: 700; }
+    @font-face { font-family: "Amiri"; src: url("assets/fonts/Amiri-Regular.ttf"); font-weight: 400; }
+    #root { position: absolute; inset: 0; overflow: hidden; background: #140e09; }
+    .stage { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    .bgimg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    .actor { position: absolute; left: 0; top: 0; }
+    .prop { position: absolute; left: 0; top: 0; transform-origin: 0 0; }
+    .grade { position: absolute; inset: 0; pointer-events: none; z-index: 40; }
+    .title { position: absolute; left: 0; right: 0; top: 150px; text-align: center; direction: rtl; z-index: 50;
+      font-family: "Amiri", serif; font-weight: 700; font-size: 104px; color: #fff6e6;
+      text-shadow: 0 3px 18px rgba(60,30,10,.55), 0 1px 2px rgba(60,30,10,.6); }
+    .place { position: absolute; right: 150px; bottom: 120px; direction: rtl; z-index: 50;
+      font-family: "Amiri", serif; font-weight: 700; font-size: 54px; color: #fff6e6; text-shadow: 0 2px 12px rgba(40,20,5,.6); }
+    .card { position: absolute; left: 260px; right: 260px; top: 420px; text-align: center; direction: rtl; z-index: 50;
+      font-family: "Amiri", serif; font-weight: 400; font-size: 54px; line-height: 1.75; color: #f1e4cc; }
+  </style>
+  <div id="root" data-composition-id="sc07" data-width="1920" data-height="1080">
+    <div id="sc07-wrap" class="clip" data-start="0" data-duration="7.2" data-layout-allow-overflow data-layout-allow-overlap style="position:absolute;inset:0">
+      <div id="sc07-cam" class="stage">
+        <img id="sc07-bg" class="bgimg" src="assets/bg/01_hospital_exterior.png">
+        <div id="sc07-father" class="actor" style="z-index:20"></div>
+        <div id="sc07-farm" style="position:absolute;z-index:23;left:0;top:0"></div>
+        <div id="sc07-uncle" class="actor" style="z-index:22"></div>
+        <div id="sc07-salemw" class="actor" style="z-index:24"></div>
+        <div id="sc07-salem" class="actor" style="z-index:24"></div>
+        <div id="sc07-woman" class="actor" style="z-index:8"></div>
+        <div id="sc07-girl" class="actor" style="z-index:8"></div>
+      </div>
+      
+    </div>
+  </div>
+  <script>
+  (function () {
+    const q = (i) => document.getElementById(i);
+    const T = Rig.track;
+    const DUR = 7.2;
+    // voice time (seconds into voice.mp3) -> scene time
+    const at = (a) => a + 3.0 - 48.4;
+    const tl = gsap.timeline({ paused: true });
+
+const fa = Rig.make(q('sc07-father'), 'father_side', {seed: 1, armLayer: q('sc07-farm')});
+const un = Rig.make(q('sc07-uncle'), 'uncle_side', {seed: 3});
+const sw = Rig.make(q('sc07-salemw'), 'salem_side', {seed: 5});
+const sq = Rig.make(q('sc07-salem'), 'salem_q34', {seed: 7});
+const wo = Rig.figure(q('sc07-woman'), 'assets/chars/res_woman_stand.png', 528, 1304, {seed: 2});
+const gi = Rig.figure(q('sc07-girl'), 'assets/chars/res_girl_stand.png', 512, 1204, {seed: 6});
+const cam = Rig.camera(q('sc07-cam'));
+const stop = at(47.1);
+const ux = T([[0,1560],[stop,1270,'out'],[at(52.05),1270],[7.2,1130,'in']]);
+const uset = T([[0,0],[stop - 0.1,0],[stop + 0.45,1],[at(52.0),1],[at(52.3),0]]);
+const sx = T([[0,1330],[stop,1060,'out']]);
+const sset = T([[0,0],[stop - 0.1,0],[stop + 0.4,1]]);
+const turnBack = at(47.65), pointT = at(48.45), turnUncle = at(49.15), goT = at(52.1);
+const sDir = (t) => (t >= turnBack && t < pointT) || (t >= turnUncle && t < goT) ? 1 : -1;
+const sPoint = T([[0,0],[pointT,0],[pointT + 0.3,1,'out'],[at(49.1),1],[at(49.4),0]]);
+const sHead = T([[0,0],[turnBack,-8],[pointT,-4],[turnUncle,-8],[at(50.0),-3],[at(50.5),-6]]);
+const sDy = T([[0,0],[at(49.7),0],[at(49.9),-6],[at(50.15),0]]);
+const beck = T([[0,0],[at(50.85),0],[at(51.1),1],[at(52.2),1],[at(52.45),0]]);
+const uHead = T([[0,0],[at(50.8),0],[at(51.0),6],[at(51.4),-2],[at(51.8),5],[at(52.3),0]]);
+Rig.drive(tl, DUR, (t) => {
+  cam.render({cx: 1000 - t * 8, cy: 560, z: 1.08 + t * 0.012});
+  const ust = {t, x: ux(t), x0: 1560, y: 975, h: 600, dir: -1, settle: uset(t), swing: 0.6, head: uHead(t)};
+  const b = beck(t);
+  // «تعال»: forearm flicks towards himself twice
+  const flick = Math.sin(Math.max(0, t - at(51.0)) * 2 * Math.PI * 1.6);
+  if (b > 0) ust.arm = Rig.mixArm([0, 0], [-62 - 6 * flick, -58 - 22 * flick], b);
+  un.render(ust);
+  const fst = {t, x: ux(t) + 105, x0: 1665, y: 945, h: 588, dir: -1, head: 9, lean: 5, settle: uset(t), swing: 0.2};
+  const sh = Rig.pt(un, ust, un.R.arms[0].shoulder[0] + 18, un.R.arms[0].shoulder[1] + 6);
+  fst.arm = Rig.reach(fa, fst, 0, sh.x, sh.y, -1);
+  fa.render(fst);
+  const walking = t < stop + 0.45 || t >= goT;
+  const swst = {t, x: t < goT ? sx(t) : 1060 - (t - goT) * 140, y: 990, h: 600, dir: -1, op: walking ? 1 : 0};
+  swst.x0 = t < goT ? 1330 : 1060; swst.settle = t < goT ? sset(t) : 0;
+  sw.render(swst);
+  const p = sPoint(t);
+  sq.render({t, x: 1060, y: 990, h: 600, dir: sDir(t), head: sHead(t), dy: sDy(t), op: walking ? 0 : 1,
+             arm: [Rig.lerp(0, -118, p), Rig.lerp(0, -12, p)]});
+  wo.render({t, x: 640, y: 712, h: 190, dir: 1});
+  gi.render({t, x: 690, y: 716, h: 190, dir: -1});
+});
+
+    window.__timelines["sc07"] = tl;
+  })();
+  </script>
+</template>

@@ -1,0 +1,72 @@
+<template>
+  <style>
+    @font-face { font-family: "Amiri"; src: url("assets/fonts/Amiri-Bold.ttf"); font-weight: 700; }
+    @font-face { font-family: "Amiri"; src: url("assets/fonts/Amiri-Regular.ttf"); font-weight: 400; }
+    #root { position: absolute; inset: 0; overflow: hidden; background: #140e09; }
+    .stage { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    .bgimg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    .actor { position: absolute; left: 0; top: 0; }
+    .prop { position: absolute; left: 0; top: 0; transform-origin: 0 0; }
+    .grade { position: absolute; inset: 0; pointer-events: none; z-index: 40; }
+    .title { position: absolute; left: 0; right: 0; top: 150px; text-align: center; direction: rtl; z-index: 50;
+      font-family: "Amiri", serif; font-weight: 700; font-size: 104px; color: #fff6e6;
+      text-shadow: 0 3px 18px rgba(60,30,10,.55), 0 1px 2px rgba(60,30,10,.6); }
+    .place { position: absolute; right: 150px; bottom: 120px; direction: rtl; z-index: 50;
+      font-family: "Amiri", serif; font-weight: 700; font-size: 54px; color: #fff6e6; text-shadow: 0 2px 12px rgba(40,20,5,.6); }
+    .card { position: absolute; left: 260px; right: 260px; top: 420px; text-align: center; direction: rtl; z-index: 50;
+      font-family: "Amiri", serif; font-weight: 400; font-size: 54px; line-height: 1.75; color: #f1e4cc; }
+  </style>
+  <div id="root" data-composition-id="sc03" data-width="1920" data-height="1080">
+    <div id="sc03-wrap" class="clip" data-start="0" data-duration="7.85" data-layout-allow-overflow data-layout-allow-overlap style="position:absolute;inset:0">
+      <div id="sc03-cam" class="stage">
+        <img id="sc03-bg" class="bgimg" src="assets/bg/05_palm_garden.png">
+        <div id="sc03-father" class="actor" style="z-index:20"></div>
+        <img id="sc03-hoe" class="prop" src="assets/props/env_hoe.png" style="z-index:21;width:436px;height:816px">
+        <div id="sc03-salem" class="actor" style="z-index:25"></div>
+      </div>
+      
+    </div>
+  </div>
+  <script>
+  (function () {
+    const q = (i) => document.getElementById(i);
+    const T = Rig.track;
+    const DUR = 7.85;
+    // voice time (seconds into voice.mp3) -> scene time
+    const at = (a) => a + 3.0 - 16.25;
+    const tl = gsap.timeline({ paused: true });
+
+function hoeArm(t, on) {
+  // chop cycle: raise forward-up, strike down; on = 0..1 blend
+  const c = ((t % 1.35) / 1.35);
+  const up = c < 0.55 ? Rig.smooth(c / 0.55) : 1 - Rig.smooth((c - 0.55) / 0.45);
+  return [Rig.lerp(-12, Rig.lerp(-32, -118, up), on), Rig.lerp(-8, Rig.lerp(-28, -10, up), on)];
+}
+
+const fa = Rig.make(q('sc03-father'), 'father_side', {seed: 2});
+const sa = Rig.make(q('sc03-salem'), 'salem_side', {seed: 7});
+const cam = Rig.camera(q('sc03-cam'));
+const work = T([[0,1],[at(18.0),1],[at(18.5),0]]);
+const head = T([[0,7],[at(18.0),7],[at(18.45),-2],[at(19.5),-4],[at(19.9),3],[at(20.3),-3],[at(20.9),0]]);
+const lean = T([[0,5],[at(18.0),5],[at(18.6),-3],[at(20.9),-1]]);
+const far = T([[0,0],[at(19.1),0],[at(19.65),-150,'out'],[at(20.6),-145],[at(21.0),-40]]);
+const farEl = T([[0,0],[at(19.1),0],[at(19.65),-10],[at(21.0),-20]]);
+const sx = T([[0,-160],[at(15.4),-160],[at(18.25),640,'lin']]);
+const sset = T([[0,0],[at(18.25),0],[at(18.75),1]]);
+const sHead = T([[0,0],[at(18.8),0],[at(19.4),-6],[at(21),-4]]);
+const cut = at(18.6);
+Rig.drive(tl, DUR, (t) => {
+  if (t < cut) cam.render({cx: 980 + t * 10, cy: 560, z: 1.02});
+  else cam.render({cx: 1060 + (t - cut) * 6, cy: 560, z: 1.42 + (t - cut) * 0.01});
+  const w = work(t);
+  const st = {t, x: 1330, y: 930, h: 600, dir: -1, d: 0, settle: 1, head: head(t), lean: lean(t) * (0.5 + 0.5 * w),
+              arm: hoeArm(t, w), farArm: [far(t), farEl(t)], idle: 1 - w};
+  fa.render(st);
+  Rig.attach(q('sc03-hoe'), fa, 0, {grip: [335, 215], rot: -18, scale: 0.66, dy: 30});
+  sa.render({t, x: sx(t), x0: -160, y: 965, h: 600, dir: 1, settle: sset(t), head: sHead(t)});
+});
+
+    window.__timelines["sc03"] = tl;
+  })();
+  </script>
+</template>

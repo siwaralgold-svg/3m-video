@@ -1,0 +1,63 @@
+<template>
+  <style>
+    @font-face { font-family: "Amiri"; src: url("assets/fonts/Amiri-Bold.ttf"); font-weight: 700; }
+    @font-face { font-family: "Amiri"; src: url("assets/fonts/Amiri-Regular.ttf"); font-weight: 400; }
+    #root { position: absolute; inset: 0; overflow: hidden; background: #140e09; }
+    .stage { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    .bgimg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    .actor { position: absolute; left: 0; top: 0; }
+    .prop { position: absolute; left: 0; top: 0; transform-origin: 0 0; }
+    .grade { position: absolute; inset: 0; pointer-events: none; z-index: 40; }
+    .title { position: absolute; left: 0; right: 0; top: 150px; text-align: center; direction: rtl; z-index: 50;
+      font-family: "Amiri", serif; font-weight: 700; font-size: 104px; color: #fff6e6;
+      text-shadow: 0 3px 18px rgba(60,30,10,.55), 0 1px 2px rgba(60,30,10,.6); }
+    .place { position: absolute; right: 150px; bottom: 120px; direction: rtl; z-index: 50;
+      font-family: "Amiri", serif; font-weight: 700; font-size: 54px; color: #fff6e6; text-shadow: 0 2px 12px rgba(40,20,5,.6); }
+    .card { position: absolute; left: 260px; right: 260px; top: 420px; text-align: center; direction: rtl; z-index: 50;
+      font-family: "Amiri", serif; font-weight: 400; font-size: 54px; line-height: 1.75; color: #f1e4cc; }
+  </style>
+  <div id="root" data-composition-id="sc10" data-width="1920" data-height="1080">
+    <div id="sc10-wrap" class="clip" data-start="0" data-duration="2.9" data-layout-allow-overflow data-layout-allow-overlap style="position:absolute;inset:0">
+      <div id="sc10-cam" class="stage">
+        <img id="sc10-bg" class="bgimg" src="assets/bg/02_neighborhood_lane.png">
+        <div id="sc10-father" class="actor" style="z-index:20"></div>
+        <div id="sc10-salem" class="actor" style="z-index:24"></div>
+        <div id="sc10-girl" class="actor" style="z-index:10"></div>
+      </div>
+      
+    </div>
+  </div>
+  <script>
+  (function () {
+    const q = (i) => document.getElementById(i);
+    const T = Rig.track;
+    const DUR = 2.9;
+    // voice time (seconds into voice.mp3) -> scene time
+    const at = (a) => a + 3.0 - 92.6;
+    const tl = gsap.timeline({ paused: true });
+
+function handWalk(t, fa, sa, x0, y, h, v, extra) {
+  const fx = x0 + 110 - t * v, sx = x0 - t * v;
+  const sst = Object.assign({t, x: sx, x0: x0, y: y + 14, h, dir: -1, swing: 0.4}, extra || {});
+  sst.farArm = [-22, -18];
+  sa.render(sst);
+  const hw = sa.handWorld('far');
+  const fst = Object.assign({t, x: fx, x0: x0 + 110, y, h: h * 0.98, dir: -1, swing: 0.3}, extra || {});
+  fst.arm = Rig.reach(fa, fst, 0, hw.x + 26, hw.y - 18, -1);
+  fa.render(fst);
+}
+
+const fa = Rig.make(q('sc10-father'), 'father_side', {seed: 2});
+const sa = Rig.make(q('sc10-salem'), 'salem_side', {seed: 6});
+const gi = Rig.figure(q('sc10-girl'), 'assets/chars/res_girl_stand.png', 512, 1204, {seed: 3});
+const cam = Rig.camera(q('sc10-cam'));
+Rig.drive(tl, DUR, (t) => {
+  cam.render({cx: 1060 - t * 60, cy: 590, z: 1.15});
+  handWalk(t, fa, sa, 1350, 975, 640, 110);
+  gi.render({t, x: 430, y: 770, h: 260, dir: 1});
+});
+
+    window.__timelines["sc10"] = tl;
+  })();
+  </script>
+</template>

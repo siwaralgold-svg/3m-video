@@ -1,0 +1,47 @@
+<template>
+  <style>
+    @font-face { font-family: "Amiri"; src: url("assets/fonts/Amiri-Bold.ttf"); font-weight: 700; }
+    @font-face { font-family: "Amiri"; src: url("assets/fonts/Amiri-Regular.ttf"); font-weight: 400; }
+    #root { position: absolute; inset: 0; overflow: hidden; background: #140e09; }
+    .stage { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    .bgimg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    .actor { position: absolute; left: 0; top: 0; }
+    .prop { position: absolute; left: 0; top: 0; transform-origin: 0 0; }
+    .grade { position: absolute; inset: 0; pointer-events: none; z-index: 40; }
+    .title { position: absolute; left: 0; right: 0; top: 150px; text-align: center; direction: rtl; z-index: 50;
+      font-family: "Amiri", serif; font-weight: 700; font-size: 104px; color: #fff6e6;
+      text-shadow: 0 3px 18px rgba(60,30,10,.55), 0 1px 2px rgba(60,30,10,.6); }
+    .place { position: absolute; right: 150px; bottom: 120px; direction: rtl; z-index: 50;
+      font-family: "Amiri", serif; font-weight: 700; font-size: 54px; color: #fff6e6; text-shadow: 0 2px 12px rgba(40,20,5,.6); }
+    .card { position: absolute; left: 260px; right: 260px; top: 420px; text-align: center; direction: rtl; z-index: 50;
+      font-family: "Amiri", serif; font-weight: 400; font-size: 54px; line-height: 1.75; color: #f1e4cc; }
+  </style>
+  <div id="root" data-composition-id="sc17" data-width="1920" data-height="1080">
+    <div id="sc17-wrap" class="clip" data-start="0" data-duration="6.4" data-layout-allow-overflow data-layout-allow-overlap style="position:absolute;inset:0">
+      <div id="sc17-cam" class="stage">
+        
+        
+      </div>
+      <div id="sc17-card" class="card">قصة درامية مستوحاة من تأسيس مستشفى الواحة في العين عام ١٩٦٠.<br>سالم وعائلته شخصيات متخيّلة.</div>
+    </div>
+  </div>
+  <script>
+  (function () {
+    const q = (i) => document.getElementById(i);
+    const T = Rig.track;
+    const DUR = 6.4;
+    // voice time (seconds into voice.mp3) -> scene time
+    const at = (a) => a + 3.0 - 144.6;
+    const tl = gsap.timeline({ paused: true });
+
+const op = T([[0,0],[0.4,0],[1.4,1],[5.6,1],[6.35,0]]);
+const y = T([[0,10],[1.4,0,'out']]);
+Rig.drive(tl, DUR, (t) => {
+  q('sc17-card').style.opacity = op(t);
+  q('sc17-card').style.transform = `translateY(${y(t)}px)`;
+});
+
+    window.__timelines["sc17"] = tl;
+  })();
+  </script>
+</template>

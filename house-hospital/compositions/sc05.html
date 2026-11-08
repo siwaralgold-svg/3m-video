@@ -1,0 +1,81 @@
+<template>
+  <style>
+    @font-face { font-family: "Amiri"; src: url("assets/fonts/Amiri-Bold.ttf"); font-weight: 700; }
+    @font-face { font-family: "Amiri"; src: url("assets/fonts/Amiri-Regular.ttf"); font-weight: 400; }
+    #root { position: absolute; inset: 0; overflow: hidden; background: #140e09; }
+    .stage { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    .bgimg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    .actor { position: absolute; left: 0; top: 0; }
+    .prop { position: absolute; left: 0; top: 0; transform-origin: 0 0; }
+    .grade { position: absolute; inset: 0; pointer-events: none; z-index: 40; }
+    .title { position: absolute; left: 0; right: 0; top: 150px; text-align: center; direction: rtl; z-index: 50;
+      font-family: "Amiri", serif; font-weight: 700; font-size: 104px; color: #fff6e6;
+      text-shadow: 0 3px 18px rgba(60,30,10,.55), 0 1px 2px rgba(60,30,10,.6); }
+    .place { position: absolute; right: 150px; bottom: 120px; direction: rtl; z-index: 50;
+      font-family: "Amiri", serif; font-weight: 700; font-size: 54px; color: #fff6e6; text-shadow: 0 2px 12px rgba(40,20,5,.6); }
+    .card { position: absolute; left: 260px; right: 260px; top: 420px; text-align: center; direction: rtl; z-index: 50;
+      font-family: "Amiri", serif; font-weight: 400; font-size: 54px; line-height: 1.75; color: #f1e4cc; }
+  </style>
+  <div id="root" data-composition-id="sc05" data-width="1920" data-height="1080">
+    <div id="sc05-wrap" class="clip" data-start="0" data-duration="10.0" data-layout-allow-overflow data-layout-allow-overlap style="position:absolute;inset:0">
+      <div id="sc05-cam" class="stage">
+        <img id="sc05-bg" class="bgimg" src="assets/bg/03_salem_home_courtyard.png">
+        <div id="sc05-mother" class="actor" style="z-index:20"></div>
+        <div id="sc05-uncleq" class="actor" style="z-index:21"></div>
+        <div id="sc05-salem" class="actor" style="z-index:18"></div>
+        <div id="sc05-father" class="actor" style="z-index:22"></div>
+        <div id="sc05-farm" style="position:absolute;z-index:25;left:0;top:0"></div>
+        <div id="sc05-uncle" class="actor" style="z-index:24"></div>
+        <div id="sc05-salemw" class="actor" style="z-index:26"></div>
+      </div>
+      
+    </div>
+  </div>
+  <script>
+  (function () {
+    const q = (i) => document.getElementById(i);
+    const T = Rig.track;
+    const DUR = 10.0;
+    // voice time (seconds into voice.mp3) -> scene time
+    const at = (a) => a + 3.0 - 37.0;
+    const tl = gsap.timeline({ paused: true });
+
+const mo = Rig.make(q('sc05-mother'), 'mother_q34', {seed: 3});
+const uq = Rig.make(q('sc05-uncleq'), 'uncle_q34', {seed: 5});
+const sq = Rig.make(q('sc05-salem'), 'salem_q34', {seed: 8});
+const fa = Rig.make(q('sc05-father'), 'father_side', {seed: 2, armLayer: q('sc05-farm')});
+const un = Rig.make(q('sc05-uncle'), 'uncle_side', {seed: 6});
+const sw = Rig.make(q('sc05-salemw'), 'salem_side', {seed: 4});
+const cam = Rig.camera(q('sc05-cam'));
+const cut1 = at(39.55), cut2 = at(41.3);
+const moHead = T([[0,0],[at(36.2),0],[at(36.5),4],[at(37.9),2],[at(38.3),-6],[at(39.4),-2]]);
+const moLean = T([[0,0],[at(36.2),0],[at(36.6),3],[at(38.4),5],[at(39.4),1]]);
+const unHead = T([[0,-2],[at(39.3),-2],[at(39.55),7],[at(39.8),1],[at(40.0),6],[at(40.4),0]]);
+const sHead = T([[0,0],[at(39.7),0],[at(40.2),-10],[at(40.9),-8],[at(41.3),0]]);
+const sDy = T([[0,0],[at(40.6),0],[at(40.8),-6],[at(41.1),0]]);
+const sArm = T([[0,0],[at(40.5),0],[at(40.8),-14],[at(41.1),0]]);
+const ex = T([[0,1460],[cut2,1460],[10,1000,'lin']]);
+const swx = T([[0,1330],[at(43.9),1330],[10,1130,'lin']]);
+Rig.drive(tl, DUR, (t) => {
+  if (t < cut1) cam.render({cx: 820 + t * 6, cy: 580, z: 1.12});
+  else if (t < cut2) cam.render({cx: 1290, cy: 560, z: 1.9});
+  else cam.render({cx: 1080 - (t - cut2) * 20, cy: 580, z: 1.25});
+  const before = t < cut2;
+  mo.render({t, x: 440, y: 885, h: 560, dir: 1, head: moHead(t) + Rig.talk(t, at(36.34), at(39.34), 2.5, 1), lean: moLean(t)});
+  uq.render({t, x: 690, y: 890, h: 560, dir: -1, head: unHead(t), op: before ? 1 : 0});
+  sq.render({t, x: before ? 1290 : 1180, y: 805, h: 470, dir: -1, head: sHead(t), dy: sDy(t), arm: [sArm(t), 0],
+             op: t < at(43.9) ? 1 : 0});
+  // supported walk: father leans on uncle, his arm across uncle's shoulders
+  const ust = {t, x: ex(t), x0: 1460, y: 840, h: 560, dir: -1, op: before ? 0 : 1, swing: 0.6};
+  const fst = {t, x: ex(t) + 105, x0: 1565, y: 812, h: 548, dir: -1, head: 9, lean: 5, op: before ? 0 : 1, swing: 0.2};
+  un.render(ust);
+  const sh = Rig.pt(un, ust, un.R.arms[0].shoulder[0] + 18, un.R.arms[0].shoulder[1] + 6);
+  fst.arm = Rig.reach(fa, fst, 0, sh.x, sh.y, -1);
+  fa.render(fst);
+  sw.render({t, x: swx(t), x0: 1330, y: 806, h: 470, dir: -1, op: t >= at(43.9) ? 1 : 0});
+});
+
+    window.__timelines["sc05"] = tl;
+  })();
+  </script>
+</template>

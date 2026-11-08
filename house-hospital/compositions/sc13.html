@@ -1,0 +1,50 @@
+<template>
+  <style>
+    @font-face { font-family: "Amiri"; src: url("assets/fonts/Amiri-Bold.ttf"); font-weight: 700; }
+    @font-face { font-family: "Amiri"; src: url("assets/fonts/Amiri-Regular.ttf"); font-weight: 400; }
+    #root { position: absolute; inset: 0; overflow: hidden; background: #140e09; }
+    .stage { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    .bgimg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    .actor { position: absolute; left: 0; top: 0; }
+    .prop { position: absolute; left: 0; top: 0; transform-origin: 0 0; }
+    .grade { position: absolute; inset: 0; pointer-events: none; z-index: 40; }
+    .title { position: absolute; left: 0; right: 0; top: 150px; text-align: center; direction: rtl; z-index: 50;
+      font-family: "Amiri", serif; font-weight: 700; font-size: 104px; color: #fff6e6;
+      text-shadow: 0 3px 18px rgba(60,30,10,.55), 0 1px 2px rgba(60,30,10,.6); }
+    .place { position: absolute; right: 150px; bottom: 120px; direction: rtl; z-index: 50;
+      font-family: "Amiri", serif; font-weight: 700; font-size: 54px; color: #fff6e6; text-shadow: 0 2px 12px rgba(40,20,5,.6); }
+    .card { position: absolute; left: 260px; right: 260px; top: 420px; text-align: center; direction: rtl; z-index: 50;
+      font-family: "Amiri", serif; font-weight: 400; font-size: 54px; line-height: 1.75; color: #f1e4cc; }
+  </style>
+  <div id="root" data-composition-id="sc13" data-width="1920" data-height="1080">
+    <div id="sc13-wrap" class="clip" data-start="0" data-duration="1.4" data-layout-allow-overflow data-layout-allow-overlap style="position:absolute;inset:0">
+      <div id="sc13-cam" class="stage">
+        <img id="sc13-bg" class="bgimg" src="assets/bg/03_salem_home_courtyard.png">
+        <div id="sc13-salem" class="actor" style="z-index:20"></div>
+        <div id="sc13-mother" class="actor" style="z-index:10"></div>
+      </div>
+      
+    </div>
+  </div>
+  <script>
+  (function () {
+    const q = (i) => document.getElementById(i);
+    const T = Rig.track;
+    const DUR = 1.4;
+    // voice time (seconds into voice.mp3) -> scene time
+    const at = (a) => a + 3.0 - 103.0;
+    const tl = gsap.timeline({ paused: true });
+
+const sa = Rig.make(q('sc13-salem'), 'salem_side', {seed: 5});
+const mo = Rig.make(q('sc13-mother'), 'mother_q34', {seed: 2});
+const cam = Rig.camera(q('sc13-cam'));
+Rig.drive(tl, DUR, (t) => {
+  cam.render({cx: 1140 - t * 220, cy: 560, z: 1.12});
+  sa.render({t, x: 1430 - t * 560, x0: 1430, y: 840, h: 560, dir: -1, run: 1});
+  mo.render({t, x: 330, y: 885, h: 560, dir: 1, head: -4});
+});
+
+    window.__timelines["sc13"] = tl;
+  })();
+  </script>
+</template>

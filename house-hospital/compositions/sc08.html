@@ -1,0 +1,96 @@
+<template>
+  <style>
+    @font-face { font-family: "Amiri"; src: url("assets/fonts/Amiri-Bold.ttf"); font-weight: 700; }
+    @font-face { font-family: "Amiri"; src: url("assets/fonts/Amiri-Regular.ttf"); font-weight: 400; }
+    #root { position: absolute; inset: 0; overflow: hidden; background: #140e09; }
+    .stage { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    .bgimg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    .actor { position: absolute; left: 0; top: 0; }
+    .prop { position: absolute; left: 0; top: 0; transform-origin: 0 0; }
+    .grade { position: absolute; inset: 0; pointer-events: none; z-index: 40; }
+    .title { position: absolute; left: 0; right: 0; top: 150px; text-align: center; direction: rtl; z-index: 50;
+      font-family: "Amiri", serif; font-weight: 700; font-size: 104px; color: #fff6e6;
+      text-shadow: 0 3px 18px rgba(60,30,10,.55), 0 1px 2px rgba(60,30,10,.6); }
+    .place { position: absolute; right: 150px; bottom: 120px; direction: rtl; z-index: 50;
+      font-family: "Amiri", serif; font-weight: 700; font-size: 54px; color: #fff6e6; text-shadow: 0 2px 12px rgba(40,20,5,.6); }
+    .card { position: absolute; left: 260px; right: 260px; top: 420px; text-align: center; direction: rtl; z-index: 50;
+      font-family: "Amiri", serif; font-weight: 400; font-size: 54px; line-height: 1.75; color: #f1e4cc; }
+  </style>
+  <div id="root" data-composition-id="sc08" data-width="1920" data-height="1080">
+    <div id="sc08-wrap" class="clip" data-start="0" data-duration="10.3" data-layout-allow-overflow data-layout-allow-overlap style="position:absolute;inset:0">
+      <div id="sc08-cam" class="stage">
+        <img id="sc08-bg" class="bgimg" src="assets/bg/06_hospital_waiting_courtyard.png">
+        <img id="sc08-box" class="prop" src="assets/props/prop_box.png" style="z-index:6;width:1324px;height:1240px">
+        <img id="sc08-basin" class="prop" src="assets/props/prop_basin.png" style="z-index:6;width:1528px;height:752px">
+        <img id="sc08-bottle" class="prop" src="assets/props/prop_bottle.png" style="z-index:6;width:520px;height:964px">
+        <img id="sc08-bandage" class="prop" src="assets/props/prop_bandage.png" style="z-index:6;width:1112px;height:716px">
+        <div id="sc08-old" class="actor" style="z-index:10"></div>
+        <div id="sc08-boy" class="actor" style="z-index:10"></div>
+        <div id="sc08-mom" class="actor" style="z-index:11"></div>
+        <div id="sc08-woman" class="actor" style="z-index:9"></div>
+        <div id="sc08-father" class="actor" style="z-index:20"></div>
+        <div id="sc08-farm" style="position:absolute;z-index:23;left:0;top:0"></div>
+        <div id="sc08-uncle" class="actor" style="z-index:22"></div>
+        <div id="sc08-salem" class="actor" style="z-index:24"></div>
+        <div id="sc08-marian" class="actor" style="z-index:18"></div>
+      </div>
+      
+    </div>
+  </div>
+  <script>
+  (function () {
+    const q = (i) => document.getElementById(i);
+    const T = Rig.track;
+    const DUR = 10.3;
+    // voice time (seconds into voice.mp3) -> scene time
+    const at = (a) => a + 3.0 - 55.6;
+    const tl = gsap.timeline({ paused: true });
+
+const fa = Rig.make(q('sc08-father'), 'father_side', {seed: 1, armLayer: q('sc08-farm')});
+const un = Rig.make(q('sc08-uncle'), 'uncle_side', {seed: 3});
+const sw = Rig.make(q('sc08-salem'), 'salem_side', {seed: 5});
+const ma = Rig.make(q('sc08-marian'), 'marian_side', {seed: 8});
+const old = Rig.figure(q('sc08-old'), 'assets/chars/res_oldman_sit.png', 820, 1044, {seed: 4, amp: 0.3});
+const boy = Rig.figure(q('sc08-boy'), 'assets/chars/res_boy_stand.png', 504, 1300, {seed: 7});
+const mom = Rig.figure(q('sc08-mom'), 'assets/chars/res_mombaby_sit.png', 836, 968, {seed: 2, amp: 1.4, period: 2.6});
+const wo = Rig.figure(q('sc08-woman'), 'assets/chars/res_woman_stand.png', 528, 1304, {seed: 9});
+const cam = Rig.camera(q('sc08-cam'));
+const place = (id, x, y, w) => { const e = q(id); e.style.transformOrigin = '0 0'; e.style.transform = `translate(${x}px,${y}px) scale(${w / e.width})`; };
+place('sc08-box', 70, 612, 120); place('sc08-basin', 196, 664, 112); place('sc08-bottle', 300, 628, 34); place('sc08-bandage', 236, 625, 52);
+const stop = at(54.6);
+const ux = T([[0,-140],[stop,470,'out']]);
+const uset = T([[0,0],[stop - 0.1,0],[stop + 0.45,1]]);
+const sx = T([[0,-40],[stop + 0.2,640,'out']]);
+const sset = T([[0,0],[stop + 0.1,0],[stop + 0.55,1]]);
+const sHead = T([[0,0],[at(56.6),0],[at(57.0),-6],[at(57.6),4],[at(59.5),2],[at(60.3),-4]]);
+const mx = T([[0,1820],[at(60.15),1820],[at(61.5),1330,'out']]);
+const mset = T([[0,0],[at(61.35),0],[at(61.8),1]]);
+const mArm = T([[0,0],[at(61.5),0],[at(61.9),1],[at(62.7),1],[at(63.0),0.4]]);
+const mHead = T([[0,0],[at(61.5),0],[at(61.9),-8],[at(62.6),0]]);
+const c1 = at(53.6), c2 = at(55.2), c3 = at(56.7), c4 = at(59.9);
+const pan = T([[c1,980],[c2,1180]]);
+Rig.drive(tl, DUR, (t) => {
+  if (t < c1) cam.render({cx: 900, cy: 600, z: 1.1});
+  else if (t < c2) cam.render({cx: pan(t), cy: 600, z: 1.3});
+  else if (t < c3) cam.render({cx: 1330 + (t - c2) * 6, cy: 640, z: 2.1 + (t - c2) * 0.03});
+  else if (t < c4) cam.render({cx: 260 + (t - c3) * 12, cy: 700, z: 2.2});
+  else cam.render({cx: 1060, cy: 580, z: 1.12});
+  old.render({t, x: 1030, y: 770, h: 330, dir: 1});
+  boy.render({t, x: 1155, y: 762, h: 330, dir: -1, rot: 0.5});
+  mom.render({t, x: 1350, y: 772, h: 330, dir: -1});
+  wo.render({t, x: 1585, y: 735, h: 310, dir: -1});
+  const ust = {t, x: ux(t), x0: -140, y: 1000, h: 620, dir: 1, settle: uset(t), swing: 0.6};
+  un.render(ust);
+  const fst = {t, x: ux(t) - 105, x0: -245, y: 970, h: 608, dir: 1, head: 9, lean: 5, settle: uset(t), swing: 0.2};
+  const sh = Rig.pt(un, ust, un.R.arms[0].shoulder[0] + 18, un.R.arms[0].shoulder[1] + 6);
+  fst.arm = Rig.reach(fa, fst, 0, sh.x, sh.y, -1);
+  fa.render(fst);
+  sw.render({t, x: sx(t), x0: -40, y: 1012, h: 620, dir: 1, settle: sset(t), head: sHead(t)});
+  const m = mArm(t);
+  ma.render({t, x: mx(t), x0: 1820, y: 820, h: 560, dir: -1, settle: mset(t), head: mHead(t), arm: [Rig.lerp(0, 52, m), Rig.lerp(0, -30, m)]});
+});
+
+    window.__timelines["sc08"] = tl;
+  })();
+  </script>
+</template>

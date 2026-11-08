@@ -1,0 +1,57 @@
+<template>
+  <style>
+    @font-face { font-family: "Amiri"; src: url("assets/fonts/Amiri-Bold.ttf"); font-weight: 700; }
+    @font-face { font-family: "Amiri"; src: url("assets/fonts/Amiri-Regular.ttf"); font-weight: 400; }
+    #root { position: absolute; inset: 0; overflow: hidden; background: #140e09; }
+    .stage { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    .bgimg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    .actor { position: absolute; left: 0; top: 0; }
+    .prop { position: absolute; left: 0; top: 0; transform-origin: 0 0; }
+    .grade { position: absolute; inset: 0; pointer-events: none; z-index: 40; }
+    .title { position: absolute; left: 0; right: 0; top: 150px; text-align: center; direction: rtl; z-index: 50;
+      font-family: "Amiri", serif; font-weight: 700; font-size: 104px; color: #fff6e6;
+      text-shadow: 0 3px 18px rgba(60,30,10,.55), 0 1px 2px rgba(60,30,10,.6); }
+    .place { position: absolute; right: 150px; bottom: 120px; direction: rtl; z-index: 50;
+      font-family: "Amiri", serif; font-weight: 700; font-size: 54px; color: #fff6e6; text-shadow: 0 2px 12px rgba(40,20,5,.6); }
+    .card { position: absolute; left: 260px; right: 260px; top: 420px; text-align: center; direction: rtl; z-index: 50;
+      font-family: "Amiri", serif; font-weight: 400; font-size: 54px; line-height: 1.75; color: #f1e4cc; }
+  </style>
+  <div id="root" data-composition-id="sc01" data-width="1920" data-height="1080">
+    <div id="sc01-wrap" class="clip" data-start="0" data-duration="12.74" data-layout-allow-overflow data-layout-allow-overlap style="position:absolute;inset:0">
+      <div id="sc01-cam" class="stage">
+        <img id="sc01-bg" class="bgimg" src="assets/bg/03_salem_home_courtyard.png">
+        <div id="sc01-salem" class="actor" style="z-index:20"></div>
+      </div>
+      <div id="sc01-dawn" class="grade" style="background:linear-gradient(180deg,rgba(255,196,120,.55),rgba(120,70,40,.25))"></div><div id="sc01-title" class="title">البيت اللي صار مستشفى</div>
+    </div>
+  </div>
+  <script>
+  (function () {
+    const q = (i) => document.getElementById(i);
+    const T = Rig.track;
+    const DUR = 12.74;
+    // voice time (seconds into voice.mp3) -> scene time
+    const at = (a) => a + 3.0 - 0;
+    const tl = gsap.timeline({ paused: true });
+
+const salem = Rig.make(q('sc01-salem'), 'salem_q34', {seed: 4});
+const cam = Rig.camera(q('sc01-cam'));
+const head = T([[0,0],[at(6.1),0],[at(7.0),9],[at(8.7),9],[at(9.2),-3],[at(9.8),0]]);
+const lean = T([[0,0],[at(8.9),0],[at(9.4),-2.5],[at(10.5),0]]);
+const arm = T([[0,0],[at(8.9),0],[at(9.3),-8],[at(10.4),0]]);
+const cz = T([[0,1],[12.74,1.22,'lin']]), cx = T([[0,960],[12.74,1060,'lin']]), cy = T([[0,560],[12.74,640,'lin']]);
+const tOp = T([[0,0],[0.5,0],[1.3,1],[2.6,1],[3.2,0]]);
+const tY = T([[0,14],[1.3,0,'out']]);
+const glow = T([[0,0.55],[4,0.15]]);
+Rig.drive(tl, DUR, (t) => {
+  cam.render({cx: cx(t), cy: cy(t), z: cz(t)});
+  salem.render({t, x: 1120, y: 905, h: 560, dir: 1, head: head(t), lean: lean(t), arm: [arm(t), 0]});
+  q('sc01-title').style.opacity = tOp(t);
+  q('sc01-title').style.transform = `translateY(${tY(t)}px)`;
+  q('sc01-dawn').style.opacity = glow(t);
+});
+
+    window.__timelines["sc01"] = tl;
+  })();
+  </script>
+</template>

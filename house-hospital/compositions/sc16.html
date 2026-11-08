@@ -1,0 +1,68 @@
+<template>
+  <style>
+    @font-face { font-family: "Amiri"; src: url("assets/fonts/Amiri-Bold.ttf"); font-weight: 700; }
+    @font-face { font-family: "Amiri"; src: url("assets/fonts/Amiri-Regular.ttf"); font-weight: 400; }
+    #root { position: absolute; inset: 0; overflow: hidden; background: #140e09; }
+    .stage { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    .bgimg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    .actor { position: absolute; left: 0; top: 0; }
+    .prop { position: absolute; left: 0; top: 0; transform-origin: 0 0; }
+    .grade { position: absolute; inset: 0; pointer-events: none; z-index: 40; }
+    .title { position: absolute; left: 0; right: 0; top: 150px; text-align: center; direction: rtl; z-index: 50;
+      font-family: "Amiri", serif; font-weight: 700; font-size: 104px; color: #fff6e6;
+      text-shadow: 0 3px 18px rgba(60,30,10,.55), 0 1px 2px rgba(60,30,10,.6); }
+    .place { position: absolute; right: 150px; bottom: 120px; direction: rtl; z-index: 50;
+      font-family: "Amiri", serif; font-weight: 700; font-size: 54px; color: #fff6e6; text-shadow: 0 2px 12px rgba(40,20,5,.6); }
+    .card { position: absolute; left: 260px; right: 260px; top: 420px; text-align: center; direction: rtl; z-index: 50;
+      font-family: "Amiri", serif; font-weight: 400; font-size: 54px; line-height: 1.75; color: #f1e4cc; }
+  </style>
+  <div id="root" data-composition-id="sc16" data-width="1920" data-height="1080">
+    <div id="sc16-wrap" class="clip" data-start="0" data-duration="17.6" data-layout-allow-overflow data-layout-allow-overlap style="position:absolute;inset:0">
+      <div id="sc16-cam" class="stage">
+        <img id="sc16-bg" class="bgimg" src="assets/bg/01_hospital_exterior.png">
+        <div id="sc16-pat" class="actor" style="z-index:9"></div>
+        <div id="sc16-marian" class="actor" style="z-index:9"></div>
+        <div id="sc16-old" class="actor" style="z-index:10"></div>
+        <div id="sc16-mom" class="actor" style="z-index:10"></div>
+        <div id="sc16-boy" class="actor" style="z-index:11"></div>
+        <div id="sc16-basket" class="actor" style="z-index:10"></div>
+      </div>
+      <div id="sc16-place" class="place">العين&nbsp;&nbsp;·&nbsp;&nbsp;١٩٦٠</div><div id="sc16-fade" class="grade" style="background:#140e09"></div>
+    </div>
+  </div>
+  <script>
+  (function () {
+    const q = (i) => document.getElementById(i);
+    const T = Rig.track;
+    const DUR = 17.6;
+    // voice time (seconds into voice.mp3) -> scene time
+    const at = (a) => a + 3.0 - 127.0;
+    const tl = gsap.timeline({ paused: true });
+
+const pat = Rig.make(q('sc16-pat'), 'pat_q34', {seed: 2});
+const ma = Rig.figure(q('sc16-marian'), 'assets/chars/marian_front.png', 648, 1644, {seed: 7, amp: 0.4});
+const old = Rig.figure(q('sc16-old'), 'assets/chars/res_oldman_sit.png', 820, 1044, {seed: 4, amp: 0.3});
+const mom = Rig.figure(q('sc16-mom'), 'assets/chars/res_mombaby_stand.png', 592, 1328, {seed: 3, amp: 0.8});
+const boy = Rig.figure(q('sc16-boy'), 'assets/chars/res_boy_stand.png', 504, 1300, {seed: 5});
+const bas = Rig.figure(q('sc16-basket'), 'assets/chars/res_basket_stand.png', 752, 1332, {seed: 6});
+const cam = Rig.camera(q('sc16-cam'));
+const z = T([[0,1.55],[17.6,1.0,'io']]), cx = T([[0,880],[17.6,960,'io']]), cy = T([[0,600],[17.6,540,'io']]);
+const place = T([[0,0],[0.4,0],[1.4,1],[6.0,1],[7.0,0]]);
+const fade = T([[0,0],[16.6,0],[17.6,1]]);
+const patNod = T([[0,0],[at(130.2),0],[at(130.6),5],[at(131.0),0]]);
+Rig.drive(tl, DUR, (t) => {
+  cam.render({cx: cx(t), cy: cy(t), z: z(t)});
+  pat.render({t, x: 800, y: 690, h: 200, dir: 1, head: patNod(t)});
+  ma.render({t, x: 950, y: 690, h: 200, dir: -1});
+  old.render({t, x: 560, y: 700, h: 220, dir: 1});
+  mom.render({t, x: 1080, y: 700, h: 210, dir: -1});
+  boy.render({t, x: 1150, y: 704, h: 210, dir: -1});
+  bas.render({t, x: 1330, y: 712, h: 220, dir: -1});
+  q('sc16-place').style.opacity = place(t);
+  q('sc16-fade').style.opacity = fade(t);
+});
+
+    window.__timelines["sc16"] = tl;
+  })();
+  </script>
+</template>

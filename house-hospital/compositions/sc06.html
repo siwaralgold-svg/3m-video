@@ -1,0 +1,65 @@
+<template>
+  <style>
+    @font-face { font-family: "Amiri"; src: url("assets/fonts/Amiri-Bold.ttf"); font-weight: 700; }
+    @font-face { font-family: "Amiri"; src: url("assets/fonts/Amiri-Regular.ttf"); font-weight: 400; }
+    #root { position: absolute; inset: 0; overflow: hidden; background: #140e09; }
+    .stage { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    .bgimg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    .actor { position: absolute; left: 0; top: 0; }
+    .prop { position: absolute; left: 0; top: 0; transform-origin: 0 0; }
+    .grade { position: absolute; inset: 0; pointer-events: none; z-index: 40; }
+    .title { position: absolute; left: 0; right: 0; top: 150px; text-align: center; direction: rtl; z-index: 50;
+      font-family: "Amiri", serif; font-weight: 700; font-size: 104px; color: #fff6e6;
+      text-shadow: 0 3px 18px rgba(60,30,10,.55), 0 1px 2px rgba(60,30,10,.6); }
+    .place { position: absolute; right: 150px; bottom: 120px; direction: rtl; z-index: 50;
+      font-family: "Amiri", serif; font-weight: 700; font-size: 54px; color: #fff6e6; text-shadow: 0 2px 12px rgba(40,20,5,.6); }
+    .card { position: absolute; left: 260px; right: 260px; top: 420px; text-align: center; direction: rtl; z-index: 50;
+      font-family: "Amiri", serif; font-weight: 400; font-size: 54px; line-height: 1.75; color: #f1e4cc; }
+  </style>
+  <div id="root" data-composition-id="sc06" data-width="1920" data-height="1080">
+    <div id="sc06-wrap" class="clip" data-start="0" data-duration="1.4" data-layout-allow-overflow data-layout-allow-overlap style="position:absolute;inset:0">
+      <div id="sc06-cam" class="stage">
+        <img id="sc06-bg" class="bgimg" src="assets/bg/02_neighborhood_lane.png">
+        <div id="sc06-father" class="actor" style="z-index:20"></div>
+        <div id="sc06-farm" style="position:absolute;z-index:23;left:0;top:0"></div>
+        <div id="sc06-uncle" class="actor" style="z-index:22"></div>
+        <div id="sc06-salem" class="actor" style="z-index:24"></div>
+        <div id="sc06-old" class="actor" style="z-index:10"></div>
+        <div id="sc06-woman" class="actor" style="z-index:11"></div>
+      </div>
+      
+    </div>
+  </div>
+  <script>
+  (function () {
+    const q = (i) => document.getElementById(i);
+    const T = Rig.track;
+    const DUR = 1.4;
+    // voice time (seconds into voice.mp3) -> scene time
+    const at = (a) => a + 3.0 - 47.0;
+    const tl = gsap.timeline({ paused: true });
+
+const fa = Rig.make(q('sc06-father'), 'father_side', {seed: 1, armLayer: q('sc06-farm')});
+const un = Rig.make(q('sc06-uncle'), 'uncle_side', {seed: 3});
+const sw = Rig.make(q('sc06-salem'), 'salem_side', {seed: 5});
+const old = Rig.figure(q('sc06-old'), 'assets/chars/res_oldman_walk.png', 816, 1316, {seed: 4, amp: 0.3});
+const wo = Rig.figure(q('sc06-woman'), 'assets/chars/res_woman_walk.png', 748, 1300, {seed: 9, amp: 0.2});
+const cam = Rig.camera(q('sc06-cam'));
+Rig.drive(tl, DUR, (t) => {
+  cam.render({cx: 980 - t * 30, cy: 560, z: 1.05});
+  const ex = 1250 - t * 120;
+  const ust = {t, x: ex, x0: 1250, y: 960, h: 600, dir: -1, swing: 0.6};
+  const fst = {t, x: ex + 105, x0: 1355, y: 930, h: 588, dir: -1, head: 9, lean: 5, swing: 0.2};
+  un.render(ust);
+  const sh = Rig.pt(un, ust, un.R.arms[0].shoulder[0] + 18, un.R.arms[0].shoulder[1] + 6);
+  fst.arm = Rig.reach(fa, fst, 0, sh.x, sh.y, -1);
+  fa.render(fst);
+  sw.render({t, x: 1620 - t * 120, x0: 1620, y: 985, h: 600, dir: -1});
+  old.render({t, x: 520, y: 770, h: 250, dir: 1});
+  wo.render({t, x: 1500, y: 745, h: 230, dir: -1, rot: 1});
+});
+
+    window.__timelines["sc06"] = tl;
+  })();
+  </script>
+</template>

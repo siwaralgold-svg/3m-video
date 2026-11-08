@@ -1,0 +1,98 @@
+<template>
+  <style>
+    @font-face { font-family: "Amiri"; src: url("assets/fonts/Amiri-Bold.ttf"); font-weight: 700; }
+    @font-face { font-family: "Amiri"; src: url("assets/fonts/Amiri-Regular.ttf"); font-weight: 400; }
+    #root { position: absolute; inset: 0; overflow: hidden; background: #140e09; }
+    .stage { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    .bgimg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    .actor { position: absolute; left: 0; top: 0; }
+    .prop { position: absolute; left: 0; top: 0; transform-origin: 0 0; }
+    .grade { position: absolute; inset: 0; pointer-events: none; z-index: 40; }
+    .title { position: absolute; left: 0; right: 0; top: 150px; text-align: center; direction: rtl; z-index: 50;
+      font-family: "Amiri", serif; font-weight: 700; font-size: 104px; color: #fff6e6;
+      text-shadow: 0 3px 18px rgba(60,30,10,.55), 0 1px 2px rgba(60,30,10,.6); }
+    .place { position: absolute; right: 150px; bottom: 120px; direction: rtl; z-index: 50;
+      font-family: "Amiri", serif; font-weight: 700; font-size: 54px; color: #fff6e6; text-shadow: 0 2px 12px rgba(40,20,5,.6); }
+    .card { position: absolute; left: 260px; right: 260px; top: 420px; text-align: center; direction: rtl; z-index: 50;
+      font-family: "Amiri", serif; font-weight: 400; font-size: 54px; line-height: 1.75; color: #f1e4cc; }
+  </style>
+  <div id="root" data-composition-id="sc15" data-width="1920" data-height="1080">
+    <div id="sc15-wrap" class="clip" data-start="0" data-duration="13.5" data-layout-allow-overflow data-layout-allow-overlap style="position:absolute;inset:0">
+      <div id="sc15-cam" class="stage">
+        <img id="sc15-bg" class="bgimg" src="assets/bg/01_hospital_exterior.png">
+        <div id="sc15-marian" class="actor" style="z-index:8"></div>
+        <div id="sc15-woman" class="actor" style="z-index:9"></div>
+        <div id="sc15-girl" class="actor" style="z-index:9"></div>
+        <div id="sc15-old" class="actor" style="z-index:9"></div>
+        <div id="sc15-basket" class="actor" style="z-index:8"></div>
+        <div id="sc15-salem" class="actor" style="z-index:24"></div>
+        <div id="sc15-mfather" class="actor" style="z-index:26"></div>
+        <div id="sc15-msalem" class="actor" style="z-index:27"></div>
+        <div id="sc15-back" class="actor" style="z-index:30"></div>
+        <div id="sc15-father" class="actor" style="z-index:29"></div>
+      </div>
+      <div id="sc15-memory" class="grade" style="z-index:25;background:radial-gradient(ellipse at 50% 55%,rgba(255,230,190,0) 30%,rgba(255,224,170,.55) 75%,rgba(250,236,210,.9) 100%)"></div>
+    </div>
+  </div>
+  <script>
+  (function () {
+    const q = (i) => document.getElementById(i);
+    const T = Rig.track;
+    const DUR = 13.5;
+    // voice time (seconds into voice.mp3) -> scene time
+    const at = (a) => a + 3.0 - 113.5;
+    const tl = gsap.timeline({ paused: true });
+
+function handWalk(t, fa, sa, x0, y, h, v, extra) {
+  const fx = x0 + 110 - t * v, sx = x0 - t * v;
+  const sst = Object.assign({t, x: sx, x0: x0, y: y + 14, h, dir: -1, swing: 0.4}, extra || {});
+  sst.farArm = [-22, -18];
+  sa.render(sst);
+  const hw = sa.handWorld('far');
+  const fst = Object.assign({t, x: fx, x0: x0 + 110, y, h: h * 0.98, dir: -1, swing: 0.3}, extra || {});
+  fst.arm = Rig.reach(fa, fst, 0, hw.x + 26, hw.y - 18, -1);
+  fa.render(fst);
+}
+
+const ma = Rig.make(q('sc15-marian'), 'marian_side', {seed: 4});
+const wo = Rig.figure(q('sc15-woman'), 'assets/chars/res_mombaby_stand.png', 592, 1328, {seed: 2});
+const gi = Rig.figure(q('sc15-girl'), 'assets/chars/res_girl_walk.png', 672, 1204, {seed: 6, amp: 0.3});
+const old = Rig.figure(q('sc15-old'), 'assets/chars/res_oldman_walk.png', 816, 1316, {seed: 3, amp: 0.3});
+const bas = Rig.figure(q('sc15-basket'), 'assets/chars/res_basket_walk.png', 852, 1348, {seed: 5, amp: 0.3});
+const sa = Rig.make(q('sc15-salem'), 'salem_side', {seed: 7});
+const mf = Rig.make(q('sc15-mfather'), 'father_side', {seed: 1});
+const ms = Rig.make(q('sc15-msalem'), 'salem_side', {seed: 9});
+const back = Rig.figure(q('sc15-back'), 'assets/chars/salem_back.png', 304, 708, {seed: 8, amp: 0.4});
+const fa = Rig.make(q('sc15-father'), 'father_side', {seed: 3});
+const cam = Rig.camera(q('sc15-cam'));
+const M0 = at(114.75), M1 = at(117.6);
+const mem = T([[0,0],[M0,0],[M0 + 0.35,1],[M1 - 0.35,1],[M1,0]]);
+const mArm = T([[0,0],[at(113.1),0],[at(113.5),1],[at(114.4),1],[at(114.8),0]]);
+const fx = T([[0,2080],[at(121.2),2080],[at(123.4),1260,'out']]);
+const fset = T([[0,0],[at(123.3),0],[at(123.75),1]]);
+const fHead = T([[0,0],[at(123.6),0],[at(124.1),8],[at(124.8),6]]);
+Rig.drive(tl, DUR, (t) => {
+  const memory = t >= M0 && t < M1;
+  const later = t >= M1;
+  if (!later) cam.render({cx: 980 - t * 10, cy: 540, z: 1.05});
+  else cam.render({cx: 960, cy: 560 - (t - M1) * 4, z: 1.0 + (t - M1) * 0.02});
+  // people at the door; Marian welcomes them in
+  const m = mArm(t);
+  ma.render({t, x: 905, y: 690, h: 215, dir: 1, d: 0, settle: 1, arm: [Rig.lerp(0, -70, m), Rig.lerp(0, -30, m)], head: -4 * m, op: later ? 0 : 1});
+  wo.render({t, x: 980, y: 694, h: 210, dir: -1, op: later ? 0 : 1});
+  gi.render({t, x: 1040, y: 696, h: 210, dir: -1, op: later ? 0 : 1});
+  old.render({t, x: 640, y: 706, h: 220, dir: 1});
+  bas.render({t, x: 1240, y: 716, h: 230, dir: -1, op: later ? 0 : 1});
+  sa.render({t, x: 1780 - t * 150, x0: 1780, y: 990, h: 600, dir: -1, op: (memory || later) ? 0 : 1});
+  q('sc15-memory').style.opacity = mem(t);
+  if (memory) {
+    handWalk(t - M0, mf, ms, 1250, 860, 420, 100, {op: 1});
+  } else { mf.render({t, x: -500, y: 0, h: 10, op: 0}); ms.render({t, x: -500, y: 0, h: 10, op: 0}); }
+  back.render({t, x: 900, y: 1070, h: 700, dir: 1, op: later ? 1 : 0});
+  fa.render({t, x: fx(t), x0: 2080, y: 1070, h: 700, dir: -1, settle: fset(t), head: fHead(t), op: later ? 1 : 0});
+});
+
+    window.__timelines["sc15"] = tl;
+  })();
+  </script>
+</template>
