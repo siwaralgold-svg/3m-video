@@ -1,0 +1,86 @@
+<template>
+  <style>
+    @font-face { font-family: "Lalezar"; src: url("assets/fonts/Lalezar-Regular.ttf"); font-weight: 400; }
+    @font-face { font-family: "Noto Kufi Arabic"; src: url("assets/fonts/NotoKufiArabic.ttf"); font-weight: 100 900; }
+    #root { position: absolute; inset: 0; overflow: hidden; }
+  </style>
+  <div id="root" data-composition-id="s5" data-width="1080" data-height="1920">
+    <div id="s5-wrap" class="clip" data-start="0" data-duration="12.5" data-layout-allow-overflow style="position:absolute;inset:0">
+      <div id="s5-stage" class="stage">
+        <svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg" style="position:absolute;left:0;top:0">
+          <defs><clipPath id="s5-clip"><rect x="0" y="0" width="1080" height="1012"/></clipPath><clipPath id="s5-floor"><rect x="-200" y="0" width="1480" height="1163"/></clipPath></defs>
+          <g clip-path="url(#s5-floor)">
+          <g id="s5-dockgrp">
+            <g id="s5-ed-slot" transform="translate(250,870) scale(0.85)"></g>
+            <g id="s5-dock"></g>
+          </g>
+          <g clip-path="url(#s5-clip)">
+            <g id="s5-ts-up"><g id="s5-ts-slot" transform="translate(800,720) scale(1.1)"></g></g>
+            <g id="s5-dyn">
+              <g id="s5-sparks" fill="none" stroke="#ffd94a" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" opacity="0">
+                <path d="M440 760 L420 720 L450 716 L430 676"/><path d="M560 750 L590 716 L566 700 L600 664"/><path d="M360 830 L318 820 L330 796 L290 782"/>
+              </g>
+              <rect x="370" y="950" width="280" height="44" rx="8" fill="#39414f" stroke="#0c1a30" stroke-width="8"/>
+              <rect x="400" y="800" width="200" height="156" rx="40" fill="#c47a3a" stroke="#0c1a30" stroke-width="8"/>
+              <path d="M440 804 V952 M480 800 V956 M520 800 V956 M560 804 V952" stroke="#0c1a30" stroke-width="6"/>
+              <g id="s5-wheel"><circle cx="620" cy="878" r="66" fill="#7b8494" stroke="#0c1a30" stroke-width="8"/><path d="M620 812 V944 M554 878 H686 M573 831 L667 925 M667 831 L573 925" stroke="#0c1a30" stroke-width="7"/><circle cx="620" cy="878" r="16" fill="#F4F6F9" stroke="#0c1a30" stroke-width="6"/></g>
+            </g>
+          </g>
+          <g id="s5-stand"></g>
+          </g>
+        </svg>
+        <div id="s5-count" class="count">التهمة الرابعة</div>
+        <div id="s5-ttl" class="ttl">نيكولا تسلا</div>
+        <div id="s5-chq" style="position:absolute; left:36px; top:440px; width:560px; height:200px">
+          <div id="s5-chqR" class="card disp" style="left:280px; top:0; width:280px; height:200px; font-size:106px; line-height:200px; border-left-width:0; border-radius:0 12px 12px 0; background:#e7f0d8">٥٠٬٠٠٠</div>
+          <div id="s5-chqL" class="card disp" style="left:0; top:0; width:280px; height:200px; font-size:96px; line-height:200px; border-right-width:0; border-radius:12px 0 0 12px; background:#e7f0d8">دولار</div>
+        </div>
+        <div id="s5-joke" class="card disp" style="left:36px; top:430px; width:440px; height:176px; font-size:88px; line-height:84px; padding-top:6px">دي نكتة<br>أمريكاني!</div>
+      </div>
+      <div id="s5-verdict" class="plate" data-layout-allow-overlap data-layout-allow-occlusion style="left:150px; top:900px; width:780px; height:290px; font-size:170px; line-height:190px">ما اتدفعش<div class="kufi" style="font-size:44px; font-weight:800; line-height:60px">حسب رواية تسلا</div></div>
+    </div>
+  </div>
+  <script>
+    EK.put("s5-ed-slot", "s5-ed", "edison");
+    EK.put("s5-ts-slot", "s5-ts", "tesla");
+    EK.fill("s5-dock", EK.box(40, 990, 420, 170, "المتهم"));
+    EK.fill("s5-stand", EK.box(560, 990, 430, 170, "نيكولا تسلا"));
+    // anchors (seconds, local)
+    const T = { count: 0.2, ttl: 0.9, wit: 0.6, cheque: 3.2, spin: 5.3, ask: 6.8, joke: 8.6, verdict: 10.9 };
+    const tl = gsap.timeline({ paused: true });
+    EK.face(tl, "s5-ed", "smug"); EK.face(tl, "s5-ts", "flat");
+    gsap.set("#s5-chq, #s5-joke, #s5-verdict", { opacity: 0 });
+    EK.whip(tl, "#s5-stage", -1080);
+    tl.fromTo("#s5-count", { opacity: 0 }, { opacity: 1, duration: 0.2 }, T.count);
+    tl.fromTo("#s5-ttl", { opacity: 0, y: -60 }, { opacity: 1, y: 0, duration: 0.3, ease: "power4.out" }, T.ttl);
+    tl.fromTo("#s5-ts-up", { y: 700 }, { y: 0, duration: 0.5, ease: "back.out(1.4)" }, T.wit);
+    tl.fromTo("#s5-dyn", { y: 520 }, { y: 0, duration: 0.5, ease: "back.out(1.3)" }, T.wit + 0.15);
+    tl.fromTo("#s5-wheel", { rotation: 0, svgOrigin: "620 878" }, { rotation: 200, duration: T.spin - T.wit - 0.6, ease: "none" }, T.wit + 0.6);
+    // the promise: a cheque held up from Edison's side
+    tl.fromTo("#s5-chq", { opacity: 1, x: -640, rotation: -12 }, { opacity: 1, x: 0, rotation: -4, duration: 0.4, ease: "back.out(1.4)" }, T.cheque);
+    EK.mood(tl, "s5-ed", T.cheque + 0.1, "calm"); EK.look(tl, "s5-ed", T.cheque + 0.3, 8, 0);
+    EK.look(tl, "s5-ts", T.cheque + 0.4, -9, -4); EK.mood(tl, "s5-ts", T.cheque + 0.8, "calm");
+    // Tesla does the work: the dynamo runs fast and sparks
+    EK.look(tl, "s5-ts", T.spin - 0.3, -7, 7);
+    tl.to("#s5-wheel", { rotation: 200 + 360 * 7, duration: T.joke - T.spin, ease: "power2.in" }, T.spin);
+    tl.fromTo("#s5-sparks", { opacity: 0 }, { opacity: 1, duration: 0.06, yoyo: true, repeat: 9, repeatDelay: 0.08, ease: "none" }, T.spin + 0.5);
+    tl.fromTo("#s5-dyn", { x: 0 }, { x: 4, duration: 0.05, yoyo: true, repeat: 23, ease: "none", immediateRender: false }, T.spin + 0.3);
+    EK.mood(tl, "s5-ts", T.spin + 0.9, "laugh");
+    // he asks for his money
+    EK.look(tl, "s5-ts", T.ask, -9, -5);
+    tl.to("#s5-chq", { rotation: 3, duration: 0.2, yoyo: true, repeat: 1, ease: "sine.inOut" }, T.ask + 0.1);
+    EK.mood(tl, "s5-ed", T.ask + 0.5, "smug");
+    // the answer: the cheque is torn, it was a joke
+    tl.to("#s5-chqR", { x: 70, y: 620, rotation: 40, duration: 0.6, ease: "power2.in" }, T.joke);
+    tl.to("#s5-chqL", { x: -60, y: 640, rotation: -50, duration: 0.65, ease: "power2.in" }, T.joke + 0.04);
+    tl.to("#s5-chq", { opacity: 0, duration: 0.15 }, T.joke + 0.5);
+    tl.fromTo("#s5-joke", { opacity: 0, scale: 0.3, rotation: -12 }, { opacity: 1, scale: 1, rotation: -4, duration: 0.3, ease: "back.out(2.2)" }, T.joke + 0.25);
+    EK.mood(tl, "s5-ed", T.joke, "laugh"); EK.mood(tl, "s5-ts", T.joke + 0.2, "shock");
+    tl.fromTo("#s5-ed-rig", { y: 0 }, { y: -14, duration: 0.11, yoyo: true, repeat: 9, ease: "sine.inOut" }, T.joke + 0.3);
+    EK.mood(tl, "s5-ts", T.joke + 1.3, "angry");
+    EK.stamp(tl, "#s5-verdict", "#s5-stage", T.verdict, 5);
+    EK.mood(tl, "s5-ed", T.verdict + 0.05, "shock", true);
+    EK.idle(tl, "s5-ts", 2.2, 9.8, 2.6);
+    window.__timelines["s5"] = tl;
+  </script>
+</template>

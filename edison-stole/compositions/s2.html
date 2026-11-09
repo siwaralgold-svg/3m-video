@@ -1,0 +1,85 @@
+<template>
+  <style>
+    @font-face { font-family: "Lalezar"; src: url("assets/fonts/Lalezar-Regular.ttf"); font-weight: 400; }
+    @font-face { font-family: "Noto Kufi Arabic"; src: url("assets/fonts/NotoKufiArabic.ttf"); font-weight: 100 900; }
+    #root { position: absolute; inset: 0; overflow: hidden; }
+  </style>
+  <div id="root" data-composition-id="s2" data-width="1080" data-height="1920">
+    <div id="s2-wrap" class="clip" data-start="0" data-duration="11.4" data-layout-allow-overflow style="position:absolute;inset:0">
+      <div id="s2-stage" class="stage">
+        <svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg" style="position:absolute;left:0;top:0">
+          <defs><clipPath id="s2-clip"><rect x="0" y="0" width="1080" height="1012"/></clipPath><clipPath id="s2-floor"><rect x="-200" y="0" width="1480" height="1163"/></clipPath></defs>
+          <g clip-path="url(#s2-floor)">
+          <g id="s2-dockgrp">
+            <g id="s2-ed-slot" transform="translate(250,870) scale(0.85)"></g>
+            <g id="s2-edbulb" transform="translate(96,930) scale(0.5)"></g>
+            <g id="s2-dock"></g>
+          </g>
+          <g clip-path="url(#s2-clip)">
+            <g id="s2-sw-up"><g id="s2-sw-slot" transform="translate(770,720) scale(1.1)"></g></g>
+            <g id="s2-arm">
+              <path d="M650 980 Q560 960 520 880" fill="none" stroke="#0c1a30" stroke-width="74" stroke-linecap="round"/>
+              <path d="M650 980 Q560 960 520 880" fill="none" stroke="#4a4038" stroke-width="58" stroke-linecap="round"/>
+              <g id="s2-swbulb" transform="translate(516,690)"></g>
+              <circle cx="516" cy="856" r="40" fill="#f0c6a6" stroke="#0c1a30" stroke-width="8"/>
+            </g>
+          </g>
+          <g id="s2-stand"></g>
+          </g>
+        </svg>
+        <div id="s2-count" class="count">التهمة الأولى</div>
+        <div id="s2-ttl" class="ttl">اللمبة</div>
+        <div id="s2-year" class="card disp" style="left:70px; top:452px; width:330px; height:170px; font-size:128px; line-height:176px">١٨٧٩</div>
+        <div id="s2-late" class="card kufi" style="left:30px; top:700px; width:150px; height:150px; font-size:38px; font-weight:800; line-height:60px; padding-top:10px">بعده<br>بشهور</div>
+        <div id="s2-sign" class="card disp" style="left:36px; top:456px; width:400px; height:212px; background:#a8703f; color:#F4F6F9; font-size:58px; line-height:66px; padding-top:6px">شركة<br>إديسون وسوان<br>١٨٨٣</div>
+      </div>
+      <div id="s2-verdict" class="plate" data-layout-allow-overlap data-layout-allow-occlusion style="left:130px; top:930px; width:820px; height:230px; font-size:150px; line-height:212px">ما كانش الأول</div>
+    </div>
+  </div>
+  <script>
+    EK.put("s2-ed-slot", "s2-ed", "edison");
+    EK.put("s2-sw-slot", "s2-sw", "swan");
+    EK.fill("s2-edbulb", EK.bulb("s2-eb"));
+    EK.fill("s2-swbulb", EK.bulb("s2-sb"));
+    EK.fill("s2-dock", EK.box(40, 990, 420, 170, "المتهم"));
+    EK.fill("s2-stand", EK.box(560, 990, 430, 170, "جوزيف سوان"));
+    // anchors (seconds, local): retime here when the voice arrives
+    const T = { count: 0.15, ttl: 1.0, swan: 0.8, on: 3.4, year: 3.9, late: 6.0, sign: 8.4, verdict: 10.2 };
+    const tl = gsap.timeline({ paused: true });
+    EK.face(tl, "s2-ed", "smug"); EK.face(tl, "s2-sw", "calm");
+    gsap.set("#s2-sign, #s2-year, #s2-late, #s2-verdict", { opacity: 0 });
+    // enter: the dock and stand rise from the floor line
+    tl.fromTo("#s2-dockgrp", { y: 520 }, { y: 0, duration: 0.5, ease: "back.out(1.2)" }, 0);
+    tl.fromTo("#s2-stand", { y: 420 }, { y: 0, duration: 0.5, ease: "back.out(1.2)" }, 0.12);
+    tl.fromTo("#s2-count", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power2.out" }, T.count);
+    tl.fromTo("#s2-ttl", { opacity: 0, scale: 1.5 }, { opacity: 1, scale: 1, duration: 0.25, ease: "power4.out" }, T.ttl);
+    // Swan steps up with his lamp
+    tl.fromTo("#s2-sw-up", { y: 700 }, { y: 0, duration: 0.55, ease: "back.out(1.4)" }, T.swan);
+    tl.fromTo("#s2-arm", { y: 520, rotation: 14, svgOrigin: "650 980" }, { y: 0, rotation: 0, duration: 0.6, ease: "back.out(1.6)" }, T.swan + 0.22);
+    EK.look(tl, "s2-ed", T.swan + 0.3, 7, -2);
+    EK.blink(tl, "s2-sw", T.swan + 1.0);
+    // the lamp lights, the year lands
+    tl.to("#s2-arm", { y: -26, duration: 0.25, ease: "power2.out" }, T.on - 0.3);
+    EK.bulbOn(tl, "s2-sb", T.on);
+    EK.mood(tl, "s2-sw", T.on + 0.1, "laugh");
+    tl.fromTo("#s2-year", { opacity: 0, scale: 0.4, rotation: -14 }, { opacity: 1, scale: 1, rotation: -5, duration: 0.3, ease: "back.out(2)" }, T.year);
+    EK.mood(tl, "s2-ed", T.year + 0.5, "annoyed");
+    // Edison's lamp comes on late
+    EK.look(tl, "s2-ed", T.late - 0.5, -8, 6);
+    EK.bulbOn(tl, "s2-eb", T.late);
+    tl.fromTo("#s2-late", { opacity: 0, scale: 0.3, rotation: 12 }, { opacity: 1, scale: 1, rotation: -6, duration: 0.3, ease: "back.out(2)" }, T.late + 0.25);
+    EK.mood(tl, "s2-sw", T.late + 0.4, "calm");
+    EK.blink(tl, "s2-ed", T.late + 1.1);
+    // forced to share one company: the sign drops in place of the year
+    tl.to("#s2-year", { opacity: 0, scale: 0.7, duration: 0.15, ease: "power2.in" }, T.sign - 0.2);
+    tl.to("#s2-late", { opacity: 0, duration: 0.15 }, T.sign - 0.2);
+    tl.fromTo("#s2-sign", { opacity: 1, y: -700, rotation: 5 }, { opacity: 1, y: 0, rotation: -2, duration: 0.45, ease: "bounce.out" }, T.sign);
+    EK.mood(tl, "s2-ed", T.sign + 0.3, "angry", true);
+    EK.look(tl, "s2-ed", T.sign + 0.7, 4, -8);
+    // verdict
+    EK.stamp(tl, "#s2-verdict", "#s2-stage", T.verdict, -6);
+    EK.mood(tl, "s2-ed", T.verdict + 0.05, "shock");
+    EK.idle(tl, "s2-ed", 0.6, 10, 2.4); EK.idle(tl, "s2-sw", 2.4, 11.2, 2.9);
+    window.__timelines["s2"] = tl;
+  </script>
+</template>
