@@ -21,6 +21,7 @@
     "sleeveW": 36,
     "color": "#dfb78a",
     "stroke": "#b69671",
+    "bitmap": null,
     "skin": "#c67d46"
    }
   ],
@@ -60,6 +61,7 @@
     "sleeveW": 48,
     "color": "#f7e1cc",
     "stroke": "#cab8a7",
+    "bitmap": null,
     "skin": "#c77c45"
    }
   ],
@@ -99,6 +101,7 @@
     "sleeveW": 56,
     "color": "#c7a589",
     "stroke": "#a38770",
+    "bitmap": null,
     "skin": "#c67e49"
    }
   ],
@@ -138,6 +141,7 @@
     "sleeveW": 64,
     "color": "#fae0c9",
     "stroke": "#cdb7a4",
+    "bitmap": null,
     "skin": "#eba566"
    }
   ],
@@ -177,6 +181,24 @@
     "sleeveW": 36,
     "color": "#e0b98d",
     "stroke": "#b79773",
+    "bitmap": {
+     "upper": {
+      "x": 197,
+      "y": 223,
+      "w": 36,
+      "h": 108
+     },
+     "fore": {
+      "x": 203,
+      "y": 286,
+      "w": 53,
+      "h": 181
+     },
+     "elbow": [
+      218.34,
+      308.13
+     ]
+    },
     "skin": "#bb7441"
    }
   ],
@@ -210,6 +232,24 @@
     "sleeveW": 48,
     "color": "#f7e1cd",
     "stroke": "#cab8a8",
+    "bitmap": {
+     "upper": {
+      "x": 310,
+      "y": 241,
+      "w": 46,
+      "h": 141
+     },
+     "fore": {
+      "x": 320,
+      "y": 322,
+      "w": 68,
+      "h": 258
+     },
+     "elbow": [
+      335.275,
+      351.38
+     ]
+    },
     "skin": "#c77b45"
    }
   ],
@@ -243,6 +283,24 @@
     "sleeveW": 52,
     "color": "#c4a488",
     "stroke": "#a0866f",
+    "bitmap": {
+     "upper": {
+      "x": 335,
+      "y": 292,
+      "w": 33,
+      "h": 105
+     },
+     "fore": {
+      "x": 337,
+      "y": 333,
+      "w": 58,
+      "h": 246
+     },
+     "elbow": [
+      352.225,
+      364.09
+     ]
+    },
     "skin": "#ba7544"
    }
   ],
@@ -288,6 +346,24 @@
     "sleeveW": 80,
     "color": "#f8dcc5",
     "stroke": "#cbb4a1",
+    "bitmap": {
+     "upper": {
+      "x": 393,
+      "y": 351,
+      "w": 79,
+      "h": 281
+     },
+     "fore": {
+      "x": 405,
+      "y": 533,
+      "w": 115,
+      "h": 460
+     },
+     "elbow": [
+      446.78499999999997,
+      582.3
+     ]
+    },
     "skin": "#de9457"
    }
   ],

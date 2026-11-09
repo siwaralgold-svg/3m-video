@@ -153,8 +153,9 @@ Rig.drive(tl, DUR, (t) => {
   sw.render({t, x: swx(t), x0: 1720, y: 880, h: 600, dir: -1, settle: swset(t), op: walking ? 1 : 0});
   const sst = {t, x: 700, y: 850, h: 540, dir: -1, lean: sLean(t), head: sHead(t), dy: sDy(t), op: walking ? 0 : 1, shadow: 0.6};
   // hand to father's shoulder
-  const target = Rig.pt(fa, fst, fa.ox + 40, fa.R.arms[0].shoulder[1]);
-  const reachA = Rig.reach(ss, sst, 0, target.x + 20, target.y - 18, 1);
+  // a gentle reach: his hand comes to rest on his father's chest, just in front of him
+  const sh = Rig.pt(ss, sst, ss.R.arms[0].shoulder[0], ss.R.arms[0].shoulder[1] + ss.sitGap);
+  const reachA = Rig.reach(ss, sst, 0, sh.x - 40, sh.y + 100, 1);
   sst.arm = Rig.mixArm([4, -6], reachA, Rig.smooth(sArm(t)));
   ss.render(sst);
 });
@@ -385,7 +386,7 @@ Rig.drive(tl, DUR, (t) => {
   // father seated on the bed edge, facing camera (mirrored so his free arm is toward Salem)
   const fst = {t, x: 1660, y: 860, h: 610, dir: -1, head: fNod(t), lean: fLean(t), idle: 0.6};
   // Pat: at the desk in shot 1 (facing the bag), at the bed afterwards
-  const pst = shot === 1 ? {t, x: 760, y: 900, h: 640, dir: -1} : {t, x: 1365, y: 900, h: 640, dir: 1, head: patNod(t)};
+  const pst = shot === 1 ? {t, x: 760, y: 900, h: 640, dir: -1} : {t, x: 1475, y: 905, h: 640, dir: 1, head: patNod(t)};
   // bag on the desk
   place('sc09-bagc', 412, 432, 165, open(t) < 0.5 ? 1 : 0);
   place('sc09-bago', 418, 414, 154, open(t) >= 0.5 ? 1 : 0);
@@ -408,13 +409,13 @@ Rig.drive(tl, DUR, (t) => {
   pat.render(pst);
   fst.arm = [0, 0];
   // the hand: both hands meet at one point between them
-  const sst7 = {x: 1475, y: 905, h: 640, dir: 1};
+  const sst7 = {x: 1545, y: 912, h: 640, dir: 1};
   const fS = Rig.pt(fa, fst, fa.R.arms[0].shoulder[0], fa.R.arms[0].shoulder[1]);
   const sS = Rig.pt(sa, sst7, sa.R.arms[0].shoulder[0], sa.R.arms[0].shoulder[1]);
   const fC = Rig.pt(fa, fst, fa.R.arms[0].cuff[0], fa.R.arms[0].cuff[1]);
   const Lf = Math.hypot(fC.x - fS.x, fC.y - fS.y) * 0.97;
-  const aim = {x: sS.x - fS.x, y: sS.y + 150 - fS.y}, aL = Math.hypot(aim.x, aim.y);
-  const meet = {x: fS.x + aim.x / aL * Lf, y: fS.y + aim.y / aL * Lf};
+  // father's hand only eases toward Salem; Salem lifts his hand into it
+  const meet = {x: Rig.lerp(fC.x, sS.x, 0.22), y: fC.y + 8};
   if (shot === 7) {
     fst.arm = Rig.mixArm([0, 0], Rig.reach(fa, fst, 0, meet.x, meet.y, 1), Rig.smooth(hand(t)));
     fst.idle = 0;

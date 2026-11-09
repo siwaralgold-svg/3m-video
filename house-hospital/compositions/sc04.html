@@ -71,8 +71,9 @@ Rig.drive(tl, DUR, (t) => {
   sw.render({t, x: swx(t), x0: 1720, y: 880, h: 600, dir: -1, settle: swset(t), op: walking ? 1 : 0});
   const sst = {t, x: 700, y: 850, h: 540, dir: -1, lean: sLean(t), head: sHead(t), dy: sDy(t), op: walking ? 0 : 1, shadow: 0.6};
   // hand to father's shoulder
-  const target = Rig.pt(fa, fst, fa.ox + 40, fa.R.arms[0].shoulder[1]);
-  const reachA = Rig.reach(ss, sst, 0, target.x + 20, target.y - 18, 1);
+  // a gentle reach: his hand comes to rest on his father's chest, just in front of him
+  const sh = Rig.pt(ss, sst, ss.R.arms[0].shoulder[0], ss.R.arms[0].shoulder[1] + ss.sitGap);
+  const reachA = Rig.reach(ss, sst, 0, sh.x - 40, sh.y + 100, 1);
   sst.arm = Rig.mixArm([4, -6], reachA, Rig.smooth(sArm(t)));
   ss.render(sst);
 });

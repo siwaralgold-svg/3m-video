@@ -15,14 +15,14 @@ SPECS={
     arms=[dict(shoulder=(57,88),box=(44,200,78,248),w=16)]),
  # standing three-quarter / front rigs
  'salem_q34':  dict(src='salem_q34',neck=45,pivot=(40,47),
-    arms=[dict(shoulder=(52,56),box=(48,98,68,124),w=9,cut=[(50,52),(66,60),(68,102),(54,102)])]),
+    arms=[dict(shoulder=(52,56),box=(48,98,68,124),w=9,cut=[(49,51),(72,58),(72,104),(53,104)])]),
  'father_front':dict(src='father_front',neck=48,pivot=(50,50),
-    arms=[dict(shoulder=(80,58),box=(80,118,102,150),w=12,cut=[(78,56),(98,70),(102,122),(86,124)])]),
+    arms=[dict(shoulder=(80,58),box=(80,118,102,150),w=12,cut=[(77,55),(108,66),(108,124),(85,126)])]),
  'uncle_q34':  dict(src='uncle_q34',neck=47,pivot=(58,49),
-    arms=[dict(shoulder=(86,62),box=(82,118,100,152),w=13,cut=[(84,58),(98,72),(101,124),(87,126)])]),
+    arms=[dict(shoulder=(86,62),box=(82,118,100,152),w=13,cut=[(83,57),(108,70),(108,128),(86,128)])]),
  'mother_q34': dict(src='mother_q34',neck=47,pivot=(60,49),soft_head=True,arms=[]),
  'pat_q34':    dict(src='pat_q34',neck=62,pivot=(68,64),
-    arms=[dict(shoulder=(104,88),box=(104,200,132,252),w=20,cut=[(100,84),(120,96),(132,206),(108,210),(103,150)])]),
+    arms=[dict(shoulder=(104,88),box=(104,200,132,252),w=20,cut=[(98,82),(140,96),(140,212),(106,212),(102,150)])]),
  'marian_q34': dict(src='marian_q34',neck=None,arms=[]),
 }
 def skinmask(rgb):
@@ -52,11 +52,30 @@ for rid,sp in SPECS.items():
         Image.fromarray(hp).save(f'{d}/hand{i}.png')
         # remove hand (and arm, if cut polygon) from body
         rm=cv2.dilate(hand,np.ones((11,11),np.uint8))
+        bitmap=None
         if 'cut' in a:
+            # keep the drawn sleeve + hand as two bitmap pieces split at the elbow
+            poly=np.array([[p[0]*K,p[1]*K] for p in a['cut']],np.int32)
+            pm=np.zeros((H,W),np.uint8);cv2.fillPoly(pm,[poly],1)
+            armm=((pm|cv2.dilate(hand,np.ones((7,7),np.uint8)))>0).astype(np.float32)*(al/255.0)
+            sx0,sy0=a['shoulder'][0]*K,a['shoulder'][1]*K
+            cxc,cyc=(hb[0]+hb[2])/2,hb[1]+6
+            ex,ey=sx0+(cxc-sx0)*0.47,sy0+(cyc-sy0)*0.47
+            r=a['w']*K*0.62
+            yy,xx=np.mgrid[0:H,0:W]
+            disc=((xx-ex)**2+(yy-ey)**2)<=r*r
+            pieces={}
+            for nm,half in {'upper':(yy<ey),'fore':(yy>=ey)}.items():
+                m=armm*((half|disc).astype(np.float32))
+                ys,xs=np.where(m>0.01)
+                x0,y0,x1,y1=xs.min(),ys.min(),xs.max()+1,ys.max()+1
+                Image.fromarray(np.dstack([rgb,(m*255).astype(np.uint8)])[y0:y1,x0:x1]).save(f'{d}/{nm}{i}.png')
+                pieces[nm]=dict(x=int(x0),y=int(y0),w=int(x1-x0),h=int(y1-y0))
+            bitmap=dict(pieces,elbow=[float(ex),float(ey)])
             poly=np.array([[p[0]*K,p[1]*K] for p in a['cut']],np.int32)
             cm=np.zeros((H,W),np.uint8);cv2.fillPoly(cm,[poly],1)
             # outside the torso: drop alpha. Torso edge = column where the arm polygon starts.
-            body_al=np.where(cv2.dilate(cm|rm,np.ones((7,7),np.uint8))>0,0,body_al)
+            body_al=np.where(cv2.dilate(cm|rm,np.ones((5,5),np.uint8))>0,0,body_al)
             # repaint a margin inside for clean edge
             rm=rm|cm
         body_rgb=cv2.inpaint(body_rgb,rm*255,9,cv2.INPAINT_TELEA)
@@ -67,7 +86,7 @@ for rid,sp in SPECS.items():
         cuff=[(hb[0]+hb[2])/2,hb[1]+6]
         arms.append(dict(shoulder=[sx,sy],cuff=cuff,hand=dict(x=hb[0]-4,y=hb[1]-4,w=hp.shape[1],h=hp.shape[0]),
                          sleeveW=a['w']*K,color='#%02x%02x%02x'%tuple(int(c) for c in col),
-                         stroke='#%02x%02x%02x'%tuple(int(c*0.82) for c in col),skin='#%02x%02x%02x'%tuple(int(c) for c in np.median(rgb[hand>0],0))))
+                         stroke='#%02x%02x%02x'%tuple(int(c*0.82) for c in col),bitmap=bitmap,skin='#%02x%02x%02x'%tuple(int(c) for c in np.median(rgb[hand>0],0))))
     j['arms']=arms
     if sp.get('neck'):
         ny=sp['neck']*K

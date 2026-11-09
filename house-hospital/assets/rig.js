@@ -90,6 +90,19 @@
     const a0 = Math.atan2(-(cx - sx), cy - sy) / D2R;
     const w = a.sleeveW;
     const root = el("div", "rig-arm", parent, { ...abs, left: sx + "px", top: sy + "px", transformOrigin: "0 0" });
+    if (a.bitmap) {
+      // the drawn sleeve and hand from the reference art, split at the elbow
+      const B = a.bitmap, ex = B.elbow[0], ey = B.elbow[1];
+      const l1 = Math.hypot(ex - sx, ey - sy), l2 = Math.hypot(cx - ex, cy - ey);
+      const ua = el("div", "", root, { ...abs, transformOrigin: "0 0", transform: `rotate(${-a0}deg)` });
+      const ui = el("img", "rig-sleeve", ua, { ...abs, left: B.upper.x - sx + "px", top: B.upper.y - sy + "px", width: B.upper.w + "px", height: B.upper.h + "px" });
+      ui.src = `assets/rig/${rid}/upper${idx}.png`;
+      const elb = el("div", "rig-elbow", root, { ...abs, top: l1 + "px", transformOrigin: "0 0" });
+      const fa = el("div", "", elb, { ...abs, transformOrigin: "0 0", transform: `rotate(${-a0}deg)` });
+      const fi = el("img", "rig-sleeve", fa, { ...abs, left: B.fore.x - ex + "px", top: B.fore.y - ey + "px", width: B.fore.w + "px", height: B.fore.h + "px" });
+      fi.src = `assets/rig/${rid}/fore${idx}.png`;
+      return { root, elb, a0, L1: l1, L2: l2, sx, sy, cuffEl: fa, handEl: fi };
+    }
     const up = svg(root, w * 2, L1 + w * 2, { left: -w + "px", top: -w + "px" });
     // upper sleeve: a soft tapered tube
     const u0 = w * 0.46, u1 = w * 0.5;
