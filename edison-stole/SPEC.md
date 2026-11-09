@@ -2,7 +2,7 @@
 
 GOAL:    the viewer leaves doubting "Edison invented it" and comments a verdict.
 OUTPUT:  HyperFrames, 1080×1920, 30 fps, TikTok.
-TIME:    66.1 s on estimated timing. Clock: the Arabic voiceover (Egyptian), not recorded yet.
+TIME:    66.1 s on estimated timing. Clock: the Arabic voiceover (Saudi dialect), not recorded yet.
          Every scene keeps its anchors in one `const T = {…}` line; retime there when the voice arrives.
 LOOK:    a courtroom. Wall navy #13294B with panels #172f55; wood #8a5a33 / #6b4226 / #a8703f from y 1150 down.
          Flat 2D busts, outline #0c1a30 at 7–8 px. Text light #F4F6F9, secondary #9fb4d0.
@@ -18,12 +18,12 @@ MOTION:  verdict plates slam in 0.17 s power3.in with a 6-step stage shake. Card
 SHOTS:
 | # | Abs time | Picture | Verdict |
 |---|---|---|---|
-| s1 | 0–8.6 | Edison's portrait, "محتاج يتراجع", plaque, gavel hits, title, "٤ تهم" | |
-| s2 | 8.6–20 | Swan lights his lamp, ١٨٧٩, Edison's lights late, the Ediswan sign drops | ما كانش الأول |
-| s3 | 20–29.6 | Dickson cranks the camera, the patent: "مسجّلة باسم ؟" → توماس إديسون | خد الفضل |
-| s4 | 29.6–40.1 | the film: rocket hits the moon; reel copies fly to Edison; "٠ مليم" | سرقة |
-| s5 | 40.1–52.6 | the ٥٠٬٠٠٠ cheque, dynamo runs, cheque torn, "دي نكتة أمريكاني!" | ما اتدفعش (حسب رواية تسلا) |
-| s6 | 52.6–63.1 | Edison alone, four verdicts return, "الحكم؟ ليك إنت", comment call | |
+| s1 | 0–8.6 | Edison's portrait, "لازم تراجعه", plaque, gavel hits, title, "٤ تهم" | |
+| s2 | 8.6–20 | Swan lights his lamp, ١٨٧٩, Edison's lights late, the Ediswan sign drops | ما كان الأول |
+| s3 | 20–29.6 | Dickson cranks the camera, the patent: "مسجّلة باسم ؟" → توماس إديسون | أخذ الفضل |
+| s4 | 29.6–40.1 | the film: rocket hits the moon; reel copies fly to Edison; "ولا ريال" | سرقة |
+| s5 | 40.1–52.6 | the ٥٠٬٠٠٠ cheque, dynamo runs, cheque torn, "هذي نكتة أمريكية!" | ما دفع له (حسب رواية تسلا) |
+| s6 | 52.6–63.1 | Edison alone, four verdicts return, "الحكم؟ لك أنت", comment call | |
 | s7 | 63.1–66.1 | T3M logo on navy | |
 FACTS:   Swan demonstrated a working lamp in Newcastle in early 1879; Ediswan was incorporated in October 1883.
          Dickson did most of the work on the Kinetograph, 1889–1892; the patents were Edison's.
