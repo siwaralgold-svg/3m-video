@@ -9,13 +9,40 @@ Run:  python3 tools/build_scenes.py   (from the project folder)
 import json, os
 
 VO = 3.0
-END = 141.09 + VO  # voice ends
+# The scenes were first timed to an earlier take of the voice. The current take
+# (assets/audio/voice.mp3, 140.04 s) has the same text and order with small timing
+# shifts; tools/voice_warp.json maps earlier-take times to current-take times
+# (word-level alignment of both transcripts). Every voice time written below is in
+# the earlier take and passes through warp(), so actions stay on their words.
+WARP = json.load(open(os.path.join(os.path.dirname(__file__), "voice_warp.json")))
+
+
+def warp(a):
+    if a <= WARP[0][0]:
+        return a
+    for (a0, b0), (a1, b1) in zip(WARP, WARP[1:]):
+        if a <= a1:
+            return b0 + (b1 - b0) * (a - a0) / (a1 - a0)
+    return WARP[-1][1] + (a - WARP[-1][0])
+
+
+def g(t):
+    # film time (earlier take) -> film time (current take)
+    return t if t <= VO else warp(t - VO) + VO
+
+
+END_VOICE = 140.042 + VO
+WARP_JS = json.dumps([[round(a, 3), round(b, 3)] for a, b in WARP])
 OUT = os.path.join(os.path.dirname(__file__), "..")
 
 SCENES = []
 
 
 def scene(sid, start, dur, bg, els, js, overlay=""):
+    if sid == "sc17":
+        start = END_VOICE + 0.5
+    else:
+        start = g(start)
     SCENES.append(dict(id=sid, start=round(start, 3), dur=round(dur, 3), bg=bg, els=els, js=js, overlay=overlay))
 
 
@@ -631,9 +658,9 @@ const mom = Rig.figure(q('sc16-mom'), 'assets/chars/res_mombaby_stand.png', 592,
 const boy = Rig.figure(q('sc16-boy'), 'assets/chars/res_boy_stand.png', 504, 1300, {seed: 5});
 const bas = Rig.figure(q('sc16-basket'), 'assets/chars/res_basket_stand.png', 752, 1332, {seed: 6});
 const cam = Rig.camera(q('sc16-cam'));
-const z = T([[0,1.55],[17.6,1.0,'io']]), cx = T([[0,880],[17.6,960,'io']]), cy = T([[0,600],[17.6,540,'io']]);
+const z = T([[0,1.55],[DUR,1.0,'io']]), cx = T([[0,880],[DUR,960,'io']]), cy = T([[0,600],[DUR,540,'io']]);
 const place = T([[0,0],[0.4,0],[1.4,1],[6.0,1],[7.0,0]]);
-const fade = T([[0,0],[16.6,0],[17.6,1]]);
+const fade = T([[0,0],[DUR - 1,0],[DUR,1]]);
 const patNod = T([[0,0],[at(130.2),0],[at(130.6),5],[at(131.0),0]]);
 Rig.drive(tl, DUR, (t) => {
   cam.render({cx: cx(t), cy: cy(t), z: z(t)});
@@ -704,7 +731,9 @@ def write_scene(s):
     const T = Rig.track;
     const DUR = {s['dur']};
     // voice time (seconds into voice.mp3) -> scene time
-    const at = (a) => a + {VO} - {s['start']};
+    const W = {WARP_JS};
+    const warp = (a) => {{ if (a <= W[0][0]) return a; for (let i = 1; i < W.length; i++) if (a <= W[i][0]) return W[i-1][1] + (W[i][1] - W[i-1][1]) * (a - W[i-1][0]) / (W[i][0] - W[i-1][0]); return W[W.length-1][1] + a - W[W.length-1][0]; }};
+    const at = (a) => warp(a) + {VO} - {s['start']};
     const tl = gsap.timeline({{ paused: true }});
 {s['js']}
     window.__timelines["{sid}"] = tl;
@@ -723,7 +752,7 @@ def write_index():
         f'data-width="1920" data-height="1080" style="z-index:2"></div>' for s in SCENES)
     amb = json.load(open(os.path.join(OUT, "tools", "ambience.json"))) if os.path.exists(os.path.join(OUT, "tools", "ambience.json")) else []
     audio = "\n      ".join(
-        f'<audio id="{a["id"]}" src="assets/sfx/{a["file"]}" data-start="{a["start"]}" data-duration="{a["dur"]}" '
+        f'<audio id="{a["id"]}" src="assets/sfx/{a["file"]}" data-start="{round(next(x['start'] for x in SCENES if x['id'] == a['scene']) + a['local'] if 'scene' in a else g(a['start']), 3)}" data-duration="{a["dur"]}" '
         f'data-volume="{a["vol"]}" data-fade-in="{a.get("fin", 0.4)}" data-fade-out="{a.get("fout", 0.6)}" data-track-index="{3 + i % 2}"></audio>'
         for i, a in enumerate(amb))
     html = f"""<!doctype html>
@@ -761,6 +790,9 @@ def write_index():
 
 if __name__ == "__main__":
     os.makedirs(os.path.join(OUT, "compositions"), exist_ok=True)
+    # contiguous slots: each scene runs until the next one starts
+    for a, b in zip(SCENES, SCENES[1:]):
+        a["dur"] = round(b["start"] - a["start"], 3)
     for s in SCENES:
         write_scene(s)
     total = write_index()

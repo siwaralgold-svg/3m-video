@@ -2,38 +2,42 @@
  {
   "id": "sfx-hoe1",
   "file": "impact_footstep_grass_000.mp3",
-  "start": 17.641,
   "dur": 0.78,
   "vol": 0.3,
   "fin": 0,
-  "fout": 0.05
+  "fout": 0.05,
+  "scene": "sc03",
+  "local": 1.3907
  },
  {
   "id": "sfx-hoe2",
   "file": "impact_footstep_grass_002.mp3",
-  "start": 18.991,
   "dur": 0.69,
   "vol": 0.28,
   "fin": 0,
-  "fout": 0.05
+  "fout": 0.05,
+  "scene": "sc03",
+  "local": 2.7407
  },
  {
   "id": "sfx-hoe3",
   "file": "impact_footstep_grass_003.mp3",
-  "start": 20.341,
   "dur": 0.67,
   "vol": 0.3,
   "fin": 0,
-  "fout": 0.05
+  "fout": 0.05,
+  "scene": "sc03",
+  "local": 4.0907
  },
  {
   "id": "sfx-hoe4",
   "file": "impact_footstep_grass_000.mp3",
-  "start": 105.791,
   "dur": 0.78,
   "vol": 0.3,
   "fin": 0,
-  "fout": 0.05
+  "fout": 0.05,
+  "scene": "sc14",
+  "local": 1.3907
  },
  {
   "id": "sfx-bag",
