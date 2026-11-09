@@ -31,7 +31,7 @@ def g(t):
     return t if t <= VO else warp(t - VO) + VO
 
 
-END_VOICE = 140.042 + VO
+END_VOICE = 117.316 + VO
 WARP_JS = json.dumps([[round(a, 3), round(b, 3)] for a, b in WARP])
 OUT = os.path.join(os.path.dirname(__file__), "..")
 
@@ -92,7 +92,7 @@ const girl = Rig.figure(q('sc02-girl'), 'assets/chars/res_girl_stand.png', 512, 
 const old = Rig.figure(q('sc02-old'), 'assets/chars/res_oldman_walk.png', 816, 1316, {seed: 5, amp: 0.3});
 const bas = Rig.figure(q('sc02-basket'), 'assets/chars/res_basket_stand.png', 752, 1332, {seed: 6});
 const cam = Rig.camera(q('sc02-cam'));
-const sx = T([[0,1560],[3.51,860,'lin']]);
+const sx = T([[0,1560],[DUR,860,'lin']]);
 Rig.drive(tl, DUR, (t) => {
   cam.render({cx: 1000 - t*25, cy: 560, z: 1.08});
   salem.render({t, x: sx(t), x0: 1560, y: 1010, h: 640, dir: -1});
@@ -231,32 +231,6 @@ Rig.drive(tl, DUR, (t) => {
 });
 """)
 
-# ------------------------------------------------------------------ sc06 lane: walking through the neighbourhood
-scene("sc06", 47.0, 1.4, "02_neighborhood_lane",
-      [rig("sc06-father", 20), div("sc06-farm", 23, "left:0;top:0"), rig("sc06-uncle", 22), rig("sc06-salem", 24),
-       rig("sc06-old", 10), rig("sc06-woman", 11)],
-      r"""
-const fa = Rig.make(q('sc06-father'), 'father_side', {seed: 1, armLayer: q('sc06-farm')});
-const un = Rig.make(q('sc06-uncle'), 'uncle_side', {seed: 3});
-const sw = Rig.make(q('sc06-salem'), 'salem_side', {seed: 5});
-const old = Rig.figure(q('sc06-old'), 'assets/chars/res_oldman_walk.png', 816, 1316, {seed: 4, amp: 0.3});
-const wo = Rig.figure(q('sc06-woman'), 'assets/chars/res_woman_walk.png', 748, 1300, {seed: 9, amp: 0.2});
-const cam = Rig.camera(q('sc06-cam'));
-Rig.drive(tl, DUR, (t) => {
-  cam.render({cx: 980 - t * 30, cy: 560, z: 1.05});
-  const ex = 1250 - t * 120;
-  const ust = {t, x: ex, x0: 1250, y: 960, h: 600, dir: -1, swing: 0.6};
-  const fst = {t, x: ex + 105, x0: 1355, y: 930, h: 588, dir: -1, head: 9, lean: 5, swing: 0.2};
-  un.render(ust);
-  const sh = Rig.pt(un, ust, un.R.arms[0].shoulder[0] + 18, un.R.arms[0].shoulder[1] + 6);
-  fst.arm = Rig.reach(fa, fst, 0, sh.x, sh.y, -1);
-  fa.render(fst);
-  sw.render({t, x: 1620 - t * 120, x0: 1620, y: 985, h: 600, dir: -1});
-  old.render({t, x: 520, y: 770, h: 250, dir: 1});
-  wo.render({t, x: 1500, y: 745, h: 230, dir: -1, rot: 1});
-});
-""")
-
 # ------------------------------------------------------------------ sc07 hospital exterior: «هذا؟ هذا بيت!»
 scene("sc07", 48.4, 7.2, "01_hospital_exterior",
       [rig("sc07-father", 20), div("sc07-farm", 23, "left:0;top:0"), rig("sc07-uncle", 22), rig("sc07-salemw", 24), rig("sc07-salem", 24),
@@ -270,7 +244,7 @@ const wo = Rig.figure(q('sc07-woman'), 'assets/chars/res_woman_stand.png', 528, 
 const gi = Rig.figure(q('sc07-girl'), 'assets/chars/res_girl_stand.png', 512, 1204, {seed: 6});
 const cam = Rig.camera(q('sc07-cam'));
 const stop = at(47.1);
-const ux = T([[0,1560],[stop,1270,'out'],[at(52.05),1270],[7.2,1130,'in']]);
+const ux = T([[0,1560],[stop,1270,'out'],[at(52.05),1270],[DUR,1130,'in']]);
 const uset = T([[0,0],[stop - 0.1,0],[stop + 0.45,1],[at(52.0),1],[at(52.3),0]]);
 const sx = T([[0,1330],[stop,1060,'out']]);
 const sset = T([[0,0],[stop - 0.1,0],[stop + 0.4,1]]);
@@ -300,8 +274,8 @@ Rig.drive(tl, DUR, (t) => {
   const p = sPoint(t);
   sq.render({t, x: 1060, y: 990, h: 600, dir: sDir(t), head: sHead(t), dy: sDy(t), op: walking ? 0 : 1,
              arm: [Rig.lerp(0, -118, p), Rig.lerp(0, -12, p)]});
-  wo.render({t, x: 640, y: 712, h: 190, dir: 1});
-  gi.render({t, x: 690, y: 716, h: 190, dir: -1});
+  wo.render({t, x: 690, y: 712, h: 151, dir: 1});
+  gi.render({t, x: 735, y: 714, h: 154, dir: -1});
 });
 """)
 
@@ -514,14 +488,16 @@ const fa = Rig.make(q('sc11-father'), 'father_side', {seed: 4});
 const sa = Rig.make(q('sc11-salem'), 'salem_side', {seed: 8});
 const cam = Rig.camera(q('sc11-cam'));
 // day -> dusk -> night -> dawn
-const dusk = T([[0,0],[1.3,0],[2.0,0.75],[2.6,0.2],[3.3,0]]);
-const night = T([[0,0],[1.7,0],[2.3,0.72],[2.9,0.72],[3.6,0]]);
-const dawn = T([[0,0],[2.9,0],[3.5,0.6],[4.4,0.35]]);
-const walkOp = T([[0,1],[1.4,1],[1.9,0]]);
+// day -> dusk -> night -> dawn, spread over the scene's length
+const k = 4.4 / DUR;
+const dusk0 = T([[0,0],[1.3,0],[2.0,0.75],[2.6,0.2],[3.3,0]]), dusk = (t) => dusk0(t * k);
+const night0 = T([[0,0],[1.7,0],[2.3,0.72],[2.9,0.72],[3.6,0]]), night = (t) => night0(t * k);
+const dawn0 = T([[0,0],[2.9,0],[3.5,0.6],[4.4,0.35]]), dawn = (t) => dawn0(t * k);
+const walkOp0 = T([[0,1],[1.4,1],[1.9,0]]), walkOp = (t) => walkOp0(t * k);
 Rig.drive(tl, DUR, (t) => {
   cam.render({cx: 960, cy: 540, z: 1.0 + t * 0.01});
   q('sc11-dusk').style.opacity = dusk(t); q('sc11-night').style.opacity = night(t); q('sc11-dawn').style.opacity = dawn(t);
-  handWalk(t, fa, sa, 1500, 840, 400, 120, {op: walkOp(t)});
+  handWalk(t, fa, sa, 1500, 840, 360, 110, {op: walkOp(t)});
 });
 """,
       overlay='<div id="sc11-dusk" class="grade" style="background:linear-gradient(180deg,rgba(214,110,50,.75),rgba(120,50,30,.55))"></div>'
@@ -631,11 +607,11 @@ Rig.drive(tl, DUR, (t) => {
   else cam.render({cx: 960, cy: 560 - (t - M1) * 4, z: 1.0 + (t - M1) * 0.02});
   // people at the door; Marian welcomes them in
   const m = mArm(t);
-  ma.render({t, x: 905, y: 690, h: 215, dir: 1, d: 0, settle: 1, arm: [Rig.lerp(0, -70, m), Rig.lerp(0, -30, m)], head: -4 * m, op: later ? 0 : 1});
-  wo.render({t, x: 980, y: 694, h: 210, dir: -1, op: later ? 0 : 1});
-  gi.render({t, x: 1040, y: 696, h: 210, dir: -1, op: later ? 0 : 1});
-  old.render({t, x: 640, y: 706, h: 220, dir: 1});
-  bas.render({t, x: 1240, y: 716, h: 230, dir: -1, op: later ? 0 : 1});
+  ma.render({t, x: 900, y: 692, h: 118, dir: 1, d: 0, settle: 1, arm: [Rig.lerp(0, -70, m), Rig.lerp(0, -30, m)], head: -4 * m, op: later ? 0 : 1});
+  wo.render({t, x: 965, y: 698, h: 128, dir: -1, op: later ? 0 : 1});
+  gi.render({t, x: 1005, y: 700, h: 131, dir: -1, op: later ? 0 : 1});
+  old.render({t, x: 760, y: 722, h: 167, dir: 1});
+  bas.render({t, x: 1460, y: 735, h: 188, dir: -1, op: later ? 0 : 1});
   sa.render({t, x: 1780 - t * 150, x0: 1780, y: 990, h: 600, dir: -1, op: (memory || later) ? 0 : 1});
   q('sc15-memory').style.opacity = mem(t);
   if (memory) {
@@ -649,32 +625,56 @@ Rig.drive(tl, DUR, (t) => {
 
 # ------------------------------------------------------------------ sc16 historical narration
 scene("sc16", 127.0, 17.6, "01_hospital_exterior",
-      [rig("sc16-pat", 9), rig("sc16-marian", 9), rig("sc16-old", 10), rig("sc16-mom", 10), rig("sc16-boy", 11), rig("sc16-basket", 10)],
+      [rig("sc16-pat", 9), rig("sc16-marian", 9), rig("sc16-old", 10), rig("sc16-mom", 10), rig("sc16-woman", 11), rig("sc16-girl", 11)],
       r"""
 const pat = Rig.make(q('sc16-pat'), 'pat_q34', {seed: 2});
 const ma = Rig.figure(q('sc16-marian'), 'assets/chars/marian_front.png', 648, 1644, {seed: 7, amp: 0.4});
-const old = Rig.figure(q('sc16-old'), 'assets/chars/res_oldman_sit.png', 820, 1044, {seed: 4, amp: 0.3});
+const old = Rig.figure(q('sc16-old'), 'assets/chars/res_oldman_walk.png', 816, 1316, {seed: 4, amp: 0.3});
 const mom = Rig.figure(q('sc16-mom'), 'assets/chars/res_mombaby_stand.png', 592, 1328, {seed: 3, amp: 0.8});
-const boy = Rig.figure(q('sc16-boy'), 'assets/chars/res_boy_stand.png', 504, 1300, {seed: 5});
-const bas = Rig.figure(q('sc16-basket'), 'assets/chars/res_basket_stand.png', 752, 1332, {seed: 6});
+const wo = Rig.figure(q('sc16-woman'), 'assets/chars/res_woman_stand.png', 528, 1304, {seed: 5});
+const gi = Rig.figure(q('sc16-girl'), 'assets/chars/res_girl_stand.png', 512, 1204, {seed: 6});
 const cam = Rig.camera(q('sc16-cam'));
-const z = T([[0,1.55],[DUR,1.0,'io']]), cx = T([[0,880],[DUR,960,'io']]), cy = T([[0,600],[DUR,540,'io']]);
-const place = T([[0,0],[0.4,0],[1.4,1],[6.0,1],[7.0,0]]);
+// archive photos on the narration: Sheikh Zayed with the Kennedys from «في العين سنة ١٩٦٠… قدّم الشيخ زايد»,
+// Dr Pat on «بإشراف الدكتور بات كينيدي», Dr Marian on «وزوجته الدكتورة ماريان كينيدي»,
+// then back to the house for «من هالبيت بدأت حكاية مستشفى الواحة… المعروف اليوم بمستشفى كند».
+const P1 = at(124.0), P2 = at(130.0), P3 = at(133.6), P4 = at(136.15);
+const X = 0.45;
+const layer = T([[0,1],[P4 - X,1],[P4,0]]);
+const ph1 = T([[0,1],[P2 - X,1],[P2,0]]);
+const ph2 = T([[0,0],[P2 - X,0],[P2,1],[P3 - X,1],[P3,0]]);
+const ph3 = T([[0,0],[P3 - X,0],[P3,1]]);
+const cap1 = T([[0,0],[0.6,0],[1.3,1],[P2 - X,1],[P2,0]]);
+const cap2 = T([[0,0],[P2 + 0.2,0],[P2 + 0.8,1],[P3 - X,1],[P3,0]]);
+const cap3 = T([[0,0],[P3 + 0.2,0],[P3 + 0.8,1]]);
+const kb = (t, t0, t1) => 1 + 0.045 * Rig.clamp((t - t0) / (t1 - t0), 0, 1);
+const z = T([[0,1.3],[P4,1.3],[DUR,1.0,'io']]), cx = T([[0,900],[P4,900],[DUR,960,'io']]), cy = T([[0,600],[P4,600],[DUR,540,'io']]);
 const fade = T([[0,0],[DUR - 1,0],[DUR,1]]);
-const patNod = T([[0,0],[at(130.2),0],[at(130.6),5],[at(131.0),0]]);
 Rig.drive(tl, DUR, (t) => {
   cam.render({cx: cx(t), cy: cy(t), z: z(t)});
-  pat.render({t, x: 800, y: 690, h: 200, dir: 1, head: patNod(t)});
-  ma.render({t, x: 950, y: 690, h: 200, dir: -1});
-  old.render({t, x: 560, y: 700, h: 220, dir: 1});
-  mom.render({t, x: 1080, y: 700, h: 210, dir: -1});
-  boy.render({t, x: 1150, y: 704, h: 210, dir: -1});
-  bas.render({t, x: 1330, y: 712, h: 220, dir: -1});
-  q('sc16-place').style.opacity = place(t);
+  // people at the old house, sized to the building and standing on open ground
+  pat.render({t, x: 815, y: 692, h: 118, dir: 1});
+  ma.render({t, x: 905, y: 692, h: 118, dir: -1});
+  mom.render({t, x: 1010, y: 700, h: 131, dir: -1});
+  old.render({t, x: 420, y: 760, h: 228, dir: 1});
+  wo.render({t, x: 1560, y: 790, h: 277, dir: -1});
+  gi.render({t, x: 1625, y: 794, h: 283, dir: 1});
+  q('sc16-photos').style.opacity = layer(t);
+  q('sc16-ph1').style.opacity = ph1(t); q('sc16-ph2').style.opacity = ph2(t); q('sc16-ph3').style.opacity = ph3(t);
+  q('sc16-ph1-img').style.transform = `scale(${kb(t, 0, P2)})`;
+  q('sc16-ph2-img').style.transform = `scale(${kb(t, P2 - X, P3)})`;
+  q('sc16-ph3-img').style.transform = `scale(${kb(t, P3 - X, P4)})`;
+  q('sc16-cap1').style.opacity = cap1(t); q('sc16-cap2').style.opacity = cap2(t); q('sc16-cap3').style.opacity = cap3(t);
   q('sc16-fade').style.opacity = fade(t);
 });
 """,
-      overlay='<div id="sc16-place" class="place">العين&nbsp;&nbsp;·&nbsp;&nbsp;١٩٦٠</div>'
+      overlay='<div id="sc16-photos" class="photos">'
+              '<div id="sc16-ph1" class="photo"><div class="print"><img id="sc16-ph1-img" src="assets/photos/zayed_kennedys.jpg"></div>'
+              '<div id="sc16-cap1" class="cap">الشيخ زايد بن سلطان آل نهيان، رحمه الله<span>مع الدكتور بات كينيدي والدكتورة ماريان كينيدي</span></div></div>'
+              '<div id="sc16-ph2" class="photo"><div class="print"><img id="sc16-ph2-img" src="assets/photos/pat_kennedy.jpg"></div>'
+              '<div id="sc16-cap2" class="cap">الدكتور بات كينيدي</div></div>'
+              '<div id="sc16-ph3" class="photo"><div class="print"><img id="sc16-ph3-img" src="assets/photos/marian_kennedy.jpg"></div>'
+              '<div id="sc16-cap3" class="cap">الدكتورة ماريان كينيدي</div></div>'
+              '</div>'
               '<div id="sc16-fade" class="grade" style="background:#140e09"></div>')
 
 # ------------------------------------------------------------------ sc17 end card
@@ -705,6 +705,14 @@ STYLE = """
       text-shadow: 0 3px 18px rgba(60,30,10,.55), 0 1px 2px rgba(60,30,10,.6); }
     .place { position: absolute; right: 150px; bottom: 120px; direction: rtl; z-index: 50;
       font-family: "Amiri", serif; font-weight: 700; font-size: 54px; color: #fff6e6; text-shadow: 0 2px 12px rgba(40,20,5,.6); }
+    .photos { position: absolute; inset: 0; z-index: 45; background: radial-gradient(ellipse at 50% 45%, #2a1e13 0%, #160f09 75%); }
+    .photo { position: absolute; inset: 0; }
+    .print { position: absolute; left: 448px; top: 120px; width: 1024px; height: 576px; overflow: hidden;
+      outline: 10px solid #efe4cf; box-shadow: 0 18px 50px rgba(0,0,0,.55); }
+    .print img { width: 1024px; height: 576px; display: block; transform-origin: 50% 50%; }
+    .cap { position: absolute; left: 160px; right: 160px; top: 760px; text-align: center; direction: rtl;
+      font-family: "Amiri", serif; font-weight: 700; font-size: 52px; line-height: 1.5; color: #f3e7d0; }
+    .cap span { display: block; font-weight: 400; font-size: 38px; color: #d9c8a8; }
     .card { position: absolute; left: 260px; right: 260px; top: 420px; text-align: center; direction: rtl; z-index: 50;
       font-family: "Amiri", serif; font-weight: 400; font-size: 54px; line-height: 1.75; color: #f1e4cc; }
 """
@@ -774,7 +782,7 @@ def write_index():
     <div id="root" data-composition-id="main" data-fps="24" data-start="0" data-duration="{total}" data-width="1920" data-height="1080">
       <div id="film-ground" class="clip" data-start="0" data-duration="{total}" data-track-index="0" style="z-index:1"></div>
       {hosts}
-      <audio id="voice" src="assets/audio/voice.mp3" data-start="{VO}" data-volume="1" data-track-index="2"></audio>
+      <audio id="voice" src="assets/audio/voice.wav" data-start="{VO}" data-volume="1" data-track-index="2"></audio>
       {audio}
     </div>
     <script>
