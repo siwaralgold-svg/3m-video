@@ -5,7 +5,7 @@
     #root { position: absolute; inset: 0; overflow: hidden; }
   </style>
   <div id="root" data-composition-id="s4" data-width="1080" data-height="1920">
-    <div id="s4-wrap" class="clip" data-start="0" data-duration="10.5" data-layout-allow-overflow style="position:absolute;inset:0">
+    <div id="s4-wrap" class="clip" data-start="0" data-duration="12.6" data-layout-allow-overflow style="position:absolute;inset:0">
       <div id="s4-stage" class="stage">
         <svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg" style="position:absolute;left:0;top:0">
           <defs><clipPath id="s4-clip"><rect x="0" y="0" width="1080" height="1012"/></clipPath><clipPath id="s4-floor"><rect x="-200" y="0" width="1480" height="1163"/></clipPath></defs>
@@ -64,7 +64,7 @@
     EK.fill("s4-orig", EK.reel(84));
     for (let i = 1; i <= 5; i++) EK.fill("s4-c" + i + "r", EK.reel(58));
     // anchors (seconds, local)
-    const T = { ttl: 0.5, rocket: 2.4, court: 3.9, copy: 5.0, usa: 6.6, zero: 8.2, verdict: 9.3 };
+    const T = { film: 1.7, ttl: 4.1, rocket: 4.8, court: 5.55, copy: 6.1, usa: 7.74, zero: 10.6, verdict: 11.5 };
     const tl = gsap.timeline({ paused: true });
     EK.face(tl, "s4-ed", "smug"); EK.face(tl, "s4-ml", "calm");
     gsap.set("#s4-usa, #s4-zero, #s4-verdict", { opacity: 0 });
@@ -75,7 +75,7 @@
     tl.fromTo("#s4-count", { opacity: 0 }, { opacity: 1, duration: 0.2 }, 0.1);
     tl.fromTo("#s4-ttl", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(1.8)" }, T.ttl);
     tl.fromTo("#s4-moon", { scale: 0.86, svgOrigin: "470 350" }, { scale: 1, duration: T.rocket, ease: "power1.out" }, 0);
-    tl.fromTo("#s4-film", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.3, ease: "power3.out" }, 1.1);
+    tl.fromTo("#s4-film", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.3, ease: "power3.out" }, T.film);
     tl.to("#s4-meye", { x: 10, y: -8, duration: 0.2 }, T.rocket - 0.5);
     tl.fromTo("#s4-rocket", { x: 520, y: -420 }, { x: 0, y: 0, duration: 0.3, ease: "power3.in" }, T.rocket - 0.3);
     tl.set("#s4-splat", { opacity: 1 }, T.rocket); tl.set("#s4-eyeR", { opacity: 0 }, T.rocket);
@@ -108,7 +108,7 @@
     EK.mood(tl, "s4-ml", T.zero + 0.1, "sad");
     EK.stamp(tl, "#s4-verdict", "#s4-stage", T.verdict, -7);
     EK.mood(tl, "s4-ed", T.verdict + 0.05, "shock", true);
-    EK.idle(tl, "s4-ed", 4.4, 10.4, 2.3); EK.idle(tl, "s4-ml", 4.4, 10.3, 2.8);
+    EK.idle(tl, "s4-ed", 6.0, 12.5, 2.3); EK.idle(tl, "s4-ml", 6.0, 12.4, 2.8);
     window.__timelines["s4"] = tl;
   </script>
 </template>

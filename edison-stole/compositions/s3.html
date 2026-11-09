@@ -5,7 +5,7 @@
     #root { position: absolute; inset: 0; overflow: hidden; }
   </style>
   <div id="root" data-composition-id="s3" data-width="1080" data-height="1920">
-    <div id="s3-wrap" class="clip" data-start="0" data-duration="9.6" data-layout-allow-overflow style="position:absolute;inset:0">
+    <div id="s3-wrap" class="clip" data-start="0" data-duration="10.4" data-layout-allow-overflow style="position:absolute;inset:0">
       <div id="s3-stage" class="stage">
         <svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg" style="position:absolute;left:0;top:0">
           <defs><clipPath id="s3-clip"><rect x="0" y="0" width="1080" height="1012"/></clipPath><clipPath id="s3-floor"><rect x="-200" y="0" width="1480" height="1163"/></clipPath></defs>
@@ -50,7 +50,7 @@
     EK.fill("s3-dock", EK.box(40, 990, 420, 170, "المتهم"));
     EK.fill("s3-stand", EK.box(560, 990, 430, 170, "ويليام ديكسون"));
     // anchors (seconds, local)
-    const T = { count: 0.2, ttl: 0.9, wit: 0.6, crank: 1.5, years: 3.4, paper: 4.8, name: 7.0, out: 7.9, verdict: 8.5 };
+    const T = { count: 0.1, ttl: 1.09, wit: 0.3, crank: 2.1, years: 3.14, paper: 6.3, name: 8.6, out: 9.0, verdict: 9.4 };
     const tl = gsap.timeline({ paused: true });
     EK.face(tl, "s3-ed", "flat"); EK.face(tl, "s3-dk", "calm");
     gsap.set("#s3-years, #s3-paper, #s3-name, #s3-verdict", { opacity: 0 });
@@ -82,7 +82,7 @@
     EK.mood(tl, "s3-ed", T.out - 0.2, "laugh"); EK.mood(tl, "s3-dk", T.out - 0.1, "sad");
     EK.stamp(tl, "#s3-verdict", "#s3-stage", T.verdict, 5);
     EK.mood(tl, "s3-ed", T.verdict + 0.05, "shock", true);
-    EK.idle(tl, "s3-ed", 0.5, 9.5, 2.3); EK.idle(tl, "s3-dk", 2.2, 9.4, 2.7);
+    EK.idle(tl, "s3-ed", 0.5, 10.3, 2.3); EK.idle(tl, "s3-dk", 1.0, 10.2, 2.7);
     window.__timelines["s3"] = tl;
   </script>
 </template>

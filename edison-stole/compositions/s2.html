@@ -5,7 +5,7 @@
     #root { position: absolute; inset: 0; overflow: hidden; }
   </style>
   <div id="root" data-composition-id="s2" data-width="1080" data-height="1920">
-    <div id="s2-wrap" class="clip" data-start="0" data-duration="11.4" data-layout-allow-overflow style="position:absolute;inset:0">
+    <div id="s2-wrap" class="clip" data-start="0" data-duration="13.5" data-layout-allow-overflow style="position:absolute;inset:0">
       <div id="s2-stage" class="stage">
         <svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg" style="position:absolute;left:0;top:0">
           <defs><clipPath id="s2-clip"><rect x="0" y="0" width="1080" height="1012"/></clipPath><clipPath id="s2-floor"><rect x="-200" y="0" width="1480" height="1163"/></clipPath></defs>
@@ -30,7 +30,7 @@
         <div id="s2-count" class="count">التهمة الأولى</div>
         <div id="s2-ttl" class="ttl">اللمبة</div>
         <div id="s2-year" class="card disp" style="left:70px; top:452px; width:330px; height:170px; font-size:128px; line-height:176px">١٨٧٩</div>
-        <div id="s2-late" class="card kufi" style="left:30px; top:700px; width:150px; height:150px; font-size:38px; font-weight:800; line-height:60px; padding-top:10px">بعده<br>بشهور</div>
+        <div id="s2-late" class="card kufi" style="left:6px; top:716px; width:142px; height:128px; font-size:31px; font-weight:800; line-height:50px; padding-top:8px">بعده<br>بشهور</div>
         <div id="s2-sign" class="card disp" style="left:36px; top:456px; width:400px; height:212px; background:#a8703f; color:#F4F6F9; font-size:58px; line-height:66px; padding-top:6px">شركة<br>إديسون وسوان<br>١٨٨٣</div>
       </div>
       <div id="s2-verdict" class="plate" data-layout-allow-overlap data-layout-allow-occlusion style="left:130px; top:930px; width:820px; height:230px; font-size:150px; line-height:212px">ما كان الأول</div>
@@ -44,7 +44,7 @@
     EK.fill("s2-dock", EK.box(40, 990, 420, 170, "المتهم"));
     EK.fill("s2-stand", EK.box(560, 990, 430, 170, "جوزيف سوان"));
     // anchors (seconds, local): retime here when the voice arrives
-    const T = { count: 0.15, ttl: 1.0, swan: 0.8, on: 3.4, year: 3.9, late: 6.0, sign: 8.4, verdict: 10.2 };
+    const T = { count: 0.1, ttl: 1.06, swan: 2.2, on: 3.56, year: 5.75, late: 8.13, sign: 10.6, verdict: 12.2 };
     const tl = gsap.timeline({ paused: true });
     EK.face(tl, "s2-ed", "smug"); EK.face(tl, "s2-sw", "calm");
     gsap.set("#s2-sign, #s2-year, #s2-late, #s2-verdict", { opacity: 0 });
@@ -79,7 +79,7 @@
     // verdict
     EK.stamp(tl, "#s2-verdict", "#s2-stage", T.verdict, -6);
     EK.mood(tl, "s2-ed", T.verdict + 0.05, "shock");
-    EK.idle(tl, "s2-ed", 0.6, 10, 2.4); EK.idle(tl, "s2-sw", 2.4, 11.2, 2.9);
+    EK.idle(tl, "s2-ed", 0.6, 12, 2.4); EK.idle(tl, "s2-sw", 3.0, 13.3, 2.9);
     window.__timelines["s2"] = tl;
   </script>
 </template>

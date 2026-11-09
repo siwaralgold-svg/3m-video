@@ -5,7 +5,7 @@
     #root { position: absolute; inset: 0; overflow: hidden; }
   </style>
   <div id="root" data-composition-id="s5" data-width="1080" data-height="1920">
-    <div id="s5-wrap" class="clip" data-start="0" data-duration="12.5" data-layout-allow-overflow style="position:absolute;inset:0">
+    <div id="s5-wrap" class="clip" data-start="0" data-duration="13.0" data-layout-allow-overflow style="position:absolute;inset:0">
       <div id="s5-stage" class="stage">
         <svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg" style="position:absolute;left:0;top:0">
           <defs><clipPath id="s5-clip"><rect x="0" y="0" width="1080" height="1012"/></clipPath><clipPath id="s5-floor"><rect x="-200" y="0" width="1480" height="1163"/></clipPath></defs>
@@ -46,7 +46,7 @@
     EK.fill("s5-dock", EK.box(40, 990, 420, 170, "المتهم"));
     EK.fill("s5-stand", EK.box(560, 990, 430, 170, "نيكولا تسلا"));
     // anchors (seconds, local)
-    const T = { count: 0.2, ttl: 0.9, wit: 0.6, cheque: 3.2, spin: 5.3, ask: 6.8, joke: 8.6, verdict: 10.9 };
+    const T = { count: 0.1, ttl: 0.5, wit: 1.0, cheque: 4.06, spin: 6.9, ask: 7.6, joke: 10.0, verdict: 11.5 };
     const tl = gsap.timeline({ paused: true });
     EK.face(tl, "s5-ed", "smug"); EK.face(tl, "s5-ts", "flat");
     gsap.set("#s5-chq, #s5-joke, #s5-verdict", { opacity: 0 });
@@ -80,7 +80,7 @@
     EK.mood(tl, "s5-ts", T.joke + 1.3, "angry");
     EK.stamp(tl, "#s5-verdict", "#s5-stage", T.verdict, 5);
     EK.mood(tl, "s5-ed", T.verdict + 0.05, "shock", true);
-    EK.idle(tl, "s5-ts", 2.2, 9.8, 2.6);
+    EK.idle(tl, "s5-ts", 1.6, 9.8, 2.6);
     window.__timelines["s5"] = tl;
   </script>
 </template>
