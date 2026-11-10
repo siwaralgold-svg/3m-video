@@ -21,6 +21,9 @@
     .cap { position: absolute; left: 160px; right: 160px; top: 760px; text-align: center; direction: rtl;
       font-family: "Amiri", serif; font-weight: 700; font-size: 52px; line-height: 1.5; color: #f3e7d0; }
     .cap span { display: block; font-weight: 400; font-size: 38px; color: #d9c8a8; }
+    .disc { position: absolute; left: 0; right: 0; bottom: 0; padding: 90px 220px 58px; text-align: center; direction: rtl; z-index: 50;
+      font-family: "Amiri", serif; font-weight: 700; font-size: 40px; line-height: 1.6; color: #fff6e6;
+      background: linear-gradient(180deg, rgba(20,12,6,0) 0%, rgba(20,12,6,.74) 58%); text-shadow: 0 2px 8px rgba(20,10,4,.75); }
     .card { position: absolute; left: 260px; right: 260px; top: 420px; text-align: center; direction: rtl; z-index: 50;
       font-family: "Amiri", serif; font-weight: 400; font-size: 54px; line-height: 1.75; color: #f1e4cc; }
   </style>
@@ -28,8 +31,11 @@
     <div id="sc03-wrap" class="clip" data-start="0" data-duration="7.003" data-layout-allow-overflow data-layout-allow-overlap style="position:absolute;inset:0">
       <div id="sc03-cam" class="stage">
         <img id="sc03-bg" class="bgimg" src="assets/bg/05_palm_garden.png">
+        <div id="sc03-dust" style="position:absolute;z-index:18;left:0;top:0"></div>
         <div id="sc03-father" class="actor" style="z-index:20"></div>
-        <img id="sc03-hoe" class="prop" src="assets/props/env_hoe.png" style="z-index:21;width:436px;height:816px">
+        <div id="sc03-fatherF" class="actor" style="z-index:20"></div>
+        <svg id="sc03-sickle" width="160" height="200" viewBox="0 0 160 200" style="position:absolute;left:0;top:0;z-index:21;overflow:visible;transform-origin:0 0"><path d="M73 124 C58 58, 104 6, 152 44 C120 30, 92 62, 89 124 Z" fill="#aab0b4" stroke="#5f666b" stroke-width="3" stroke-linejoin="round"/><path d="M80 116 C73 72, 104 30, 138 39" fill="none" stroke="#dfe3e6" stroke-width="2.5" opacity=".75"/><rect x="70" y="120" width="21" height="80" rx="8" fill="#8a5b34" stroke="#5c3a1f" stroke-width="3"/><rect x="69" y="118" width="23" height="12" rx="3" fill="#6f4a2a"/></svg>
+        <div id="sc03-fib" style="position:absolute;z-index:22;left:0;top:0"></div>
         <div id="sc03-salem" class="actor" style="z-index:25"></div>
       </div>
       
@@ -46,34 +52,73 @@
     const at = (a) => warp(a) + 3.0 - 14.663;
     const tl = gsap.timeline({ paused: true });
 
-function hoeArm(t, on) {
-  // chop cycle: raise forward-up, strike down; on = 0..1 blend
-  const c = ((t % 1.35) / 1.35);
-  const up = c < 0.55 ? Rig.smooth(c / 0.55) : 1 - Rig.smooth((c - 0.55) / 0.45);
-  return [Rig.lerp(-12, Rig.lerp(-32, -118, up), on), Rig.lerp(-8, Rig.lerp(-28, -10, up), on)];
+// The father trims the old frond stubs on the palm trunk with a sickle (das): reach up, hook, pull down.
+const CYC = 1.15;                                   // one stroke
+const FX = 1516, FY = 932, FH = 600;                // where he stands, facing the trunk
+const HAND_HI = {x: FX + 130, y: FY - 462}, HAND_LO = {x: FX + 100, y: FY - 356};
+const SICKLE = {grip: [80, 165], rot: 96, scale: 1.35};
+function palmWork(fa, tStop) {
+  const ph = 0.5 * CYC - (tStop % CYC);             // he ends hooked in, at the top of a stroke
+  const stroke = (t) => { const c = ((t + ph) % CYC) / CYC;
+    return c < 0.45 ? Rig.smooth(c / 0.45) : c < 0.56 ? 1 : c < 0.72 ? 1 - Math.pow((c - 0.56) / 0.16, 2) : 0; };
+  const state = (t) => { const s = stroke(Math.min(t, tStop));
+    const st = {t, x: FX, y: FY, h: FH, dir: 1, d: 0, settle: 1, idle: 0, lean: 1.5 + 3.5 * (1 - s), head: -11 + 7 * (1 - s)};
+    st.arm = Rig.reach(fa, st, 0, Rig.lerp(HAND_LO.x, HAND_HI.x, s), Rig.lerp(HAND_LO.y, HAND_HI.y, s), 1);
+    return st; };
+  // times the blade bites: the pull's end
+  const hits = []; for (let k = 1; tStop - (0.78 + k - 1) * CYC > 0.05; k++) hits.push(tStop - (0.78 + k - 1) * CYC);
+  return {state, hits};
+}
+// dry fibre falling from the cut: 4 shreds per bite
+function fibres(layer, hits, cut) {
+  const els = []; hits.forEach(() => { for (let i = 0; i < 4; i++) { const e = document.createElement('div');
+    Object.assign(e.style, {position: 'absolute', left: '0px', top: '0px', width: (10 + 5 * i) + 'px', height: '4px', borderRadius: '2px',
+      background: i % 2 ? '#7a5a38' : '#a07c4f', opacity: 0}); layer.appendChild(e); els.push(e); } });
+  return (t) => hits.forEach((h, n) => { for (let i = 0; i < 4; i++) { const e = els[n * 4 + i], a = t - h;
+    if (a < 0 || a > 1.0) { e.style.opacity = 0; continue; }
+    const r1 = ((n * 7 + i * 13) % 10) / 10, r2 = ((n * 3 + i * 5) % 7) / 7;
+    const x = cut.x - 6 - (20 + 70 * r1) * a, y = Math.min(FY - 8, cut.y + 6 - 50 * r2 * a + 520 * a * a);
+    e.style.opacity = a < 0.8 ? 1 : (1 - a) * 5;
+    e.style.transform = `translate(${x}px, ${y}px) rotate(${(r1 - 0.5) * 700 * a + 40 * i}deg)`; } });
 }
 
 const fa = Rig.make(q('sc03-father'), 'father_side', {seed: 2});
+const faF = Rig.make(q('sc03-fatherF'), 'father_front', {seed: 2});
 const sa = Rig.make(q('sc03-salem'), 'salem_side', {seed: 7});
 const cam = Rig.camera(q('sc03-cam'));
-const work = T([[0,1],[at(18.0),1],[at(18.5),0]]);
-const head = T([[0,7],[at(18.0),7],[at(18.45),-2],[at(19.5),-4],[at(19.9),3],[at(20.3),-3],[at(20.9),0]]);
-const lean = T([[0,5],[at(18.0),5],[at(18.6),-3],[at(20.9),-1]]);
-const far = T([[0,0],[at(19.1),0],[at(19.65),-150,'out'],[at(20.6),-145],[at(21.0),-40]]);
-const farEl = T([[0,0],[at(19.1),0],[at(19.65),-10],[at(21.0),-20]]);
-const sx = T([[0,-160],[at(15.4),-160],[at(18.25),640,'lin']]);
-const sset = T([[0,0],[at(18.25),0],[at(18.75),1]]);
-const sHead = T([[0,0],[at(18.8),0],[at(19.4),-6],[at(21),-4]]);
+// «ألقاه يشتغل ويقول لي»: he hooks the sickle into the trunk, lets go and turns to Salem
+const tStop = at(17.95), tA = at(18.12), tB = at(18.3);
+const PW = palmWork(fa, tStop);
+fa.render(PW.state(tStop)); const CUTPT = (() => { const h = Rig.attach(q('sc03-sickle'), fa, 0, SICKLE); return {x: h.x + 34, y: h.y - 96}; })();
+const fib = fibres(q('sc03-fib'), PW.hits, CUTPT);
+const drop = T([[0,0],[tStop,0],[tStop + 0.28,1]]);
+const head = T([[0,0],[tB,2],[at(18.8),-4],[at(19.2),2],[at(19.5),-4],[at(19.9),3],[at(20.3),-3],[at(20.9),0]]);
+const lean = T([[0,0],[tB,-1],[at(18.9),-3],[at(20.9),-1]]);
+// «الشمس سبقتك»: he points up at the sun
+const pt = T([[0,0],[at(19.2),0],[at(19.7),1,'out'],[at(20.55),1],[at(21.0),0]]);
+const sx = T([[0,-160],[at(15.4),-160],[at(18.15),880,'out']]);
+const sset = T([[0,0],[at(18.05),0],[at(18.5),1]]);
+const sHead = T([[0,0],[at(18.3),0],[at(18.8),-9],[at(21),-7]]);
+const pant = (t) => t > at(18.4) ? 2.2 * Math.sin((t - at(18.4)) * 8.5) * Math.exp(-(t - at(18.4)) * 0.9) : 0;
+const falls = Rig.footfalls(sa, {x: sx, x0: -160, h: 600, run: 1, dir: 1, t0: at(15.4), t1: at(18.1), y: 962});
+const dust = Rig.dust(q('sc03-dust'), falls, {drift: 26});
 const cut = at(18.6);
 Rig.drive(tl, DUR, (t) => {
-  if (t < cut) cam.render({cx: 980 + t * 10, cy: 560, z: 1.02});
-  else cam.render({cx: 1060 + (t - cut) * 6, cy: 560, z: 1.42 + (t - cut) * 0.01});
-  const w = work(t);
-  const st = {t, x: 1330, y: 930, h: 600, dir: -1, d: 0, settle: 1, head: head(t), lean: lean(t) * (0.5 + 0.5 * w),
-              arm: hoeArm(t, w), farArm: [far(t), farEl(t)], idle: 1 - w};
+  if (t < cut) cam.render({cx: 1000 + t * 9, cy: 560, z: 1.03});
+  else cam.render({cx: 1190 + (t - cut) * 5, cy: 545, z: 1.42 + (t - cut) * 0.008});
+  // the sickle rides his hand while he works, then stays hooked in the trunk
+  fa.render(PW.state(Math.min(t, tStop)));
+  Rig.attach(q('sc03-sickle'), fa, 0, SICKLE);
+  const front = t >= tA && t < tB, left = t >= tB;
+  let st = PW.state(t);
+  if (t > tStop) st.arm = Rig.mixArm(st.arm, [0, -9], Rig.smooth(drop(t)));
+  if (left) { st = {t, x: FX, y: FY, h: FH, dir: -1, d: 0, settle: 1, head: head(t), lean: lean(t), idle: 0.6};
+    st.arm = Rig.mixArm([0, -9], [-152, -12], Rig.smooth(pt(t))); }
+  st.op = front ? 0 : 1;
   fa.render(st);
-  Rig.attach(q('sc03-hoe'), fa, 0, {grip: [335, 215], rot: -18, scale: 0.66, dy: 30});
-  sa.render({t, x: sx(t), x0: -160, y: 965, h: 600, dir: 1, settle: sset(t), head: sHead(t)});
+  faF.render({t, x: FX, y: FY, h: FH, dir: -1, op: front ? 1 : 0});
+  fib(t); dust.render(t);
+  sa.render({t, x: sx(t), x0: -160, y: 965, h: 600, dir: 1, run: 1, settle: sset(t), head: sHead(t), dy: pant(t)});
 });
 
     window.__timelines["sc03"] = tl;

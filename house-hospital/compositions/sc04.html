@@ -21,6 +21,9 @@
     .cap { position: absolute; left: 160px; right: 160px; top: 760px; text-align: center; direction: rtl;
       font-family: "Amiri", serif; font-weight: 700; font-size: 52px; line-height: 1.5; color: #f3e7d0; }
     .cap span { display: block; font-weight: 400; font-size: 38px; color: #d9c8a8; }
+    .disc { position: absolute; left: 0; right: 0; bottom: 0; padding: 90px 220px 58px; text-align: center; direction: rtl; z-index: 50;
+      font-family: "Amiri", serif; font-weight: 700; font-size: 40px; line-height: 1.6; color: #fff6e6;
+      background: linear-gradient(180deg, rgba(20,12,6,0) 0%, rgba(20,12,6,.74) 58%); text-shadow: 0 2px 8px rgba(20,10,4,.75); }
     .card { position: absolute; left: 260px; right: 260px; top: 420px; text-align: center; direction: rtl; z-index: 50;
       font-family: "Amiri", serif; font-weight: 400; font-size: 54px; line-height: 1.75; color: #f1e4cc; }
   </style>
@@ -32,6 +35,7 @@
         <div id="sc04-blanket" style="position:absolute;z-index:16;left:0;top:0;width:620px;height:120px;transform-origin:0 0"><svg width="620" height="120" viewBox="0 0 620 120"><path d="M8 40 Q40 8 120 14 L560 18 Q612 22 612 70 L610 110 L10 110 Q2 80 8 40 Z" fill="#7a4f33" stroke="#5c3a24" stroke-width="3"/><path d="M440 18 L452 110 M470 19 L482 110" stroke="#e7d6b8" stroke-width="7" opacity=".85"/><path d="M60 40 Q300 30 600 46" stroke="#5c3a24" stroke-width="2" fill="none" opacity=".5"/></svg></div>
         <div id="sc04-salemw" class="actor" style="z-index:20"></div>
         <div id="sc04-salem" class="actor" style="z-index:20"></div>
+        <div id="sc04-motes" style="position:absolute;z-index:30;left:0;top:0"></div>
       </div>
       <div id="sc04-dark" class="grade" style="background:rgba(40,30,45,1)"></div><div id="sc04-sun" class="grade" style="background:linear-gradient(115deg,rgba(255,214,140,.0) 10%,rgba(255,214,140,.35) 22%,rgba(255,214,140,0) 34%,rgba(255,214,140,.25) 40%,rgba(255,214,140,0) 52%);mix-blend-mode:screen"></div>
     </div>
@@ -52,6 +56,14 @@ const sw = Rig.make(q('sc04-salemw'), 'salem_side', {seed: 4});
 const ss = Rig.make(q('sc04-salem'), 'salem_q34', {seed: 6, lap: {y: 430}});
 const cam = Rig.camera(q('sc04-cam'));
 const sun = T([[0,0.05],[at(22.9),0.05],[at(24.1),0.85]]);
+// dust motes drifting in the shaft of light from the window
+const moteEls = []; for (let i = 0; i < 14; i++) { const e = document.createElement('div'); const sz = 3 + (i % 4);
+  Object.assign(e.style, {position: 'absolute', left: '0px', top: '0px', width: sz + 'px', height: sz + 'px', borderRadius: '50%', background: '#fff3cf', opacity: 0});
+  q('sc04-motes').appendChild(e); moteEls.push(e); }
+const motes = (t, lit) => moteEls.forEach((e, i) => { const r1 = ((i * 37) % 100) / 100, r2 = ((i * 61) % 100) / 100;
+  const u = (r1 + t * (0.012 + 0.01 * r2)) % 1, w = (r2 - 0.5) * 150 + 14 * Math.sin(t * 0.6 + i);
+  e.style.transform = `translate(${170 + 300 * u + w * 0.85}px, ${230 + 470 * u - w * 0.5 + 8 * Math.sin(t * 0.9 + i * 2)}px)`;
+  e.style.opacity = lit * (0.25 + 0.3 * (0.5 + 0.5 * Math.sin(t * 1.4 + i * 1.7))) * Math.sin(Math.PI * u); });
 const dark = T([[0,0.42],[at(22.9),0.42],[at(24.1),0.08]]);
 const cutB = at(25.75), cutC = at(27.6);
 const swx = T([[0,1720],[at(25.9),1720],[at(27.4),1260,'lin']]);
@@ -76,7 +88,9 @@ Rig.drive(tl, DUR, (t) => {
   fa.render(fst);
   // blanket covers him from the chest down
   const p = Rig.pt(fa, fst, fa.ox, fa.R.waist * 0.62);
-  q('sc04-blanket').style.transform = `translate(${p.x - 24}px, ${p.y - 46}px) scale(0.66, 0.85)`;
+  const br = 0.045 * Math.sin(t * 2 * Math.PI / 3.6);          // slow, tired breathing under the blanket
+  q('sc04-blanket').style.transform = `translate(${p.x - 24}px, ${p.y - 46 - 102 * br}px) scale(0.66, ${0.85 * (1 + br)})`;
+  motes(t, sun(t));
   const walking = t < cutC;
   sw.render({t, x: swx(t), x0: 1720, y: 880, h: 600, dir: -1, settle: swset(t), op: walking ? 1 : 0});
   const sst = {t, x: 700, y: 850, h: 540, dir: -1, lean: sLean(t), head: sHead(t), dy: sDy(t), op: walking ? 0 : 1, shadow: 0.6};

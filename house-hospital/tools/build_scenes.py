@@ -54,6 +54,27 @@ def img(name, src, z, style=""):
     return f'<img id="{name}" class="prop" src="assets/{src}" style="z-index:{z};{style}">'
 
 
+def sickle(name, z):
+    # the palm-grower's sickle (das): wooden handle, curved steel blade. Grip at (80, 165).
+    return (f'<svg id="{name}" width="160" height="200" viewBox="0 0 160 200" style="position:absolute;left:0;top:0;z-index:{z};overflow:visible;transform-origin:0 0">'
+            '<path d="M73 124 C58 58, 104 6, 152 44 C120 30, 92 62, 89 124 Z" fill="#aab0b4" stroke="#5f666b" stroke-width="3" stroke-linejoin="round"/>'
+            '<path d="M80 116 C73 72, 104 30, 138 39" fill="none" stroke="#dfe3e6" stroke-width="2.5" opacity=".75"/>'
+            '<rect x="70" y="120" width="21" height="80" rx="8" fill="#8a5b34" stroke="#5c3a1f" stroke-width="3"/>'
+            '<rect x="69" y="118" width="23" height="12" rx="3" fill="#6f4a2a"/></svg>')
+
+
+def steth(name, z):
+    # stethoscope drawn in the prop sheet's colours: cream ear tips, steel ear tubes and chest piece, black tubing
+    return (f'<svg id="{name}" style="position:absolute;left:0;top:0;width:1920px;height:1080px;overflow:visible;z-index:{z}">'
+            f'<path id="{name}-m2" d="" fill="none" stroke="#8d949a" stroke-width="3.2" stroke-linecap="round"/>'
+            f'<path id="{name}-m1" d="" fill="none" stroke="#b9c0c5" stroke-width="3.2" stroke-linecap="round"/>'
+            f'<path id="{name}-t" d="" fill="none" stroke="#2b2929" stroke-width="5.5" stroke-linecap="round"/>'
+            f'<circle id="{name}-e1" r="4.6" fill="#efe6d2" stroke="#b8ad95" stroke-width="1.2"/>'
+            f'<circle id="{name}-e2" r="4.6" fill="#efe6d2" stroke="#b8ad95" stroke-width="1.2"/>'
+            f'<circle id="{name}-b" r="10.5" fill="#c9cfd3" stroke="#6d7479" stroke-width="3"/>'
+            f'<circle id="{name}-bi" r="4.5" fill="#e9edef"/></svg>')
+
+
 def div(name, z, style="", inner=""):
     return f'<div id="{name}" style="position:absolute;z-index:{z};{style}">{inner}</div>'
 
@@ -71,16 +92,20 @@ const cz = T([[0,1],[12.74,1.22,'lin']]), cx = T([[0,960],[12.74,1060,'lin']]), 
 const tOp = T([[0,0],[0.5,0],[1.3,1],[2.6,1],[3.2,0]]);
 const tY = T([[0,14],[1.3,0,'out']]);
 const glow = T([[0,0.55],[4,0.15]]);
+// the disclaimer sits at the foot of the frame while Salem starts talking
+const dOp = T([[0,0],[3.2,0],[3.55,1],[8.0,1],[8.4,0]]);
 Rig.drive(tl, DUR, (t) => {
   cam.render({cx: cx(t), cy: cy(t), z: cz(t)});
   salem.render({t, x: 1120, y: 905, h: 560, dir: 1, head: head(t), lean: lean(t), arm: [arm(t), 0]});
   q('sc01-title').style.opacity = tOp(t);
   q('sc01-title').style.transform = `translateY(${tY(t)}px)`;
   q('sc01-dawn').style.opacity = glow(t);
+  q('sc01-disc').style.opacity = dOp(t);
 });
 """,
       overlay='<div id="sc01-dawn" class="grade" style="background:linear-gradient(180deg,rgba(255,196,120,.55),rgba(120,70,40,.25))"></div>'
-              '<div id="sc01-title" class="title">البيت اللي صار مستشفى</div>')
+              '<div id="sc01-title" class="title">البيت اللي صار مستشفى</div>'
+              '<div id="sc01-disc" class="disc">قصة درامية مستوحاة من تأسيس مستشفى الواحة في العين عام ١٩٦٠.<br>سالم وعائلته شخصيات متخيّلة.</div>')
 
 # ------------------------------------------------------------------ sc02 lane, Al Ain
 scene("sc02", 12.74, 3.51, "02_neighborhood_lane",
@@ -105,37 +130,77 @@ Rig.drive(tl, DUR, (t) => {
 
 # ------------------------------------------------------------------ sc03 palms, the morning ritual
 PALM_FATHER = r"""
-function hoeArm(t, on) {
-  // chop cycle: raise forward-up, strike down; on = 0..1 blend
-  const c = ((t % 1.35) / 1.35);
-  const up = c < 0.55 ? Rig.smooth(c / 0.55) : 1 - Rig.smooth((c - 0.55) / 0.45);
-  return [Rig.lerp(-12, Rig.lerp(-32, -118, up), on), Rig.lerp(-8, Rig.lerp(-28, -10, up), on)];
+// The father trims the old frond stubs on the palm trunk with a sickle (das): reach up, hook, pull down.
+const CYC = 1.15;                                   // one stroke
+const FX = 1516, FY = 932, FH = 600;                // where he stands, facing the trunk
+const HAND_HI = {x: FX + 130, y: FY - 462}, HAND_LO = {x: FX + 100, y: FY - 356};
+const SICKLE = {grip: [80, 165], rot: 96, scale: 1.35};
+function palmWork(fa, tStop) {
+  const ph = 0.5 * CYC - (tStop % CYC);             // he ends hooked in, at the top of a stroke
+  const stroke = (t) => { const c = ((t + ph) % CYC) / CYC;
+    return c < 0.45 ? Rig.smooth(c / 0.45) : c < 0.56 ? 1 : c < 0.72 ? 1 - Math.pow((c - 0.56) / 0.16, 2) : 0; };
+  const state = (t) => { const s = stroke(Math.min(t, tStop));
+    const st = {t, x: FX, y: FY, h: FH, dir: 1, d: 0, settle: 1, idle: 0, lean: 1.5 + 3.5 * (1 - s), head: -11 + 7 * (1 - s)};
+    st.arm = Rig.reach(fa, st, 0, Rig.lerp(HAND_LO.x, HAND_HI.x, s), Rig.lerp(HAND_LO.y, HAND_HI.y, s), 1);
+    return st; };
+  // times the blade bites: the pull's end
+  const hits = []; for (let k = 1; tStop - (0.78 + k - 1) * CYC > 0.05; k++) hits.push(tStop - (0.78 + k - 1) * CYC);
+  return {state, hits};
+}
+// dry fibre falling from the cut: 4 shreds per bite
+function fibres(layer, hits, cut) {
+  const els = []; hits.forEach(() => { for (let i = 0; i < 4; i++) { const e = document.createElement('div');
+    Object.assign(e.style, {position: 'absolute', left: '0px', top: '0px', width: (10 + 5 * i) + 'px', height: '4px', borderRadius: '2px',
+      background: i % 2 ? '#7a5a38' : '#a07c4f', opacity: 0}); layer.appendChild(e); els.push(e); } });
+  return (t) => hits.forEach((h, n) => { for (let i = 0; i < 4; i++) { const e = els[n * 4 + i], a = t - h;
+    if (a < 0 || a > 1.0) { e.style.opacity = 0; continue; }
+    const r1 = ((n * 7 + i * 13) % 10) / 10, r2 = ((n * 3 + i * 5) % 7) / 7;
+    const x = cut.x - 6 - (20 + 70 * r1) * a, y = Math.min(FY - 8, cut.y + 6 - 50 * r2 * a + 520 * a * a);
+    e.style.opacity = a < 0.8 ? 1 : (1 - a) * 5;
+    e.style.transform = `translate(${x}px, ${y}px) rotate(${(r1 - 0.5) * 700 * a + 40 * i}deg)`; } });
 }
 """
 scene("sc03", 16.25, 7.85, "05_palm_garden",
-      [rig("sc03-father", 20), img("sc03-hoe", "props/env_hoe.png", 21, "width:436px;height:816px"), rig("sc03-salem", 25)],
+      [div("sc03-dust", 18, "left:0;top:0"), rig("sc03-father", 20), rig("sc03-fatherF", 20), sickle("sc03-sickle", 21),
+       div("sc03-fib", 22, "left:0;top:0"), rig("sc03-salem", 25)],
       PALM_FATHER + r"""
 const fa = Rig.make(q('sc03-father'), 'father_side', {seed: 2});
+const faF = Rig.make(q('sc03-fatherF'), 'father_front', {seed: 2});
 const sa = Rig.make(q('sc03-salem'), 'salem_side', {seed: 7});
 const cam = Rig.camera(q('sc03-cam'));
-const work = T([[0,1],[at(18.0),1],[at(18.5),0]]);
-const head = T([[0,7],[at(18.0),7],[at(18.45),-2],[at(19.5),-4],[at(19.9),3],[at(20.3),-3],[at(20.9),0]]);
-const lean = T([[0,5],[at(18.0),5],[at(18.6),-3],[at(20.9),-1]]);
-const far = T([[0,0],[at(19.1),0],[at(19.65),-150,'out'],[at(20.6),-145],[at(21.0),-40]]);
-const farEl = T([[0,0],[at(19.1),0],[at(19.65),-10],[at(21.0),-20]]);
-const sx = T([[0,-160],[at(15.4),-160],[at(18.25),640,'lin']]);
-const sset = T([[0,0],[at(18.25),0],[at(18.75),1]]);
-const sHead = T([[0,0],[at(18.8),0],[at(19.4),-6],[at(21),-4]]);
+// «ألقاه يشتغل ويقول لي»: he hooks the sickle into the trunk, lets go and turns to Salem
+const tStop = at(17.95), tA = at(18.12), tB = at(18.3);
+const PW = palmWork(fa, tStop);
+fa.render(PW.state(tStop)); const CUTPT = (() => { const h = Rig.attach(q('sc03-sickle'), fa, 0, SICKLE); return {x: h.x + 34, y: h.y - 96}; })();
+const fib = fibres(q('sc03-fib'), PW.hits, CUTPT);
+const drop = T([[0,0],[tStop,0],[tStop + 0.28,1]]);
+const head = T([[0,0],[tB,2],[at(18.8),-4],[at(19.2),2],[at(19.5),-4],[at(19.9),3],[at(20.3),-3],[at(20.9),0]]);
+const lean = T([[0,0],[tB,-1],[at(18.9),-3],[at(20.9),-1]]);
+// «الشمس سبقتك»: he points up at the sun
+const pt = T([[0,0],[at(19.2),0],[at(19.7),1,'out'],[at(20.55),1],[at(21.0),0]]);
+const sx = T([[0,-160],[at(15.4),-160],[at(18.15),880,'out']]);
+const sset = T([[0,0],[at(18.05),0],[at(18.5),1]]);
+const sHead = T([[0,0],[at(18.3),0],[at(18.8),-9],[at(21),-7]]);
+const pant = (t) => t > at(18.4) ? 2.2 * Math.sin((t - at(18.4)) * 8.5) * Math.exp(-(t - at(18.4)) * 0.9) : 0;
+const falls = Rig.footfalls(sa, {x: sx, x0: -160, h: 600, run: 1, dir: 1, t0: at(15.4), t1: at(18.1), y: 962});
+const dust = Rig.dust(q('sc03-dust'), falls, {drift: 26});
 const cut = at(18.6);
 Rig.drive(tl, DUR, (t) => {
-  if (t < cut) cam.render({cx: 980 + t * 10, cy: 560, z: 1.02});
-  else cam.render({cx: 1060 + (t - cut) * 6, cy: 560, z: 1.42 + (t - cut) * 0.01});
-  const w = work(t);
-  const st = {t, x: 1330, y: 930, h: 600, dir: -1, d: 0, settle: 1, head: head(t), lean: lean(t) * (0.5 + 0.5 * w),
-              arm: hoeArm(t, w), farArm: [far(t), farEl(t)], idle: 1 - w};
+  if (t < cut) cam.render({cx: 1000 + t * 9, cy: 560, z: 1.03});
+  else cam.render({cx: 1190 + (t - cut) * 5, cy: 545, z: 1.42 + (t - cut) * 0.008});
+  // the sickle rides his hand while he works, then stays hooked in the trunk
+  fa.render(PW.state(Math.min(t, tStop)));
+  Rig.attach(q('sc03-sickle'), fa, 0, SICKLE);
+  const front = t >= tA && t < tB, left = t >= tB;
+  let st = PW.state(t);
+  if (t > tStop) st.arm = Rig.mixArm(st.arm, [0, -9], Rig.smooth(drop(t)));
+  if (left) { st = {t, x: FX, y: FY, h: FH, dir: -1, d: 0, settle: 1, head: head(t), lean: lean(t), idle: 0.6};
+    st.arm = Rig.mixArm([0, -9], [-152, -12], Rig.smooth(pt(t))); }
+  st.op = front ? 0 : 1;
   fa.render(st);
-  Rig.attach(q('sc03-hoe'), fa, 0, {grip: [335, 215], rot: -18, scale: 0.66, dy: 30});
-  sa.render({t, x: sx(t), x0: -160, y: 965, h: 600, dir: 1, settle: sset(t), head: sHead(t)});
+  faF.render({t, x: FX, y: FY, h: FH, dir: -1, op: front ? 1 : 0});
+  fib(t); dust.render(t);
+  sa.render({t, x: sx(t), x0: -160, y: 965, h: 600, dir: 1, run: 1, settle: sset(t), head: sHead(t), dy: pant(t)});
 });
 """)
 
@@ -144,13 +209,21 @@ scene("sc04", 24.1, 12.9, "04_salem_home_interior",
       [rig("sc04-father", 14), div("sc04-blanket", 16, "left:0;top:0;width:620px;height:120px;transform-origin:0 0",
                                    '<svg width="620" height="120" viewBox="0 0 620 120"><path d="M8 40 Q40 8 120 14 L560 18 Q612 22 612 70 L610 110 L10 110 Q2 80 8 40 Z" fill="#7a4f33" stroke="#5c3a24" stroke-width="3"/>'
                                    '<path d="M440 18 L452 110 M470 19 L482 110" stroke="#e7d6b8" stroke-width="7" opacity=".85"/><path d="M60 40 Q300 30 600 46" stroke="#5c3a24" stroke-width="2" fill="none" opacity=".5"/></svg>'),
-       rig("sc04-salemw", 20), rig("sc04-salem", 20)],
+       rig("sc04-salemw", 20), rig("sc04-salem", 20), div("sc04-motes", 30, "left:0;top:0")],
       r"""
 const fa = Rig.make(q('sc04-father'), 'father_side', {seed: 9});
 const sw = Rig.make(q('sc04-salemw'), 'salem_side', {seed: 4});
 const ss = Rig.make(q('sc04-salem'), 'salem_q34', {seed: 6, lap: {y: 430}});
 const cam = Rig.camera(q('sc04-cam'));
 const sun = T([[0,0.05],[at(22.9),0.05],[at(24.1),0.85]]);
+// dust motes drifting in the shaft of light from the window
+const moteEls = []; for (let i = 0; i < 14; i++) { const e = document.createElement('div'); const sz = 3 + (i % 4);
+  Object.assign(e.style, {position: 'absolute', left: '0px', top: '0px', width: sz + 'px', height: sz + 'px', borderRadius: '50%', background: '#fff3cf', opacity: 0});
+  q('sc04-motes').appendChild(e); moteEls.push(e); }
+const motes = (t, lit) => moteEls.forEach((e, i) => { const r1 = ((i * 37) % 100) / 100, r2 = ((i * 61) % 100) / 100;
+  const u = (r1 + t * (0.012 + 0.01 * r2)) % 1, w = (r2 - 0.5) * 150 + 14 * Math.sin(t * 0.6 + i);
+  e.style.transform = `translate(${170 + 300 * u + w * 0.85}px, ${230 + 470 * u - w * 0.5 + 8 * Math.sin(t * 0.9 + i * 2)}px)`;
+  e.style.opacity = lit * (0.25 + 0.3 * (0.5 + 0.5 * Math.sin(t * 1.4 + i * 1.7))) * Math.sin(Math.PI * u); });
 const dark = T([[0,0.42],[at(22.9),0.42],[at(24.1),0.08]]);
 const cutB = at(25.75), cutC = at(27.6);
 const swx = T([[0,1720],[at(25.9),1720],[at(27.4),1260,'lin']]);
@@ -175,7 +248,9 @@ Rig.drive(tl, DUR, (t) => {
   fa.render(fst);
   // blanket covers him from the chest down
   const p = Rig.pt(fa, fst, fa.ox, fa.R.waist * 0.62);
-  q('sc04-blanket').style.transform = `translate(${p.x - 24}px, ${p.y - 46}px) scale(0.66, 0.85)`;
+  const br = 0.045 * Math.sin(t * 2 * Math.PI / 3.6);          // slow, tired breathing under the blanket
+  q('sc04-blanket').style.transform = `translate(${p.x - 24}px, ${p.y - 46 - 102 * br}px) scale(0.66, ${0.85 * (1 + br)})`;
+  motes(t, sun(t));
   const walking = t < cutC;
   sw.render({t, x: swx(t), x0: 1720, y: 880, h: 600, dir: -1, settle: swset(t), op: walking ? 1 : 0});
   const sst = {t, x: 700, y: 850, h: 540, dir: -1, lean: sLean(t), head: sHead(t), dy: sDy(t), op: walking ? 0 : 1, shadow: 0.6};
@@ -338,118 +413,147 @@ Rig.drive(tl, DUR, (t) => {
 scene("sc09", 65.9, 26.7, "07_clinic_interior",
       [img("sc09-bagc", "props/prop_bag_closed.png", 12, "width:1512px;height:1152px"),
        img("sc09-bago", "props/prop_bag_open.png", 12, "width:1392px;height:1312px"),
-       img("sc09-stetho-in", "props/prop_stetho.png", 11, "width:1272px;height:1344px"),
-       rig("sc09-marian", 14), rig("sc09-father", 16), rig("sc09-pat", 18),
-       img("sc09-stetho", "props/prop_stetho.png", 19, "width:1272px;height:1344px"),
-       '<svg id="sc09-tube" style="position:absolute;left:0;top:0;width:1920px;height:1080px;overflow:visible;z-index:19"><path id="sc09-tube-p" d="" fill="none" stroke="#2c2a2a" stroke-width="5" stroke-linecap="round"/><circle id="sc09-bell" r="11" fill="#c9cdd1" stroke="#6d7277" stroke-width="3"/></svg>',
-       rig("sc09-uncle", 22), rig("sc09-salem", 24), div("sc09-farm", 26, "left:0;top:0")],
+       rig("sc09-marian", 14), rig("sc09-father", 16), steth("sc09-stb", 17), rig("sc09-pat", 18), steth("sc09-stf", 19),
+       # the bag's front wall again, above his hand: the hand and the stethoscope go in behind it
+       img("sc09-lip", "props/prop_bag_open.png", 20, "width:1392px;height:1312px;clip-path:polygon(0% 49.5%,10% 49.5%,23.7% 63.9%,93% 52.6%,100% 53.4%,100% 100%,0% 100%)"),
+       rig("sc09-uncle", 22), rig("sc09-salem", 24), rig("sc09-salemS", 24), div("sc09-farm", 26, "left:0;top:0")],
       r"""
-const fa = Rig.make(q('sc09-father'), 'father_front', {seed: 3, armLayer: q('sc09-farm')});
-const pat = Rig.make(q('sc09-pat'), 'pat_q34', {seed: 5});
+const fa = Rig.make(q('sc09-father'), 'father_side', {seed: 3, armLayer: q('sc09-farm')});
+const pat = Rig.make(q('sc09-pat'), 'pat_side', {seed: 5});
 const ma = Rig.figure(q('sc09-marian'), 'assets/chars/marian_front.png', 648, 1644, {seed: 2, amp: 0.4});
 const un = Rig.make(q('sc09-uncle'), 'uncle_q34', {seed: 6});
 const sa = Rig.make(q('sc09-salem'), 'salem_q34', {seed: 9});
+const saS = Rig.make(q('sc09-salemS'), 'salem_side', {seed: 9});
 const cam = Rig.camera(q('sc09-cam'));
-const place = (id, x, y, w, op) => { const e = q(id); e.style.transformOrigin = '0 0'; e.style.transform = `translate(${x}px,${y}px) scale(${w / e.width})`; e.style.opacity = op; };
+const place = (id, x, y, w, op, sy) => { const e = q(id); e.style.transformOrigin = '0 100%'; e.style.transform = `translate(${x}px,${y}px) scale(${w / e.width}, ${(w / e.width) * (sy || 1)})`; e.style.opacity = op; };
 // shot cuts (scene time)
 const S2 = at(65.95), S3 = at(68.5), S4a = at(72.95), S4b = at(74.3), S5 = at(78.7), S6 = at(85.05);
-// --- shot 1: Pat at the desk opens the bag and lifts the stethoscope
-const open = T([[0,0],[at(63.1),0],[at(63.5),1]]);
-const p1 = T([[0,0],[at(62.95),0.25],[at(63.2),1],[at(63.6),0.5],[at(64.2),1],[at(64.7),1],[at(65.4),0.15]]);
-const lifted = (t) => t >= at(64.6);
-// --- shot 2: to the chest
-const toChest = T([[0,0],[at(66.0),0],[at(66.9),1,'out'],[at(78.6),1],[at(79.4),0]]);
-const reposition = T([[0,0],[at(76.6),0],[at(77.0),1],[at(77.4),0]]);
-// --- shot 3: whisper
+
+// ---- the stethoscope, drawn each frame
+const SV = (id, k, v) => q(id).setAttribute(k, v);
+function stethHeld(id, g, phi) {            // held at the fork: ear tubes spring up, tubing and chest piece hang
+  const L = 108, bx = g.x + L * Math.sin(phi), by = g.y + L * Math.cos(phi);
+  SV(id + '-m1', 'd', `M ${g.x} ${g.y} Q ${g.x - 4} ${g.y - 26} ${g.x - 15} ${g.y - 46}`);
+  SV(id + '-m2', 'd', `M ${g.x} ${g.y} Q ${g.x + 4} ${g.y - 26} ${g.x + 15} ${g.y - 46}`);
+  SV(id + '-e1', 'cx', g.x - 16); SV(id + '-e1', 'cy', g.y - 49); SV(id + '-e2', 'cx', g.x + 16); SV(id + '-e2', 'cy', g.y - 49);
+  SV(id + '-t', 'd', `M ${g.x} ${g.y} Q ${g.x + L * 0.5 * Math.sin(phi * 0.3)} ${g.y + L * 0.55} ${bx} ${by}`);
+  SV(id + '-b', 'cx', bx); SV(id + '-b', 'cy', by); SV(id + '-bi', 'cx', bx); SV(id + '-bi', 'cy', by);
+}
+function stethWorn(id, ear, fork, bell, dir) {   // in his ears, fork on his chest, tubing to the chest piece
+  SV(id + '-m1', 'd', `M ${ear.x} ${ear.y} Q ${ear.x + 30 * dir} ${ear.y + 30} ${fork.x} ${fork.y}`);
+  SV(id + '-m2', 'd', `M ${ear.x + 5 * dir} ${ear.y + 3} Q ${ear.x + 34 * dir} ${ear.y + 34} ${fork.x} ${fork.y}`);
+  SV(id + '-e1', 'cx', ear.x); SV(id + '-e1', 'cy', ear.y); SV(id + '-e2', 'cx', ear.x); SV(id + '-e2', 'cy', ear.y);
+  const sag = Math.max(26, 96 - Math.hypot(bell.x - fork.x, bell.y - fork.y) * 0.32);
+  SV(id + '-t', 'd', `M ${fork.x} ${fork.y} C ${fork.x + 4 * dir} ${fork.y + sag}, ${bell.x - 34 * dir} ${bell.y + sag * 0.8}, ${bell.x} ${bell.y}`);
+  SV(id + '-b', 'cx', bell.x); SV(id + '-b', 'cy', bell.y); SV(id + '-bi', 'cx', bell.x); SV(id + '-bi', 'cy', bell.y);
+}
+
+// ---- shot 1: «فتح شنطته، وطلّع شي فيه أنبوب»
+const BAG = {x: 418, y: 414, w: 154};                       // open bag on the desk; its mouth is near (500, 500)
+const tOpen = at(63.38), tOut = at(64.05), tUp = at(64.78);
+const k1 = T([[0,0],[at(62.95),0],[at(63.25),1]]);
+const hx = T([[0,512],[at(63.45),512],[at(63.85),498],[tOut,498],[tUp,548,'io'],[at(65.3),548],[at(65.95),588]]);
+const hy = T([[0,438],[at(63.45),438],[at(63.85),506],[tOut,506],[tUp,338,'io'],[at(65.3),338],[at(65.95),318]]);
+const pop = T([[0,1],[tOpen,1],[tOpen + 0.07,1.1],[tOpen + 0.24,1]]);
+const swing = (t) => t < tUp ? -0.10 * Math.sin((t - tOut) * 7) : 0.2 * Math.exp(-(t - tUp) * 2.4) * Math.sin((t - tUp) * 7.5 + 0.6);
+const p1Head = T([[0,7],[tOut,9],[tUp,3],[at(65.6),0]]);
+// ---- shots 2-6: «وحط طرفه على صدر أبوي»
+const PX = 1388, PY = 905, FAX = 1572, FAY = 900;
+const toChest = T([[0,0],[S2,0],[at(66.95),1,'out'],[at(84.2),1],[at(85.0),0]]);
+const shift = T([[0,0],[at(69.6),0],[at(70.1),1],[at(76.6),1],[at(77.1),2],[at(81.2),2],[at(81.7),1]]);   // he moves the chest piece
+const press = (t) => 1.2 * Math.sin(t * 2.1);
+const patHead = T([[0,5],[at(69.6),5],[at(70.0),8],[at(76.6),8],[at(77.0),5],[at(81.6),5],[at(81.85),10],[at(82.1),5],[at(82.35),9],[at(82.7),5]]);
+const fHead0 = T([[0,5],[at(67.2),5],[at(67.8),9],[at(84),7]]);
+// ---- shot 3: whisper
 const sLean = T([[0,0],[at(68.6),0],[at(69.3),9],[at(70.7),11],[at(71.4),7],[at(72.4),3]]);
 const sDy = T([[0,0],[at(69.0),0],[at(69.3),-10],[at(71.5),-10],[at(71.9),0]]);
 const sHead = T([[0,0],[at(70.6),0],[at(70.85),-12],[at(71.4),-6],[at(72.9),-2]]);
 const uHead = T([[0,0],[at(71.3),0],[at(71.6),10],[at(72.5),8],[at(73.0),2]]);
 const uArm = T([[0,0],[at(71.5),0],[at(71.9),-28],[at(72.6),-30],[at(73.2),0]]);
-// --- shot 5: watching
+// ---- shot 6: watching
 const s5lean = (t) => Rig.wob(t, 4, 2.3, 2.2);
 const s5head = T([[0,-6],[at(81.3),-6],[at(81.7),-11],[at(83.0),-9],[at(83.6),-13],[at(85),-9]]);
-const patNod = T([[0,0],[at(81.6),0],[at(81.85),6],[at(82.1),0],[at(82.35),5],[at(82.7),0]]);
-// --- shot 6: the hand
-const hand = T([[0,0],[at(86.35),0],[at(87.35),1,'io']]);
-const fNod = T([[0,0],[at(87.9),0],[at(88.25),7],[at(88.55),1],[at(88.85),6],[at(89.6),2]]);
-const fLean = T([[0,0],[at(87.9),0],[at(88.6),-4],[at(89.6),-3]]);
-const salHand = T([[0,0],[at(86.5),0],[at(87.2),1]]);
+// ---- shot 7: «مسك يدي وقال: ما عليك يا سالم»
+const hand = T([[0,0],[at(86.3),0],[at(87.3),1,'io']]);
+const salHand = T([[0,0],[at(86.45),0],[at(87.2),1]]);
+const fNod = T([[0,4],[at(86.3),4],[at(87.0),12],[at(87.9),12],[at(88.25),17],[at(88.55),11],[at(88.85),16],[at(89.6),12]]);
+const fLean = T([[0,1],[at(86.3),1],[at(87.2),5],[at(89.6),4]]);
+const sUp = T([[0,0],[at(86.6),0],[at(87.3),-10],[at(89.6),-12]]);
+const MEET = {x: 1508, y: 634};
+
 Rig.drive(tl, DUR, (t) => {
   const shot = t < S2 ? 1 : t < S3 ? 2 : t < S4a ? 3 : t < S4b ? 4 : t < S5 ? 5 : t < S6 ? 6 : 7;
-  if (shot === 1) cam.render({cx: 640, cy: 520, z: 1.8 + t * 0.02});
-  else if (shot === 2) cam.render({cx: 1480, cy: 520, z: 1.55});
+  // father, in profile, facing the doctor
+  const fst = {t, x: FAX, y: FAY, h: 610, dir: -1, d: 0, settle: 1, head: shot === 7 ? fNod(t) : fHead0(t), lean: shot === 7 ? fLean(t) : 1,
+               idle: 0.4, breath: shot === 7 ? 1 : 2.6};
+  const chest = Rig.pt(fa, fst, 196, 330);                  // the front of his chest
+  const spot = {x: chest.x + 3, y: chest.y + Rig.lerp(0, 34, Rig.clamp(shift(t), 0, 1)) - Rig.lerp(0, 50, Rig.clamp(shift(t) - 1, 0, 1))};
+  if (shot === 1) cam.render({cx: 610, cy: 500, z: 1.8 + t * 0.02});
+  else if (shot === 2) cam.render({cx: 1300, cy: 520, z: 1.55 + (t - S2) * 0.01});
   else if (shot === 3) cam.render({cx: 960, cy: 560, z: 1.02});
   else if (shot === 4) cam.render({cx: 600, cy: 600, z: 2.0});
-  else if (shot === 5) { const c = Rig.pt(fa, {x: 1660, y: 860, h: 610, dir: -1}, 202, 330); cam.render({cx: c.x - 60, cy: c.y + 10, z: 3.0 + (t - S4b) * 0.03}); }
-  else if (shot === 6) cam.render({cx: 1350, cy: 540, z: 1.45});
-  else cam.render({cx: 1420, cy: 560, z: 1.6 + (t - S6) * 0.01});
-  // father seated on the bed edge, facing camera (mirrored so his free arm is toward Salem)
-  const fst = {t, x: 1660, y: 860, h: 610, dir: -1, head: fNod(t), lean: fLean(t), idle: 0.6};
-  // Pat: at the desk in shot 1 (facing the bag), at the bed afterwards
-  const pst = shot === 1 ? {t, x: 760, y: 900, h: 640, dir: -1} : {t, x: 1475, y: 905, h: 640, dir: 1, head: patNod(t)};
-  // bag on the desk
-  place('sc09-bagc', 412, 432, 165, open(t) < 0.5 ? 1 : 0);
-  place('sc09-bago', 418, 414, 154, open(t) >= 0.5 ? 1 : 0);
-  place('sc09-stetho-in', 466, 432, 66, open(t) >= 0.5 && !lifted(t) ? 1 : 0);
+  else if (shot === 5) cam.render({cx: chest.x - 70, cy: chest.y + 16, z: 2.5 + (t - S4b) * 0.03});
+  else if (shot === 6) cam.render({cx: 1330, cy: 540, z: 1.45});
+  else cam.render({cx: 1415, cy: 575, z: 1.85 + (t - S6) * 0.012});
+
+  // ---- the bag
+  const opened = t >= tOpen;
+  place('sc09-bagc', BAG.x - 6, BAG.y + 18 + 126 - 1152, 165, opened ? 0 : 1);
+  place('sc09-bago', BAG.x, BAG.y + 145 - 1312, BAG.w, opened ? 1 : 0, pop(t));
+  place('sc09-lip', BAG.x, BAG.y + 145 - 1312, BAG.w, opened ? 1 : 0, pop(t));
+
+  // ---- the doctor
+  let pst, bell = null;
+  const ear = (st) => Rig.pt(pat, st, 212, 150), fork = (st) => Rig.pt(pat, st, 276, 470);
   if (shot === 1) {
-    const bagPt = {x: 500, y: 470};
-    const restA = [0, -6];
-    const ra = Rig.reach(pat, pst, 0, bagPt.x + 40, bagPt.y - 10, 1);
-    const up = Rig.reach(pat, pst, 0, 690, 380, 1);
-    const u = p1(t);
-    pst.arm = t < at(64.7) ? Rig.mixArm(restA, ra, Rig.smooth(Math.min(1, u))) : Rig.mixArm(up, ra, Rig.smooth(u));
-    pst.idle = 0.2;
+    pst = {t, x: 668, y: 900, h: 640, dir: -1, head: p1Head(t), lean: 2 * k1(t), idle: 0.2};
+    pst.arm = Rig.mixArm([0, -9], Rig.reach(pat, pst, 0, hx(t), hy(t), 1), Rig.smooth(k1(t)));
+  } else if (shot === 7) {
+    pst = {t, x: 1215, y: 905, h: 640, dir: 1, head: 4, idle: 0.5};
   } else {
-    const chest = Rig.pt(fa, fst, 202, 330);
-    const target = {x: chest.x - 20 + reposition(t) * 18, y: chest.y + 16 - reposition(t) * 22};
-    const ra = Rig.reach(pat, pst, 0, target.x - 38, target.y + 4, 1);
-    pst.arm = Rig.mixArm([0, -6], ra, Rig.smooth(toChest(t)));
-    pst.idle = 0.2;
+    pst = {t, x: PX, y: PY, h: 640, dir: 1, head: patHead(t), lean: 1.5 * toChest(t), idle: 0.15};
+    const f0 = fork(pst);
+    const own = {x: f0.x + 26, y: f0.y + 76};                // the chest piece starts in his hand, by his own chest
+    const u = Rig.smooth(toChest(t));
+    const tx = Rig.lerp(own.x, spot.x - 30, u) + press(t) * u, ty = Rig.lerp(own.y, spot.y + 3, u);
+    pst.arm = Rig.reach(pat, pst, 0, tx, ty, 1);
   }
   pat.render(pst);
-  fst.arm = [0, 0];
-  // the hand: both hands meet at one point between them
-  const sst7 = {x: 1545, y: 912, h: 640, dir: 1};
-  const fS = Rig.pt(fa, fst, fa.R.arms[0].shoulder[0], fa.R.arms[0].shoulder[1]);
-  const sS = Rig.pt(sa, sst7, sa.R.arms[0].shoulder[0], sa.R.arms[0].shoulder[1]);
-  const fC = Rig.pt(fa, fst, fa.R.arms[0].cuff[0], fa.R.arms[0].cuff[1]);
-  const Lf = Math.hypot(fC.x - fS.x, fC.y - fS.y) * 0.97;
-  // father's hand only eases toward Salem; Salem lifts his hand into it
-  const meet = {x: Rig.lerp(fC.x, sS.x, 0.22), y: fC.y + 8};
+  const hw = pat.handWorld(0);
+  const ar = hw.ang * Math.PI / 180, ux = -Math.sin(ar) * hw.dir, uy = Math.cos(ar);   // along his forearm
+  // ---- the stethoscope
+  const held = shot === 1 && t >= tOut;
+  q('sc09-stb').style.opacity = held ? 1 : 0;
+  q('sc09-stb').style.clipPath = 'inset(0px 0px 548px 0px)';       // nothing shows below the bag's foot
+  if (held) stethHeld('sc09-stb', {x: hw.x + ux * 4, y: hw.y + uy * 4}, swing(t));
+  const worn = shot >= 2 && shot !== 4;
+  q('sc09-stf').style.opacity = worn ? 1 : 0;
+  if (worn) {
+    const f1 = fork(pst);
+    bell = shot === 7 ? {x: f1.x + 8, y: f1.y + 118} : {x: hw.x + ux * 23, y: hw.y + uy * 23};
+    stethWorn('sc09-stf', ear(pst), f1, bell, 1);
+  }
+  // ---- father's arm, and the hand
   if (shot === 7) {
-    fst.arm = Rig.mixArm([0, 0], Rig.reach(fa, fst, 0, meet.x, meet.y, 1), Rig.smooth(hand(t)));
-    fst.idle = 0;
+    fst.arm = Rig.mixArm([0, -9], Rig.reach(fa, fst, 0, MEET.x + 9, MEET.y - 10, 1), Rig.smooth(hand(t)));
+    fst.idle = 0.15;
   }
   fa.render(fst);
-  // stethoscope: dangling in hand after lifting (shot 1), on the chest afterwards
-  const hw = pat.handWorld(0);
-  const inHand = shot === 1 && lifted(t);
-  q('sc09-stetho').style.opacity = inHand ? 1 : 0;
-  if (inHand) Rig.attach(q('sc09-stetho'), pat, 0, {grip: [330, 120], rot: 0, scale: 0.42, dy: 60});
-  const onChest = shot >= 2 && shot !== 4 && toChest(t) > 0.02;
-  const tube = q('sc09-tube');
-  tube.style.opacity = onChest ? 1 : 0;
-  if (onChest) {
-    const ar = hw.ang * Math.PI / 180;
-    const bx = hw.x - Math.sin(ar) * 62 * hw.sc * hw.dir, by = hw.y + Math.cos(ar) * 62 * hw.sc;
-    const neck = Rig.pt(pat, pst, pat.R.head.pivot[0] + 6, pat.R.head.pivot[1] + 30);
-    q('sc09-bell').setAttribute('cx', bx); q('sc09-bell').setAttribute('cy', by);
-    q('sc09-tube-p').setAttribute('d', `M ${bx} ${by} C ${bx - 30} ${by + 120}, ${neck.x + 40} ${neck.y + 160}, ${neck.x + 8} ${neck.y + 20} M ${neck.x + 8} ${neck.y + 20} L ${neck.x - 10} ${neck.y - 8} M ${neck.x + 8} ${neck.y + 20} L ${neck.x + 26} ${neck.y - 6}`);
-  }
-  ma.render({t, x: 1880, y: 840, h: 640, dir: -1});
-  // uncle + Salem by the door
-  const uDir = 1;
-  const ust = (shot === 7 || shot === 1) ? {t, x: 980, y: 930, h: 640, dir: uDir, op: 0} : {t, x: 470, y: 960, h: 640, dir: uDir, head: uHead(t), arm: [uArm(t), -10]};
+  ma.render({t, x: 1800, y: 852, h: 640, dir: -1});
+  // ---- uncle + Salem
+  const ust = (shot === 7 || shot === 1) ? {t, x: 980, y: 930, h: 640, dir: 1, op: 0} : {t, x: 470, y: 960, h: 640, dir: 1, head: uHead(t), arm: [uArm(t), -10]};
   un.render(ust);
   let sst;
   if (shot <= 3) sst = {t, x: 640, y: 975, h: 640, dir: -1, lean: sLean(t), dy: sDy(t), head: sHead(t), op: shot === 1 ? 0 : 1};
   else if (shot === 4) sst = {t, x: 640, y: 975, h: 640, dir: 1, head: T([[S4a,-2],[S4a+0.5,-9]])(t)};
-  else if (shot === 5) sst = {t, x: 1210, y: 975, h: 640, dir: 1, op: 0};
-  else if (shot === 6) sst = {t, x: 1150, y: 980, h: 640, dir: 1, lean: s5lean(t), head: s5head(t), arm: [Rig.wob(t, 2, 1.7, 6), -10]};
-  else sst = Object.assign({t, head: -8, idle: 0}, sst7);
-  if (shot === 7) sst.arm = Rig.mixArm([0, 0], Rig.reach(sa, sst, 0, meet.x - 4, meet.y + 26, 1), Rig.smooth(salHand(t)));
+  else if (shot === 5) sst = {t, x: 1100, y: 975, h: 640, dir: 1, op: 0};
+  else if (shot === 6) sst = {t, x: 1100, y: 985, h: 640, dir: 1, lean: s5lean(t), head: s5head(t), arm: [Rig.wob(t, 2, 1.7, 6), -10]};
+  else sst = {t, x: 1100, y: 975, h: 640, dir: 1, op: 0};
   sa.render(sst);
+  // in profile for the hand-hold: he lifts his hand and his father's closes over it
+  const s7 = {t, x: 1428, y: 908, h: 640, dir: 1, d: 0, settle: 1, head: sUp(t), idle: 0.2, op: shot === 7 ? 1 : 0};
+  s7.arm = Rig.mixArm([0, -9], Rig.reach(saS, s7, 0, MEET.x - 9, MEET.y + 10, 1), Rig.smooth(salHand(t)));
+  saS.render(s7);
 });
 """)
 
@@ -524,57 +628,70 @@ Rig.drive(tl, DUR, (t) => {
 
 # ------------------------------------------------------------------ sc13 courtyard: run
 scene("sc13", 103.0, 1.4, "03_salem_home_courtyard",
-      [rig("sc13-salem", 20), rig("sc13-mother", 10)],
+      [div("sc13-dust", 15, "left:0;top:0"), rig("sc13-salem", 20), rig("sc13-mother", 10)],
       r"""
 const sa = Rig.make(q('sc13-salem'), 'salem_side', {seed: 5});
 const mo = Rig.make(q('sc13-mother'), 'mother_q34', {seed: 2});
 const cam = Rig.camera(q('sc13-cam'));
+const rx = (t) => 1430 - t * 560;
+const dust = Rig.dust(q('sc13-dust'), Rig.footfalls(sa, {x: rx, x0: 1430, h: 560, run: 1, dir: -1, t0: 0, t1: DUR, y: 838}), {drift: -26});
 Rig.drive(tl, DUR, (t) => {
   cam.render({cx: 1140 - t * 220, cy: 560, z: 1.12});
-  sa.render({t, x: 1430 - t * 560, x0: 1430, y: 840, h: 560, dir: -1, run: 1});
+  dust.render(t);
+  sa.render({t, x: rx(t), x0: 1430, y: 840, h: 560, dir: -1, run: 1});
   mo.render({t, x: 330, y: 885, h: 560, dir: 1, head: -4});
 });
 """)
 
 # ------------------------------------------------------------------ sc14 palms: reunion
 scene("sc14", 104.4, 9.1, "05_palm_garden",
-      [rig("sc14-father", 20), img("sc14-hoe", "props/env_hoe.png", 21, "width:436px;height:816px"), rig("sc14-salem", 25)],
+      [div("sc14-dust", 18, "left:0;top:0"), rig("sc14-father", 20), rig("sc14-fatherF", 20), sickle("sc14-sickle", 21),
+       div("sc14-fib", 22, "left:0;top:0"), rig("sc14-salem", 25), div("sc14-farm", 27, "left:0;top:0")],
       PALM_FATHER + r"""
-const fa = Rig.make(q('sc14-father'), 'father_side', {seed: 2});
+const fa = Rig.make(q('sc14-father'), 'father_side', {seed: 2, armLayer: q('sc14-farm')});
+const faF = Rig.make(q('sc14-fatherF'), 'father_front', {seed: 2});
 const sa = Rig.make(q('sc14-salem'), 'salem_side', {seed: 7});
 const cam = Rig.camera(q('sc14-cam'));
-const work = T([[0,1],[at(102.85),1],[at(103.2),0]]);
-const head = T([[0,10],[at(102.9),10],[at(103.4),-3,'out'],[at(103.8),1],[at(104.1),-4],[at(104.6),-3],
-                [at(105.4),3],[at(105.7),-3],[at(106.7),0],[at(108),2]]);
-const lean = T([[0,6],[at(102.9),6],[at(103.4),-3],[at(103.75),-1],[at(104.05),-4],[at(106.8),-1]]);
+// «رفع راسه وابتسم»: he leaves the sickle in the trunk and turns round
+const tStop = at(102.85), tA = at(103.0), tB = at(103.18);
+const PW = palmWork(fa, tStop);
+fa.render(PW.state(tStop)); const CUTPT = (() => { const h = Rig.attach(q('sc14-sickle'), fa, 0, SICKLE); return {x: h.x + 34, y: h.y - 96}; })();
+const fib = fibres(q('sc14-fib'), PW.hits, CUTPT);
+const drop = T([[0,0],[tStop,0],[tStop + 0.25,1]]);
+const head = T([[0,0],[tB,6],[at(103.5),-5,'out'],[at(103.8),1],[at(104.1),-4],[at(104.6),-3],
+                [at(105.4),3],[at(105.7),-3],[at(106.7),0],[at(108.2),4],[at(109.6),8]]);
+const lean = T([[0,0],[tB,1],[at(103.5),-3],[at(103.75),-1],[at(104.05),-4],[at(106.8),-1],[at(109.6),3]]);
 const dy = T([[0,0],[at(103.5),0],[at(103.7),-8],[at(103.95),0]]);
-const far = T([[0,0],[at(104.9),0],[at(105.45),-150,'out'],[at(106.5),-145],[at(106.9),-30]]);
-const sx = T([[0,-200],[at(102.4),560,'out'],[at(107.6),560],[at(108.9),1090]]);
-const srun = (t) => t < at(102.5) ? 1 : 0;
-const sset = T([[0,0],[at(102.3),0],[at(102.75),1],[at(107.6),1],[at(107.9),0],[at(108.8),0],[at(109.2),1]]);
-const drop = at(107.0);
-const onShoulder = T([[0,0],[at(109.0),0],[at(109.8),1]]);
-const sHead = T([[0,0],[at(103.5),0],[at(103.9),-8],[at(107.4),-5],[at(109.4),-10],[at(110.5),-7]]);
+const pt = T([[0,0],[at(104.85),0],[at(105.4),1,'out'],[at(106.45),1],[at(106.9),0]]);
+const sx = T([[0,-200],[at(102.4),880,'out'],[at(107.6),880],[at(108.9),1335]]);
+const sset = T([[0,0],[at(102.25),0],[at(102.7),1],[at(107.6),1],[at(107.85),0],[at(108.75),0],[at(109.15),1]]);
+const onShoulder = T([[0,0],[at(108.95),0],[at(109.75),1]]);
+const sHead = T([[0,0],[at(102.7),0],[at(103.2),-9],[at(107.4),-6],[at(109.4),-11],[at(110.5),-8]]);
 const sBounce = T([[0,0],[at(109.9),0],[at(110.1),-6],[at(110.3),0],[at(110.5),-4],[at(110.7),0]]);
+const falls = Rig.footfalls(sa, {x: sx, x0: -200, h: 600, run: 1, dir: 1, t0: 0, t1: at(102.35), y: 962});
+const dust = Rig.dust(q('sc14-dust'), falls, {drift: 26});
 const c1 = at(104.5), c2 = at(107.2);
-let hoeAt = null;
 Rig.drive(tl, DUR, (t) => {
-  if (t < c1) cam.render({cx: 960 + t * 8, cy: 560, z: 1.02});
-  else if (t < c2) cam.render({cx: 1120, cy: 540, z: 1.5});
-  else cam.render({cx: 1040 + (t - c2) * 10, cy: 600, z: 1.2});
-  const w = work(t);
-  const fst = {t, x: 1330, y: 930, h: 600, dir: -1, d: 0, settle: 1, head: head(t), lean: lean(t), dy: dy(t),
-               farArm: [far(t), -10], idle: 1 - w};
-  const sst = {t, x: sx(t), x0: t < at(103) ? -200 : 560, y: 965, h: 600, dir: 1, run: srun(t), settle: sset(t), head: sHead(t), dy: sBounce(t)};
+  if (t < c1) cam.render({cx: 1000 + t * 8, cy: 560, z: 1.03});
+  else if (t < c2) cam.render({cx: 1230, cy: 535, z: 1.5});
+  else cam.render({cx: 1300 + (t - c2) * 8, cy: 600, z: 1.38});
+  fa.render(PW.state(Math.min(t, tStop)));
+  Rig.attach(q('sc14-sickle'), fa, 0, SICKLE);
+  const front = t >= tA && t < tB, left = t >= tB;
+  const running = t < at(103);
+  const sst = {t, x: sx(t), x0: running ? -200 : 880, y: 965, h: 600, dir: 1, run: running ? 1 : 0, settle: sset(t), head: sHead(t), dy: sBounce(t)};
   sa.render(sst);
-  const top = Rig.pt(sa, sst, sa.R.arms[0].shoulder[0] + 6, sa.R.arms[0].shoulder[1] - 4);
-  const reachS = Rig.reach(fa, fst, 0, top.x + 20, top.y + 6, 1);
-  fst.arm = t < drop ? hoeArm(t, w) : Rig.mixArm([-6, -6], reachS, Rig.smooth(onShoulder(t)));
-  fa.render(fst);
-  // the hoe: in his hand while he works, leaned on the trunk once he stops
-  const hoe = q('sc14-hoe');
-  if (t < drop) Rig.attach(hoe, fa, 0, {grip: [335, 215], rot: -18, scale: 0.66, dy: 30});
-  else hoe.style.transform = 'translate(1395px, 930px) rotate(-74deg) scale(0.34)';
+  let st = PW.state(t);
+  if (t > tStop) st.arm = Rig.mixArm(st.arm, [0, -9], Rig.smooth(drop(t)));
+  if (left) { st = {t, x: FX, y: FY, h: FH, dir: -1, d: 0, settle: 1, head: head(t), lean: lean(t), dy: dy(t), idle: 0.6};
+    // his hand comes to rest on Salem's shoulder
+    const sh = Rig.pt(sa, sst, sa.R.arms[0].shoulder[0] - 8, sa.R.arms[0].shoulder[1] - 34);
+    const up = Rig.mixArm([0, -9], [-152, -12], Rig.smooth(pt(t)));
+    st.arm = Rig.mixArm(up, Rig.reach(fa, st, 0, sh.x + 22, sh.y + 4, 1), Rig.smooth(onShoulder(t))); }
+  st.op = front ? 0 : 1;
+  fa.render(st);
+  faF.render({t, x: FX, y: FY, h: FH, dir: -1, op: front ? 1 : 0});
+  fib(t); dust.render(t);
 });
 """)
 
@@ -677,19 +794,6 @@ Rig.drive(tl, DUR, (t) => {
               '</div>'
               '<div id="sc16-fade" class="grade" style="background:#140e09"></div>')
 
-# ------------------------------------------------------------------ sc17 end card
-scene("sc17", 144.6, 6.4, None, [],
-      r"""
-const op = T([[0,0],[0.4,0],[1.4,1],[5.6,1],[6.35,0]]);
-const y = T([[0,10],[1.4,0,'out']]);
-Rig.drive(tl, DUR, (t) => {
-  q('sc17-card').style.opacity = op(t);
-  q('sc17-card').style.transform = `translateY(${y(t)}px)`;
-});
-""",
-      overlay='<div id="sc17-card" class="card">قصة درامية مستوحاة من تأسيس مستشفى الواحة في العين عام ١٩٦٠.<br>سالم وعائلته شخصيات متخيّلة.</div>')
-
-
 # ------------------------------------------------------------------ writers
 STYLE = """
     @font-face { font-family: "Amiri"; src: url("assets/fonts/Amiri-Bold.ttf"); font-weight: 700; }
@@ -713,6 +817,9 @@ STYLE = """
     .cap { position: absolute; left: 160px; right: 160px; top: 760px; text-align: center; direction: rtl;
       font-family: "Amiri", serif; font-weight: 700; font-size: 52px; line-height: 1.5; color: #f3e7d0; }
     .cap span { display: block; font-weight: 400; font-size: 38px; color: #d9c8a8; }
+    .disc { position: absolute; left: 0; right: 0; bottom: 0; padding: 90px 220px 58px; text-align: center; direction: rtl; z-index: 50;
+      font-family: "Amiri", serif; font-weight: 700; font-size: 40px; line-height: 1.6; color: #fff6e6;
+      background: linear-gradient(180deg, rgba(20,12,6,0) 0%, rgba(20,12,6,.74) 58%); text-shadow: 0 2px 8px rgba(20,10,4,.75); }
     .card { position: absolute; left: 260px; right: 260px; top: 420px; text-align: center; direction: rtl; z-index: 50;
       font-family: "Amiri", serif; font-weight: 400; font-size: 54px; line-height: 1.75; color: #f1e4cc; }
 """
@@ -759,8 +866,21 @@ def write_index():
         f'data-start="{s["start"]}" data-duration="{s["dur"]}" data-track-index="1" data-track-kind="graphics" '
         f'data-width="1920" data-height="1080" style="z-index:2"></div>' for s in SCENES)
     amb = json.load(open(os.path.join(OUT, "tools", "ambience.json"))) if os.path.exists(os.path.join(OUT, "tools", "ambience.json")) else []
+    # the sickle's bites on the trunk: same stroke maths as PALM_FATHER (CYC, bite at 0.72 of a stroke)
+    CYC = 1.15
+    takes = [("rpg_chop.mp3", 0.053, 0.24), ("impact_wood_light_001.mp3", 0.001, 0.26), ("impact_wood_light_003.mp3", 0.001, 0.26)]
+    n = 0
+    for sid, stop_old in (("sc03", 17.95), ("sc14", 102.85)):
+        st = next(x for x in SCENES if x["id"] == sid)["start"]
+        tstop = warp(stop_old) + VO - st
+        k = 0
+        while tstop - (0.78 + k) * CYC > 0.05:
+            f, peak, dur = takes[n % 3]
+            amb.append(dict(id=f"sfx-cut{n + 1}", file=f, abs=round(st + tstop - (0.78 + k) * CYC - peak + 1 / 24, 3), dur=dur, vol=0.3, fin=0, fout=0.05))
+            n += 1
+            k += 1
     audio = "\n      ".join(
-        f'<audio id="{a["id"]}" src="assets/sfx/{a["file"]}" data-start="{round(next(x['start'] for x in SCENES if x['id'] == a['scene']) + a['local'] if 'scene' in a else g(a['start']), 3)}" data-duration="{a["dur"]}" '
+        f'<audio id="{a["id"]}" src="assets/sfx/{a["file"]}" data-start="{a['abs'] if 'abs' in a else round(g(a['start']), 3)}" data-duration="{a["dur"]}" '
         f'data-volume="{a["vol"]}" data-fade-in="{a.get("fin", 0.4)}" data-fade-out="{a.get("fout", 0.6)}" data-track-index="{3 + i % 2}"></audio>'
         for i, a in enumerate(amb))
     html = f"""<!doctype html>
@@ -798,9 +918,10 @@ def write_index():
 
 if __name__ == "__main__":
     os.makedirs(os.path.join(OUT, "compositions"), exist_ok=True)
-    # contiguous slots: each scene runs until the next one starts
+    # contiguous slots: each scene runs until the next one starts; the last one ends just after the voice
     for a, b in zip(SCENES, SCENES[1:]):
         a["dur"] = round(b["start"] - a["start"], 3)
+    SCENES[-1]["dur"] = round(END_VOICE + 1.3 - SCENES[-1]["start"], 3)
     for s in SCENES:
         write_scene(s)
     total = write_index()

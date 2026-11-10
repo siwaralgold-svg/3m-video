@@ -5,14 +5,31 @@ SRC,OUT=sys.argv[1],sys.argv[2]
 K=4
 SPECS={
  # walkers (side view, facing right). hem: robe bottom; feet replaced by animated feet.
+ # walkarm: the forward arm drawn in the WALK pose. T0-T1 is the sleeve's top edge (where it leaves the body,
+ # and the cuff's top corner), w the sleeve width, L shoulder-to-wrist length, hand its length, hwh its
+ # half-width, front the body's front edge in that pose: the drawing is used right of it (forearm, cuff,
+ # hand); left of it the upper arm is hidden by the body, so it is completed in the sleeve's own colour.
+ # attach: the shoulder on the side view. hang: the side view's own hanging arm, painted out of the body.
  'salem_side': dict(src='salem_side',neck=44,pivot=(32,46),waist=96,hem=157,walker=True,
-    arms=[dict(shoulder=(27,56),box=(10,100,34,124),w=9)]),
+    arms=[dict(shoulder=(27,56),box=(10,100,34,124),w=9)],
+    hang=[(18,53),(37,53),(38,106),(36,127),(14,127),(16,104)],
+    walkarm=dict(src='salem_walk',T0=(64,57),T1=(84,88),w=12.5,L=49,hand=14,hwh=8.5,front=[(63,50),(64,57),(70,92),(71,105)],attach=(28,57))),
  'father_side':dict(src='father_side',neck=46,pivot=(40,48),waist=118,hem=211,walker=True,
-    arms=[dict(shoulder=(35,60),box=(26,120,50,148),w=12)]),
+    arms=[dict(shoulder=(35,60),box=(26,120,50,148),w=12)],
+    hang=[(22,53),(49,55),(51,126),(50,151),(27,151),(23,126)],
+    walkarm=dict(src='father_walk',T0=(89,68),T1=(115,104),w=18.5,L=65,hand=20,hwh=11.5,front=[(86,50),(89,68),(89,105),(92,125)],attach=(36,61))),
  'uncle_side': dict(src='uncle_side',neck=45,pivot=(50,47),waist=118,hem=210,walker=True,
-    arms=[dict(shoulder=(44,60),box=(34,124,56,150),w=14)]),
+    arms=[dict(shoulder=(44,60),box=(34,124,56,150),w=14)],
+    hang=[(23,53),(58,55),(59,128),(58,153),(33,153),(24,128)],
+    walkarm=dict(src='uncle_walk',T0=(105,65),T1=(138,109),w=20.5,L=66,hand=22,hwh=12.5,front=[(102,50),(105,65),(110,112),(110,132)],attach=(44,61))),
  'marian_side':dict(src='marian_side',neck=60,pivot=(62,62),waist=175,hem=348,walker=True,legs=True,
-    arms=[dict(shoulder=(57,88),box=(44,200,78,248),w=16)]),
+    arms=[dict(shoulder=(57,88),box=(44,200,78,248),w=16)],
+    hang=[(37,80),(73,84),(75,210),(75,248),(47,248),(37,212)],
+    walkarm=dict(src='marian_walk',T0=(128,112),T1=(181,158),w=26,L=112,hand=30,hwh=15.5,front=[(124,80),(128,112),(131,163),(132,200)],attach=(56,90))),
+ 'pat_side':   dict(src='pat_side',neck=62,pivot=(55,64),
+    arms=[dict(shoulder=(46,90),box=(34,206,64,254),w=16)],
+    hang=[(27,80),(61,84),(63,214),(63,254),(35,254),(27,216)],
+    walkarm=dict(src='pat_walk',T0=(122,115),T1=(178,171),w=25,L=120,hand=32,hwh=15.5,front=[(118,75),(121,100),(122,115),(124,166),(124,200)],attach=(46,91))),
  # standing three-quarter / front rigs
  'salem_q34':  dict(src='salem_q34',neck=45,pivot=(40,47),
     arms=[dict(shoulder=(52,56),box=(48,98,68,124),w=9,cut=[(49,51),(72,58),(72,104),(53,104)])]),
@@ -87,6 +104,61 @@ for rid,sp in SPECS.items():
         arms.append(dict(shoulder=[sx,sy],cuff=cuff,hand=dict(x=hb[0]-4,y=hb[1]-4,w=hp.shape[1],h=hp.shape[0]),
                          sleeveW=a['w']*K,color='#%02x%02x%02x'%tuple(int(c) for c in col),
                          stroke='#%02x%02x%02x'%tuple(int(c*0.82) for c in col),bitmap=bitmap,skin='#%02x%02x%02x'%tuple(int(c) for c in np.median(rgb[hand>0],0))))
+    if sp.get('walkarm'):
+        wa=sp['walkarm']
+        # paint the hanging arm out of the body: each row takes the robe colour found beside it
+        hp=np.array([[q[0]*K,q[1]*K] for q in sp['hang']],np.int32)
+        hm=np.zeros((H,W),np.uint8);cv2.fillPoly(hm,[hp],1)
+        hm=cv2.dilate(hm,np.ones((33,33),np.uint8))*(al>0).astype(np.uint8)
+        y0h,y1h=np.where(hm.any(1))[0][[0,-1]]
+        ok=(al>220)&(hm==0)
+        ref=np.median(rgb[y0h:y1h][ok[y0h:y1h]],0)
+        ok&=(np.abs(rgb.astype(np.int16)-ref).max(2)<34)
+        rows=np.zeros((H,3),np.float32);have=np.zeros(H,bool)
+        for y in range(H):
+            if ok[y].sum()>12: rows[y]=np.median(rgb[y][ok[y]],0);have[y]=True
+        idx=np.where(have)[0]
+        for c in range(3): rows[:,c]=np.interp(np.arange(H),idx,rows[idx,c])
+        rows=cv2.GaussianBlur(rows[:,None,:],(1,0),sigmaX=0.1,sigmaY=14)[:,0,:]
+        fill=np.repeat(rows[:,None,:],W,1)
+        soft=cv2.GaussianBlur(hm.astype(np.float32),(0,0),6)[...,None]
+        body_rgb=(body_rgb*(1-soft)+fill*soft).astype(np.uint8)
+        # cut the drawn forward arm from the walk pose
+        wim=np.array(Image.open(f"{SRC}/{wa['src']}.png").convert('RGBA'));WH,WW=wim.shape[:2]
+        wrgb=np.ascontiguousarray(wim[...,:3]).astype(np.float32);wal=wim[...,3].astype(np.float32)/255
+        T0=np.array(wa['T0'],np.float32)*K;T1=np.array(wa['T1'],np.float32)*K
+        ax=(T1-T0)/np.linalg.norm(T1-T0);pd=np.array([-ax[1],ax[0]])   # pd: across the sleeve, top to underside
+        w=wa['w']*K;L=wa['L']*K;hwh=wa['hwh']*K;hl=wa['hand']*K
+        Wr=T1+pd*w/2;S=Wr-ax*L
+        b=5*K
+        poly=np.array([S-ax*b-pd*w/2,Wr-pd*w/2,Wr-pd*hwh,Wr+ax*hl-pd*hwh,Wr+ax*hl+pd*hwh,Wr+pd*hwh,Wr+pd*w/2,S-ax*b+pd*w/2],np.int32)
+        pm=np.zeros((WH,WW),np.uint8);cv2.fillPoly(pm,[poly],1)
+        yy,xx=np.mgrid[0:WH,0:WW].astype(np.float32)
+        u=(xx-S[0])*ax[0]+(yy-S[1])*ax[1];v=(xx-S[0])*pd[0]+(yy-S[1])*pd[1]
+        fr=np.array(wa['front'],np.float32)*K
+        xf=np.interp(np.arange(WH),fr[:,1],fr[:,0])[:,None]
+        hidden=np.clip((xf+2*K-xx)/(3*K),0,1)          # 1 where the body hides the arm
+        real=(pm>0)&(hidden<0.05)&(wal>0.9)&(u<L-2*K)
+        sleeve=np.median(wrgb[real],0)
+        flat=sleeve[None,None,:]*(1-0.07*np.clip(v/w+0.5,0,1))[...,None]
+        wrgb=wrgb*(1-hidden[...,None])+flat*hidden[...,None]
+        alpha=np.maximum(wal,hidden)                     # the completed part is solid
+        armm=cv2.GaussianBlur(pm.astype(np.float32),(0,0),1.2)*alpha
+        armm*=np.clip((u+b)/(w*1.15),0,1)            # the shoulder end fades into the body's own cloth
+        dist=cv2.distanceTransform((armm>0.5).astype(np.uint8),cv2.DIST_L2,5)
+        rim=np.clip(1-dist/(1.8*K),0,1)[...,None]
+        wrgb=wrgb*(1-0.12*rim*hidden[...,None])-0.03*rim*(1-hidden[...,None])*wrgb
+        E=S+(Wr-S)*0.5;Pm=Wr+ax*hl*0.55
+        disc=((xx-E[0])**2+(yy-E[1])**2)<=(w*0.5)**2
+        pieces={}
+        for nm,half in {'upper':(u<L*0.5),'fore':(u>=L*0.5)}.items():
+            m=armm*((half|disc).astype(np.float32))
+            ys,xs=np.where(m>0.01)
+            x0,y0,x1,y1=xs.min(),ys.min(),xs.max()+1,ys.max()+1
+            Image.fromarray(np.dstack([np.clip(wrgb,0,255).astype(np.uint8),(m*255).astype(np.uint8)])[y0:y1,x0:x1]).save(f'{d}/{nm}0.png')
+            pieces[nm]=dict(x=int(x0),y=int(y0),w=int(x1-x0),h=int(y1-y0))
+        arms[0]['bitmap']=dict(pieces,S=[float(S[0]),float(S[1])],E=[float(E[0]),float(E[1])],P=[float(Pm[0]),float(Pm[1])],W=[float(Wr[0]),float(Wr[1])])
+        arms[0]['shoulder']=[wa['attach'][0]*K,wa['attach'][1]*K]
     j['arms']=arms
     if sp.get('neck'):
         ny=sp['neck']*K

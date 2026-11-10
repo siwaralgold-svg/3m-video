@@ -1,48 +1,8 @@
 [
  {
-  "id": "sfx-hoe1",
-  "file": "impact_footstep_grass_000.mp3",
-  "dur": 0.78,
-  "vol": 0.3,
-  "fin": 0,
-  "fout": 0.05,
-  "scene": "sc03",
-  "local": 1.3907
- },
- {
-  "id": "sfx-hoe2",
-  "file": "impact_footstep_grass_002.mp3",
-  "dur": 0.69,
-  "vol": 0.28,
-  "fin": 0,
-  "fout": 0.05,
-  "scene": "sc03",
-  "local": 2.7407
- },
- {
-  "id": "sfx-hoe3",
-  "file": "impact_footstep_grass_003.mp3",
-  "dur": 0.67,
-  "vol": 0.3,
-  "fin": 0,
-  "fout": 0.05,
-  "scene": "sc03",
-  "local": 4.0907
- },
- {
-  "id": "sfx-hoe4",
-  "file": "impact_footstep_grass_000.mp3",
-  "dur": 0.78,
-  "vol": 0.3,
-  "fin": 0,
-  "fout": 0.05,
-  "scene": "sc14",
-  "local": 1.3907
- },
- {
   "id": "sfx-bag",
   "file": "rpg_belt_handle1.mp3",
-  "start": 66.238,
+  "start": 66.318,
   "dur": 0.25,
   "vol": 0.35,
   "fin": 0,
@@ -51,7 +11,7 @@
  {
   "id": "sfx-stetho",
   "file": "rpg_cloth2.mp3",
-  "start": 67.562,
+  "start": 67.012,
   "dur": 0.36,
   "vol": 0.3,
   "fin": 0,

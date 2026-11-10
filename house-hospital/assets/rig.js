@@ -8,7 +8,7 @@
   const D2R = Math.PI / 180;
   // Height of each figure relative to an adult man (father = 1).
   const REL = {
-    salem_side: 0.76, salem_q34: 0.76, salem_back: 0.76, salem_front: 0.76,
+    salem_side: 0.76, salem_q34: 0.76, salem_back: 0.76, salem_front: 0.76, pat_side: 1.03,
     father_side: 1, father_front: 1, uncle_side: 1, uncle_q34: 1.0,
     mother_q34: 0.97, pat_q34: 1.03, marian_side: 0.98, marian_q34: 0.98,
     res_oldman_walk: 0.93, res_oldman_sit: 0.72, res_basket_stand: 1.0, res_basket_walk: 1.0,
@@ -90,6 +90,20 @@
     const a0 = Math.atan2(-(cx - sx), cy - sy) / D2R;
     const w = a.sleeveW;
     const root = el("div", "rig-arm", parent, { ...abs, left: sx + "px", top: sy + "px", transformOrigin: "0 0" });
+    if (a.bitmap && a.bitmap.S) {
+      // side views: the forward arm drawn in the walk pose, cut at the elbow. Rest (0, 0) hangs straight down.
+      const B = a.bitmap, S = B.S, E = B.E, Pm = B.P;
+      const ang = (p, q2) => Math.atan2(-(q2[0] - p[0]), q2[1] - p[1]) / D2R;
+      const l1 = Math.hypot(E[0] - S[0], E[1] - S[1]), l2 = Math.hypot(Pm[0] - E[0], Pm[1] - E[1]);
+      const ua = el("div", "", root, { ...abs, transformOrigin: "0 0", transform: `rotate(${-ang(S, E)}deg)` });
+      const ui = el("img", "rig-sleeve", ua, { ...abs, left: B.upper.x - S[0] + "px", top: B.upper.y - S[1] + "px", width: B.upper.w + "px", height: B.upper.h + "px" });
+      ui.src = `assets/rig/${rid}/upper${idx}.png`;
+      const elb = el("div", "rig-elbow", root, { ...abs, top: l1 + "px", transformOrigin: "0 0" });
+      const fa = el("div", "", elb, { ...abs, transformOrigin: "0 0", transform: `rotate(${-ang(E, Pm)}deg)` });
+      const fi = el("img", "rig-sleeve", fa, { ...abs, left: B.fore.x - E[0] + "px", top: B.fore.y - E[1] + "px", width: B.fore.w + "px", height: B.fore.h + "px" });
+      fi.src = `assets/rig/${rid}/fore${idx}.png`;
+      return { root, elb, a0: 0, L1: l1, L2: l2, sx, sy, cuffEl: fa, handEl: fi, rest: -9 };
+    }
     if (a.bitmap) {
       // the drawn sleeve and hand from the reference art, split at the elbow
       const B = a.bitmap, ex = B.elbow[0], ey = B.elbow[1];
@@ -146,11 +160,13 @@
     const P = { rid, R, host, inner, W, H, ox, ground, walker, shadow, opt };
 
     // far arm (walkers): darker copy behind everything
-    if (walker) {
+    if (walker || opt.farArm) {
       const a = R.arms[0];
       const far = Object.assign({}, a, { shoulder: [a.shoulder[0] - H * 0.015, a.shoulder[1] + H * 0.004] , cuff: [a.cuff[0] - H * 0.015, a.cuff[1]], hand: Object.assign({}, a.hand, { x: a.hand.x - H * 0.015 }) });
       P.farArm = buildArm(inner, rid, far, 0);
       P.farArm.root.style.filter = "brightness(0.8) saturate(0.95)";
+    }
+    if (walker) {
       P.legSvg = svg(inner, W, H, { left: "0px", top: "0px", clipPath: `inset(${R.hem - H * 0.02}px -50% -10% -50%)` });
       const FL = H * (R.legs ? 0.105 : 0.1);
       P.FL = FL;
@@ -180,7 +196,7 @@
     P.upper = el("div", "rig-upper", inner, { ...abs, width: W + "px", height: H + "px", transformOrigin: `${ox}px ${walker ? R.waist : H * 0.55}px` });
     P.body = el("img", "rig-body", P.upper, { ...abs, width: W + "px", height: H + "px" });
     P.body.src = `assets/rig/${rid}/body.png`;
-    if (walker) P.body.style.clipPath = `inset(0 0 ${H - R.waist - 1}px 0)`;
+    if (walker) P.body.style.clipPath = `inset(0 0 ${H - R.waist - 8}px 0)`;
     if (opt.sit) {
       // seated (front views): drop the thigh band, show shins under the lap
       P.lower = el("img", "rig-lower", inner, { ...abs, width: W + "px", height: H + "px", clipPath: `inset(${opt.sit[1]}px 0 0 0)` });
@@ -329,6 +345,9 @@
       A.root.style.transform = `rotate(${A.a0 + sh}deg)`;
       A.elb.style.transform = `rotate(${e}deg)`;
     };
+    // a relaxed arm keeps a slight bend at the elbow
+    if (P.arms[0] && P.arms[0].rest && !st.arm) elN += P.arms[0].rest;
+    if (P.farArm && P.farArm.rest && !st.farArm) elF += P.farArm.rest;
     if (P.arms[0]) setArm(P.arms[0], armN, elN);
     if (P.arms[1]) setArm(P.arms[1], st.arm2 ? st.arm2[0] : 0, st.arm2 ? st.arm2[1] : 0);
     if (P.farArm) {
@@ -445,5 +464,32 @@
     const qx = lx * Math.cos(r) - ly * Math.sin(r), qy = lx * Math.sin(r) + ly * Math.cos(r);
     return { x: st.x + qx * sc * dir, y: (st.y || 0) + (st.dy || 0) + qy * sc };
   }
-  window.Rig = { reach, mixArm, pt, make, figure, track, drive, wob, clamp, lerp, smooth, REL, gait, camera, attach, talk };
+  // Where and when a walker's feet land, for a puppet moving along xOf(t) from x0 (sampled once at build).
+  function footfalls(P, o) {
+    const sc = (o.h * (REL[P.rid] || 1)) / P.H;
+    const s = P.H * (o.run ? 0.3 : 0.2), f = o.run ? 0.42 : 0.6, out = [];
+    [0.05, 0.55].forEach((off) => {
+      let prev = null;
+      for (let t = o.t0; t <= o.t1; t += 1 / 240) {
+        const d = Math.abs(o.x(t) - o.x0) / sc, k = Math.floor(d / (2 * s) + off);
+        if (prev !== null && k > prev) out.push({ t, x: o.x0 + (o.dir || 1) * (2 * s * (k - off) + f * s) * sc, y: o.y });
+        prev = k;
+      }
+    });
+    return out;
+  }
+  // Small dust puffs at footfalls: build once, then render(t).
+  function dust(layer, falls, o) {
+    o = o || {};
+    const size = o.size || 46, life = o.life || 0.55;
+    const els = falls.map(() => el("div", "rig-dust", layer, { ...abs, width: size + "px", height: size * 0.5 + "px", borderRadius: "50%", opacity: 0,
+      background: "radial-gradient(closest-side, rgba(214,178,132,.75), rgba(214,178,132,0))", transformOrigin: "50% 100%" }));
+    return { render: (t) => falls.forEach((fl, i) => {
+      const a = (t - fl.t) / life, e = els[i];
+      if (a < 0 || a > 1) { e.style.opacity = 0; return; }
+      e.style.opacity = 0.7 * (1 - a) * (1 - a);
+      e.style.transform = `translate(${fl.x - size / 2 - (o.drift || 0) * a}px, ${fl.y - size * 0.5}px) scale(${0.5 + 1.3 * a}, ${0.5 + 1.0 * a})`;
+    }) };
+  }
+  window.Rig = { footfalls, dust, reach, mixArm, pt, make, figure, track, drive, wob, clamp, lerp, smooth, REL, gait, camera, attach, talk };
 })();
