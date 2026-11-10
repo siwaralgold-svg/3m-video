@@ -95,8 +95,8 @@ Rig.drive(tl, DUR, (t) => {
   const ust = {t, x: ux(t), x0: -140, y: 1000, h: 620, dir: 1, settle: uset(t), swing: 0.6};
   un.render(ust);
   const fst = {t, x: ux(t) - 105, x0: -245, y: 970, h: 608, dir: 1, head: 9, lean: 5, settle: uset(t), swing: 0.2};
-  const sh = Rig.pt(un, ust, un.R.arms[0].shoulder[0] + 18, un.R.arms[0].shoulder[1] + 6);
-  fst.arm = Rig.reach(fa, fst, 0, sh.x, sh.y, -1);
+  const sh = Rig.pt(un, ust, un.R.arms[0].shoulder[0] - 4, un.R.arms[0].shoulder[1] - 26);
+  fst.arm = Rig.reach(fa, fst, 0, sh.x, sh.y, 1); fst.lock = 1;
   fa.render(fst);
   sw.render({t, x: sx(t), x0: -40, y: 1012, h: 620, dir: 1, settle: sset(t), head: sHead(t)});
   const m = mArm(t);

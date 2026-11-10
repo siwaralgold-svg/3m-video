@@ -311,9 +311,10 @@
       const nrm = (x) => x / (g.f * g.s);
       // arms counter-swing the legs
       const amp = (run ? 38 : 16) * walkAmt * (st.swing == null ? 1 : st.swing);
-      armN += -amp * nrm(feet[0].rel) * 0.9 + (run ? -10 : 0);
+      // st.lock: the near arm is placed exactly (holding a hand, resting on a shoulder), so it does not swing
+      if (!st.lock) armN += -amp * nrm(feet[0].rel) * 0.9 + (run ? -10 : 0);
       armF += -amp * nrm(feet[1].rel) * 0.9 + (run ? -10 : 0);
-      elN += run ? -55 * walkAmt : -6 * walkAmt;
+      if (!st.lock) elN += run ? -55 * walkAmt : -6 * walkAmt;
       elF += run ? -55 * walkAmt : -6 * walkAmt;
       const pass = 1 - Math.abs(nrm(feet[0].rel) - nrm(feet[1].rel)) / 2; // 1 at passing
       bob = -(pass * (run ? 0.03 : 0.012) * H) * walkAmt;
@@ -441,7 +442,8 @@
   function reach(P, st, i, tx, ty, bend) {
     const A = i === "far" ? P.farArm : P.arms[i || 0];
     const sc = (st.h || 400) * (REL[P.rid] || 1) / P.H, dir = st.dir || 1;
-    const lean = st.lean || 0;
+    // a walker leans into the walk; allow for it so the hand lands where asked
+    const lean = (st.lean || 0) + (P.walker ? (st.run ? 7 : 1.5) * (1 - clamp(st.settle == null ? 0 : st.settle, 0, 1)) : 0);
     const sx = A.sx - P.ox, sy = A.sy - P.ground + (P.sitGap || 0);
     const lx = (tx - st.x) / (sc * dir), ly = (ty - (st.y || 0) - (st.dy || 0)) / sc;
     let vx = lx - sx, vy = ly - sy;

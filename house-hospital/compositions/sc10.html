@@ -33,6 +33,7 @@
         <img id="sc10-bg" class="bgimg" src="assets/bg/02_neighborhood_lane.png">
         <div id="sc10-father" class="actor" style="z-index:20"></div>
         <div id="sc10-salem" class="actor" style="z-index:24"></div>
+        <div id="sc10-farm" style="position:absolute;z-index:26;left:0;top:0"></div>
         <div id="sc10-girl" class="actor" style="z-index:10"></div>
       </div>
       
@@ -49,18 +50,18 @@
     const at = (a) => warp(a) + 3.0 - 76.013;
     const tl = gsap.timeline({ paused: true });
 
+// Salem leads, his hand reaching back and up; his father's comes forward and down to hold it.
 function handWalk(t, fa, sa, x0, y, h, v, extra) {
-  const fx = x0 + 110 - t * v, sx = x0 - t * v;
-  const sst = Object.assign({t, x: sx, x0: x0, y: y + 14, h, dir: -1, swing: 0.4}, extra || {});
-  sst.farArm = [-22, -18];
-  sa.render(sst);
-  const hw = sa.handWorld('far');
-  const fst = Object.assign({t, x: fx, x0: x0 + 110, y, h: h * 0.98, dir: -1, swing: 0.3}, extra || {});
-  fst.arm = Rig.reach(fa, fst, 0, hw.x + 26, hw.y - 18, -1);
-  fa.render(fst);
+  const k = h / 640, sx = x0 - t * v, fx = sx + 200 * k;
+  const sst = Object.assign({t, x: sx, x0: x0, y: y + 10 * k, h, dir: -1, swing: 0.6, lock: 1, head: 5}, extra || {});
+  const fst = Object.assign({t, x: fx, x0: x0 + 200 * k, y, h: h * 0.98, dir: -1, swing: 0.6, lock: 1, head: 6}, extra || {});
+  const M = {x: sx + 115 * k, y: y - 290 * k};
+  sst.arm = Rig.reach(sa, sst, 0, M.x - 4 * k, M.y + 7 * k, 1);
+  fst.arm = Rig.reach(fa, fst, 0, M.x + 5 * k, M.y - 7 * k, 1);
+  sa.render(sst); fa.render(fst);
 }
 
-const fa = Rig.make(q('sc10-father'), 'father_side', {seed: 2});
+const fa = Rig.make(q('sc10-father'), 'father_side', {seed: 2, armLayer: q('sc10-farm')});
 const sa = Rig.make(q('sc10-salem'), 'salem_side', {seed: 6});
 const gi = Rig.figure(q('sc10-girl'), 'assets/chars/res_girl_stand.png', 512, 1204, {seed: 3});
 const cam = Rig.camera(q('sc10-cam'));

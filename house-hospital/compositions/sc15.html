@@ -39,6 +39,7 @@
         <div id="sc15-salem" class="actor" style="z-index:24"></div>
         <div id="sc15-mfather" class="actor" style="z-index:26"></div>
         <div id="sc15-msalem" class="actor" style="z-index:27"></div>
+        <div id="sc15-mfarm" style="position:absolute;z-index:28;left:0;top:0"></div>
         <div id="sc15-back" class="actor" style="z-index:30"></div>
         <div id="sc15-father" class="actor" style="z-index:29"></div>
       </div>
@@ -56,15 +57,15 @@
     const at = (a) => warp(a) + 3.0 - 92.442;
     const tl = gsap.timeline({ paused: true });
 
+// Salem leads, his hand reaching back and up; his father's comes forward and down to hold it.
 function handWalk(t, fa, sa, x0, y, h, v, extra) {
-  const fx = x0 + 110 - t * v, sx = x0 - t * v;
-  const sst = Object.assign({t, x: sx, x0: x0, y: y + 14, h, dir: -1, swing: 0.4}, extra || {});
-  sst.farArm = [-22, -18];
-  sa.render(sst);
-  const hw = sa.handWorld('far');
-  const fst = Object.assign({t, x: fx, x0: x0 + 110, y, h: h * 0.98, dir: -1, swing: 0.3}, extra || {});
-  fst.arm = Rig.reach(fa, fst, 0, hw.x + 26, hw.y - 18, -1);
-  fa.render(fst);
+  const k = h / 640, sx = x0 - t * v, fx = sx + 200 * k;
+  const sst = Object.assign({t, x: sx, x0: x0, y: y + 10 * k, h, dir: -1, swing: 0.6, lock: 1, head: 5}, extra || {});
+  const fst = Object.assign({t, x: fx, x0: x0 + 200 * k, y, h: h * 0.98, dir: -1, swing: 0.6, lock: 1, head: 6}, extra || {});
+  const M = {x: sx + 115 * k, y: y - 290 * k};
+  sst.arm = Rig.reach(sa, sst, 0, M.x - 4 * k, M.y + 7 * k, 1);
+  fst.arm = Rig.reach(fa, fst, 0, M.x + 5 * k, M.y - 7 * k, 1);
+  sa.render(sst); fa.render(fst);
 }
 
 const ma = Rig.make(q('sc15-marian'), 'marian_side', {seed: 4});
@@ -73,7 +74,7 @@ const gi = Rig.figure(q('sc15-girl'), 'assets/chars/res_girl_walk.png', 672, 120
 const old = Rig.figure(q('sc15-old'), 'assets/chars/res_oldman_walk.png', 816, 1316, {seed: 3, amp: 0.3});
 const bas = Rig.figure(q('sc15-basket'), 'assets/chars/res_basket_walk.png', 852, 1348, {seed: 5, amp: 0.3});
 const sa = Rig.make(q('sc15-salem'), 'salem_side', {seed: 7});
-const mf = Rig.make(q('sc15-mfather'), 'father_side', {seed: 1});
+const mf = Rig.make(q('sc15-mfather'), 'father_side', {seed: 1, armLayer: q('sc15-mfarm')});
 const ms = Rig.make(q('sc15-msalem'), 'salem_side', {seed: 9});
 const back = Rig.figure(q('sc15-back'), 'assets/chars/salem_back.png', 304, 708, {seed: 8, amp: 0.4});
 const fa = Rig.make(q('sc15-father'), 'father_side', {seed: 3});

@@ -33,6 +33,7 @@
         <img id="sc11-bg" class="bgimg" src="assets/bg/01_hospital_exterior.png">
         <div id="sc11-father" class="actor" style="z-index:20"></div>
         <div id="sc11-salem" class="actor" style="z-index:24"></div>
+        <div id="sc11-farm" style="position:absolute;z-index:26;left:0;top:0"></div>
       </div>
       <div id="sc11-dusk" class="grade" style="background:linear-gradient(180deg,rgba(214,110,50,.75),rgba(120,50,30,.55))"></div><div id="sc11-night" class="grade" style="background:rgba(18,26,60,.85)"></div><div id="sc11-dawn" class="grade" style="background:linear-gradient(180deg,rgba(255,200,150,.6),rgba(255,236,200,.1))"></div>
     </div>
@@ -48,18 +49,18 @@
     const at = (a) => warp(a) + 3.0 - 78.808;
     const tl = gsap.timeline({ paused: true });
 
+// Salem leads, his hand reaching back and up; his father's comes forward and down to hold it.
 function handWalk(t, fa, sa, x0, y, h, v, extra) {
-  const fx = x0 + 110 - t * v, sx = x0 - t * v;
-  const sst = Object.assign({t, x: sx, x0: x0, y: y + 14, h, dir: -1, swing: 0.4}, extra || {});
-  sst.farArm = [-22, -18];
-  sa.render(sst);
-  const hw = sa.handWorld('far');
-  const fst = Object.assign({t, x: fx, x0: x0 + 110, y, h: h * 0.98, dir: -1, swing: 0.3}, extra || {});
-  fst.arm = Rig.reach(fa, fst, 0, hw.x + 26, hw.y - 18, -1);
-  fa.render(fst);
+  const k = h / 640, sx = x0 - t * v, fx = sx + 200 * k;
+  const sst = Object.assign({t, x: sx, x0: x0, y: y + 10 * k, h, dir: -1, swing: 0.6, lock: 1, head: 5}, extra || {});
+  const fst = Object.assign({t, x: fx, x0: x0 + 200 * k, y, h: h * 0.98, dir: -1, swing: 0.6, lock: 1, head: 6}, extra || {});
+  const M = {x: sx + 115 * k, y: y - 290 * k};
+  sst.arm = Rig.reach(sa, sst, 0, M.x - 4 * k, M.y + 7 * k, 1);
+  fst.arm = Rig.reach(fa, fst, 0, M.x + 5 * k, M.y - 7 * k, 1);
+  sa.render(sst); fa.render(fst);
 }
 
-const fa = Rig.make(q('sc11-father'), 'father_side', {seed: 4});
+const fa = Rig.make(q('sc11-father'), 'father_side', {seed: 4, armLayer: q('sc11-farm')});
 const sa = Rig.make(q('sc11-salem'), 'salem_side', {seed: 8});
 const cam = Rig.camera(q('sc11-cam'));
 // day -> dusk -> night -> dawn

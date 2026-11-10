@@ -299,8 +299,8 @@ Rig.drive(tl, DUR, (t) => {
   const ust = {t, x: ex(t), x0: 1460, y: 840, h: 560, dir: -1, op: before ? 0 : 1, swing: 0.6};
   const fst = {t, x: ex(t) + 105, x0: 1565, y: 812, h: 548, dir: -1, head: 9, lean: 5, op: before ? 0 : 1, swing: 0.2};
   un.render(ust);
-  const sh = Rig.pt(un, ust, un.R.arms[0].shoulder[0] + 18, un.R.arms[0].shoulder[1] + 6);
-  fst.arm = Rig.reach(fa, fst, 0, sh.x, sh.y, -1);
+  const sh = Rig.pt(un, ust, un.R.arms[0].shoulder[0] - 4, un.R.arms[0].shoulder[1] - 26);
+  fst.arm = Rig.reach(fa, fst, 0, sh.x, sh.y, 1); fst.lock = 1;
   fa.render(fst);
   sw.render({t, x: swx(t), x0: 1330, y: 806, h: 470, dir: -1, op: t >= at(43.9) ? 1 : 0});
 });
@@ -339,8 +339,8 @@ Rig.drive(tl, DUR, (t) => {
   if (b > 0) ust.arm = Rig.mixArm([0, 0], [-62 - 6 * flick, -58 - 22 * flick], b);
   un.render(ust);
   const fst = {t, x: ux(t) + 105, x0: 1665, y: 945, h: 588, dir: -1, head: 9, lean: 5, settle: uset(t), swing: 0.2};
-  const sh = Rig.pt(un, ust, un.R.arms[0].shoulder[0] + 18, un.R.arms[0].shoulder[1] + 6);
-  fst.arm = Rig.reach(fa, fst, 0, sh.x, sh.y, -1);
+  const sh = Rig.pt(un, ust, un.R.arms[0].shoulder[0] - 4, un.R.arms[0].shoulder[1] - 26);
+  fst.arm = Rig.reach(fa, fst, 0, sh.x, sh.y, 1); fst.lock = 1;
   fa.render(fst);
   const walking = t < stop + 0.45 || t >= goT;
   const swst = {t, x: t < goT ? sx(t) : 1060 - (t - goT) * 140, y: 990, h: 600, dir: -1, op: walking ? 1 : 0};
@@ -400,8 +400,8 @@ Rig.drive(tl, DUR, (t) => {
   const ust = {t, x: ux(t), x0: -140, y: 1000, h: 620, dir: 1, settle: uset(t), swing: 0.6};
   un.render(ust);
   const fst = {t, x: ux(t) - 105, x0: -245, y: 970, h: 608, dir: 1, head: 9, lean: 5, settle: uset(t), swing: 0.2};
-  const sh = Rig.pt(un, ust, un.R.arms[0].shoulder[0] + 18, un.R.arms[0].shoulder[1] + 6);
-  fst.arm = Rig.reach(fa, fst, 0, sh.x, sh.y, -1);
+  const sh = Rig.pt(un, ust, un.R.arms[0].shoulder[0] - 4, un.R.arms[0].shoulder[1] - 26);
+  fst.arm = Rig.reach(fa, fst, 0, sh.x, sh.y, 1); fst.lock = 1;
   fa.render(fst);
   sw.render({t, x: sx(t), x0: -40, y: 1012, h: 620, dir: 1, settle: sset(t), head: sHead(t)});
   const m = mArm(t);
@@ -559,21 +559,21 @@ Rig.drive(tl, DUR, (t) => {
 
 # ------------------------------------------------------------------ sc10 lane: walking home hand in hand
 HAND_WALK = r"""
+// Salem leads, his hand reaching back and up; his father's comes forward and down to hold it.
 function handWalk(t, fa, sa, x0, y, h, v, extra) {
-  const fx = x0 + 110 - t * v, sx = x0 - t * v;
-  const sst = Object.assign({t, x: sx, x0: x0, y: y + 14, h, dir: -1, swing: 0.4}, extra || {});
-  sst.farArm = [-22, -18];
-  sa.render(sst);
-  const hw = sa.handWorld('far');
-  const fst = Object.assign({t, x: fx, x0: x0 + 110, y, h: h * 0.98, dir: -1, swing: 0.3}, extra || {});
-  fst.arm = Rig.reach(fa, fst, 0, hw.x + 26, hw.y - 18, -1);
-  fa.render(fst);
+  const k = h / 640, sx = x0 - t * v, fx = sx + 200 * k;
+  const sst = Object.assign({t, x: sx, x0: x0, y: y + 10 * k, h, dir: -1, swing: 0.6, lock: 1, head: 5}, extra || {});
+  const fst = Object.assign({t, x: fx, x0: x0 + 200 * k, y, h: h * 0.98, dir: -1, swing: 0.6, lock: 1, head: 6}, extra || {});
+  const M = {x: sx + 115 * k, y: y - 290 * k};
+  sst.arm = Rig.reach(sa, sst, 0, M.x - 4 * k, M.y + 7 * k, 1);
+  fst.arm = Rig.reach(fa, fst, 0, M.x + 5 * k, M.y - 7 * k, 1);
+  sa.render(sst); fa.render(fst);
 }
 """
 scene("sc10", 92.6, 2.9, "02_neighborhood_lane",
-      [rig("sc10-father", 20), rig("sc10-salem", 24), rig("sc10-girl", 10)],
+      [rig("sc10-father", 20), rig("sc10-salem", 24), div("sc10-farm", 26, "left:0;top:0"), rig("sc10-girl", 10)],
       HAND_WALK + r"""
-const fa = Rig.make(q('sc10-father'), 'father_side', {seed: 2});
+const fa = Rig.make(q('sc10-father'), 'father_side', {seed: 2, armLayer: q('sc10-farm')});
 const sa = Rig.make(q('sc10-salem'), 'salem_side', {seed: 6});
 const gi = Rig.figure(q('sc10-girl'), 'assets/chars/res_girl_stand.png', 512, 1204, {seed: 3});
 const cam = Rig.camera(q('sc10-cam'));
@@ -586,9 +586,9 @@ Rig.drive(tl, DUR, (t) => {
 
 # ------------------------------------------------------------------ sc11 days pass
 scene("sc11", 95.5, 4.4, "01_hospital_exterior",
-      [rig("sc11-father", 20), rig("sc11-salem", 24)],
+      [rig("sc11-father", 20), rig("sc11-salem", 24), div("sc11-farm", 26, "left:0;top:0")],
       HAND_WALK + r"""
-const fa = Rig.make(q('sc11-father'), 'father_side', {seed: 4});
+const fa = Rig.make(q('sc11-father'), 'father_side', {seed: 4, armLayer: q('sc11-farm')});
 const sa = Rig.make(q('sc11-salem'), 'salem_side', {seed: 8});
 const cam = Rig.camera(q('sc11-cam'));
 // day -> dusk -> night -> dawn
@@ -663,14 +663,14 @@ const head = T([[0,0],[tB,6],[at(103.5),-5,'out'],[at(103.8),1],[at(104.1),-4],[
 const lean = T([[0,0],[tB,1],[at(103.5),-3],[at(103.75),-1],[at(104.05),-4],[at(106.8),-1],[at(109.6),3]]);
 const dy = T([[0,0],[at(103.5),0],[at(103.7),-8],[at(103.95),0]]);
 const pt = T([[0,0],[at(104.85),0],[at(105.4),1,'out'],[at(106.45),1],[at(106.9),0]]);
-const sx = T([[0,-200],[at(102.4),880,'out'],[at(107.6),880],[at(108.9),1335]]);
-const sset = T([[0,0],[at(102.25),0],[at(102.7),1],[at(107.6),1],[at(107.85),0],[at(108.75),0],[at(109.15),1]]);
-const onShoulder = T([[0,0],[at(108.95),0],[at(109.75),1]]);
-const sHead = T([[0,0],[at(102.7),0],[at(103.2),-9],[at(107.4),-6],[at(109.4),-11],[at(110.5),-8]]);
-const sBounce = T([[0,0],[at(109.9),0],[at(110.1),-6],[at(110.3),0],[at(110.5),-4],[at(110.7),0]]);
+const sx = T([[0,-200],[at(102.4),880,'out'],[at(107.0),880],[at(108.15),1378]]);
+const sset = T([[0,0],[at(102.25),0],[at(102.7),1],[at(107.0),1],[at(107.25),0],[at(108.0),0],[at(108.4),1]]);
+const onShoulder = T([[0,0],[at(108.1),0],[at(108.8),1]]);
+const sHead = T([[0,0],[at(102.7),0],[at(103.2),-9],[at(107.0),-6],[at(108.6),-11],[at(110.5),-8]]);
+const sBounce = T([[0,0],[at(108.9),0],[at(109.1),-6],[at(109.3),0],[at(109.5),-4],[at(109.7),0]]);
 const falls = Rig.footfalls(sa, {x: sx, x0: -200, h: 600, run: 1, dir: 1, t0: 0, t1: at(102.35), y: 962});
 const dust = Rig.dust(q('sc14-dust'), falls, {drift: 26});
-const c1 = at(104.5), c2 = at(107.2);
+const c1 = at(104.5), c2 = at(106.95);
 Rig.drive(tl, DUR, (t) => {
   if (t < c1) cam.render({cx: 1000 + t * 8, cy: 560, z: 1.03});
   else if (t < c2) cam.render({cx: 1230, cy: 535, z: 1.5});
@@ -684,10 +684,11 @@ Rig.drive(tl, DUR, (t) => {
   let st = PW.state(t);
   if (t > tStop) st.arm = Rig.mixArm(st.arm, [0, -9], Rig.smooth(drop(t)));
   if (left) { st = {t, x: FX, y: FY, h: FH, dir: -1, d: 0, settle: 1, head: head(t), lean: lean(t), dy: dy(t), idle: 0.6};
-    // his hand comes to rest on Salem's shoulder
-    const sh = Rig.pt(sa, sst, sa.R.arms[0].shoulder[0] - 8, sa.R.arms[0].shoulder[1] - 34);
+    // his hand comes down on Salem's head and ruffles his hair
+    const top = Rig.pt(sa, sst, sa.R.head.pivot[0] - 26, 34);
+    const ruf = t > at(108.8) ? 8 * Math.sin((t - at(108.8)) * 10) * Math.exp(-(t - at(108.8)) * 1.1) : 0;
     const up = Rig.mixArm([0, -9], [-152, -12], Rig.smooth(pt(t)));
-    st.arm = Rig.mixArm(up, Rig.reach(fa, st, 0, sh.x + 22, sh.y + 4, 1), Rig.smooth(onShoulder(t))); }
+    st.arm = Rig.mixArm(up, Rig.reach(fa, st, 0, top.x + ruf, top.y - 4, 1), Rig.smooth(onShoulder(t))); }
   st.op = front ? 0 : 1;
   fa.render(st);
   faF.render({t, x: FX, y: FY, h: FH, dir: -1, op: front ? 1 : 0});
@@ -698,7 +699,7 @@ Rig.drive(tl, DUR, (t) => {
 # ------------------------------------------------------------------ sc15 hospital, later: passing by, memory, Salem's back
 scene("sc15", 113.5, 13.5, "01_hospital_exterior",
       [rig("sc15-marian", 8), rig("sc15-woman", 9), rig("sc15-girl", 9), rig("sc15-old", 9), rig("sc15-basket", 8),
-       rig("sc15-salem", 24), rig("sc15-mfather", 26), rig("sc15-msalem", 27), rig("sc15-back", 30), rig("sc15-father", 29)],
+       rig("sc15-salem", 24), rig("sc15-mfather", 26), rig("sc15-msalem", 27), div("sc15-mfarm", 28, "left:0;top:0"), rig("sc15-back", 30), rig("sc15-father", 29)],
       HAND_WALK + r"""
 const ma = Rig.make(q('sc15-marian'), 'marian_side', {seed: 4});
 const wo = Rig.figure(q('sc15-woman'), 'assets/chars/res_mombaby_stand.png', 592, 1328, {seed: 2});
@@ -706,7 +707,7 @@ const gi = Rig.figure(q('sc15-girl'), 'assets/chars/res_girl_walk.png', 672, 120
 const old = Rig.figure(q('sc15-old'), 'assets/chars/res_oldman_walk.png', 816, 1316, {seed: 3, amp: 0.3});
 const bas = Rig.figure(q('sc15-basket'), 'assets/chars/res_basket_walk.png', 852, 1348, {seed: 5, amp: 0.3});
 const sa = Rig.make(q('sc15-salem'), 'salem_side', {seed: 7});
-const mf = Rig.make(q('sc15-mfather'), 'father_side', {seed: 1});
+const mf = Rig.make(q('sc15-mfather'), 'father_side', {seed: 1, armLayer: q('sc15-mfarm')});
 const ms = Rig.make(q('sc15-msalem'), 'salem_side', {seed: 9});
 const back = Rig.figure(q('sc15-back'), 'assets/chars/salem_back.png', 304, 708, {seed: 8, amp: 0.4});
 const fa = Rig.make(q('sc15-father'), 'father_side', {seed: 3});
@@ -754,15 +755,15 @@ const cam = Rig.camera(q('sc16-cam'));
 // archive photos on the narration: Sheikh Zayed with the Kennedys from «في العين سنة ١٩٦٠… قدّم الشيخ زايد»,
 // Dr Pat on «بإشراف الدكتور بات كينيدي», Dr Marian on «وزوجته الدكتورة ماريان كينيدي»,
 // then back to the house for «من هالبيت بدأت حكاية مستشفى الواحة… المعروف اليوم بمستشفى كند».
-const P1 = at(124.0), P2 = at(130.0), P3 = at(133.6), P4 = at(136.15);
+const P1 = at(124.0), P2 = at(130.0), P3 = at(133.6), P4 = at(136.15) + 0.5;
 const X = 0.45;
 const layer = T([[0,1],[P4 - X,1],[P4,0]]);
 const ph1 = T([[0,1],[P2 - X,1],[P2,0]]);
 const ph2 = T([[0,0],[P2 - X,0],[P2,1],[P3 - X,1],[P3,0]]);
 const ph3 = T([[0,0],[P3 - X,0],[P3,1]]);
 const cap1 = T([[0,0],[0.6,0],[1.3,1],[P2 - X,1],[P2,0]]);
-const cap2 = T([[0,0],[P2 + 0.2,0],[P2 + 0.8,1],[P3 - X,1],[P3,0]]);
-const cap3 = T([[0,0],[P3 + 0.2,0],[P3 + 0.8,1]]);
+const cap2 = T([[0,0],[P2 + 0.1,0],[P2 + 0.45,1],[P3 - X,1],[P3,0]]);
+const cap3 = T([[0,0],[P3 + 0.1,0],[P3 + 0.45,1]]);
 const kb = (t, t0, t1) => 1 + 0.045 * Rig.clamp((t - t0) / (t1 - t0), 0, 1);
 const z = T([[0,1.3],[P4,1.3],[DUR,1.0,'io']]), cx = T([[0,900],[P4,900],[DUR,960,'io']]), cy = T([[0,600],[P4,600],[DUR,540,'io']]);
 const fade = T([[0,0],[DUR - 1,0],[DUR,1]]);

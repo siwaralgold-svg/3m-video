@@ -81,8 +81,8 @@ Rig.drive(tl, DUR, (t) => {
   if (b > 0) ust.arm = Rig.mixArm([0, 0], [-62 - 6 * flick, -58 - 22 * flick], b);
   un.render(ust);
   const fst = {t, x: ux(t) + 105, x0: 1665, y: 945, h: 588, dir: -1, head: 9, lean: 5, settle: uset(t), swing: 0.2};
-  const sh = Rig.pt(un, ust, un.R.arms[0].shoulder[0] + 18, un.R.arms[0].shoulder[1] + 6);
-  fst.arm = Rig.reach(fa, fst, 0, sh.x, sh.y, -1);
+  const sh = Rig.pt(un, ust, un.R.arms[0].shoulder[0] - 4, un.R.arms[0].shoulder[1] - 26);
+  fst.arm = Rig.reach(fa, fst, 0, sh.x, sh.y, 1); fst.lock = 1;
   fa.render(fst);
   const walking = t < stop + 0.45 || t >= goT;
   const swst = {t, x: t < goT ? sx(t) : 1060 - (t - goT) * 140, y: 990, h: 600, dir: -1, op: walking ? 1 : 0};

@@ -82,8 +82,8 @@ Rig.drive(tl, DUR, (t) => {
   const ust = {t, x: ex(t), x0: 1460, y: 840, h: 560, dir: -1, op: before ? 0 : 1, swing: 0.6};
   const fst = {t, x: ex(t) + 105, x0: 1565, y: 812, h: 548, dir: -1, head: 9, lean: 5, op: before ? 0 : 1, swing: 0.2};
   un.render(ust);
-  const sh = Rig.pt(un, ust, un.R.arms[0].shoulder[0] + 18, un.R.arms[0].shoulder[1] + 6);
-  fst.arm = Rig.reach(fa, fst, 0, sh.x, sh.y, -1);
+  const sh = Rig.pt(un, ust, un.R.arms[0].shoulder[0] - 4, un.R.arms[0].shoulder[1] - 26);
+  fst.arm = Rig.reach(fa, fst, 0, sh.x, sh.y, 1); fst.lock = 1;
   fa.render(fst);
   sw.render({t, x: swx(t), x0: 1330, y: 806, h: 470, dir: -1, op: t >= at(43.9) ? 1 : 0});
 });

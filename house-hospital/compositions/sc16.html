@@ -62,15 +62,15 @@ const cam = Rig.camera(q('sc16-cam'));
 // archive photos on the narration: Sheikh Zayed with the Kennedys from «في العين سنة ١٩٦٠… قدّم الشيخ زايد»,
 // Dr Pat on «بإشراف الدكتور بات كينيدي», Dr Marian on «وزوجته الدكتورة ماريان كينيدي»,
 // then back to the house for «من هالبيت بدأت حكاية مستشفى الواحة… المعروف اليوم بمستشفى كند».
-const P1 = at(124.0), P2 = at(130.0), P3 = at(133.6), P4 = at(136.15);
+const P1 = at(124.0), P2 = at(130.0), P3 = at(133.6), P4 = at(136.15) + 0.5;
 const X = 0.45;
 const layer = T([[0,1],[P4 - X,1],[P4,0]]);
 const ph1 = T([[0,1],[P2 - X,1],[P2,0]]);
 const ph2 = T([[0,0],[P2 - X,0],[P2,1],[P3 - X,1],[P3,0]]);
 const ph3 = T([[0,0],[P3 - X,0],[P3,1]]);
 const cap1 = T([[0,0],[0.6,0],[1.3,1],[P2 - X,1],[P2,0]]);
-const cap2 = T([[0,0],[P2 + 0.2,0],[P2 + 0.8,1],[P3 - X,1],[P3,0]]);
-const cap3 = T([[0,0],[P3 + 0.2,0],[P3 + 0.8,1]]);
+const cap2 = T([[0,0],[P2 + 0.1,0],[P2 + 0.45,1],[P3 - X,1],[P3,0]]);
+const cap3 = T([[0,0],[P3 + 0.1,0],[P3 + 0.45,1]]);
 const kb = (t, t0, t1) => 1 + 0.045 * Rig.clamp((t - t0) / (t1 - t0), 0, 1);
 const z = T([[0,1.3],[P4,1.3],[DUR,1.0,'io']]), cx = T([[0,900],[P4,900],[DUR,960,'io']]), cy = T([[0,600],[P4,600],[DUR,540,'io']]);
 const fade = T([[0,0],[DUR - 1,0],[DUR,1]]);
