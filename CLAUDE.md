@@ -15,13 +15,11 @@ When a video needs sound effects:
 5. `jingles/` are short music stings for an end card or logo, not effects. Don't play one over a music bed.
 6. Everything in `sfx-library/` is CC0, so no credit is needed in the video, the caption or a `CREDITS.md`.
 
-## "الشعب ضد…" trial series: reuse `edison-stole/`
+## The cartoon art style (from `edison-stole/`)
 
-`edison-stole/` is the template for the trial series (a famous person in the dock, four charges, a verdict plate on each, "الحكم؟ لك أنت" at the end). For a new episode in the same art style:
+When a video should look like the Edison video, reuse its art style, not its story. The story, structure and setting are new each time; only the look carries over. The rules are in `edison-stole/STYLE.md`, and the drawing code is `edison-stole/assets/kit.js`.
 
-1. Copy `edison-stole/` to a new folder and keep `assets/kit.js`, `assets/fonts/`, `assets/brand/`, `index.html`'s shared styles and courtroom background, and `compositions/captions.html`'s styling.
-2. The look is written in `edison-stole/SPEC.md` (colours, type, sizes, safe areas, motion). Follow it; gold is only for verdict plates and the end card.
-3. Characters come from `EK.put(slot, prefix, who)` in `assets/kit.js`. Add a new person as one entry in its `WHO` table (skin, suit, hair path, beard, glasses) and reuse the moods (`EK.mood`), blink, look and idle helpers.
-4. Scene shape: s1 hook with the gavel, one scene per charge (the accused in the dock at the left, the witness at the stand on the right, one exhibit, then `EK.stamp` for the verdict), a closing scene with the four verdicts, then the T3M end card.
-5. On-screen Arabic and the narration are in Saudi dialect unless the person says otherwise. Check every charge against a source before it goes on screen, and word each one at its true weight.
-6. Each scene keeps its timing in one `const T = {…}` line: build on estimates, then retime to the voiceover's word times.
+1. Copy `edison-stole/assets/kit.js`, `assets/fonts/` (Lalezar, Noto Kufi Arabic), `assets/vendor/gsap.min.js` and `assets/brand/` into the new project.
+2. Draw people with `EK.put(slot, prefix, who)`. Add a new person as one entry in the `WHO` table in `kit.js` (skin, suit, hair path, beard, moustache, glasses). Act with `EK.mood`, `EK.blink`, `EK.look` and `EK.idle`.
+3. Draw every new prop and background the same way: flat fills, a #0c1a30 outline at 6–8 px, no gradients, no glow.
+4. Build a new background for the new story. The courtroom belongs to the Edison video only.
