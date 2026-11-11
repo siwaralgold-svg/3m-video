@@ -1,0 +1,35 @@
+<template>
+  <style>
+    @font-face { font-family: "Lalezar"; src: url("assets/fonts/Lalezar-Regular.ttf"); font-weight: 400; }
+    @font-face { font-family: "Noto Kufi Arabic"; src: url("assets/fonts/NotoKufiArabic.ttf"); font-weight: 100 900; }
+    #root { position: absolute; inset: 0; overflow: hidden; }
+  </style>
+  <div id="root" data-composition-id="s12" data-width="1080" data-height="1920">
+    <div id="s12-wrap" class="clip" data-start="0" data-duration="4.5" data-layout-allow-overflow style="position:absolute;inset:0">
+      <div id="s12-stage" class="stage">
+        <svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg" style="position:absolute;left:0;top:0"><defs><clipPath id="s12-clip"><rect x="-400" y="0" width="1900" height="1154"/></clipPath></defs>
+          <g clip-path="url(#s12-clip)"><g id="s12-sh"><g id="s12-sh-slot" transform="translate(540,1050) scale(0.9)"></g></g></g>
+          <g id="s12-p1"><g id="s12-p1-slot" transform="translate(804,500) scale(0.6)"></g></g>
+          <g id="s12-p2"><g id="s12-p2-slot" transform="translate(432,500) scale(0.6)"></g></g>
+          <g id="s12-p3"><g id="s12-p3-slot" transform="translate(60,500) scale(0.6)"></g></g>
+        </svg>
+      </div>
+      <div id="s12-no" class="plate" data-layout-allow-overlap data-layout-allow-occlusion style="left:110px; top:220px; width:860px; height:210px; font-size:130px; line-height:192px">ما تبرّي إبادة</div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+
+    EK.fill("s12-sh-slot", EK.shadow());
+    EK.fill("s12-p1-slot", EK.poster("jobs")); EK.fill("s12-p2-slot", EK.poster("roads")); EK.fill("s12-p3-slot", EK.poster("trips"));
+    const T = { p1: 0.25, p2: 1.0, p3: 1.8, plate: 2.9, fall: 3.2 };
+    gsap.set("#s12-no, #s12-p1, #s12-p2, #s12-p3", { opacity: 0 });
+    EK.whip(tl, "#s12-stage", -1080);
+    [["#s12-p1", "912 644", T.p1, 4], ["#s12-p2", "540 644", T.p2, -3], ["#s12-p3", "168 644", T.p3, 3]].forEach((p, i) => {
+      tl.fromTo(p[0], { opacity: 0, scale: 0.4, rotation: p[3] - 12, svgOrigin: p[1] }, { opacity: 1, scale: 1, rotation: p[3], duration: 0.3, ease: "back.out(2)" }, p[2]);
+      tl.to(p[0], { y: 1300, rotation: 40, duration: 0.5, ease: "power2.in", svgOrigin: p[1] }, T.fall + i * 0.12);
+    });
+    EK.stamp(tl, "#s12-no", "#s12-stage", T.plate, -4);
+    window.__timelines["s12"] = tl;
+  </script>
+</template>

@@ -1,0 +1,47 @@
+<template>
+  <style>
+    @font-face { font-family: "Lalezar"; src: url("assets/fonts/Lalezar-Regular.ttf"); font-weight: 400; }
+    @font-face { font-family: "Noto Kufi Arabic"; src: url("assets/fonts/NotoKufiArabic.ttf"); font-weight: 100 900; }
+    #root { position: absolute; inset: 0; overflow: hidden; }
+  </style>
+  <div id="root" data-composition-id="s13" data-width="1080" data-height="1920">
+    <div id="s13-wrap" class="clip" data-start="0" data-duration="12.0" data-layout-allow-overflow style="position:absolute;inset:0">
+      <div id="s13-stage" class="stage">
+        <svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg" style="position:absolute;left:0;top:0"><defs><clipPath id="s13-clip"><rect x="-400" y="0" width="1900" height="1154"/></clipPath></defs>
+          <g clip-path="url(#s13-clip)">
+            <g id="s13-sh"><g id="s13-sh-slot" transform="translate(540,810) scale(1.35)"></g></g>
+            <g id="s13-p1"><g id="s13-p1-slot" transform="translate(765,500) scale(0.75)"></g></g>
+            <g id="s13-p2"><g id="s13-p2-slot" transform="translate(405,480) scale(0.75)"></g></g>
+            <g id="s13-p3"><g id="s13-p3-slot" transform="translate(45,500) scale(0.75)"></g></g>
+          </g>
+          <g id="s13-tag"><path d="M640 836 V900" fill="none" stroke="#0c1a30" stroke-linejoin="round" stroke-linecap="round" stroke-width="6"/><path d="M584 900 H696 V1040 H584Z" fill="#F4F6F9" stroke="#0c1a30" stroke-linejoin="round" stroke-linecap="round" stroke-width="7"/><text x="640" y="1012" text-anchor="middle" font-family="Lalezar" font-size="110" fill="#8c2f2f">؟</text></g>
+        </svg>
+        <div id="s13-t1" class="ttl" style="top:170px; font-size:100px">الطاغية ما يجيك<br>بوجه شيطان</div>
+        <div id="s13-t2" class="ttl" style="top:196px; font-size:120px">بتسأل عن الثمن؟</div>
+      </div>
+      <div id="s13-v" class="plate" data-layout-allow-overlap data-layout-allow-occlusion style="left:140px; top:1090px; width:800px; height:200px; font-size:136px; line-height:182px">الحكم لك أنت</div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+
+    EK.fill("s13-sh-slot", EK.shadow());
+    EK.fill("s13-p1-slot", EK.poster("jobs")); EK.fill("s13-p2-slot", EK.poster("roads")); EK.fill("s13-p3-slot", EK.poster("trips"));
+    const T = { t1: 0.3, p1: 3.0, p2: 3.8, p3: 4.6, q: 5.9, tag: 8.0, v: 9.9 };
+    gsap.set("#s13-t1, #s13-t2, #s13-v, #s13-tag", { opacity: 0 });
+    gsap.set("#s13-p1, #s13-p2, #s13-p3", { y: 900 });
+    tl.fromTo("#s13-stage", { clipPath: "circle(0% at 50% 45%)" }, { clipPath: "circle(150% at 50% 45%)", duration: 0.45, ease: "power3.out" }, 0);
+    EK.title(tl, "#s13-t1", T.t1);
+    // he comes holding a job, a road and a trip: the posters hide him
+    [["#s13-p1", T.p1, 4], ["#s13-p2", T.p2, -2], ["#s13-p3", T.p3, -4]].forEach((p) => {
+      tl.to(p[0], { y: 0, rotation: p[2], duration: 0.4, ease: "back.out(1.5)", transformOrigin: "50% 50%" }, p[1]);
+    });
+    // would you ask about the price?
+    tl.to("#s13-t1", { opacity: 0, scale: 0.7, duration: 0.12, ease: "power2.in" }, T.q - 0.2);
+    EK.title(tl, "#s13-t2", T.q);
+    tl.fromTo("#s13-tag", { opacity: 0, rotation: -40, svgOrigin: "640 836" }, { opacity: 1, rotation: 8, duration: 0.3, ease: "back.out(2)" }, T.tag);
+    tl.to("#s13-tag", { rotation: -6, duration: 0.6, yoyo: true, repeat: 5, ease: "sine.inOut", svgOrigin: "640 836" }, T.tag + 0.3);
+    EK.stamp(tl, "#s13-v", "#s13-stage", T.v, -4);
+    window.__timelines["s13"] = tl;
+  </script>
+</template>
