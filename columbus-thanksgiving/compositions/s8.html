@@ -1,0 +1,79 @@
+<template>
+  <style>
+    @font-face { font-family: "Lalezar"; src: url("assets/fonts/Lalezar-Regular.ttf"); font-weight: 400; }
+    @font-face { font-family: "Noto Kufi Arabic"; src: url("assets/fonts/NotoKufiArabic.ttf"); font-weight: 100 900; }
+    #root { position: absolute; inset: 0; overflow: hidden; }
+    .sign { position: absolute; text-align: center; direction: rtl; font-family: "Noto Kufi Arabic", sans-serif; font-weight: 800; color: #F4F6F9; background: #a8703f; border: 7px solid #0c1a30; border-radius: 12px; white-space: nowrap; }
+    
+  </style>
+  <div id="root" data-composition-id="s8" data-width="1080" data-height="1920">
+    <div id="s8-wrap" class="clip" data-start="0" data-duration="12.7" data-layout-allow-overflow style="position:absolute;inset:0">
+      <div id="s8-stage" class="stage">
+        <svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg" style="position:absolute;left:0;top:0;overflow:visible">
+          <g transform="translate(360,940)"><g id="s8-linw"><g id="s8-lin-slot"></g></g></g>
+          <g transform="translate(820,960) rotate(6)"><g id="s8-paper"></g></g>
+          <g transform="translate(748,1062)"><g id="s8-quill"></g></g>
+          <g transform="translate(820,950)"><g id="s8-pic">
+            <rect x="-160" y="-140" width="320" height="270" rx="10" fill="#a8703f" stroke="#0c1a30" stroke-width="8" stroke-linejoin="round"/><rect x="-136" y="-116" width="272" height="222" fill="#2b4d7e" stroke="#0c1a30" stroke-width="8" stroke-linejoin="round"/>
+            <rect x="-136" y="40" width="272" height="66" fill="#8a5a33" stroke="#0c1a30" stroke-width="8" stroke-linejoin="round"/><g id="s8-roast" transform="translate(0,6) scale(0.56)"></g>
+          </g></g>
+        </svg>
+        <div id="s8-c" class="count">الملف الثالث</div>
+        <div id="s8-t" class="ttl" style="font-size:150px">كيف صار عيد؟</div>
+        <div id="s8-y" class="plate" style="left:270px; top:200px; width:540px; height:240px; font-size:210px; line-height:252px">١٨٦٣</div>
+        <div id="s8-cal" style="position:absolute; left:700px; top:548px; width:260px; height:290px">
+          <svg viewBox="0 0 260 290" width="260" height="290" style="position:absolute;left:0;top:0;overflow:visible" id="s8-cal-svg"></svg>
+          <div class="kufi" style="position:absolute; left:0; top:12px; width:260px; text-align:center; font-size:40px; font-weight:800; line-height:64px; color:#F4F6F9">نوفمبر</div>
+          <div id="s8-y0" class="disp" style="position:absolute; left:0; top:106px; width:260px; text-align:center; font-size:112px; line-height:160px; color:#0c1a30">١٨٦٣</div>
+          <div id="s8-y1" class="disp" style="position:absolute; left:0; top:106px; width:260px; text-align:center; font-size:112px; line-height:160px; color:#0c1a30">١٨٦٤</div>
+          <div id="s8-y2" class="disp" style="position:absolute; left:0; top:106px; width:260px; text-align:center; font-size:112px; line-height:160px; color:#0c1a30">١٨٦٥</div>
+          <div id="s8-y3" class="disp" style="position:absolute; left:0; top:106px; width:260px; text-align:center; font-size:112px; line-height:160px; color:#0c1a30">١٨٦٦</div>
+        </div>
+        <div id="s8-sym" class="card disp" style="left:620px; top:1074px; width:400px; height:124px; font-size:92px; line-height:124px">رمز العيد</div>
+      </div>
+    </div>
+  </div>
+  <script>
+    (function () {
+    const tl = gsap.timeline({ paused: true });
+    const ST = "#s8-stage";
+    EK.put("s8-lin-slot", "s8-lin", "lincoln"); EK.fill("s8-paper", EK.paper("s8-p")); EK.fill("s8-quill", EK.quill());
+    EK.fill("s8-roast", EK.roast()); EK.fill("s8-cal-svg", EK.calendar());
+    EK.face(tl, "s8-lin", "flat");
+    gsap.set("#s8-t, #s8-y, #s8-cal, #s8-sym, #s8-linw, #s8-paper, #s8-quill, #s8-pic, #s8-p-seal, #s8-y1, #s8-y2, #s8-y3", { opacity: 0 });
+    EK.whip(tl, ST, -1080);
+    tl.fromTo("#s8-c", { opacity: 0 }, { opacity: 1, duration: 0.15 }, 0.08);
+    EK.land(tl, "#s8-t", 1.39);
+    tl.to("#s8-c, #s8-t", { opacity: 0, duration: 0.15 }, 2.6);
+    EK.stamp(tl, "#s8-y", ST, 3.1, -4);
+    tl.fromTo("#s8-linw", { opacity: 0, y: 760 }, { opacity: 1, y: 0, duration: 0.5, ease: "back.out(1.3)" }, 5.0);
+    EK.blink(tl, "s8-lin", 5.7);
+    // he signs
+    EK.spop(tl, "#s8-paper", 5.75);
+    EK.look(tl, "s8-lin", 5.95, 9, 9);
+    tl.fromTo("#s8-quill", { opacity: 0, y: -60 }, { opacity: 1, y: 0, duration: 0.15 }, 6.1);
+    tl.fromTo("#s8-p-sig", { scaleX: 0, svgOrigin: "-80 96" }, { scaleX: 1, duration: 0.9, ease: "none" }, 6.28);
+    tl.to("#s8-quill", { x: 100, duration: 0.9, ease: "none" }, 6.28);
+    tl.to("#s8-quill", { y: -12, duration: 0.11, ease: "sine.inOut", yoyo: true, repeat: 7 }, 6.28);
+    tl.to("#s8-quill", { opacity: 0, y: -80, duration: 0.15 }, 7.2);
+    tl.fromTo("#s8-p-seal", { opacity: 0, scale: 3, svgOrigin: "76 112" }, { opacity: 1, scale: 1, duration: 0.12, ease: "power3.in" }, 7.26);
+    EK.shake(tl, ST, 7.38, 6);
+    EK.mood(tl, "s8-lin", 7.42, "calm");
+    // every year
+    EK.pop(tl, "#s8-cal", 7.96, 5);
+    EK.look(tl, "s8-lin", 8.05, 9, -8);
+    [8.45, 8.75, 9.05].forEach((t, i) => {
+      tl.set("#s8-y" + i, { opacity: 0 }, t); tl.set("#s8-y" + (i + 1), { opacity: 1 }, t);
+      tl.fromTo("#s8-cal", { y: 0 }, { y: -16, duration: 0.07, ease: "power2.out", yoyo: true, repeat: 1, immediateRender: false }, t);
+    });
+    tl.to("#s8-paper", { opacity: 0, y: 200, duration: 0.25, ease: "power2.in" }, 9.5);
+    // the feast becomes the symbol
+    EK.spop(tl, "#s8-pic", 10.09);
+    EK.look(tl, "s8-lin", 10.2, 9, 6);
+    EK.stamp(tl, "#s8-sym", ST, 11.49, -5);
+    EK.blink(tl, "s8-lin", 12.0);
+    EK.idle(tl, "s8-lin", 5.6, 12.6, 2.4);
+    window.__timelines["s8"] = tl;
+    })();
+  </script>
+</template>

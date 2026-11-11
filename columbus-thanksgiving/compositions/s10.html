@@ -1,0 +1,68 @@
+<template>
+  <style>
+    @font-face { font-family: "Lalezar"; src: url("assets/fonts/Lalezar-Regular.ttf"); font-weight: 400; }
+    @font-face { font-family: "Noto Kufi Arabic"; src: url("assets/fonts/NotoKufiArabic.ttf"); font-weight: 100 900; }
+    #root { position: absolute; inset: 0; overflow: hidden; }
+    .sign { position: absolute; text-align: center; direction: rtl; font-family: "Noto Kufi Arabic", sans-serif; font-weight: 800; color: #F4F6F9; background: #a8703f; border: 7px solid #0c1a30; border-radius: 12px; white-space: nowrap; }
+    
+  </style>
+  <div id="root" data-composition-id="s10" data-width="1080" data-height="1920">
+    <div id="s10-wrap" class="clip" data-start="0" data-duration="11.65" data-layout-allow-overflow style="position:absolute;inset:0">
+      <div id="s10-stage" class="stage">
+        <svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg" style="position:absolute;left:0;top:0;overflow:visible">
+          <g id="s10-pair">
+            <g transform="translate(300,730)"><g id="s10-colw"><g id="s10-col-slot" transform="scale(0.86)"></g></g></g>
+            <g transform="translate(800,800)"><g id="s10-tur"></g></g>
+            <g id="s10-dots"></g>
+          </g>
+          <g transform="translate(550,640)"><g id="s10-x"><circle r="84" fill="#F4F6F9" stroke="#0c1a30" stroke-width="8" stroke-linejoin="round"/><path d="M-36 -36 L36 36 M36 -36 L-36 36" fill="none" stroke="#8c2f2f" stroke-width="22" stroke-linecap="round"/></g></g>
+          <g transform="translate(390,930)"><g id="s10-f3"></g></g>
+          <g transform="translate(390,780)"><g id="s10-f2"></g></g>
+          <g transform="translate(390,630)"><g id="s10-f1"></g></g>
+          <g transform="translate(540,1160)"><g id="s10-scw"><g id="s10-sc-slot" transform="scale(1.3)"></g></g></g>
+        </svg>
+        <div id="s10-link" class="card disp" style="left:230px; top:1020px; width:620px; height:140px; font-size:100px; line-height:140px">تاريخ الاستعمار</div>
+        <div id="s10-q" class="ttl" style="top:230px; font-size:160px">القصة كاملة؟</div>
+        <div id="s10-v1" class="ttl" style="top:180px; font-size:190px">الحكم...</div>
+        <div id="s10-v2" class="plate" style="left:240px; top:420px; width:600px; height:220px; font-size:180px; line-height:232px">لك أنت.</div>
+      </div>
+    </div>
+  </div>
+  <script>
+    (function () {
+    const tl = gsap.timeline({ paused: true });
+    const ST = "#s10-stage";
+    EK.put("s10-col-slot", "s10-col", "columbus"); EK.fill("s10-tur", EK.roast());
+    EK.fill("s10-dots", EK.dots("s10-dot", 446, 786, 606, 786, 5));
+    EK.fill("s10-f1", EK.folder("١")); EK.fill("s10-f2", EK.folder("٢")); EK.fill("s10-f3", EK.folder("٣"));
+    EK.fill("s10-sc-slot", EK.scales("s10-sc", "#CEA532"));
+    EK.face(tl, "s10-col", "flat");
+    gsap.set("#s10-link, #s10-q, #s10-v1, #s10-v2, #s10-x, #s10-f1, #s10-f2, #s10-f3, #s10-scw, .s10-dot", { opacity: 0 });
+    tl.fromTo(ST, { scale: 1.14 }, { scale: 1, duration: 0.45, ease: "power3.out" }, 0);
+    EK.look(tl, "s10-col", 0.4, 9, 4);
+    // he did not found it
+    tl.fromTo("#s10-x", { opacity: 0, scale: 3, svgOrigin: "0 0" }, { opacity: 1, scale: 1, duration: 0.15, ease: "power3.in" }, 0.82);
+    EK.shake(tl, ST, 0.97, 9);
+    EK.mood(tl, "s10-col", 0.99, "annoyed");
+    tl.to("#s10-x", { opacity: 0, scale: 0.6, svgOrigin: "0 0", duration: 0.15 }, 2.2);
+    // but the two stories are linked
+    tl.to(".s10-dot", { opacity: 1, duration: 0.08, stagger: 0.12 }, 2.42);
+    EK.pop(tl, "#s10-link", 3.82, -3);
+    EK.mood(tl, "s10-col", 3.9, "worried");
+    EK.look(tl, "s10-col", 4.3, 6, 10);
+    tl.to("#s10-pair, #s10-link", { opacity: 0, duration: 0.2 }, 5.3);
+    // the three files close
+    EK.drop(tl, "#s10-f3", 5.63); EK.drop(tl, "#s10-f2", 5.93); EK.drop(tl, "#s10-f1", 6.23);
+    EK.land(tl, "#s10-q", 7.19);
+    tl.to("#s10-f1, #s10-f2, #s10-f3, #s10-q", { opacity: 0, duration: 0.2 }, 8.25);
+    // the scales
+    tl.fromTo("#s10-scw", { opacity: 0, y: 700 }, { opacity: 1, y: 0, duration: 0.5, ease: "back.out(1.3)" }, 8.4);
+    tl.fromTo("#s10-sc-beam", { rotation: -10, svgOrigin: "0 -330" }, { rotation: 7, duration: 0.6, ease: "sine.inOut" }, 8.5);
+    tl.to("#s10-sc-beam", { rotation: -4, svgOrigin: "0 -330", duration: 0.5, ease: "sine.inOut" }, 9.1);
+    tl.to("#s10-sc-beam", { rotation: 0, svgOrigin: "0 -330", duration: 0.5, ease: "sine.out" }, 9.6);
+    EK.land(tl, "#s10-v1", 8.68);
+    EK.stamp(tl, "#s10-v2", ST, 9.6, -4);
+    window.__timelines["s10"] = tl;
+    })();
+  </script>
+</template>

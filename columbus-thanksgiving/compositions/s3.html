@@ -1,0 +1,67 @@
+<template>
+  <style>
+    @font-face { font-family: "Lalezar"; src: url("assets/fonts/Lalezar-Regular.ttf"); font-weight: 400; }
+    @font-face { font-family: "Noto Kufi Arabic"; src: url("assets/fonts/NotoKufiArabic.ttf"); font-weight: 100 900; }
+    #root { position: absolute; inset: 0; overflow: hidden; }
+    .sign { position: absolute; text-align: center; direction: rtl; font-family: "Noto Kufi Arabic", sans-serif; font-weight: 800; color: #F4F6F9; background: #a8703f; border: 7px solid #0c1a30; border-radius: 12px; white-space: nowrap; }
+    
+  </style>
+  <div id="root" data-composition-id="s3" data-width="1080" data-height="1920">
+    <div id="s3-wrap" class="clip" data-start="0" data-duration="11.35" data-layout-allow-overflow style="position:absolute;inset:0">
+      <div id="s3-stage" class="stage">
+        <svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg" style="position:absolute;left:0;top:0;overflow:visible">
+          <g id="s3-seaw">
+            <g transform="translate(540,905)"><g id="s3-ship"><g id="s3-ship-slot" transform="scale(1.25)"></g></g></g>
+            <rect x="-20" y="900" width="1120" height="320" fill="#2b4d7e" stroke="#0c1a30" stroke-width="8" stroke-linejoin="round"/>
+            <g id="s3-waves"><g id="s3-wv1" transform="translate(-120,960)"></g><g id="s3-wv2" transform="translate(-90,1050)"></g><g id="s3-wv3" transform="translate(-120,1140)"></g></g>
+          </g>
+          <g transform="translate(90,570)"><g id="s3-map">
+            <rect x="-24" y="-24" width="948" height="608" rx="12" fill="#e8d9b5" stroke="#0c1a30" stroke-width="8" stroke-linejoin="round"/>
+            <g id="s3-carib"></g>
+            <g id="s3-arr" fill="none" stroke="#8c2f2f" stroke-width="16" stroke-linecap="round" stroke-linejoin="round">
+              <g id="s3-a1"><path d="M880 210 Q560 20 250 104"/><path d="M296 60 L250 104 L310 124"/></g>
+              <g id="s3-a2"><path d="M880 210 Q420 250 130 400"/><path d="M186 344 L130 400 L206 410"/></g>
+              <g id="s3-a3"><path d="M880 210 Q700 420 520 470"/><path d="M560 420 L520 470 L584 484"/></g>
+            </g>
+            <g id="s3-boat"></g>
+          </g></g>
+        </svg>
+        <div id="s3-c" class="count">الملف الأول</div>
+        <div id="s3-t" class="ttl" style="top:250px; font-size:122px">الرحلة اللي غيّرت<br>كل شي</div>
+        <div id="s3-y" class="plate" style="left:270px; top:216px; width:540px; height:250px; font-size:220px; line-height:262px">١٤٩٢</div>
+        <div id="s3-l1" class="card kufi" style="left:380px; top:1096px; width:320px; height:92px; font-size:48px; font-weight:800; line-height:76px">الكاريبي</div>
+        <div id="s3-l2" class="card kufi" style="left:310px; top:1096px; width:460px; height:92px; font-size:48px; font-weight:800; line-height:76px">توسّع أوروبي</div>
+      </div>
+    </div>
+  </div>
+  <script>
+    (function () {
+    const tl = gsap.timeline({ paused: true });
+    const ST = "#s3-stage";
+    EK.fill("s3-ship-slot", EK.caravel()); EK.fill("s3-carib", EK.carib("s3")); EK.fill("s3-boat", EK.boat());
+    ["s3-wv1", "s3-wv2", "s3-wv3"].forEach((w) => EK.fill(w, EK.wave(1320)));
+    gsap.set("#s3-t, #s3-y, #s3-l1, #s3-l2, #s3-map, #s3-a1, #s3-a2, #s3-a3", { opacity: 0 });
+    EK.whip(tl, ST, 1080);
+    tl.fromTo("#s3-c", { opacity: 0 }, { opacity: 1, duration: 0.15 }, 0.08);
+    EK.land(tl, "#s3-t", 1.44);
+    // the ship crosses
+    tl.fromTo("#s3-ship", { x: 760 }, { x: 0, duration: 3.6, ease: "power1.out" }, 0.1);
+    tl.fromTo("#s3-ship", { rotation: -3, svgOrigin: "0 0" }, { rotation: 3, duration: 0.7, ease: "sine.inOut", yoyo: true, repeat: 7 }, 0.1);
+    tl.fromTo("#s3-waves", { x: 0 }, { x: 60, duration: 5.9, ease: "none" }, 0);
+    tl.to("#s3-c, #s3-t", { opacity: 0, duration: 0.15 }, 3.85);
+    EK.stamp(tl, "#s3-y", ST, 4.3, -4);
+    // the map
+    tl.to("#s3-seaw", { y: 760, opacity: 0, duration: 0.4, ease: "power2.in" }, 5.75);
+    tl.fromTo("#s3-map", { opacity: 0, y: 700 }, { opacity: 1, y: 0, duration: 0.45, ease: "back.out(1.2)" }, 6.05);
+    tl.fromTo("#s3-boat", { x: 880, y: 70 }, { x: 470, y: 108, duration: 1.0, ease: "power1.inOut" }, 6.3);
+    EK.pop(tl, "#s3-l1", 7.39, -3);
+    tl.to("#s3-boat", { x: 660, y: 290, duration: 0.6, ease: "power1.inOut" }, 7.6);
+    ["#s3-a1", "#s3-a2", "#s3-a3"].forEach((a, i) => {
+      tl.fromTo(a, { opacity: 0, scale: 0.05, svgOrigin: "880 210" }, { opacity: 1, scale: 1, duration: 0.5, ease: "power2.out" }, 8.3 + i * 0.6);
+    });
+    EK.out(tl, "#s3-l1", 9.5);
+    EK.pop(tl, "#s3-l2", 9.77, 3);
+    window.__timelines["s3"] = tl;
+    })();
+  </script>
+</template>

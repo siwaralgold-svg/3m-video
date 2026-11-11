@@ -1,0 +1,70 @@
+<template>
+  <style>
+    @font-face { font-family: "Lalezar"; src: url("assets/fonts/Lalezar-Regular.ttf"); font-weight: 400; }
+    @font-face { font-family: "Noto Kufi Arabic"; src: url("assets/fonts/NotoKufiArabic.ttf"); font-weight: 100 900; }
+    #root { position: absolute; inset: 0; overflow: hidden; }
+    .sign { position: absolute; text-align: center; direction: rtl; font-family: "Noto Kufi Arabic", sans-serif; font-weight: 800; color: #F4F6F9; background: #a8703f; border: 7px solid #0c1a30; border-radius: 12px; white-space: nowrap; }
+    
+  </style>
+  <div id="root" data-composition-id="s9" data-width="1080" data-height="1920">
+    <div id="s9-wrap" class="clip" data-start="0" data-duration="11.1" data-layout-allow-overflow style="position:absolute;inset:0">
+      <div id="s9-stage" class="stage">
+        <svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg" style="position:absolute;left:0;top:0;overflow:visible">
+          <defs><clipPath id="s9-ct"><rect x="60" y="180" width="960" height="460"/></clipPath><clipPath id="s9-cb"><rect x="60" y="720" width="960" height="460"/></clipPath></defs>
+          <g id="s9-top">
+            <rect x="60" y="180" width="960" height="460" fill="#7a4c2a" stroke="#0c1a30" stroke-width="8" stroke-linejoin="round"/>
+            <g clip-path="url(#s9-ct)">
+              <g id="s9-lamp" transform="translate(540,180)"></g>
+              <g id="s9-dad-slot" transform="translate(290,520) scale(0.54)"></g>
+              <g id="s9-mom-slot" transform="translate(790,520) scale(0.54)"></g>
+              <rect x="40" y="566" width="1000" height="90" fill="#F4F6F9" stroke="#0c1a30" stroke-width="8" stroke-linejoin="round"/>
+              <g id="s9-roast" transform="translate(540,540) scale(0.62)"></g>
+            </g>
+            <rect x="60" y="180" width="960" height="460" fill="none" stroke="#0c1a30" stroke-width="8" stroke-linejoin="round"/>
+          </g>
+          <g id="s9-bot">
+            <rect x="60" y="720" width="960" height="460" fill="#0f2040" stroke="#0c1a30" stroke-width="8" stroke-linejoin="round"/>
+            <g clip-path="url(#s9-cb)">
+              <g id="s9-mo-slot" transform="translate(760,1050) scale(0.62)"></g>
+              <g id="s9-cd1" transform="translate(220,1160) scale(1.3)"></g>
+              <g id="s9-cd2" transform="translate(370,1160) scale(1.0)"></g>
+            </g>
+            <rect x="60" y="720" width="960" height="460" fill="none" stroke="#0c1a30" stroke-width="8" stroke-linejoin="round"/>
+          </g>
+        </svg>
+        <div id="s9-a" class="card kufi" style="left:86px; top:204px; width:390px; height:88px; font-size:46px; font-weight:800; line-height:72px">ذكرى امتنان</div>
+        <div id="s9-m" class="card kufi" style="left:86px; top:776px; width:440px; height:80px; font-size:38px; font-weight:800; line-height:64px">يوم الحداد · منذ ١٩٧٠</div>
+        <div id="s9-b" class="card kufi" style="left:554px; top:776px; width:440px; height:88px; font-size:44px; font-weight:800; line-height:72px">ذكرى أرض ومعاناة</div>
+        <div id="s9-two" class="plate" style="left:330px; top:624px; width:420px; height:112px; font-size:88px; line-height:118px">روايتان</div>
+      </div>
+    </div>
+  </div>
+  <script>
+    (function () {
+    const tl = gsap.timeline({ paused: true });
+    const ST = "#s9-stage";
+    EK.put("s9-dad-slot", "s9-dad", "dad"); EK.put("s9-mom-slot", "s9-mom", "mom"); EK.put("s9-mo-slot", "s9-mo", "mourner");
+    EK.fill("s9-lamp", EK.lamp()); EK.fill("s9-roast", EK.roast()); EK.fill("s9-cd1", EK.candle("s9-f1")); EK.fill("s9-cd2", EK.candle("s9-f2"));
+    EK.face(tl, "s9-dad", "calm"); EK.face(tl, "s9-mom", "calm"); EK.face(tl, "s9-mo", "sad");
+    gsap.set("#s9-a, #s9-b, #s9-m, #s9-two, #s9-bot", { opacity: 0 });
+    tl.fromTo("#s9-top", { x: -1120, y: 270 }, { x: 0, y: 270, duration: 0.4, ease: "power3.out" }, 0.05);
+    EK.look(tl, "s9-dad", 0.7, 9, 4); EK.look(tl, "s9-mom", 0.9, -9, 4);
+    EK.mood(tl, "s9-dad", 1.6, "laugh"); EK.mood(tl, "s9-mom", 2.2, "laugh");
+    // the other story
+    tl.to("#s9-top", { y: 0, duration: 0.4, ease: "power2.inOut" }, 2.9);
+    tl.fromTo("#s9-bot", { opacity: 1, x: 1120 }, { opacity: 1, x: 0, duration: 0.4, ease: "power3.out" }, 3.1);
+    tl.fromTo("#s9-f1-flame", { scaleY: 1, scaleX: 1, svgOrigin: "0 -144" }, { scaleY: 1.16, scaleX: 0.9, duration: 0.31, ease: "sine.inOut", yoyo: true, repeat: 23 }, 3.4);
+    tl.fromTo("#s9-f2-flame", { scaleY: 1.12, scaleX: 0.92, svgOrigin: "0 -144" }, { scaleY: 1, scaleX: 1, duration: 0.27, ease: "sine.inOut", yoyo: true, repeat: 27 }, 3.4);
+    EK.blink(tl, "s9-mo", 4.4);
+    EK.look(tl, "s9-mo", 4.9, -8, 8);
+    EK.pop(tl, "#s9-m", 5.55, -2);
+    EK.stamp(tl, "#s9-two", ST, 6.3, -3);
+    EK.pop(tl, "#s9-a", 7.33, -3);
+    EK.blink(tl, "s9-dad", 8.1);
+    EK.pop(tl, "#s9-b", 9.31, 3);
+    EK.blink(tl, "s9-mo", 10.0);
+    EK.idle(tl, "s9-dad", 0.5, 10.9, 2.3); EK.idle(tl, "s9-mom", 0.5, 10.9, 2.7); EK.idle(tl, "s9-mo", 3.5, 10.9, 3.0);
+    window.__timelines["s9"] = tl;
+    })();
+  </script>
+</template>

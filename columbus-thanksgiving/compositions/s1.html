@@ -1,0 +1,50 @@
+<template>
+  <style>
+    @font-face { font-family: "Lalezar"; src: url("assets/fonts/Lalezar-Regular.ttf"); font-weight: 400; }
+    @font-face { font-family: "Noto Kufi Arabic"; src: url("assets/fonts/NotoKufiArabic.ttf"); font-weight: 100 900; }
+    #root { position: absolute; inset: 0; overflow: hidden; }
+    .sign { position: absolute; text-align: center; direction: rtl; font-family: "Noto Kufi Arabic", sans-serif; font-weight: 800; color: #F4F6F9; background: #a8703f; border: 7px solid #0c1a30; border-radius: 12px; white-space: nowrap; }
+    
+  </style>
+  <div id="root" data-composition-id="s1" data-width="1080" data-height="1920">
+    <div id="s1-wrap" class="clip" data-start="0" data-duration="6.25" data-layout-allow-overflow style="position:absolute;inset:0">
+      <div id="s1-stage" class="stage">
+        <svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg" style="position:absolute;left:0;top:0;overflow:visible">
+          <g transform="translate(330,770)"><g id="s1-colw"><g id="s1-col-slot" transform="scale(1.12)"></g></g></g>
+          <g transform="translate(800,920)"><g id="s1-tur"><g id="s1-tur-slot" transform="scale(1.12)"></g></g></g>
+          <g id="s1-dots"></g>
+        </svg>
+        <div id="s1-q" class="card disp" style="left:120px; top:190px; width:840px; height:200px; font-size:150px; line-height:200px">وش العلاقة؟</div>
+        <div id="s1-n1" class="sign" style="left:90px; top:1070px; width:480px; height:96px; font-size:44px; line-height:80px">كريستوفر كولومبوس</div>
+        <div id="s1-n2" class="sign" style="left:640px; top:1070px; width:320px; height:96px; font-size:44px; line-height:80px">عيد الشكر</div>
+        <div id="s1-qm" class="plate" style="left:470px; top:470px; width:200px; height:230px; font-size:210px; line-height:240px">؟</div>
+      </div>
+    </div>
+  </div>
+  <script>
+    (function () {
+    const tl = gsap.timeline({ paused: true });
+    const ST = "#s1-stage";
+    EK.put("s1-col-slot", "s1-col", "columbus");
+    EK.fill("s1-tur-slot", EK.roast());
+    EK.fill("s1-dots", EK.dots("s1-dot", 500, 690, 690, 800, 6));
+    EK.face(tl, "s1-col", "smug");
+    gsap.set("#s1-n1, #s1-n2, #s1-qm, .s1-dot", { opacity: 0 });
+    gsap.set("#s1-q", { rotation: -3 });
+    tl.fromTo(ST, { scale: 1.1 }, { scale: 1, duration: 0.5, ease: "power3.out" }, 0);
+    EK.pop(tl, "#s1-n1", 0.65, -2);
+    EK.blink(tl, "s1-col", 1.2);
+    EK.look(tl, "s1-col", 1.9, 9, 4);
+    EK.pop(tl, "#s1-n2", 2.07, 3);
+    tl.to("#s1-tur", { y: -34, duration: 0.14, ease: "power2.out", yoyo: true, repeat: 1 }, 2.07);
+    tl.to(".s1-dot", { opacity: 1, duration: 0.08, stagger: 0.1 }, 3.39);
+    EK.look(tl, "s1-col", 3.5, 6, 8);
+    tl.to(".s1-dot", { y: 120, opacity: 0, duration: 0.3, ease: "power2.in", stagger: 0.03 }, 4.6);
+    EK.stamp(tl, "#s1-qm", ST, 4.66, 6);
+    EK.mood(tl, "s1-col", 4.68, "shock", true);
+    EK.mood(tl, "s1-col", 5.5, "worried");
+    EK.idle(tl, "s1-col", 0.3, 4.5, 2.1);
+    window.__timelines["s1"] = tl;
+    })();
+  </script>
+</template>

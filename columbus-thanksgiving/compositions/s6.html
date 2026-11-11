@@ -1,0 +1,52 @@
+<template>
+  <style>
+    @font-face { font-family: "Lalezar"; src: url("assets/fonts/Lalezar-Regular.ttf"); font-weight: 400; }
+    @font-face { font-family: "Noto Kufi Arabic"; src: url("assets/fonts/NotoKufiArabic.ttf"); font-weight: 100 900; }
+    #root { position: absolute; inset: 0; overflow: hidden; }
+    .sign { position: absolute; text-align: center; direction: rtl; font-family: "Noto Kufi Arabic", sans-serif; font-weight: 800; color: #F4F6F9; background: #a8703f; border: 7px solid #0c1a30; border-radius: 12px; white-space: nowrap; }
+    
+  </style>
+  <div id="root" data-composition-id="s6" data-width="1080" data-height="1920">
+    <div id="s6-wrap" class="clip" data-start="0" data-duration="4.8" data-layout-allow-overflow style="position:absolute;inset:0">
+      <div id="s6-stage" class="stage">
+        <svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg" style="position:absolute;left:0;top:0;overflow:visible">
+          <defs><clipPath id="s6-clip"><rect x="96" y="276" width="388" height="428"/></clipPath></defs>
+          <g id="s6-fr1">
+            <rect x="70" y="250" width="440" height="480" rx="10" fill="#a8703f" stroke="#0c1a30" stroke-width="8" stroke-linejoin="round"/><rect x="96" y="276" width="388" height="428" fill="#2b4d7e" stroke="#0c1a30" stroke-width="8" stroke-linejoin="round"/>
+            <g clip-path="url(#s6-clip)"><g id="s6-col-slot" transform="translate(290,600) scale(0.74)"></g></g>
+            <rect x="96" y="276" width="388" height="428" fill="none" stroke="#0c1a30" stroke-width="8" stroke-linejoin="round"/>
+          </g>
+          <g id="s6-fr2">
+            <rect x="570" y="250" width="440" height="480" rx="10" fill="#a8703f" stroke="#0c1a30" stroke-width="8" stroke-linejoin="round"/><rect x="596" y="276" width="388" height="428" fill="#2b4d7e" stroke="#0c1a30" stroke-width="8" stroke-linejoin="round"/>
+            <rect x="596" y="584" width="388" height="120" fill="#8a5a33" stroke="#0c1a30" stroke-width="8" stroke-linejoin="round"/>
+            <g id="s6-roast" transform="translate(790,520) scale(0.82)"></g>
+            <rect x="596" y="276" width="388" height="428" fill="none" stroke="#0c1a30" stroke-width="8" stroke-linejoin="round"/>
+          </g>
+          <g transform="translate(540,490)"><g id="s6-ne"><circle r="66" fill="#F4F6F9" stroke="#0c1a30" stroke-width="8" stroke-linejoin="round"/><path d="M-30 -14 H30 M-30 16 H30 M18 -36 L-18 38" fill="none" stroke="#8c2f2f" stroke-width="13" stroke-linecap="round"/></g></g>
+        </svg>
+        <div id="s6-p1" class="sign" style="left:90px; top:752px; width:400px; height:96px; font-size:46px; line-height:80px">توفي ١٥٠٦</div>
+        <div id="s6-p2" class="sign" style="left:590px; top:752px; width:400px; height:96px; font-size:46px; line-height:80px">الوليمة ١٦٢١</div>
+        <div id="s6-n" class="plate" style="left:190px; top:912px; width:700px; height:236px; font-size:186px; line-height:246px">١١٥ سنة</div>
+      </div>
+    </div>
+  </div>
+  <script>
+    (function () {
+    const tl = gsap.timeline({ paused: true });
+    const ST = "#s6-stage";
+    EK.put("s6-col-slot", "s6-col", "columbus"); EK.fill("s6-roast", EK.roast());
+    EK.face(tl, "s6-col", "smug");
+    gsap.set("#s6-p1, #s6-p2, #s6-n, #s6-ne", { opacity: 0 });
+    EK.whip(tl, ST, 1080);
+    EK.look(tl, "s6-col", 0.5, 9, 0);
+    EK.spop(tl, "#s6-ne", 1.1);
+    tl.to("#s6-fr1", { rotation: -4, svgOrigin: "290 250", duration: 0.5, ease: "elastic.out(1.2,0.4)" }, 1.1);
+    EK.mood(tl, "s6-col", 1.14, "flat");
+    EK.mood(tl, "s6-col", 2.3, "sad");
+    EK.pop(tl, "#s6-p1", 2.64, -3);
+    EK.pop(tl, "#s6-p2", 2.97, 3);
+    EK.stamp(tl, "#s6-n", ST, 3.52, -4);
+    window.__timelines["s6"] = tl;
+    })();
+  </script>
+</template>

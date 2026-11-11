@@ -1,0 +1,64 @@
+<template>
+  <style>
+    @font-face { font-family: "Lalezar"; src: url("assets/fonts/Lalezar-Regular.ttf"); font-weight: 400; }
+    @font-face { font-family: "Noto Kufi Arabic"; src: url("assets/fonts/NotoKufiArabic.ttf"); font-weight: 100 900; }
+    #root { position: absolute; inset: 0; overflow: hidden; }
+    .sign { position: absolute; text-align: center; direction: rtl; font-family: "Noto Kufi Arabic", sans-serif; font-weight: 800; color: #F4F6F9; background: #a8703f; border: 7px solid #0c1a30; border-radius: 12px; white-space: nowrap; }
+    
+  </style>
+  <div id="root" data-composition-id="s4" data-width="1080" data-height="1920">
+    <div id="s4-wrap" class="clip" data-start="0" data-duration="13.9" data-layout-allow-overflow style="position:absolute;inset:0">
+      <div id="s4-stage" class="stage">
+        <svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg" style="position:absolute;left:0;top:0;overflow:visible">
+          <g transform="translate(540,880)"><g id="s4-colw"><g id="s4-col-slot" transform="scale(1.2)"></g></g></g>
+          <g transform="translate(540,1070)"><g id="s4-sh"><g id="s4-sh-slot" transform="scale(1.15)"></g></g></g>
+        </svg>
+        <div id="s4-gov" class="card disp" style="left:150px; top:200px; width:780px; height:170px; font-size:104px; line-height:170px">حاكم هيسبانيولا</div>
+        <div id="s4-slv" class="card disp" style="left:260px; top:210px; width:560px; height:200px; font-size:144px; line-height:200px; color:#8c2f2f">استعباد</div>
+        <div id="s4-c1" class="card disp" style="left:70px; top:210px; width:450px; height:150px; font-size:96px; line-height:150px">الاستغلال</div>
+        <div id="s4-c2" class="card disp" style="left:560px; top:290px; width:450px; height:150px; font-size:96px; line-height:150px">الأمراض</div>
+        <div id="s4-fair" class="ttl" style="top:190px; font-size:150px">للإنصاف</div>
+        <div id="s4-n1" class="sign" style="left:380px; top:420px; width:320px; height:96px; font-size:46px; line-height:80px">إسبانيا</div>
+        <div id="s4-n2" class="sign" style="left:70px; top:600px; width:320px; height:96px; font-size:46px; line-height:80px">البرتغال</div>
+        <div id="s4-n3" class="sign" style="left:690px; top:600px; width:320px; height:96px; font-size:46px; line-height:80px">إنجلترا</div>
+        <div id="s4-n4" class="sign" style="left:60px; top:840px; width:300px; height:96px; font-size:46px; line-height:80px">فرنسا</div>
+        <div id="s4-n5" class="sign" style="left:720px; top:840px; width:300px; height:96px; font-size:46px; line-height:80px">هولندا</div>
+      </div>
+    </div>
+  </div>
+  <script>
+    (function () {
+    const tl = gsap.timeline({ paused: true });
+    const ST = "#s4-stage";
+    EK.put("s4-col-slot", "s4-col", "columbus"); EK.fill("s4-sh-slot", EK.shackle());
+    EK.face(tl, "s4-col", "smug");
+    gsap.set("#s4-gov, #s4-slv, #s4-c1, #s4-c2, #s4-fair, #s4-n1, #s4-n2, #s4-n3, #s4-n4, #s4-n5, #s4-sh", { opacity: 0 });
+    EK.whip(tl, ST, -1080);
+    EK.pop(tl, "#s4-gov", 0.55, -3);
+    EK.blink(tl, "s4-col", 1.4);
+    EK.out(tl, "#s4-gov", 2.2);
+    // the shackles land on him
+    EK.drop(tl, "#s4-sh", 2.5, -700);
+    EK.shake(tl, ST, 2.5, 10);
+    EK.mood(tl, "s4-col", 2.52, "annoyed", true);
+    EK.pop(tl, "#s4-slv", 2.78, 4);
+    EK.look(tl, "s4-col", 3.2, 0, 10);
+    EK.out(tl, "#s4-slv", 3.85);
+    tl.to("#s4-sh", { y: 420, opacity: 0, duration: 0.3, ease: "power2.in" }, 3.9);
+    EK.mood(tl, "s4-col", 4.2, "worried", true);
+    EK.pop(tl, "#s4-c1", 5.9, -5); EK.look(tl, "s4-col", 6.0, -9, -8);
+    EK.pop(tl, "#s4-c2", 7.0, 4); EK.look(tl, "s4-col", 7.1, 9, -8);
+    EK.out(tl, "#s4-c1", 7.6); EK.out(tl, "#s4-c2", 7.66);
+    // in fairness: he steps back, the others arrive
+    EK.mood(tl, "s4-col", 7.9, "flat", false);
+    EK.land(tl, "#s4-fair", 8.59);
+    EK.blink(tl, "s4-col", 9.0);
+    tl.to("#s4-colw", { scale: 0.62, y: 110, svgOrigin: "0 0", duration: 0.6, ease: "power2.inOut" }, 9.29);
+    [["#s4-n1", 10.9, -2, 0, -9], ["#s4-n2", 11.5, 3, -9, -4], ["#s4-n3", 11.85, -3, 9, -4], ["#s4-n4", 12.5, 2, -9, 4], ["#s4-n5", 12.95, -2, 9, 4]].forEach((n) => {
+      EK.pop(tl, n[0], n[1], n[2]); EK.look(tl, "s4-col", n[1] + 0.08, n[3], n[4]);
+    });
+    EK.idle(tl, "s4-col", 0.5, 9.2, 2.4);
+    window.__timelines["s4"] = tl;
+    })();
+  </script>
+</template>

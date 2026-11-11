@@ -1,0 +1,71 @@
+<template>
+  <style>
+    @font-face { font-family: "Lalezar"; src: url("assets/fonts/Lalezar-Regular.ttf"); font-weight: 400; }
+    @font-face { font-family: "Noto Kufi Arabic"; src: url("assets/fonts/NotoKufiArabic.ttf"); font-weight: 100 900; }
+    #root { position: absolute; inset: 0; overflow: hidden; }
+    .sign { position: absolute; text-align: center; direction: rtl; font-family: "Noto Kufi Arabic", sans-serif; font-weight: 800; color: #F4F6F9; background: #a8703f; border: 7px solid #0c1a30; border-radius: 12px; white-space: nowrap; }
+    
+  </style>
+  <div id="root" data-composition-id="s5" data-width="1080" data-height="1920">
+    <div id="s5-wrap" class="clip" data-start="0" data-duration="14.8" data-layout-allow-overflow style="position:absolute;inset:0">
+      <div id="s5-stage" class="stage">
+        <svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg" style="position:absolute;left:0;top:0;overflow:visible">
+          <g transform="translate(300,800)"><g id="s5-setw"><g id="s5-set-slot" transform="scale(0.9)"></g></g></g>
+          <g transform="translate(780,800)"><g id="s5-wamw"><g id="s5-wam-slot" transform="scale(0.9)"></g></g></g>
+          <g id="s5-table">
+            <rect x="40" y="1050" width="1000" height="170" fill="#8a5a33" stroke="#0c1a30" stroke-width="8" stroke-linejoin="round"/><rect x="20" y="1026" width="1040" height="40" rx="8" fill="#a8703f" stroke="#0c1a30" stroke-width="8" stroke-linejoin="round"/>
+            <g transform="translate(140,985) rotate(-18)"><g class="s5-food" id="s5-fd1"></g></g>
+            <g transform="translate(205,990) rotate(14)"><g class="s5-food" id="s5-fd2"></g></g>
+            <g transform="translate(350,985)"><g class="s5-food" id="s5-fd3"></g></g>
+            <g transform="translate(550,960) scale(0.62)"><g class="s5-food" id="s5-fd4"></g></g>
+            <g transform="translate(790,1000)"><g class="s5-food" id="s5-fd5"></g></g>
+            <g transform="translate(960,985)"><g class="s5-food" id="s5-fd6"></g></g>
+          </g>
+          <g transform="translate(540,1124)">
+            <g transform="translate(-160,0)"><g class="s5-sun" id="s5-su1"><circle r="58" fill="#ffd94a" stroke="#0c1a30" stroke-width="8" stroke-linejoin="round"/><text y="30" text-anchor="middle" font-family="Lalezar" font-size="84" fill="#0c1a30">١</text></g></g>
+            <g><g class="s5-sun" id="s5-su2"><circle r="58" fill="#ffd94a" stroke="#0c1a30" stroke-width="8" stroke-linejoin="round"/><text y="30" text-anchor="middle" font-family="Lalezar" font-size="84" fill="#0c1a30">٢</text></g></g>
+            <g transform="translate(160,0)"><g class="s5-sun" id="s5-su3"><circle r="58" fill="#ffd94a" stroke="#0c1a30" stroke-width="8" stroke-linejoin="round"/><text y="30" text-anchor="middle" font-family="Lalezar" font-size="84" fill="#0c1a30">٣</text></g></g>
+          </g>
+        </svg>
+        <div id="s5-c" class="count">الملف الثاني</div>
+        <div id="s5-t" class="ttl" style="font-size:150px">وليمة بليموث</div>
+        <div id="s5-y" class="plate" style="left:270px; top:200px; width:540px; height:240px; font-size:210px; line-height:252px">١٦٢١</div>
+        <div id="s5-l1" class="sign" style="left:110px; top:468px; width:380px; height:80px; font-size:40px; line-height:64px">مستوطن إنجليزي</div>
+        <div id="s5-l2" class="sign" style="left:620px; top:468px; width:320px; height:80px; font-size:40px; line-height:64px">الوامبانواغ</div>
+        <div id="s5-al" class="card disp" style="left:380px; top:840px; width:320px; height:140px; font-size:104px; line-height:140px">تحالف</div>
+      </div>
+    </div>
+  </div>
+  <script>
+    (function () {
+    const tl = gsap.timeline({ paused: true });
+    const ST = "#s5-stage";
+    EK.put("s5-set-slot", "s5-set", "settler"); EK.put("s5-wam-slot", "s5-wam", "wampanoag");
+    EK.fill("s5-fd1", EK.corn()); EK.fill("s5-fd2", EK.corn()); EK.fill("s5-fd3", EK.bowl()); EK.fill("s5-fd4", EK.roast()); EK.fill("s5-fd5", EK.fish()); EK.fill("s5-fd6", EK.bowl());
+    EK.face(tl, "s5-set", "calm"); EK.face(tl, "s5-wam", "flat");
+    gsap.set("#s5-t, #s5-y, #s5-l1, #s5-l2, #s5-al, #s5-setw, #s5-wamw, #s5-table, .s5-food, .s5-sun", { opacity: 0 });
+    tl.fromTo(ST, { y: 520 }, { y: 0, duration: 0.45, ease: "power3.out" }, 0);
+    tl.fromTo("#s5-c", { opacity: 0 }, { opacity: 1, duration: 0.15 }, 0.06);
+    EK.land(tl, "#s5-t", 1.25);
+    tl.to("#s5-c, #s5-t", { opacity: 0, duration: 0.15 }, 2.6);
+    EK.stamp(tl, "#s5-y", ST, 3.02, 4);
+    tl.fromTo("#s5-table", { opacity: 0, y: 320 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 4.5);
+    tl.fromTo("#s5-setw", { opacity: 0, y: 520 }, { opacity: 1, y: 0, duration: 0.45, ease: "back.out(1.4)" }, 4.88);
+    EK.pop(tl, "#s5-l1", 5.46, -2);
+    ["#s5-fd1", "#s5-fd2", "#s5-fd3", "#s5-fd4", "#s5-fd5", "#s5-fd6"].forEach((f, i) => EK.spop(tl, f, 5.94 + i * 0.12));
+    EK.look(tl, "s5-set", 6.0, 6, 10); EK.blink(tl, "s5-set", 6.9);
+    tl.fromTo("#s5-wamw", { opacity: 0, x: 520 }, { opacity: 1, x: 0, duration: 0.45, ease: "power3.out" }, 7.36);
+    EK.look(tl, "s5-set", 7.5, 9, 0);
+    EK.pop(tl, "#s5-l2", 8.61, 2);
+    EK.blink(tl, "s5-wam", 9.2);
+    EK.look(tl, "s5-wam", 9.9, -9, 0);
+    EK.mood(tl, "s5-wam", 10.2, "calm");
+    EK.pop(tl, "#s5-al", 10.53, -4);
+    EK.out(tl, "#s5-al", 12.2);
+    EK.look(tl, "s5-set", 12.4, 4, 9); EK.look(tl, "s5-wam", 12.5, -4, 9);
+    EK.spop(tl, "#s5-su1", 13.07); EK.spop(tl, "#s5-su2", 13.45); EK.spop(tl, "#s5-su3", 13.83);
+    EK.idle(tl, "s5-set", 5.4, 14.6, 2.3); EK.idle(tl, "s5-wam", 7.9, 14.6, 2.7);
+    window.__timelines["s5"] = tl;
+    })();
+  </script>
+</template>

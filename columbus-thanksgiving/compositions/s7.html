@@ -1,0 +1,65 @@
+<template>
+  <style>
+    @font-face { font-family: "Lalezar"; src: url("assets/fonts/Lalezar-Regular.ttf"); font-weight: 400; }
+    @font-face { font-family: "Noto Kufi Arabic"; src: url("assets/fonts/NotoKufiArabic.ttf"); font-weight: 100 900; }
+    #root { position: absolute; inset: 0; overflow: hidden; }
+    .sign { position: absolute; text-align: center; direction: rtl; font-family: "Noto Kufi Arabic", sans-serif; font-weight: 800; color: #F4F6F9; background: #a8703f; border: 7px solid #0c1a30; border-radius: 12px; white-space: nowrap; }
+    
+  </style>
+  <div id="root" data-composition-id="s7" data-width="1080" data-height="1920">
+    <div id="s7-wrap" class="clip" data-start="0" data-duration="9.95" data-layout-allow-overflow style="position:absolute;inset:0">
+      <div id="s7-stage" class="stage">
+        <svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg" style="position:absolute;left:0;top:0;overflow:visible">
+          <rect x="-20" y="770" width="1120" height="200" fill="#2b4d7e" stroke="#0c1a30" stroke-width="8" stroke-linejoin="round"/>
+          <g id="s7-wv" transform="translate(-60,826)"></g>
+          <g transform="translate(0,778)"><g id="s7-ship"><g id="s7-ship-slot" transform="scale(0.5)"></g></g></g>
+          <path d="M-20 1230 V936 Q270 866 540 906 Q810 866 1100 936 V1230Z" fill="#4d6b4a" stroke="#0c1a30" stroke-width="8" stroke-linejoin="round"/>
+          <g id="s7-wetus">
+            <g transform="translate(220,972) scale(1.15)"><g id="s7-w1"></g></g>
+            <g transform="translate(540,950) scale(1.15)"><g id="s7-w2"></g></g>
+            <g transform="translate(860,972) scale(1.15)"><g id="s7-w3"></g></g>
+          </g>
+          <g transform="translate(380,1040)"><g id="s7-h1"></g></g>
+          <g transform="translate(700,1040)"><g id="s7-h2"></g></g>
+          <g transform="translate(130,1100)"><g id="s7-h3"></g></g>
+          <g transform="translate(540,1120) scale(1.1)"><g id="s7-h4"></g></g>
+          <g transform="translate(950,1100)"><g id="s7-h5"></g></g>
+          <g transform="translate(60,1206)"><g id="s7-fence"></g></g>
+        </svg>
+        <div id="s7-c1" class="card disp" style="left:190px; top:210px; width:700px; height:160px; font-size:100px; line-height:160px">قرية باتوكست</div>
+        <div id="s7-c2" class="card kufi" style="left:140px; top:210px; width:800px; height:150px; font-size:60px; font-weight:800; line-height:132px">وباء ١٦١٦ – ١٦١٩</div>
+        <div id="s7-c3" class="card disp" style="left:280px; top:430px; width:520px; height:210px; font-size:150px; line-height:210px; color:#8c2f2f">صراعات</div>
+      </div>
+    </div>
+  </div>
+  <script>
+    (function () {
+    const tl = gsap.timeline({ paused: true });
+    const ST = "#s7-stage";
+    ["s7-w1", "s7-w2", "s7-w3"].forEach((w) => EK.fill(w, EK.wetu()));
+    ["s7-h1", "s7-h2", "s7-h3", "s7-h4", "s7-h5"].forEach((h) => EK.fill(h, EK.house()));
+    EK.fill("s7-fence", EK.fence(20)); EK.fill("s7-ship-slot", EK.caravel()); EK.fill("s7-wv", EK.wave(1260));
+    gsap.set("#s7-c1, #s7-c2, #s7-c3, #s7-h1, #s7-h2, #s7-h3, #s7-h4, #s7-h5, #s7-fence, #s7-ship", { opacity: 0 });
+    tl.fromTo(ST, { scale: 1.18, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: "power3.out" }, 0);
+    // the settlers move in
+    EK.drop(tl, "#s7-h1", 1.09, -800); EK.drop(tl, "#s7-h2", 1.31, -800);
+    EK.shake(tl, ST, 1.09, 6);
+    EK.pop(tl, "#s7-c1", 1.54, -3);
+    EK.out(tl, "#s7-c1", 3.0);
+    // its people died: the houses go cold
+    tl.to(".wetu-skin", { fill: "#3c4a5e", duration: 0.6, ease: "power1.inOut" }, 3.11);
+    tl.to("#s7-wetus", { opacity: 0.6, duration: 0.6 }, 3.11);
+    EK.pop(tl, "#s7-c2", 4.05, 3);
+    tl.set("#s7-ship", { opacity: 1 }, 4.4);
+    tl.fromTo("#s7-ship", { x: 1260 }, { x: 640, duration: 2.0, ease: "power1.out" }, 4.4);
+    EK.out(tl, "#s7-c2", 6.5);
+    // the settlement spreads
+    tl.to("#s7-wetus", { opacity: 0.22, duration: 0.5 }, 6.85);
+    EK.spop(tl, "#s7-h3", 6.85); EK.spop(tl, "#s7-h4", 7.1); EK.spop(tl, "#s7-h5", 7.35);
+    tl.fromTo("#s7-fence", { opacity: 0, y: 260 }, { opacity: 1, y: 0, duration: 0.2, ease: "power3.out" }, 8.22);
+    EK.shake(tl, ST, 8.42, 8);
+    EK.stamp(tl, "#s7-c3", ST, 8.85, -5);
+    window.__timelines["s7"] = tl;
+    })();
+  </script>
+</template>
