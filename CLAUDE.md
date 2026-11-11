@@ -2,6 +2,16 @@
 
 T3M's HyperFrames videos. Each top-level folder is one video project; `brand/` holds the T3M logo and colours; `sfx-library/` holds the shared sound effects.
 
+## Order of work: script first, video only after the voiceover
+
+Never build or render a video before the voiceover exists. The owner said this on 2026-11-11 after a video was built too early and had to be redone.
+
+1. Send the script only, in the chat, in the format of `T3M-script-brief.md`. Make it long (about 200 words or more) unless told otherwise. Then stop.
+2. The owner records it in ElevenLabs and sends the voiceover.
+3. Only then build the video, timed to that voiceover.
+
+In the hook, the famous person's face is shown. When the script holds the name back ("you know him"), the reveal is the face itself, drawn so people know it at once (for example the moustache), not a faceless silhouette.
+
 ## Sound effects: use `sfx-library/` first
 
 `sfx-library/` has 715 CC0 sound effects (Saoud SFX Pack) as MP3 in 9 folders: `transitions`, `impacts`, `risers`, `ui-clicks`, `chimes-tones`, `alerts`, `sci-fi`, `foley`, `jingles`. `sfx-library/manifest.json` lists every sound with its `duration`, `peak_at` (seconds from the file's start to its loudest point) and a `description` of where it fits.

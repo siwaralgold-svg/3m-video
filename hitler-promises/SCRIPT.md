@@ -12,7 +12,8 @@ Words in square brackets are emotion tags (ElevenLabs v3), never shown on screen
 
 ```text
 [serious] كلنا نعرف شيطان القرن العشرين.
-[short pause] ما يحتاج نقول اسمه.
+[short pause] أكيد عرفتوه.
+[confident] إيه… هذاك. أبو شنب.
 [mysterious] بس هل كنت تعرف… إن ملايين الناس العاديين صفّقوا له؟
 [curious] وعندهم ثلاث أسباب.
 
@@ -24,29 +25,32 @@ Words in square brackets are emotion tags (ElevenLabs v3), never shown on screen
 [proud] بعد أربع سنين… أقل من مليون.
 
 [confident] السبب الثاني: الطرق.
-آلاف الكيلومترات من الطرق السريعة.
+آلاف الكيلومترات من الطرق السريعة… تربط البلد كلها.
 
 [confident] السبب الثالث: الإجازات.
 رحلات وبحر… بسعر يقدر عليه العامل.
+[proud] ووعد بعد: سيارة لكل بيت.
 
 [serious] هذا كلام الدفاع.
 [mysterious] الحين… نشوف وش ورا الملصقات.
 
 [serious] الوظايف؟ مصانع السلاح هي اللي شغّلت الناس.
 والتجنيد الإجباري كمّل الباقي.
+[short pause] يعني الوظيفة… كانت تجهيز لحرب.
 
 [thoughtful] الطرق؟ الخطة انرسمت قبله.
 وأول طريق انفتح قبل ما يحكم.
+[serious] هو كمّلها… والدعاية نسبتها له.
 
-[serious] الإجازات؟ مقابلها: النقابات انحلّت.
-والإضراب انمنع.
-[short pause] والراتب… أقل من قبل الأزمة.
+[serious] الإجازات؟ مقابلها: النقابات انحلّت. والإضراب انمنع.
+والراتب… أقل من قبل الأزمة.
+[short pause] والسيارة؟ ثلاثمية ألف دفعوا أقساطها.
+[emphatic] ولا واحد استلم سيارته.
 
 [dramatic] وهذي بس الورقة الأولى.
 [short pause] باقي الملف:
 [sad] ستة مليون يهودي… انقتلوا في المحرقة.
 وملايين غيرهم: غجر، ومعاقين، وأسرى.
-
 [serious] وحرب عالمية… راح فيها عشرات الملايين.
 [sad] وألمانيا نفسها… انتهت ركام.
 
@@ -58,7 +62,7 @@ Words in square brackets are emotion tags (ElevenLabs v3), never shown on screen
 [long pause] [calm] الحكم… لك أنت.
 ```
 
-About 165 words.
+About 215 words. This is script v2 (face reveal in the hook, the people's car added). The scenes in `compositions/` still follow v1 and will be rebuilt to the voiceover once it is recorded.
 
 ## Scenes
 
