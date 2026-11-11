@@ -1,0 +1,53 @@
+<template>
+  <style>
+    @font-face { font-family: "Lalezar"; src: url("assets/fonts/Lalezar-Regular.ttf"); font-weight: 400; }
+    @font-face { font-family: "Noto Kufi Arabic"; src: url("assets/fonts/NotoKufiArabic.ttf"); font-weight: 100 900; }
+    #root { position: absolute; inset: 0; overflow: hidden; }
+  </style>
+  <div id="root" data-composition-id="s1" data-width="1080" data-height="1920">
+    <div id="s1-wrap" class="clip" data-start="0" data-duration="11.0" data-layout-allow-overflow style="position:absolute;inset:0">
+      <div id="s1-stage" class="stage">
+        <svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg" style="position:absolute;left:0;top:0"><defs><clipPath id="s1-clip"><rect x="-400" y="0" width="1900" height="1154"/></clipPath></defs>
+          <g clip-path="url(#s1-clip)">
+            <g id="s1-sh"><g id="s1-sh-slot" transform="translate(540,770) scale(1.4)"></g></g>
+            <g id="s1-w1"><g id="s1-w1-slot" transform="translate(205,1010) scale(0.66)"></g></g>
+            <g id="s1-w2"><g id="s1-w2-slot" transform="translate(875,1010) scale(0.66)"></g></g>
+          </g>
+        </svg>
+        <div id="s1-t1" class="ttl" style="top:196px; font-size:112px">شيطان القرن العشرين</div>
+        <div id="s1-t2" class="ttl" style="top:170px; font-size:100px">ملايين الناس العاديين<br>صفّقوا له</div>
+        <div id="s1-name" class="card kufi" style="left:260px; top:690px; width:560px; height:128px; font-size:52px; font-weight:800; line-height:112px">الاسم: <span style="display:inline-block; width:270px; height:56px; background:#0c1a30; vertical-align:middle; border-radius:6px"></span></div>
+      </div>
+      <div id="s1-three" class="plate" data-layout-allow-overlap data-layout-allow-occlusion style="left:250px; top:640px; width:580px; height:210px; font-size:150px; line-height:192px">٣ أسباب</div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+
+    EK.fill("s1-sh-slot", EK.shadow());
+    EK.put("s1-w1-slot", "s1-a", "worker"); EK.put("s1-w2-slot", "s1-b", "frau");
+    const T = { name: 3.1, but: 5.0, ppl: 6.3, clap: 7.6, three: 9.6 };
+    EK.face(tl, "s1-a", "calm"); EK.face(tl, "s1-b", "calm");
+    gsap.set("#s1-t2, #s1-name, #s1-three", { opacity: 0 });
+    gsap.set("#s1-w1, #s1-w2", { y: 560 });
+    // the hook is on screen at frame 0: the title and the faceless figure
+    tl.fromTo("#s1-sh", { scale: 1.12, svgOrigin: "540 800" }, { scale: 1, duration: 0.6, ease: "power3.out" }, 0);
+    // no need to say his name
+    EK.pop(tl, "#s1-name", T.name, -4);
+    // but: ordinary people cheered him
+    EK.out(tl, "#s1-name", T.but - 0.1);
+    tl.to("#s1-t1", { opacity: 0, duration: 0.15 }, T.but);
+    EK.title(tl, "#s1-t2", T.but + 0.2);
+    tl.to("#s1-w1", { y: 0, duration: 0.45, ease: "back.out(1.6)" }, T.ppl);
+    tl.to("#s1-w2", { y: 0, duration: 0.45, ease: "back.out(1.6)" }, T.ppl + 0.2);
+    EK.look(tl, "s1-a", T.ppl + 0.5, 7, -8); EK.look(tl, "s1-b", T.ppl + 0.7, -7, -8);
+    EK.mood(tl, "s1-a", T.clap, "laugh"); EK.mood(tl, "s1-b", T.clap + 0.15, "laugh");
+    tl.to("#s1-w1", { y: -26, duration: 0.16, yoyo: true, repeat: 5, ease: "sine.inOut" }, T.clap + 0.35);
+    tl.to("#s1-w2", { y: -26, duration: 0.16, yoyo: true, repeat: 5, ease: "sine.inOut" }, T.clap + 0.5);
+    // and they had three reasons
+    EK.stamp(tl, "#s1-three", "#s1-stage", T.three, -5);
+    EK.blink(tl, "s1-a", 9.2); EK.blink(tl, "s1-b", 10.3);
+    EK.idle(tl, "s1-a", 9.0, 11.0, 2.0); EK.idle(tl, "s1-b", 9.0, 11.0, 2.0);
+    window.__timelines["s1"] = tl;
+  </script>
+</template>

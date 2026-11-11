@@ -1,0 +1,43 @@
+<template>
+  <style>
+    @font-face { font-family: "Lalezar"; src: url("assets/fonts/Lalezar-Regular.ttf"); font-weight: 400; }
+    @font-face { font-family: "Noto Kufi Arabic"; src: url("assets/fonts/NotoKufiArabic.ttf"); font-weight: 100 900; }
+    #root { position: absolute; inset: 0; overflow: hidden; }
+  </style>
+  <div id="root" data-composition-id="s11" data-width="1080" data-height="1920">
+    <div id="s11-wrap" class="clip" data-start="0" data-duration="6.5" data-layout-allow-overflow style="position:absolute;inset:0">
+      <div id="s11-stage" class="stage">
+        <div id="s11-bg" style="position:absolute; inset:0; background:#0a1322"></div>
+        <svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg" style="position:absolute;left:0;top:0">
+          <g id="s11-ru">
+            <g fill="#3d4a63" stroke="#0c1a30" stroke-linejoin="round" stroke-linecap="round" stroke-width="8"><path d="M40 1160 V830 L100 800 L130 870 L200 810 V1160Z"/><path d="M230 1160 V900 L300 930 L340 860 L400 940 V1160Z"/><path d="M440 1160 V960 L520 920 L560 980 L640 940 V1160Z"/><path d="M680 1160 V840 L740 800 L790 880 L850 820 V1160Z"/><path d="M880 1160 V930 L960 890 L1040 950 V1160Z"/></g>
+            <g fill="#0a1322"><rect x="80" y="900" width="44" height="60"/><rect x="80" y="1010" width="44" height="60"/><rect x="290" y="990" width="44" height="60"/><rect x="730" y="930" width="44" height="60"/><rect x="730" y="1040" width="44" height="60"/><rect x="940" y="1000" width="44" height="60"/><rect x="520" y="1030" width="44" height="60"/></g>
+            <rect x="-10" y="1154" width="1100" height="780" fill="#1f2433" stroke="#0c1a30" stroke-linejoin="round" stroke-linecap="round" stroke-width="8"/>
+            <g transform="translate(560,1160) rotate(-16) scale(0.8)" id="s11-helm"></g>
+          </g>
+        </svg>
+        <div id="s11-count" class="count">١٩٣٩ – ١٩٤٥</div>
+        <div id="s11-ttl" class="ttl">حرب عالمية</div>
+        <div id="s11-ger" class="card kufi" style="left:60px; top:668px; width:420px; height:116px; font-size:48px; font-weight:800; line-height:102px; ">ألمانيا ١٩٤٥</div>
+        <div id="s11-rub" class="card disp" style="left:620px; top:676px; width:340px; height:150px; font-size:112px; line-height:136px; line-height:156px">ركام</div>
+      </div>
+      <div id="s11-mil" class="plate" data-layout-allow-overlap data-layout-allow-occlusion style="left:110px; top:430px; width:860px; height:200px; font-size:124px; line-height:182px">عشرات الملايين</div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+
+    EK.fill("s11-helm", EK.helmet());
+    const T = { ttl: 0.25, mil: 2.3, ger: 3.9, rub: 5.3 };
+    gsap.set("#s11-count, #s11-ttl, #s11-ger, #s11-rub, #s11-mil", { opacity: 0 });
+    gsap.set("#s11-ru", { y: 1200 });
+    tl.fromTo("#s11-count", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 0.1);
+    EK.title(tl, "#s11-ttl", T.ttl);
+    EK.stamp(tl, "#s11-mil", "#s11-stage", T.mil, -4);
+    // Germany itself ended in rubble
+    tl.to("#s11-ru", { y: 0, duration: 0.6, ease: "power3.out" }, T.ger - 0.3);
+    EK.pop(tl, "#s11-ger", T.ger + 0.2, -4);
+    EK.pop(tl, "#s11-rub", T.rub, 5);
+    window.__timelines["s11"] = tl;
+  </script>
+</template>

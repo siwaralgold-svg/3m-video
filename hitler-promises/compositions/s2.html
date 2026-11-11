@@ -1,0 +1,39 @@
+<template>
+  <style>
+    @font-face { font-family: "Lalezar"; src: url("assets/fonts/Lalezar-Regular.ttf"); font-weight: 400; }
+    @font-face { font-family: "Noto Kufi Arabic"; src: url("assets/fonts/NotoKufiArabic.ttf"); font-weight: 100 900; }
+    #root { position: absolute; inset: 0; overflow: hidden; }
+  </style>
+  <div id="root" data-composition-id="s2" data-width="1080" data-height="1920">
+    <div id="s2-wrap" class="clip" data-start="0" data-duration="5.5" data-layout-allow-overflow style="position:absolute;inset:0">
+      <div id="s2-stage" class="stage">
+        <svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg" style="position:absolute;left:0;top:0"><defs><clipPath id="s2-clip"><rect x="-400" y="0" width="1900" height="1154"/></clipPath></defs>
+          <g clip-path="url(#s2-clip)"><g id="s2-sh"><g id="s2-sh-slot" transform="translate(540,890) scale(1.1)"></g></g></g>
+          <g id="s2-p1"><g id="s2-p1-slot" transform="translate(770,350) scale(0.5)"></g></g>
+          <g id="s2-p2"><g id="s2-p2-slot" transform="translate(450,350) scale(0.5)"></g></g>
+          <g id="s2-p3"><g id="s2-p3-slot" transform="translate(130,350) scale(0.5)"></g></g>
+        </svg>
+        <div id="s2-ttl" class="ttl" style="top:170px; font-size:124px">محكمة التاريخ</div>
+      </div>
+      <div id="s2-def" class="plate" data-layout-allow-overlap data-layout-allow-occlusion style="left:170px; top:960px; width:740px; height:190px; font-size:124px; line-height:172px">نبدأ بالدفاع</div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+
+    EK.fill("s2-sh-slot", EK.shadow());
+    EK.fill("s2-p1-slot", EK.poster("jobs")); EK.fill("s2-p2-slot", EK.poster("roads")); EK.fill("s2-p3-slot", EK.poster("trips"));
+    const T = { court: 0.9, def: 3.4, p1: 4.2, p2: 4.5, p3: 4.8 };
+    gsap.set("#s2-ttl, #s2-def, #s2-p1, #s2-p2, #s2-p3", { opacity: 0 });
+    EK.whip(tl, "#s2-stage", 1080);
+    EK.title(tl, "#s2-ttl", T.court);
+    // this time the defence speaks first
+    EK.stamp(tl, "#s2-def", "#s2-stage", T.def, -5);
+    // its three posters are pasted on the wall
+    [["#s2-p1", "860 470", T.p1, 4], ["#s2-p2", "540 470", T.p2, -3], ["#s2-p3", "220 470", T.p3, 3]].forEach((p) => {
+      tl.fromTo(p[0], { opacity: 0, scale: 2.2, rotation: p[3] * 3, svgOrigin: p[1] }, { opacity: 1, scale: 1, rotation: p[3], duration: 0.15, ease: "power3.in" }, p[2]);
+      tl.fromTo("#s2-stage", { y: 0 }, { y: 10, duration: 0.05, yoyo: true, repeat: 3, ease: "none", immediateRender: false }, p[2] + 0.15);
+    });
+    window.__timelines["s2"] = tl;
+  </script>
+</template>

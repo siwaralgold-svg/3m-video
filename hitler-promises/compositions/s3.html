@@ -1,0 +1,55 @@
+<template>
+  <style>
+    @font-face { font-family: "Lalezar"; src: url("assets/fonts/Lalezar-Regular.ttf"); font-weight: 400; }
+    @font-face { font-family: "Noto Kufi Arabic"; src: url("assets/fonts/NotoKufiArabic.ttf"); font-weight: 100 900; }
+    #root { position: absolute; inset: 0; overflow: hidden; }
+  </style>
+  <div id="root" data-composition-id="s3" data-width="1080" data-height="1920">
+    <div id="s3-wrap" class="clip" data-start="0" data-duration="10.0" data-layout-allow-overflow style="position:absolute;inset:0">
+      <div id="s3-stage" class="stage">
+        <div id="s3-bg" style="position:absolute; inset:0; background:#e9dfc6"></div>
+        <svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg" style="position:absolute;left:0;top:0"><rect y="1154" width="1080" height="766" fill="#8c2f2f"/><path d="M0 1154 H1080" fill="none" stroke="#0c1a30" stroke-linejoin="round" stroke-linecap="round" stroke-width="8"/><rect x="22" y="22" width="1036" height="1876" fill="none" stroke="#0c1a30" stroke-linejoin="round" stroke-linecap="round" stroke-width="10"/><defs><clipPath id="s3-clip"><rect x="-400" y="0" width="1900" height="1154"/></clipPath></defs>
+          <g clip-path="url(#s3-clip)">
+            <g id="s3-ham"><g transform="translate(880,960) rotate(24) scale(1.5)"><rect x="-15" y="-40" width="30" height="176" rx="8" fill="#a8703f" stroke="#0c1a30" stroke-linejoin="round" stroke-linecap="round" stroke-width="7"/><rect x="-84" y="-100" width="168" height="74" rx="10" fill="#55606b" stroke="#0c1a30" stroke-linejoin="round" stroke-linecap="round" stroke-width="7"/></g></g>
+            <g id="s3-w"><g id="s3-w-slot" transform="translate(540,840) scale(1.15)"></g></g>
+          </g>
+        </svg>
+        <div id="s3-count" class="count" style="color:#6b4226">السبب الأول</div>
+        <div id="s3-ttl" class="ttl" style="color:#0c1a30">الوظايف</div>
+        <div id="s3-year" class="card disp" style="left:60px; top:446px; width:330px; height:170px; font-size:128px; line-height:156px; line-height:176px">١٩٣٣</div>
+        <div id="s3-six" class="card" style="left:700px; top:460px; width:330px; height:190px; "><div class="disp" style="font-size:92px; line-height:108px">٦ مليون</div><div class="kufi" style="font-size:38px; font-weight:800; line-height:56px">عاطل</div></div>
+        <div id="s3-after" class="card kufi" style="left:60px; top:650px; width:330px; height:108px; font-size:44px; font-weight:800; line-height:94px; ">بعد ٤ سنين</div>
+      </div>
+      <div id="s3-less" class="plate" data-layout-allow-overlap data-layout-allow-occlusion style="left:130px; top:950px; width:820px; height:200px; font-size:130px; line-height:182px">أقل من مليون</div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+
+    EK.put("s3-w-slot", "s3-c", "worker");
+    const T = { count: 0.1, ttl: 1.0, year: 2.3, six: 4.6, after: 6.9, less: 8.2 };
+    EK.face(tl, "s3-c", "sad");
+    gsap.set("#s3-count, #s3-ttl, #s3-year, #s3-six, #s3-after, #s3-less", { opacity: 0 });
+    gsap.set("#s3-ham", { y: 700 });
+    // enter: zoom out of the first poster on the wall
+    tl.fromTo("#s3-stage", { clipPath: "circle(0% at 80% 24%)" }, { clipPath: "circle(150% at 80% 24%)", duration: 0.45, ease: "power3.out" }, 0);
+    tl.fromTo("#s3-count", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power2.out" }, T.count);
+    EK.title(tl, "#s3-ttl", T.ttl);
+    EK.pop(tl, "#s3-year", T.year, -5);
+    // six million without work
+    EK.pop(tl, "#s3-six", T.six, 5);
+    EK.look(tl, "s3-c", T.six + 0.1, 9, -4);
+    EK.mood(tl, "s3-c", T.six + 0.4, "worried", true);
+    // four years later: under one million
+    EK.pop(tl, "#s3-after", T.after, 4);
+    EK.look(tl, "s3-c", T.after + 0.1, -9, -2);
+    tl.to("#s3-six", { y: 800, rotation: 30, opacity: 0, duration: 0.45, ease: "power2.in" }, T.less - 0.5);
+    EK.stamp(tl, "#s3-less", "#s3-stage", T.less, -5);
+    tl.to("#s3-ham", { y: 0, duration: 0.4, ease: "back.out(2)" }, T.less + 0.15);
+    EK.look(tl, "s3-c", T.less + 0.1, 0, 0);
+    EK.mood(tl, "s3-c", T.less + 0.15, "laugh", false);
+    EK.blink(tl, "s3-c", 3.4); EK.blink(tl, "s3-c", 9.4);
+    EK.idle(tl, "s3-c", 0.5, 8.0, 2.5);
+    window.__timelines["s3"] = tl;
+  </script>
+</template>

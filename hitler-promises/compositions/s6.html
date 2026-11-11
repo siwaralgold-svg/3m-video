@@ -1,0 +1,41 @@
+<template>
+  <style>
+    @font-face { font-family: "Lalezar"; src: url("assets/fonts/Lalezar-Regular.ttf"); font-weight: 400; }
+    @font-face { font-family: "Noto Kufi Arabic"; src: url("assets/fonts/NotoKufiArabic.ttf"); font-weight: 100 900; }
+    #root { position: absolute; inset: 0; overflow: hidden; }
+  </style>
+  <div id="root" data-composition-id="s6" data-width="1080" data-height="1920">
+    <div id="s6-wrap" class="clip" data-start="0" data-duration="5.0" data-layout-allow-overflow style="position:absolute;inset:0">
+      <div id="s6-stage" class="stage">
+        <svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg" style="position:absolute;left:0;top:0"><defs><clipPath id="s6-clip"><rect x="-400" y="0" width="1900" height="1154"/></clipPath></defs>
+          <g clip-path="url(#s6-clip)"><g id="s6-sh"><g id="s6-sh-slot" transform="translate(540,1090) scale(0.78)"></g></g></g>
+          <g><rect x="756" y="470" width="288" height="384" rx="8" fill="#0c1a30" stroke="#1C385A" stroke-width="7"/><text x="900" y="740" text-anchor="middle" font-family="Lalezar" font-size="220" fill="#9fb4d0">؟</text></g><g><rect x="396" y="470" width="288" height="384" rx="8" fill="#0c1a30" stroke="#1C385A" stroke-width="7"/><text x="540" y="740" text-anchor="middle" font-family="Lalezar" font-size="220" fill="#9fb4d0">؟</text></g><g><rect x="36" y="470" width="288" height="384" rx="8" fill="#0c1a30" stroke="#1C385A" stroke-width="7"/><text x="180" y="740" text-anchor="middle" font-family="Lalezar" font-size="220" fill="#9fb4d0">؟</text></g>
+          <g id="s6-p1"><g id="s6-p1-slot" transform="translate(756,470) scale(0.8)"></g></g>
+          <g id="s6-p2"><g id="s6-p2-slot" transform="translate(396,470) scale(0.8)"></g></g>
+          <g id="s6-p3"><g id="s6-p3-slot" transform="translate(36,470) scale(0.8)"></g></g>
+        </svg>
+        <div id="s6-t1" class="ttl" style="top:196px; font-size:124px">هذا كلام الدفاع</div>
+        <div id="s6-t2" class="ttl" style="top:196px; font-size:112px">وش ورا الملصقات؟</div>
+      </div>
+      
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+
+    EK.fill("s6-sh-slot", EK.shadow());
+    EK.fill("s6-p1-slot", EK.poster("jobs")); EK.fill("s6-p2-slot", EK.poster("roads")); EK.fill("s6-p3-slot", EK.poster("trips"));
+    const T = { t1: 0.2, t2: 2.4, peel: 3.0, tear: 4.1 };
+    gsap.set("#s6-t1, #s6-t2", { opacity: 0 });
+    EK.whip(tl, "#s6-stage", 1080);
+    EK.title(tl, "#s6-t1", T.t1);
+    tl.to("#s6-t1", { opacity: 0, scale: 0.7, duration: 0.12, ease: "power2.in" }, T.t2 - 0.3);
+    EK.title(tl, "#s6-t2", T.t2);
+    // corners lift, then the posters are torn off the wall
+    [["#s6-p1", "1044 470"], ["#s6-p2", "684 470"], ["#s6-p3", "324 470"]].forEach((p, i) => {
+      tl.to(p[0], { rotation: 7, duration: 0.3, ease: "back.out(3)", svgOrigin: p[1] }, T.peel + i * 0.18);
+      tl.to(p[0], { y: 1500, rotation: 46, duration: 0.5, ease: "power2.in", svgOrigin: p[1] }, T.tear + i * 0.15);
+    });
+    window.__timelines["s6"] = tl;
+  </script>
+</template>

@@ -1,0 +1,38 @@
+<template>
+  <style>
+    @font-face { font-family: "Lalezar"; src: url("assets/fonts/Lalezar-Regular.ttf"); font-weight: 400; }
+    @font-face { font-family: "Noto Kufi Arabic"; src: url("assets/fonts/NotoKufiArabic.ttf"); font-weight: 100 900; }
+    #root { position: absolute; inset: 0; overflow: hidden; }
+  </style>
+  <div id="root" data-composition-id="s4" data-width="1080" data-height="1920">
+    <div id="s4-wrap" class="clip" data-start="0" data-duration="5.0" data-layout-allow-overflow style="position:absolute;inset:0">
+      <div id="s4-stage" class="stage">
+        <div id="s4-bg" style="position:absolute; inset:0; background:#e9dfc6"></div>
+        <svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg" style="position:absolute;left:0;top:0"><rect y="1154" width="1080" height="766" fill="#55606b"/><path d="M0 1154 H1080" fill="none" stroke="#0c1a30" stroke-linejoin="round" stroke-linecap="round" stroke-width="8"/><rect x="22" y="22" width="1036" height="1876" fill="none" stroke="#0c1a30" stroke-linejoin="round" stroke-linecap="round" stroke-width="10"/>
+          <circle cx="850" cy="560" r="62" fill="#ffd94a" stroke="#0c1a30" stroke-linejoin="round" stroke-linecap="round" stroke-width="7"/>
+          <path d="M26 760 Q220 640 430 730 T800 700 T1054 740 V1154 H26Z" fill="#8fa37a" stroke="#0c1a30" stroke-linejoin="round" stroke-linecap="round" stroke-width="8"/>
+          <path d="M240 1154 L506 720 H574 L840 1154Z" fill="#55606b" stroke="#0c1a30" stroke-linejoin="round" stroke-linecap="round" stroke-width="8"/>
+          <path d="M540 740 V770 M540 810 V870 M540 930 V1020 M540 1080 V1150" fill="none" stroke="#F4F6F9" stroke-width="12"/>
+          <g id="s4-car"><g id="s4-car-slot" transform="translate(540,1130) scale(1.25)"></g></g>
+        </svg>
+        <div id="s4-count" class="count" style="color:#3d4a63">السبب الثاني</div>
+        <div id="s4-ttl" class="ttl" style="color:#0c1a30; font-size:128px">الطرق السريعة</div>
+      </div>
+      <div id="s4-km" class="plate" data-layout-allow-overlap data-layout-allow-occlusion style="left:110px; top:950px; width:860px; height:200px; font-size:114px; line-height:182px">آلاف الكيلومترات</div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+
+    EK.fill("s4-car-slot", EK.car());
+    const T = { count: 0.1, ttl: 1.0, plate: 3.4 };
+    gsap.set("#s4-count, #s4-ttl, #s4-km", { opacity: 0 });
+    EK.whip(tl, "#s4-stage", -1080);
+    tl.fromTo("#s4-count", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power2.out" }, T.count);
+    EK.title(tl, "#s4-ttl", T.ttl);
+    // the car drives up the new road
+    tl.fromTo("#s4-car", { y: 260, scale: 1.25, svgOrigin: "540 1130" }, { y: -372, scale: 0.16, duration: 4.4, ease: "power1.out" }, 0.4);
+    EK.stamp(tl, "#s4-km", "#s4-stage", T.plate, 5);
+    window.__timelines["s4"] = tl;
+  </script>
+</template>
