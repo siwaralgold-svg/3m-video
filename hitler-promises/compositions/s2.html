@@ -5,7 +5,7 @@
     #root { position: absolute; inset: 0; overflow: hidden; }
   </style>
   <div id="root" data-composition-id="s2" data-width="1080" data-height="1920">
-    <div id="s2-wrap" class="clip" data-start="0" data-duration="5.5" data-layout-allow-overflow style="position:absolute;inset:0">
+    <div id="s2-wrap" class="clip" data-start="0" data-duration="4.95" data-layout-allow-overflow style="position:absolute;inset:0">
       <div id="s2-stage" class="stage">
         <svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg" style="position:absolute;left:0;top:0"><defs><clipPath id="s2-clip"><rect x="-400" y="0" width="1900" height="1154"/></clipPath></defs>
           <g clip-path="url(#s2-clip)"><g id="s2-sh"><g id="s2-sh-slot" transform="translate(540,890) scale(1.1)"></g></g></g>
@@ -21,14 +21,15 @@
   <script>
     const tl = gsap.timeline({ paused: true });
 
-    EK.fill("s2-sh-slot", EK.shadow());
+    EK.put("s2-sh-slot", "s2-h", "hitler"); EK.face(tl, "s2-h", "annoyed");
     EK.fill("s2-p1-slot", EK.poster("jobs")); EK.fill("s2-p2-slot", EK.poster("roads")); EK.fill("s2-p3-slot", EK.poster("trips"));
-    const T = { court: 0.9, def: 3.4, p1: 4.2, p2: 4.5, p3: 4.8 };
+    const T = { court: 1.3, def: 3.85, p1: 2.9, p2: 3.15, p3: 3.4 };
     gsap.set("#s2-ttl, #s2-def, #s2-p1, #s2-p2, #s2-p3", { opacity: 0 });
     EK.whip(tl, "#s2-stage", 1080);
     EK.title(tl, "#s2-ttl", T.court);
     // this time the defence speaks first
     EK.stamp(tl, "#s2-def", "#s2-stage", T.def, -5);
+    EK.look(tl, "s2-h", T.p1, 6, -9); EK.mood(tl, "s2-h", T.def + 0.15, "smug"); EK.blink(tl, "s2-h", 2.2); EK.idle(tl, "s2-h", 0.4, 4.9, 2.2);
     // its three posters are pasted on the wall
     [["#s2-p1", "860 470", T.p1, 4], ["#s2-p2", "540 470", T.p2, -3], ["#s2-p3", "220 470", T.p3, 3]].forEach((p) => {
       tl.fromTo(p[0], { opacity: 0, scale: 2.2, rotation: p[3] * 3, svgOrigin: p[1] }, { opacity: 1, scale: 1, rotation: p[3], duration: 0.15, ease: "power3.in" }, p[2]);

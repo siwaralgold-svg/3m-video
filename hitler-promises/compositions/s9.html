@@ -5,7 +5,7 @@
     #root { position: absolute; inset: 0; overflow: hidden; }
   </style>
   <div id="root" data-composition-id="s9" data-width="1080" data-height="1920">
-    <div id="s9-wrap" class="clip" data-start="0" data-duration="7.0" data-layout-allow-overflow style="position:absolute;inset:0">
+    <div id="s9-wrap" class="clip" data-start="0" data-duration="6.45" data-layout-allow-overflow style="position:absolute;inset:0">
       <div id="s9-stage" class="stage">
         <svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg" style="position:absolute;left:0;top:0"><defs><clipPath id="s9-clip"><rect x="-400" y="0" width="1900" height="1154"/></clipPath></defs>
           <g clip-path="url(#s9-clip)"><g id="s9-w"><g id="s9-w-slot" transform="translate(540,900) scale(1.05)"></g></g></g>
@@ -24,7 +24,7 @@
     const tl = gsap.timeline({ paused: true });
 
     EK.put("s9-w-slot", "s9-c", "worker");
-    const T = { count: 0.1, ttl: 0.6, un: 1.6, unS: 2.4, st: 3.4, stS: 4.0, pay: 5.4 };
+    const T = { count: 0.02, ttl: 0.07, un: 1.83, unS: 2.68, st: 3.11, stS: 3.87, pay: 5.07 };
     EK.face(tl, "s9-c", "calm");
     gsap.set("#s9-count, #s9-ttl, #s9-un, #s9-st, #s9-unS, #s9-stS, #s9-pay", { opacity: 0 });
     EK.whip(tl, "#s9-stage", 1080);
@@ -41,8 +41,8 @@
     EK.stamp(tl, "#s9-pay", "#s9-stage", T.pay, -5);
     EK.look(tl, "s9-c", T.pay + 0.05, 0, 8);
     EK.mood(tl, "s9-c", T.pay + 0.2, "shock", true);
-    EK.blink(tl, "s9-c", 1.1); EK.blink(tl, "s9-c", 6.5);
-    EK.idle(tl, "s9-c", 0.5, 7.0, 2.2);
+    EK.blink(tl, "s9-c", 1.1); EK.blink(tl, "s9-c", 6.1);
+    EK.idle(tl, "s9-c", 0.5, 6.4, 2.0);
     window.__timelines["s9"] = tl;
   </script>
 </template>

@@ -5,7 +5,7 @@
     #root { position: absolute; inset: 0; overflow: hidden; }
   </style>
   <div id="root" data-composition-id="s7" data-width="1080" data-height="1920">
-    <div id="s7-wrap" class="clip" data-start="0" data-duration="6.5" data-layout-allow-overflow style="position:absolute;inset:0">
+    <div id="s7-wrap" class="clip" data-start="0" data-duration="8.05" data-layout-allow-overflow style="position:absolute;inset:0">
       <div id="s7-stage" class="stage">
         <svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg" style="position:absolute;left:0;top:0"><defs><clipPath id="s7-clip"><rect x="-400" y="0" width="1900" height="1154"/></clipPath></defs>
           <g clip-path="url(#s7-clip)">
@@ -17,6 +17,7 @@
         <div id="s7-count" class="count">ورا الملصق الأول</div>
         <div id="s7-ttl" class="ttl">الوظايف؟</div>
         <div id="s7-draft" class="card kufi" style="left:40px; top:480px; width:360px; height:116px; font-size:44px; font-weight:800; line-height:102px; ">تجنيد إجباري</div>
+        <div id="s7-war" class="card kufi" style="left:690px; top:480px; width:350px; height:116px; font-size:46px; font-weight:800; line-height:102px; ">تجهيز لحرب</div>
       </div>
       <div id="s7-arms" class="plate" data-layout-allow-overlap data-layout-allow-occlusion style="left:50px; top:950px; width:660px; height:190px; font-size:120px; line-height:172px">مصانع سلاح</div>
     </div>
@@ -26,9 +27,9 @@
 
     EK.put("s7-A-slot", "s7-a", "worker"); EK.put("s7-B-slot", "s7-b", "conscript");
     EK.fill("s7-cr-slot", EK.crate());
-    const T = { count: 0.1, ttl: 0.6, arms: 1.6, crate: 2.2, draft: 4.3 };
+    const T = { count: 0.02, ttl: 0.09, arms: 1.41, crate: 2.1, draft: 3.86, war: 6.99 };
     EK.face(tl, "s7-a", "calm"); EK.face(tl, "s7-b", "worried");
-    gsap.set("#s7-count, #s7-ttl, #s7-draft, #s7-arms, #s7-B", { opacity: 0 });
+    gsap.set("#s7-count, #s7-ttl, #s7-draft, #s7-arms, #s7-B, #s7-war", { opacity: 0 });
     gsap.set("#s7-cr", { y: -1400 });
     // enter: through the hole the first poster left
     tl.fromTo("#s7-stage", { clipPath: "circle(0% at 83% 34%)" }, { clipPath: "circle(150% at 83% 34%)", duration: 0.45, ease: "power3.out" }, 0);
@@ -47,8 +48,10 @@
     EK.pop(tl, "#s7-draft", T.draft + 0.1, -5);
     EK.mood(tl, "s7-b", T.draft + 0.6, "shock", true);
     EK.look(tl, "s7-b", T.draft + 1.3, -8, -4);
-    EK.blink(tl, "s7-a", 1.2); EK.blink(tl, "s7-b", 5.9);
-    EK.idle(tl, "s7-a", 0.5, 4.0, 1.75); EK.idle(tl, "s7-b", 4.7, 6.5, 1.8);
+    // so the job was a preparation for war
+    EK.pop(tl, "#s7-war", T.war, 5); EK.look(tl, "s7-b", T.war + 0.1, 9, -4); EK.mood(tl, "s7-b", T.war + 0.4, "sad");
+    EK.blink(tl, "s7-a", 1.0); EK.blink(tl, "s7-b", 6.2);
+    EK.idle(tl, "s7-a", 0.5, 3.7, 1.6); EK.idle(tl, "s7-b", 4.4, 8.0, 1.8);
     window.__timelines["s7"] = tl;
   </script>
 </template>

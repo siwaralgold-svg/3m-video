@@ -5,7 +5,7 @@
     #root { position: absolute; inset: 0; overflow: hidden; }
   </style>
   <div id="root" data-composition-id="s10" data-width="1080" data-height="1920">
-    <div id="s10-wrap" class="clip" data-start="0" data-duration="10.0" data-layout-allow-overflow style="position:absolute;inset:0">
+    <div id="s10-wrap" class="clip" data-start="0" data-duration="9.45" data-layout-allow-overflow style="position:absolute;inset:0">
       <div id="s10-stage" class="stage">
         <div id="s10-bg" style="position:absolute; inset:0; background:#0a1322"></div>
         <svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg" style="position:absolute;left:0;top:0"><g id="s10-dots"></g></svg>
@@ -13,11 +13,11 @@
         <div id="s10-t1" class="ttl">باقي الملف</div>
         <div id="s10-c2" class="count">المحرقة</div>
         <div id="s10-t2" class="ttl" style="font-size:132px">٦ مليون يهودي</div>
-        <div id="s10-leg" class="kufi" style="position:absolute; left:90px; right:90px; top:1000px; text-align:center; font-size:40px; font-weight:800; color:#9fb4d0">كل نقطة = ١٠٠ ألف إنسان</div>
-        <div id="s10-more" class="kufi" style="position:absolute; left:90px; right:90px; top:1086px; text-align:center; font-size:46px; font-weight:800; color:#F4F6F9">وملايين غيرهم</div>
-        <div id="s10-k1" class="card kufi" style="left:740px; top:1180px; width:300px; height:110px; font-size:48px; font-weight:800; line-height:96px; ">غجر</div>
-        <div id="s10-k2" class="card kufi" style="left:390px; top:1180px; width:300px; height:110px; font-size:48px; font-weight:800; line-height:96px; ">معاقين</div>
-        <div id="s10-k3" class="card kufi" style="left:40px; top:1180px; width:300px; height:110px; font-size:48px; font-weight:800; line-height:96px; ">أسرى</div>
+        <div id="s10-leg" class="kufi" style="position:absolute; left:90px; right:90px; top:944px; text-align:center; font-size:40px; font-weight:800; color:#9fb4d0">كل نقطة = ١٠٠ ألف إنسان</div>
+        <div id="s10-more" class="kufi" style="position:absolute; left:90px; right:90px; top:1012px; text-align:center; font-size:46px; font-weight:800; color:#F4F6F9">وملايين غيرهم</div>
+        <div id="s10-k1" class="card kufi" style="left:740px; top:1086px; width:300px; height:104px; font-size:46px; font-weight:800; line-height:90px; ">غجر</div>
+        <div id="s10-k2" class="card kufi" style="left:390px; top:1086px; width:300px; height:104px; font-size:46px; font-weight:800; line-height:90px; ">معاقين</div>
+        <div id="s10-k3" class="card kufi" style="left:40px; top:1086px; width:300px; height:104px; font-size:46px; font-weight:800; line-height:90px; ">أسرى</div>
       </div>
       
     </div>
@@ -26,9 +26,9 @@
     const tl = gsap.timeline({ paused: true });
 
     let dots = "";
-    for (let r = 0; r < 6; r++) for (let c = 0; c < 10; c++) dots += `<circle class="s10-dot" cx="${918 - c * 84}" cy="${520 + r * 84}" r="26" fill="#F4F6F9"/>`;
+    for (let r = 0; r < 6; r++) for (let c = 0; c < 10; c++) dots += `<circle class="s10-dot" cx="${918 - c * 84}" cy="${470 + r * 84}" r="26" fill="#F4F6F9"/>`;
     EK.fill("s10-dots", dots);
-    const T = { c1: 0.2, rest: 2.0, six: 3.4, dots: 3.7, red: 5.2, more: 6.8, k1: 7.5, k2: 8.2, k3: 8.9 };
+    const T = { c1: 0.06, rest: 2.18, six: 3.22, dots: 3.3, red: 5.0, more: 5.94, k1: 7.18, k2: 7.82, k3: 8.74 };
     gsap.set("#s10-c1, #s10-t1, #s10-c2, #s10-t2, #s10-leg, #s10-more, #s10-k1, #s10-k2, #s10-k3, .s10-dot", { opacity: 0 });
     // enter: the wall goes dark, no movement
     tl.fromTo("#s10-bg", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power1.inOut" }, 0);
@@ -37,8 +37,8 @@
     tl.to("#s10-c1, #s10-t1", { opacity: 0, duration: 0.2 }, T.six - 0.3);
     // six million: sixty dots, each one hundred thousand people
     tl.fromTo("#s10-t2", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, T.six);
-    tl.fromTo(".s10-dot", { opacity: 0, scale: 0, transformOrigin: "50% 50%" }, { opacity: 1, scale: 1, duration: 0.2, ease: "power2.out", stagger: 0.02 }, T.dots);
-    tl.fromTo("#s10-leg", { opacity: 0 }, { opacity: 1, duration: 0.3 }, T.dots + 0.6);
+    tl.fromTo(".s10-dot", { opacity: 0, scale: 0, transformOrigin: "50% 50%" }, { opacity: 1, scale: 1, duration: 0.2, ease: "power2.out", stagger: 0.012 }, T.dots);
+    tl.fromTo("#s10-leg", { opacity: 0 }, { opacity: 1, duration: 0.3 }, T.dots + 0.9);
     tl.fromTo("#s10-c2", { opacity: 0 }, { opacity: 1, duration: 0.3 }, T.red);
     tl.to(".s10-dot", { fill: "#8c2f2f", duration: 0.3, stagger: 0.012 }, T.red);
     // and millions of others

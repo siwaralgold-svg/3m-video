@@ -91,6 +91,12 @@ window.EK = (function () {
       hair: `<circle cx="0" cy="-250" r="44"/><path d="M-104 -104 C-124 -244 124 -244 104 -104 C96 -168 50 -190 0 -186 C-50 -190 -96 -168 -104 -104Z"/>`,
       body: `<path d="M-190 310 C-190 150 -104 84 0 84 C104 84 190 150 190 310Z" fill="#4d6b4a" ${S(8)}/><path d="M-60 90 L0 150 L60 90 L40 84 L0 120 L-40 84Z" fill="#F4F6F9" ${S(6)}/>`,
     },
+    hitler: {
+      skin: "#f0c6a6", suit: "#6b5a3a", hairC: "#1b1612", rx: 104,
+      hair: `<path d="M-108 -108 C-126 -250 122 -252 106 -114 C102 -152 86 -178 62 -194 C30 -152 -40 -128 -106 -138Z"/>`,
+      stache: `<rect x="-23" y="-72" width="46" height="27" rx="7"/>`,
+      neckwear: `<path d="M-14 96 L14 96 L20 170 L0 190 L-20 170Z" fill="#1b1612" ${S(5)}/>`,
+    },
   };
 
   function bust(p, who) {

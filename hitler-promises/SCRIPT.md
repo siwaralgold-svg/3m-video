@@ -1,10 +1,9 @@
 # شيطان القرن العشرين: ثلاث ملصقات، وباقي الملف
 
-Vertical 1080×1920, 97.1 s, Saudi dialect. Art style from `edison-stole/STYLE.md`; story, scenes and background (a brick wall of pasted posters over the rail of the dock) are new.
+Vertical 1080×1920, 103.0 s, Saudi dialect. Art style from `edison-stole/STYLE.md`; story, scenes and background (a brick wall of pasted posters over the rail of the dock) are new.
+Voice: ElevenLabs, `assets/voiceover.mp3` (99.7 s); word timings in `assets/transcript.json`.
 
-This is the trial in reverse: the defence speaks first. Three "reasons" ordinary people cheered him are shown as bright posters, then each poster is torn off to show what it hid, then the rest of the file. His name is never said and he never gets a face: he is an ink silhouette from the first frame to the last.
-
-**Draft: no voiceover yet.** Scene times below are estimates at about two words a second. After the ElevenLabs take is in `assets/voiceover.mp3`, retime each scene's `T` table and the `data-start` values to the transcript, then add captions (as in `churchill-files/compositions/captions.html`).
+This is the trial in reverse: the defence speaks first. Three "reasons" ordinary people cheered him are shown as bright posters, then each poster is torn off to show what it hid, then the rest of the file. His name is never said: he starts as a silhouette and the reveal is his face, on "أبو شنب".
 
 ## Voiceover
 
@@ -62,28 +61,29 @@ Words in square brackets are emotion tags (ElevenLabs v3), never shown on screen
 [long pause] [calm] الحكم… لك أنت.
 ```
 
-About 215 words. This is script v2 (face reveal in the hook, the people's car added). The scenes in `compositions/` still follow v1 and will be rebuilt to the voiceover once it is recorded.
+About 215 words.
 
 ## Scenes
 
-| Scene | Time (s) | Picture | Words on screen |
-|---|---|---|---|
-| s1 | 0–11.0 | The faceless figure against the wall; a name card with the name blacked out; a worker and a woman rise and cheer | «شيطان القرن العشرين»، «الاسم: ▇▇▇»، «ملايين الناس العاديين صفّقوا له»، «٣ أسباب» |
-| s2 | 11.0–16.5 | The court; the defence's three posters are slapped onto the wall | «محكمة التاريخ»، «نبدأ بالدفاع» |
-| s3 | 16.5–26.5 | Inside poster 1 (cream paper): the jobless worker, then the hammer | «الوظايف»، «١٩٣٣»، «٦ مليون عاطل»، «أقل من مليون» |
-| s4 | 26.5–31.5 | Inside poster 2: a car drives up a new road | «الطرق السريعة»، «آلاف الكيلومترات» |
-| s5 | 31.5–37.0 | Inside poster 3: a cruise ship and the sun | «الإجازات»، «رحلات وبحر»، «بسعر العامل» |
-| s6 | 37.0–42.0 | Back at the wall: the corners lift and the three posters are torn off | «هذا كلام الدفاع»، «وش ورا الملصقات؟» |
-| s7 | 42.0–48.5 | Behind poster 1: a crate of shells lands; the worker's cap becomes a helmet | «مصانع سلاح»، «تجنيد إجباري» |
-| s8 | 48.5–54.5 | Behind poster 2: a line of years, read right to left | «١٩٢٦ الخطة»، «١٩٣٢ أول طريق»، «١٩٣٣ وصل للحكم»، «قبله» |
-| s9 | 54.5–61.5 | Behind poster 3: two cards stamped in red; the worker's face falls | «النقابات: انحلّت»، «الإضراب: ممنوع»، «الراتب أقل» |
-| s10 | 61.5–71.5 | The wall goes dark. Sixty dots, each 100,000 people, turn red. No stamps, no shake, one soft sound | «باقي الملف»، «٦ مليون يهودي»، «المحرقة»، «غجر، معاقين، أسرى» |
-| s11 | 71.5–78.0 | The war; a ruined skyline rises with the worker's helmet on the rubble | «حرب عالمية ١٩٣٩–١٩٤٥»، «عشرات الملايين»، «ألمانيا ١٩٤٥»، «ركام» |
-| s12 | 78.0–82.5 | The three posters again, knocked down by the plate | «ما تبرّي إبادة» |
-| s13 | 82.5–94.5 | The figure hides behind the three posters; a price tag with a question mark hangs from one | «الطاغية ما يجيك بوجه شيطان»، «بتسأل عن الثمن؟»، «الحكم لك أنت» |
-| s14 | 94.5–97.1 | T3M end card | |
+| Scene | Time (s) | Picture |
+|---|---|---|
+| s1 | 0–12.0 | Silhouette with the name blacked out; the face lights up on "أبو شنب"; a worker and a woman rise and cheer; "٣ أسباب" |
+| s2 | 12.0–16.95 | The court; the defence's three posters are slapped onto the wall; "نبدأ بالدفاع" |
+| s3 | 16.95–26.35 | Inside poster 1: the jobless worker, 1933, six million, then "أقل من مليون" and the hammer |
+| s4 | 26.35–32.1 | Inside poster 2: a car drives up a new road; "آلاف الكيلومترات" |
+| s5 | 32.1–39.85 | Inside poster 3: a cruise ship; "بسعر العامل"; then the promised car |
+| s6 | 39.85–43.85 | Back at the wall: the three posters are torn off |
+| s7 | 43.85–51.9 | Behind poster 1: a crate of shells; the cap becomes a helmet; "تجهيز لحرب" |
+| s8 | 51.9–58.95 | Behind poster 2: a line of years (1926, 1932, 1933); "قبله"; a "دعاية" stamp |
+| s9 | 58.95–65.4 | Behind poster 3: unions dissolved, strikes banned, "الراتب أقل" |
+| s9b | 65.4–70.2 | The car: 300 thousand paid, it drives off; "ولا سيارة" |
+| s10 | 70.2–79.65 | The wall goes dark. Sixty dots, each 100,000 people, turn red; Roma, the disabled, prisoners |
+| s11 | 79.65–85.1 | The war, "عشرات الملايين"; a ruined skyline with the worker's helmet |
+| s12 | 85.1–88.55 | The three posters knocked down by "ما تبرّي إبادة" |
+| s13 | 88.55–100.4 | He hides behind the three posters and peeks over; a price tag with "؟"; "الحكم لك أنت" |
+| s14 | 100.4–103.0 | T3M end card |
 
-No face, no name, no party symbols or flags, no bodies. No music; sound effects from `sfx-library/` only.
+No name, no party symbols or flags, no bodies. No music; sound effects from `sfx-library/` only. Captions in `compositions/captions.html`.
 
 ## للمراجعة قبل النشر
 
@@ -92,5 +92,5 @@ No face, no name, no party symbols or flags, no bodies. No music; sound effects 
 - **الإجازات:** برنامج «القوة عبر الفرح» (KdF). النقابات انحلّت ٢ مايو ١٩٣٣. جملة «الراتب أقل من قبل الأزمة» تعتمد على أن متوسط الأجر الحقيقي للعامل الصناعي ظل دون مستوى ١٩٢٨ حتى ١٩٣٩؛ راجع المصدر والمقياس (أجر الساعة ولا الأسبوع).
 - **المحرقة:** حوالي ٦ مليون يهودي. «ملايين غيرهم»: حوالي ٣ مليون أسير سوفييتي، ومئات الآلاف من الغجر (الروما والسنتي)، وحوالي ربع مليون إلى ٣٠٠ ألف من ذوي الإعاقة، وغيرهم.
 - **الحرب:** التقديرات من ٧٠ إلى ٨٥ مليون قتيل في العالم كله؛ «عشرات الملايين» صيغة آمنة. الحرب في آسيا لها مسؤولين ثانيين.
-- **تفصيلة ممكن تنضاف لو فيه وقت:** حوالي ٣٣٦ ألف ألماني دفعوا أقساط «سيارة الشعب»، ولا مدني واحد استلم سيارته.
-- **تيك توك:** الفيديو ما يذكر الاسم ولا يعرض رموز، بس الموضوع حسّاس. راجع سياسة المنصة للمحتوى التاريخي قبل النشر.
+- **السيارة:** حوالي ٣٣٦ ألف ألماني دفعوا أقساط «سيارة الشعب»، ولا مدني واحد استلم سيارته. النص يقول «ثلاثمية ألف» للتبسيط.
+- **تيك توك:** الفيديو ما يذكر الاسم ولا يعرض رموز، لكن وجهه يظهر مرسوم، بس الموضوع حسّاس. راجع سياسة المنصة للمحتوى التاريخي قبل النشر.

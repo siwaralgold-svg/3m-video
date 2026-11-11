@@ -5,7 +5,7 @@
     #root { position: absolute; inset: 0; overflow: hidden; }
   </style>
   <div id="root" data-composition-id="s3" data-width="1080" data-height="1920">
-    <div id="s3-wrap" class="clip" data-start="0" data-duration="10.0" data-layout-allow-overflow style="position:absolute;inset:0">
+    <div id="s3-wrap" class="clip" data-start="0" data-duration="9.4" data-layout-allow-overflow style="position:absolute;inset:0">
       <div id="s3-stage" class="stage">
         <div id="s3-bg" style="position:absolute; inset:0; background:#e9dfc6"></div>
         <svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg" style="position:absolute;left:0;top:0"><rect y="1154" width="1080" height="766" fill="#8c2f2f"/><path d="M0 1154 H1080" fill="none" stroke="#0c1a30" stroke-linejoin="round" stroke-linecap="round" stroke-width="8"/><rect x="22" y="22" width="1036" height="1876" fill="none" stroke="#0c1a30" stroke-linejoin="round" stroke-linecap="round" stroke-width="10"/><defs><clipPath id="s3-clip"><rect x="-400" y="0" width="1900" height="1154"/></clipPath></defs>
@@ -27,7 +27,7 @@
     const tl = gsap.timeline({ paused: true });
 
     EK.put("s3-w-slot", "s3-c", "worker");
-    const T = { count: 0.1, ttl: 1.0, year: 2.3, six: 4.6, after: 6.9, less: 8.2 };
+    const T = { count: 0.05, ttl: 1.2, year: 2.2, six: 5.6, after: 7.0, less: 8.17 };
     EK.face(tl, "s3-c", "sad");
     gsap.set("#s3-count, #s3-ttl, #s3-year, #s3-six, #s3-after, #s3-less", { opacity: 0 });
     gsap.set("#s3-ham", { y: 700 });
@@ -48,7 +48,7 @@
     tl.to("#s3-ham", { y: 0, duration: 0.4, ease: "back.out(2)" }, T.less + 0.15);
     EK.look(tl, "s3-c", T.less + 0.1, 0, 0);
     EK.mood(tl, "s3-c", T.less + 0.15, "laugh", false);
-    EK.blink(tl, "s3-c", 3.4); EK.blink(tl, "s3-c", 9.4);
+    EK.blink(tl, "s3-c", 3.4); EK.blink(tl, "s3-c", 9.0);
     EK.idle(tl, "s3-c", 0.5, 8.0, 2.5);
     window.__timelines["s3"] = tl;
   </script>

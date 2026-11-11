@@ -5,18 +5,20 @@
     #root { position: absolute; inset: 0; overflow: hidden; }
   </style>
   <div id="root" data-composition-id="s5" data-width="1080" data-height="1920">
-    <div id="s5-wrap" class="clip" data-start="0" data-duration="5.5" data-layout-allow-overflow style="position:absolute;inset:0">
+    <div id="s5-wrap" class="clip" data-start="0" data-duration="7.75" data-layout-allow-overflow style="position:absolute;inset:0">
       <div id="s5-stage" class="stage">
         <div id="s5-bg" style="position:absolute; inset:0; background:#e9dfc6"></div>
         <svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg" style="position:absolute;left:0;top:0"><rect y="1154" width="1080" height="766" fill="#3d4a63"/><path d="M0 1154 H1080" fill="none" stroke="#0c1a30" stroke-linejoin="round" stroke-linecap="round" stroke-width="8"/><rect x="22" y="22" width="1036" height="1876" fill="none" stroke="#0c1a30" stroke-linejoin="round" stroke-linecap="round" stroke-width="10"/>
-          <circle cx="230" cy="590" r="70" fill="#ffd94a" stroke="#0c1a30" stroke-linejoin="round" stroke-linecap="round" stroke-width="7"/>
+          <circle cx="190" cy="530" r="70" fill="#ffd94a" stroke="#0c1a30" stroke-linejoin="round" stroke-linecap="round" stroke-width="7"/>
           <g id="s5-ship"><g id="s5-ship-slot" transform="translate(300,806) scale(1.5)"></g></g>
           <rect x="26" y="880" width="1028" height="274" fill="#8fd0f0" stroke="#0c1a30" stroke-linejoin="round" stroke-linecap="round" stroke-width="8"/>
           <g id="s5-waves" fill="none" stroke="#F4F6F9" stroke-width="9" stroke-linecap="round"><path d="M80 950 q20 -22 40 0 t40 0 t40 0 M420 990 q20 -22 40 0 t40 0 t40 0 M760 940 q20 -22 40 0 t40 0 t40 0 M200 1080 q20 -22 40 0 t40 0 t40 0 M640 1090 q20 -22 40 0 t40 0 t40 0"/></g>
+          <g id="s5-car"><g id="s5-car-slot" transform="translate(540,1520) scale(1.7)"></g></g>
         </svg>
         <div id="s5-count" class="count" style="color:#3d4a63">السبب الثالث</div>
         <div id="s5-ttl" class="ttl" style="color:#0c1a30">الإجازات</div>
         <div id="s5-trip" class="card kufi" style="left:620px; top:470px; width:400px; height:116px; font-size:48px; font-weight:800; line-height:102px; ">رحلات وبحر</div>
+        <div id="s5-carc" class="card kufi" style="left:60px; top:660px; width:430px; height:116px; font-size:46px; font-weight:800; line-height:102px; ">سيارة لكل بيت</div>
       </div>
       <div id="s5-price" class="plate" data-layout-allow-overlap data-layout-allow-occlusion style="left:170px; top:960px; width:740px; height:190px; font-size:120px; line-height:172px">بسعر العامل</div>
     </div>
@@ -24,19 +26,22 @@
   <script>
     const tl = gsap.timeline({ paused: true });
 
-    EK.fill("s5-ship-slot", EK.ship());
-    const T = { count: 0.1, ttl: 1.0, trip: 2.3, price: 4.0 };
-    gsap.set("#s5-count, #s5-ttl, #s5-trip, #s5-price", { opacity: 0 });
+    EK.fill("s5-ship-slot", EK.ship()); EK.fill("s5-car-slot", EK.car());
+    const T = { count: 0.08, ttl: 1.24, trip: 2.16, price: 3.6, car: 6.22 };
+    gsap.set("#s5-count, #s5-ttl, #s5-trip, #s5-price, #s5-carc, #s5-car", { opacity: 0 });
     // enter: the poster rises from below
     tl.fromTo("#s5-stage", { y: 1920 }, { y: 0, duration: 0.45, ease: "power3.out" }, 0);
     tl.fromTo("#s5-count", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power2.out" }, T.count);
     EK.title(tl, "#s5-ttl", T.ttl);
     // the cruise ship sails and bobs
-    tl.fromTo("#s5-ship", { x: -120 }, { x: 420, duration: 5.3, ease: "none" }, 0.2);
-    tl.fromTo("#s5-ship-slot", { rotation: -2.5, svgOrigin: "300 806" }, { rotation: 2.5, duration: 0.9, yoyo: true, repeat: 5, ease: "sine.inOut" }, 0.2);
-    tl.fromTo("#s5-waves", { x: 0 }, { x: -60, duration: 5.3, ease: "none" }, 0.2);
+    tl.fromTo("#s5-ship", { x: -120 }, { x: 420, duration: 7.5, ease: "none" }, 0.2);
+    tl.fromTo("#s5-ship-slot", { rotation: -2.5, svgOrigin: "300 806" }, { rotation: 2.5, duration: 0.9, yoyo: true, repeat: 7, ease: "sine.inOut" }, 0.2);
+    tl.fromTo("#s5-waves", { x: 0 }, { x: -60, duration: 7.5, ease: "none" }, 0.2);
     EK.pop(tl, "#s5-trip", T.trip, 5);
     EK.stamp(tl, "#s5-price", "#s5-stage", T.price, -5);
+    // and one more promise: a car for every home
+    EK.pop(tl, "#s5-carc", T.car, -5);
+    tl.fromTo("#s5-car", { opacity: 0, scale: 0.3, svgOrigin: "540 1440" }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(2)" }, T.car - 0.3);
     window.__timelines["s5"] = tl;
   </script>
 </template>

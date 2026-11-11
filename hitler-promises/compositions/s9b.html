@@ -1,0 +1,42 @@
+<template>
+  <style>
+    @font-face { font-family: "Lalezar"; src: url("assets/fonts/Lalezar-Regular.ttf"); font-weight: 400; }
+    @font-face { font-family: "Noto Kufi Arabic"; src: url("assets/fonts/NotoKufiArabic.ttf"); font-weight: 100 900; }
+    #root { position: absolute; inset: 0; overflow: hidden; }
+  </style>
+  <div id="root" data-composition-id="s9b" data-width="1080" data-height="1920">
+    <div id="s9b-wrap" class="clip" data-start="0" data-duration="4.8" data-layout-allow-overflow style="position:absolute;inset:0">
+      <div id="s9b-stage" class="stage">
+        <svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg" style="position:absolute;left:0;top:0"><defs><clipPath id="s9b-clip"><rect x="-400" y="0" width="1900" height="1154"/></clipPath></defs>
+          <g clip-path="url(#s9b-clip)">
+            <g id="s9b-car"><g id="s9b-car-slot" transform="translate(640,1150) scale(1.9)"></g></g>
+            <g id="s9b-w"><g id="s9b-w-slot" transform="translate(190,1000) scale(0.7)"></g></g>
+          </g>
+        </svg>
+        <div id="s9b-ttl" class="ttl">والسيارة؟</div>
+        <div id="s9b-paid" class="card" style="left:60px; top:470px; width:400px; height:190px; "><div class="disp" style="font-size:92px; line-height:108px">٣٠٠ ألف</div><div class="kufi" style="font-size:38px; font-weight:800; line-height:56px">دفعوا الأقساط</div></div>
+      </div>
+      <div id="s9b-none" class="plate" data-layout-allow-overlap data-layout-allow-occlusion style="left:330px; top:620px; width:640px; height:200px; font-size:140px; line-height:182px">ولا سيارة</div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+
+    EK.fill("s9b-car-slot", EK.car()); EK.put("s9b-w-slot", "s9b-c", "worker");
+    const T = { ttl: 0.06, paid: 0.94, gone: 2.95, none: 3.58 };
+    EK.face(tl, "s9b-c", "calm");
+    gsap.set("#s9b-ttl, #s9b-paid, #s9b-none", { opacity: 0 });
+    EK.whip(tl, "#s9b-stage", -1080);
+    EK.title(tl, "#s9b-ttl", T.ttl + 0.15);
+    EK.look(tl, "s9b-c", 0.5, 9, 2);
+    EK.pop(tl, "#s9b-paid", T.paid, -5);
+    EK.mood(tl, "s9b-c", T.paid + 0.5, "laugh");
+    // not one of them received a car: it drives off
+    tl.to("#s9b-car", { x: 1100, duration: 0.5, ease: "power2.in" }, T.gone);
+    EK.look(tl, "s9b-c", T.gone + 0.2, 10, 0);
+    EK.stamp(tl, "#s9b-none", "#s9b-stage", T.none, -5);
+    EK.mood(tl, "s9b-c", T.none + 0.1, "shock", true);
+    EK.idle(tl, "s9b-c", 0.5, 4.8, 2.1);
+    window.__timelines["s9b"] = tl;
+  </script>
+</template>

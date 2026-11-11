@@ -5,7 +5,7 @@
     #root { position: absolute; inset: 0; overflow: hidden; }
   </style>
   <div id="root" data-composition-id="s6" data-width="1080" data-height="1920">
-    <div id="s6-wrap" class="clip" data-start="0" data-duration="5.0" data-layout-allow-overflow style="position:absolute;inset:0">
+    <div id="s6-wrap" class="clip" data-start="0" data-duration="4.0" data-layout-allow-overflow style="position:absolute;inset:0">
       <div id="s6-stage" class="stage">
         <svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg" style="position:absolute;left:0;top:0"><defs><clipPath id="s6-clip"><rect x="-400" y="0" width="1900" height="1154"/></clipPath></defs>
           <g clip-path="url(#s6-clip)"><g id="s6-sh"><g id="s6-sh-slot" transform="translate(540,1090) scale(0.78)"></g></g></g>
@@ -23,14 +23,15 @@
   <script>
     const tl = gsap.timeline({ paused: true });
 
-    EK.fill("s6-sh-slot", EK.shadow());
+    EK.put("s6-sh-slot", "s6-h", "hitler"); EK.face(tl, "s6-h", "smug");
     EK.fill("s6-p1-slot", EK.poster("jobs")); EK.fill("s6-p2-slot", EK.poster("roads")); EK.fill("s6-p3-slot", EK.poster("trips"));
-    const T = { t1: 0.2, t2: 2.4, peel: 3.0, tear: 4.1 };
+    const T = { t1: 0.09, t2: 1.55, peel: 2.2, tear: 3.05 };
     gsap.set("#s6-t1, #s6-t2", { opacity: 0 });
     EK.whip(tl, "#s6-stage", 1080);
     EK.title(tl, "#s6-t1", T.t1);
     tl.to("#s6-t1", { opacity: 0, scale: 0.7, duration: 0.12, ease: "power2.in" }, T.t2 - 0.3);
     EK.title(tl, "#s6-t2", T.t2);
+    EK.look(tl, "s6-h", T.peel, 0, -9); EK.mood(tl, "s6-h", T.tear + 0.1, "worried", true);
     // corners lift, then the posters are torn off the wall
     [["#s6-p1", "1044 470"], ["#s6-p2", "684 470"], ["#s6-p3", "324 470"]].forEach((p, i) => {
       tl.to(p[0], { rotation: 7, duration: 0.3, ease: "back.out(3)", svgOrigin: p[1] }, T.peel + i * 0.18);

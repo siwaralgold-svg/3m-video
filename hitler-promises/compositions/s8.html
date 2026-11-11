@@ -5,38 +5,41 @@
     #root { position: absolute; inset: 0; overflow: hidden; }
   </style>
   <div id="root" data-composition-id="s8" data-width="1080" data-height="1920">
-    <div id="s8-wrap" class="clip" data-start="0" data-duration="6.0" data-layout-allow-overflow style="position:absolute;inset:0">
+    <div id="s8-wrap" class="clip" data-start="0" data-duration="7.05" data-layout-allow-overflow style="position:absolute;inset:0">
       <div id="s8-stage" class="stage">
         <svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg" style="position:absolute;left:0;top:0">
-          <path id="s8-line" d="M110 810 H970" fill="none" stroke="#F4F6F9" stroke-width="10" stroke-linecap="round"/>
-          <circle id="s8-d1" cx="865" cy="810" r="26" fill="#F4F6F9" stroke="#0c1a30" stroke-linejoin="round" stroke-linecap="round" stroke-width="7"/>
-          <circle id="s8-d2" cx="540" cy="810" r="26" fill="#F4F6F9" stroke="#0c1a30" stroke-linejoin="round" stroke-linecap="round" stroke-width="7"/>
-          <circle id="s8-d3" cx="215" cy="810" r="26" fill="#8c2f2f" stroke="#0c1a30" stroke-linejoin="round" stroke-linecap="round" stroke-width="7"/>
+          <path id="s8-line" d="M110 770 H970" fill="none" stroke="#F4F6F9" stroke-width="10" stroke-linecap="round"/>
+          <circle id="s8-d1" cx="865" cy="770" r="26" fill="#F4F6F9" stroke="#0c1a30" stroke-linejoin="round" stroke-linecap="round" stroke-width="7"/>
+          <circle id="s8-d2" cx="540" cy="770" r="26" fill="#F4F6F9" stroke="#0c1a30" stroke-linejoin="round" stroke-linecap="round" stroke-width="7"/>
+          <circle id="s8-d3" cx="215" cy="770" r="26" fill="#8c2f2f" stroke="#0c1a30" stroke-linejoin="round" stroke-linecap="round" stroke-width="7"/>
         </svg>
         <div id="s8-count" class="count">ورا الملصق الثاني</div>
         <div id="s8-ttl" class="ttl">الطرق؟</div>
-        <div id="s8-c1" class="card" style="left:700px; top:560px; width:330px; height:190px; "><div class="disp" style="font-size:92px; line-height:108px">١٩٢٦</div><div class="kufi" style="font-size:38px; font-weight:800; line-height:56px">الخطة</div></div>
-        <div id="s8-c2" class="card" style="left:375px; top:870px; width:330px; height:190px; "><div class="disp" style="font-size:92px; line-height:108px">١٩٣٢</div><div class="kufi" style="font-size:38px; font-weight:800; line-height:56px">أول طريق</div></div>
-        <div id="s8-c3" class="card" style="left:50px; top:560px; width:330px; height:190px; background:#0c1a30; color:#F4F6F9; border-color:#F4F6F9;"><div class="disp" style="font-size:92px; line-height:108px">١٩٣٣</div><div class="kufi" style="font-size:38px; font-weight:800; line-height:56px">وصل للحكم</div></div>
+        <div id="s8-c1" class="card" style="left:700px; top:520px; width:330px; height:190px; "><div class="disp" style="font-size:92px; line-height:108px">١٩٢٦</div><div class="kufi" style="font-size:38px; font-weight:800; line-height:56px">الخطة</div></div>
+        <div id="s8-c2" class="card" style="left:375px; top:810px; width:330px; height:190px; "><div class="disp" style="font-size:92px; line-height:108px">١٩٣٢</div><div class="kufi" style="font-size:38px; font-weight:800; line-height:56px">أول طريق</div></div>
+        <div id="s8-c3" class="card" style="left:50px; top:520px; width:330px; height:190px; background:#0c1a30; color:#F4F6F9; border-color:#F4F6F9;"><div class="disp" style="font-size:92px; line-height:108px">١٩٣٣</div><div class="kufi" style="font-size:38px; font-weight:800; line-height:56px">وصل للحكم</div></div>
+        <div id="s8-prop" style="position:absolute; text-align:center; direction:rtl; font-family:Lalezar, sans-serif; color:#8c2f2f; background:#F4F6F9; border:9px solid #8c2f2f; border-radius:12px; left:70px; top:398px; width:290px; height:106px; font-size:82px; line-height:92px">دعاية</div>
       </div>
-      <div id="s8-before" class="plate" data-layout-allow-overlap data-layout-allow-occlusion style="left:350px; top:1100px; width:380px; height:170px; font-size:124px; line-height:152px">قبله</div>
+      <div id="s8-before" class="plate" data-layout-allow-overlap data-layout-allow-occlusion style="left:350px; top:1020px; width:380px; height:170px; font-size:124px; line-height:152px">قبله</div>
     </div>
   </div>
   <script>
     const tl = gsap.timeline({ paused: true });
 
-    const T = { count: 0.1, ttl: 0.6, line: 1.0, plan: 1.5, first: 3.3, him: 4.5, plate: 5.1 };
-    gsap.set("#s8-count, #s8-ttl, #s8-c1, #s8-c2, #s8-c3, #s8-before, #s8-d1, #s8-d2, #s8-d3", { opacity: 0 });
+    const T = { count: 0.02, ttl: 0.04, line: 0.4, plan: 0.84, first: 2.24, him: 3.39, plate: 3.95, prop: 5.44 };
+    gsap.set("#s8-count, #s8-ttl, #s8-c1, #s8-c2, #s8-c3, #s8-before, #s8-prop, #s8-d1, #s8-d2, #s8-d3", { opacity: 0 });
     EK.whip(tl, "#s8-stage", -1080);
     tl.fromTo("#s8-count", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power2.out" }, T.count);
     EK.title(tl, "#s8-ttl", T.ttl);
     // a line of years, read right to left
-    tl.fromTo("#s8-line", { scaleX: 0, svgOrigin: "970 810" }, { scaleX: 1, duration: 0.5, ease: "power2.out" }, T.line);
+    tl.fromTo("#s8-line", { scaleX: 0, svgOrigin: "970 770" }, { scaleX: 1, duration: 0.5, ease: "power2.out" }, T.line);
     [["1", T.plan, 4], ["2", T.first, -3], ["3", T.him, -4]].forEach((p) => {
       tl.fromTo("#s8-d" + p[0], { opacity: 0, scale: 0.2, transformOrigin: "50% 50%" }, { opacity: 1, scale: 1, duration: 0.25, ease: "back.out(3)" }, p[1]);
       EK.pop(tl, "#s8-c" + p[0], p[1] + 0.1, p[2]);
     });
     EK.stamp(tl, "#s8-before", "#s8-stage", T.plate, -6);
+    // he finished them, and the propaganda put his name on them
+    EK.stamp(tl, "#s8-prop", "#s8-stage", T.prop, -7);
     window.__timelines["s8"] = tl;
   </script>
 </template>
