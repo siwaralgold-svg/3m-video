@@ -1,0 +1,43 @@
+<template>
+  <style>
+    @font-face { font-family: "Lalezar"; src: url("assets/fonts/Lalezar-Regular.ttf"); font-weight: 400; }
+    @font-face { font-family: "Noto Kufi Arabic"; src: url("assets/fonts/NotoKufiArabic.ttf"); font-weight: 100 900; }
+    #root { position: absolute; inset: 0; overflow: hidden; }
+  </style>
+  <div id="root" data-composition-id="s11" data-width="1080" data-height="1920">
+    <div id="s11-wrap" class="clip" data-start="0" data-duration="7.3" data-layout-allow-overflow style="position:absolute;inset:0">
+      <div id="s11-stage" class="stage">
+        <svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg" style="position:absolute;left:0;top:0">
+          <g id="s11-f1"><g id="s11-f1-slot" transform="translate(190,660) rotate(-7) scale(1.25)"></g></g>
+          <g id="s11-f2"><g id="s11-f2-slot" transform="translate(520,690) rotate(6) scale(1.25)"></g></g>
+        </svg>
+        <div id="s11-hero" class="card disp" data-layout-allow-overlap data-layout-allow-occlusion style="left:170px; top:590px; width:740px; height:430px; font-size:330px; line-height:410px">بطل</div>
+        <div id="s11-qm" class="ttl" style="left:40px; right:700px; top:170px; font-size:300px">؟</div>
+        <div id="s11-v" class="ttl" style="top:400px; font-size:170px">الحكم...</div>
+      </div>
+      <div id="s11-you" class="plate" data-layout-allow-overlap data-layout-allow-occlusion style="left:180px; top:690px; width:720px; height:270px; font-size:200px; line-height:250px">لك أنت</div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    EK.fill("s11-f1-slot", EK.folder("١")); EK.fill("s11-f2-slot", EK.folder("٢"));
+    const T = { files: 0.08, hero: 0.92, close: 2.0, o1: 2.5, o2: 2.9, qm: 3.3, v: 4.09, you: 5.14 };
+    gsap.set("#s11-hero, #s11-qm, #s11-v, #s11-you", { opacity: 0 });
+    // the two files, and the one word laid over them
+    tl.fromTo("#s11-f1", { y: 900 }, { y: 0, duration: 0.4, ease: "back.out(1.4)" }, T.files);
+    tl.fromTo("#s11-f2", { y: 900 }, { y: 0, duration: 0.4, ease: "back.out(1.4)" }, T.files + 0.12);
+    EK.stamp(tl, "#s11-hero", "#s11-stage", T.hero, -3);
+    // it cannot keep them shut
+    tl.to("#s11-hero", { y: 26, duration: 0.3, ease: "power2.inOut" }, T.close);
+    tl.to("#s11-f1", { x: -150, y: -210, rotation: -9, duration: 0.4, ease: "back.out(2)", svgOrigin: "380 820" }, T.o1);
+    tl.to("#s11-f2", { x: 160, y: -200, rotation: 9, duration: 0.4, ease: "back.out(2)", svgOrigin: "700 850" }, T.o2);
+    tl.to("#s11-hero", { rotation: 4, y: 40, duration: 0.4, ease: "back.out(2.5)" }, T.o2);
+    tl.fromTo("#s11-qm", { opacity: 0, scale: 0.3, rotation: 20 }, { opacity: 1, scale: 1, rotation: -8, duration: 0.35, ease: "back.out(2.2)" }, T.qm);
+    // the verdict is yours
+    tl.to("#s11-hero, #s11-qm", { y: 1100, opacity: 0, duration: 0.3, ease: "power2.in" }, T.v - 0.3);
+    tl.to("#s11-f1, #s11-f2", { y: 1500, opacity: 0, duration: 0.35, ease: "power2.in" }, T.v - 0.3);
+    tl.fromTo("#s11-v", { opacity: 0, scale: 1.5 }, { opacity: 1, scale: 1, duration: 0.25, ease: "power4.out" }, T.v);
+    EK.stamp(tl, "#s11-you", "#s11-stage", T.you, -5);
+    window.__timelines["s11"] = tl;
+  </script>
+</template>

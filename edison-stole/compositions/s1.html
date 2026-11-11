@@ -1,0 +1,70 @@
+<template>
+  <style>
+    @font-face { font-family: "Lalezar"; src: url("assets/fonts/Lalezar-Regular.ttf"); font-weight: 400; }
+    @font-face { font-family: "Noto Kufi Arabic"; src: url("assets/fonts/NotoKufiArabic.ttf"); font-weight: 100 900; }
+    #root { position: absolute; inset: 0; overflow: hidden; }
+  </style>
+  <div id="root" data-composition-id="s1" data-width="1080" data-height="1920">
+    <div id="s1-wrap" class="clip" data-start="0" data-duration="10.5" data-layout-allow-overflow style="position:absolute;inset:0">
+      <div id="s1-stage" class="stage">
+        <svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg" style="position:absolute;left:0;top:0">
+          <defs><clipPath id="s1-clip"><rect x="178" y="508" width="724" height="614"/></clipPath></defs>
+          <g id="s1-frame">
+            <path d="M540 440 L420 494 M540 440 L660 494" stroke="#0c1a30" stroke-width="7" fill="none"/><circle cx="540" cy="440" r="13" fill="#c7ccd6" stroke="#0c1a30" stroke-width="6"/>
+            <rect x="150" y="480" width="780" height="670" rx="10" fill="#a8703f" stroke="#0c1a30" stroke-width="9"/>
+            <rect x="178" y="508" width="724" height="614" fill="#2b4d7e" stroke="#0c1a30" stroke-width="8"/>
+            <g clip-path="url(#s1-clip)"><g id="s1-ed-slot" transform="translate(540,880) scale(1.45)"></g></g>
+            <rect x="178" y="508" width="724" height="614" fill="none" stroke="#0c1a30" stroke-width="8"/>
+          </g>
+          <g id="s1-gavel">
+            <rect x="900" y="402" width="470" height="50" rx="20" fill="#8a5a33" stroke="#0c1a30" stroke-width="9"/>
+            <rect x="770" y="300" width="170" height="250" rx="22" fill="#a8703f" stroke="#0c1a30" stroke-width="9"/>
+            <path d="M770 350 H940 M770 500 H940" stroke="#0c1a30" stroke-width="8"/>
+          </g>
+          <g id="s1-burst" fill="none" stroke="#F4F6F9" stroke-width="12" stroke-linecap="round" opacity="0"><path d="M720 560 L650 520 M740 620 L650 640 M860 600 L880 690 M960 570 L1030 610"/></g>
+        </svg>
+        <div id="s1-plaque" class="card kufi" style="left:210px; top:1076px; width:660px; height:104px; font-size:52px; font-weight:800; line-height:88px; background:#a8703f; color:#F4F6F9">أعظم مخترع في التاريخ</div>
+        <div id="s1-l1" class="disp" style="position:absolute; left:60px; right:60px; top:176px; text-align:center; font-size:88px; line-height:1.2; color:#F4F6F9">كل اللي تعلمته عن إديسون</div>
+        <div id="s1-l2" class="card disp" style="left:150px; top:286px; width:780px; height:176px; font-size:136px; line-height:176px">لازم تراجعه</div>
+        <div id="s1-t1" class="disp" style="position:absolute; left:60px; right:60px; top:170px; text-align:center; font-size:104px; line-height:1.2; color:#9fb4d0">الشعب ضد</div>
+        <div id="s1-t2" class="disp" style="position:absolute; left:40px; right:40px; top:270px; text-align:center; font-size:160px; line-height:1.2; color:#F4F6F9">توماس إديسون</div>
+        <div id="s1-four" class="card disp" style="left:290px; top:930px; width:500px; height:200px; font-size:170px; line-height:200px">٤ تهم</div>
+      </div>
+    </div>
+  </div>
+  <script>
+    EK.put("s1-ed-slot", "s1-ed", "edison");
+    // anchors (seconds, local)
+    const T = { l2: 2.25, plaque: 4.8, gavel: 7.9, four: 9.31 };
+    const tl = gsap.timeline({ paused: true });
+    EK.face(tl, "s1-ed", "smug");
+    gsap.set("#s1-l2, #s1-plaque, #s1-t1, #s1-t2, #s1-four", { opacity: 0 });
+    tl.set("#s1-gavel", { rotation: 80, svgOrigin: "1370 427" }, 0);
+    tl.fromTo("#s1-frame", { scale: 1.12, svgOrigin: "540 815" }, { scale: 1, duration: 0.5, ease: "power3.out" }, 0);
+    EK.blink(tl, "s1-ed", 0.9);
+    tl.fromTo("#s1-l2", { opacity: 0, scale: 2.2, rotation: -9 }, { opacity: 1, scale: 1, rotation: -3, duration: 0.17, ease: "power3.in" }, T.l2 - 0.17);
+    tl.fromTo("#s1-stage", { y: 0 }, { y: 8, duration: 0.045, yoyo: true, repeat: 3, ease: "none", immediateRender: false }, T.l2);
+    EK.look(tl, "s1-ed", T.l2 + 0.15, 4, -9); EK.mood(tl, "s1-ed", T.l2 + 0.5, "flat"); EK.mood(tl, "s1-ed", T.l2 + 1.4, "smug");
+    tl.fromTo("#s1-plaque", { opacity: 0, y: 70 }, { opacity: 1, y: 0, duration: 0.3, ease: "back.out(1.8)" }, T.plaque);
+    EK.blink(tl, "s1-ed", T.plaque + 1.0);
+    // the gavel comes down on the portrait
+    EK.look(tl, "s1-ed", T.gavel - 0.5, 9, -8);
+    tl.to("#s1-gavel", { rotation: 0, duration: 0.2, ease: "power4.in" }, T.gavel - 0.2);
+    tl.set("#s1-burst", { opacity: 1 }, T.gavel); tl.to("#s1-burst", { opacity: 0, duration: 0.3 }, T.gavel + 0.02);
+    tl.fromTo("#s1-stage", { x: 0 }, { x: 12, duration: 0.045, yoyo: true, repeat: 5, ease: "none", immediateRender: false }, T.gavel);
+    tl.to("#s1-frame", { rotation: -6, svgOrigin: "540 440", duration: 0.5, ease: "elastic.out(1.2,0.35)" }, T.gavel);
+    tl.to("#s1-plaque", { rotation: 7, y: 12, x: -20, duration: 0.3, ease: "bounce.out" }, T.gavel);
+    EK.mood(tl, "s1-ed", T.gavel, "shock", true);
+    tl.to("#s1-l1, #s1-l2", { opacity: 0, duration: 0.1 }, T.gavel);
+    tl.fromTo("#s1-t1", { opacity: 0 }, { opacity: 1, duration: 0.15 }, T.gavel + 0.08);
+    tl.fromTo("#s1-t2", { opacity: 0, scale: 1.6 }, { opacity: 1, scale: 1, duration: 0.22, ease: "power4.out" }, T.gavel + 0.14);
+    tl.to("#s1-gavel", { rotation: 80, duration: 0.45, ease: "power2.inOut" }, T.gavel + 0.35);
+    EK.mood(tl, "s1-ed", T.gavel + 0.9, "worried");
+    tl.to("#s1-plaque", { opacity: 0, duration: 0.15 }, T.four - 0.3);
+    tl.fromTo("#s1-four", { opacity: 0, scale: 2.4, rotation: 14 }, { opacity: 1, scale: 1, rotation: 5, duration: 0.17, ease: "power3.in" }, T.four - 0.17);
+    tl.fromTo("#s1-stage", { y: 0 }, { y: 9, duration: 0.045, yoyo: true, repeat: 3, ease: "none", immediateRender: false }, T.four);
+    EK.look(tl, "s1-ed", T.four + 0.1, 0, 10);
+    EK.idle(tl, "s1-ed", 0.4, 7.4, 2.4);
+    window.__timelines["s1"] = tl;
+  </script>
+</template>

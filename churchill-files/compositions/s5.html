@@ -1,0 +1,52 @@
+<template>
+  <style>
+    @font-face { font-family: "Lalezar"; src: url("assets/fonts/Lalezar-Regular.ttf"); font-weight: 400; }
+    @font-face { font-family: "Noto Kufi Arabic"; src: url("assets/fonts/NotoKufiArabic.ttf"); font-weight: 100 900; }
+    #root { position: absolute; inset: 0; overflow: hidden; }
+  </style>
+  <div id="root" data-composition-id="s5" data-width="1080" data-height="1920">
+    <div id="s5-wrap" class="clip" data-start="0" data-duration="12.25" data-layout-allow-overflow style="position:absolute;inset:0">
+      <div id="s5-stage" class="stage">
+        <svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg" style="position:absolute;left:0;top:0">
+          <defs><clipPath id="s5-clip"><rect x="-400" y="0" width="1900" height="1154"/></clipPath></defs>
+          <g clip-path="url(#s5-clip)"><g id="s5-ch"><g id="s5-ch-slot" transform="translate(540,800) scale(1.15)"></g></g></g>
+        </svg>
+        <div id="s5-q" class="ttl" style="font-size:118px">هل تشرشل لحاله؟</div>
+        <div id="s5-no" class="ttl" style="top:150px; font-size:230px">لا</div>
+        <div id="s5-c1" class="card kufi" style="left:36px; top:508px; width:300px; height:112px; font-size:50px; font-weight:800; line-height:96px">الحرب</div>
+        <div id="s5-c2" class="card kufi" style="left:740px; top:470px; width:310px; height:112px; font-size:42px; font-weight:800; line-height:96px">غلاء الأسعار</div>
+        <div id="s5-c3" class="card kufi" style="left:24px; top:690px; width:320px; height:112px; font-size:44px; font-weight:800; line-height:96px">سوء الإدارة</div>
+      </div>
+      <div id="s5-plate" class="plate" data-layout-allow-overlap data-layout-allow-occlusion style="left:110px; top:940px; width:860px; height:210px; font-size:130px; line-height:192px">ما يبرّي حكومته</div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    EK.put("s5-ch-slot", "s5-c", "churchill");
+    const T = { q: 0.06, no: 2.78, c1: 3.33, c2: 4.05, c3: 5.12, all: 6.29, plate: 8.6, die: 9.33, not: 10.9 };
+    EK.face(tl, "s5-c", "annoyed");
+    gsap.set("#s5-q, #s5-no, #s5-c1, #s5-c2, #s5-c3, #s5-plate", { opacity: 0 });
+    // enter: he rises from behind the desk
+    tl.fromTo("#s5-ch", { y: 760 }, { y: 0, duration: 0.5, ease: "back.out(1.2)" }, 0);
+    tl.fromTo("#s5-q", { opacity: 0, scale: 1.5 }, { opacity: 1, scale: 1, duration: 0.25, ease: "power4.out" }, T.q + 0.1);
+    EK.mood(tl, "s5-c", 0.9, "worried", true);
+    EK.look(tl, "s5-c", 1.6, 0, -8);
+    // no: three other causes
+    tl.to("#s5-q", { opacity: 0, scale: 0.7, duration: 0.12, ease: "power2.in" }, T.no - 0.14);
+    tl.fromTo("#s5-no", { opacity: 0, scale: 2.2 }, { opacity: 1, scale: 1, duration: 0.2, ease: "power4.out" }, T.no);
+    EK.mood(tl, "s5-c", T.no + 0.1, "smug", false);
+    EK.pop(tl, "#s5-c1", T.c1, -5); EK.look(tl, "s5-c", T.c1, -9, 0);
+    EK.pop(tl, "#s5-c2", T.c2, 5); EK.look(tl, "s5-c", T.c2, 9, -2);
+    EK.pop(tl, "#s5-c3", T.c3, 4); EK.look(tl, "s5-c", T.c3, -9, 6);
+    EK.look(tl, "s5-c", T.all, 0, 0); EK.blink(tl, "s5-c", T.all + 0.4);
+    // but that does not clear his government
+    tl.to("#s5-no", { opacity: 0, duration: 0.15 }, T.plate - 0.5);
+    EK.stamp(tl, "#s5-plate", "#s5-stage", T.plate, -5);
+    EK.mood(tl, "s5-c", T.plate + 0.05, "shock", true);
+    ["#s5-c1", "#s5-c2", "#s5-c3"].forEach((s, i) => tl.to(s, { y: 700, rotation: 30, opacity: 0, duration: 0.45, ease: "power2.in" }, T.die + i * 0.12));
+    EK.mood(tl, "s5-c", T.die + 0.3, "sad");
+    EK.look(tl, "s5-c", T.not, 0, 9); EK.blink(tl, "s5-c", T.not + 0.6);
+    EK.idle(tl, "s5-c", 0.6, 12.2, 2.3);
+    window.__timelines["s5"] = tl;
+  </script>
+</template>
