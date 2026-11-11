@@ -14,3 +14,14 @@ When a video needs sound effects:
 4. Follow the HyperFrames sound rules (`/hyperframes`, `references/sound.md`): few, exact effects, each with a cause on screen; volume about 0.35 under voice and music; and rotate two or three takes of a repeated sound (for example `swipe_03`, `swipe_07`, `whoosh_fast_02`) rather than the same file on every cut.
 5. `jingles/` are short music stings for an end card or logo, not effects. Don't play one over a music bed.
 6. Everything in `sfx-library/` is CC0, so no credit is needed in the video, the caption or a `CREDITS.md`.
+
+## "الشعب ضد…" trial series: reuse `edison-stole/`
+
+`edison-stole/` is the template for the trial series (a famous person in the dock, four charges, a verdict plate on each, "الحكم؟ لك أنت" at the end). For a new episode in the same art style:
+
+1. Copy `edison-stole/` to a new folder and keep `assets/kit.js`, `assets/fonts/`, `assets/brand/`, `index.html`'s shared styles and courtroom background, and `compositions/captions.html`'s styling.
+2. The look is written in `edison-stole/SPEC.md` (colours, type, sizes, safe areas, motion). Follow it; gold is only for verdict plates and the end card.
+3. Characters come from `EK.put(slot, prefix, who)` in `assets/kit.js`. Add a new person as one entry in its `WHO` table (skin, suit, hair path, beard, glasses) and reuse the moods (`EK.mood`), blink, look and idle helpers.
+4. Scene shape: s1 hook with the gavel, one scene per charge (the accused in the dock at the left, the witness at the stand on the right, one exhibit, then `EK.stamp` for the verdict), a closing scene with the four verdicts, then the T3M end card.
+5. On-screen Arabic and the narration are in Saudi dialect unless the person says otherwise. Check every charge against a source before it goes on screen, and word each one at its true weight.
+6. Each scene keeps its timing in one `const T = {…}` line: build on estimates, then retime to the voiceover's word times.
