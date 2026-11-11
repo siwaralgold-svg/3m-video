@@ -1,0 +1,58 @@
+<template>
+  <style>
+    @font-face { font-family: "Lalezar"; src: url("assets/fonts/Lalezar-Regular.ttf"); font-weight: 400; }
+    @font-face { font-family: "Noto Kufi Arabic"; src: url("assets/fonts/NotoKufiArabic.ttf"); font-weight: 100 900; }
+    #root { position: absolute; inset: 0; overflow: hidden; }
+  </style>
+  <div id="root" data-composition-id="s9" data-width="1080" data-height="1920">
+    <div id="s9-wrap" class="clip" data-start="0" data-duration="6.9" data-layout-allow-overflow style="position:absolute;inset:0">
+      <div id="s9-stage" class="stage">
+        <svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg" style="position:absolute;left:0;top:0">
+          <defs><clipPath id="s9-ct"><rect x="0" y="0" width="1080" height="658"/></clipPath><clipPath id="s9-cb"><rect x="0" y="658" width="1080" height="496"/></clipPath></defs>
+          <g clip-path="url(#s9-ct)"><g id="s9-top">
+            <rect x="-10" y="0" width="1100" height="660" fill="#172f55"/>
+            <g id="s9-sh" transform="translate(800,466) scale(0.62)"></g>
+            <g id="s9-so-slot" transform="translate(270,466) scale(0.62)"></g>
+          </g></g>
+          <g clip-path="url(#s9-cb)"><g id="s9-bot">
+            <rect x="-10" y="658" width="1100" height="496" fill="#13294B"/>
+            <g id="s9-flag"><g id="s9-flag-slot" transform="translate(700,770)"></g></g>
+            <g id="s9-ir-slot" transform="translate(270,962) scale(0.62)"></g>
+          </g></g>
+          <rect x="-10" y="650" width="1100" height="14" fill="#0c1a30"/>
+        </svg>
+        <div id="s9-l1" class="card kufi" style="left:140px; top:186px; width:260px; height:88px; font-size:42px; font-weight:800; line-height:74px">بريطانيا</div>
+        <div id="s9-l2" class="card kufi" style="left:690px; top:186px; width:220px; height:88px; font-size:42px; font-weight:800; line-height:74px">هتلر</div>
+        <div id="s9-l3" class="card kufi" style="left:140px; top:684px; width:260px; height:88px; font-size:42px; font-weight:800; line-height:74px">العراقي</div>
+        <div id="s9-l4" class="card kufi" style="left:690px; top:668px; width:260px; height:88px; font-size:42px; font-weight:800; line-height:74px">بريطانيا</div>
+        <div id="s9-hero" class="card disp" data-layout-allow-overlap data-layout-allow-occlusion style="left:370px; top:380px; width:340px; height:160px; font-size:124px; line-height:160px">بطولة</div>
+      </div>
+      <div id="s9-reb" class="plate" data-layout-allow-overlap data-layout-allow-occlusion style="left:430px; top:900px; width:350px; height:170px; font-size:128px; line-height:156px">تمرّد؟</div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    EK.put("s9-so-slot", "s9-s", "soldier"); EK.put("s9-ir-slot", "s9-i", "iraqi");
+    EK.fill("s9-sh", EK.shadow()); EK.fill("s9-flag-slot", EK.flag(240, 156));
+    const T = { top: 0.1, hero: 2.45, bot: 3.1, reb: 5.45 };
+    EK.face(tl, "s9-s", "angry"); EK.face(tl, "s9-i", "angry");
+    gsap.set("#s9-l1, #s9-l2, #s9-l3, #s9-l4, #s9-hero, #s9-reb", { opacity: 0 });
+    gsap.set("#s9-bot", { x: 1100 });
+    // top half: Britain stands against occupation
+    tl.fromTo("#s9-top", { x: -1100 }, { x: 0, duration: 0.38, ease: "power4.out" }, 0);
+    EK.pop(tl, "#s9-l1", T.top + 0.25, -3); EK.pop(tl, "#s9-l2", T.top + 1.5, 3);
+    EK.look(tl, "s9-s", 0.4, 9, 0);
+    EK.stamp(tl, "#s9-hero", "#s9-top", T.hero, -7);
+    EK.mood(tl, "s9-s", T.hero + 0.1, "calm");
+    // bottom half: the same stand, a different word
+    tl.to("#s9-bot", { x: 0, duration: 0.38, ease: "power4.out" }, T.bot - 0.1);
+    EK.pop(tl, "#s9-l3", T.bot + 0.25, 3); EK.pop(tl, "#s9-l4", T.bot + 1.4, -3);
+    EK.look(tl, "s9-i", T.bot + 0.2, 9, 0);
+    EK.stamp(tl, "#s9-reb", "#s9-stage", T.reb, 6);
+    EK.mood(tl, "s9-i", T.reb + 0.1, "annoyed");
+    EK.look(tl, "s9-i", T.reb + 0.7, 0, -8); EK.look(tl, "s9-s", T.reb + 0.5, 0, 9);
+    EK.blink(tl, "s9-s", 1.5); EK.blink(tl, "s9-i", 4.6);
+    EK.idle(tl, "s9-s", 0.5, 6.8, 2.1); EK.idle(tl, "s9-i", 3.3, 6.8, 1.8);
+    window.__timelines["s9"] = tl;
+  </script>
+</template>

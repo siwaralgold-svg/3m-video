@@ -1,0 +1,52 @@
+<template>
+  <style>
+    @font-face { font-family: "Lalezar"; src: url("assets/fonts/Lalezar-Regular.ttf"); font-weight: 400; }
+    @font-face { font-family: "Noto Kufi Arabic"; src: url("assets/fonts/NotoKufiArabic.ttf"); font-weight: 100 900; }
+    #root { position: absolute; inset: 0; overflow: hidden; }
+  </style>
+  <div id="root" data-composition-id="s6" data-width="1080" data-height="1920">
+    <div id="s6-wrap" class="clip" data-start="0" data-duration="6.1" data-layout-allow-overflow style="position:absolute;inset:0">
+      <div id="s6-stage" class="stage">
+        <div id="s6-bg" style="position:absolute; inset:0; background:#172f55"></div>
+        <svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg" style="position:absolute;left:0;top:0">
+          <defs><clipPath id="s6-clip"><rect x="-400" y="0" width="1900" height="1154"/></clipPath></defs>
+          <g id="s6-mapwrap"><g transform="translate(30,640) scale(1.02)">
+            <g id="s6-map"></g>
+            <g id="s6-pa" transform="translate(140,330) scale(0.5)"></g><g id="s6-pb" transform="translate(330,440) scale(0.5)"></g>
+            <g id="s6-flag"><g id="s6-flag-slot" transform="translate(236,140) scale(0.6)"></g></g>
+          </g></g>
+          <g clip-path="url(#s6-clip)"><g id="s6-ir"><g id="s6-ir-slot" transform="translate(800,850)"></g></g></g>
+        </svg>
+        <div id="s6-count" class="count">الملف الثاني</div>
+        <div id="s6-ttl" class="ttl">العراق</div>
+        <div id="s6-year" class="card disp" style="left:60px; top:446px; width:330px; height:170px; font-size:128px; line-height:176px">١٩٢٠</div>
+        <div id="s6-rev" class="card disp" style="left:580px; top:440px; width:450px; height:128px; font-size:80px; line-height:128px">ثورة العشرين</div>
+      </div>
+
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    EK.fill("s6-map", EK.iraq()); EK.fill("s6-pa", EK.palm()); EK.fill("s6-pb", EK.palm());
+    EK.fill("s6-flag-slot", EK.flag(160, 100));
+    EK.put("s6-ir-slot", "s6-i", "iraqi");
+    const T = { count: 0.08, ttl: 1.29, year: 2.3, rise: 3.84, rev: 4.6 };
+    EK.face(tl, "s6-i", "angry");
+    gsap.set("#s6-count, #s6-ttl, #s6-year, #s6-rev", { opacity: 0 });
+    gsap.set("#s6-mapwrap", { y: 1400 }); gsap.set("#s6-ir", { y: 760 });
+    // enter: zoom out of file 2 on the desk
+    tl.fromTo("#s6-stage", { clipPath: "circle(0% at 74% 55%)" }, { clipPath: "circle(150% at 74% 55%)", duration: 0.45, ease: "power3.out" }, 0);
+    tl.fromTo("#s6-count", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power2.out" }, T.count);
+    tl.to("#s6-mapwrap", { y: 0, duration: 0.55, ease: "back.out(1.2)" }, 0.35);
+    tl.fromTo("#s6-ttl", { opacity: 0, scale: 1.5 }, { opacity: 1, scale: 1, duration: 0.25, ease: "power4.out" }, T.ttl);
+    EK.pop(tl, "#s6-year", T.year, -5);
+    // the Iraqis rise
+    tl.to("#s6-ir", { y: 0, duration: 0.5, ease: "back.out(1.5)" }, T.rise);
+    EK.look(tl, "s6-i", T.rise + 0.4, -9, -2);
+    tl.to("#s6-flag", { rotation: -9, duration: 0.09, yoyo: true, repeat: 7, ease: "sine.inOut", svgOrigin: "236 380" }, T.rise + 0.5);
+    EK.pop(tl, "#s6-rev", T.rev, 4);
+    EK.blink(tl, "s6-i", 5.4);
+    EK.idle(tl, "s6-i", 4.4, 6.0, 1.6);
+    window.__timelines["s6"] = tl;
+  </script>
+</template>

@@ -1,0 +1,54 @@
+<template>
+  <style>
+    @font-face { font-family: "Lalezar"; src: url("assets/fonts/Lalezar-Regular.ttf"); font-weight: 400; }
+    @font-face { font-family: "Noto Kufi Arabic"; src: url("assets/fonts/NotoKufiArabic.ttf"); font-weight: 100 900; }
+    #root { position: absolute; inset: 0; overflow: hidden; }
+  </style>
+  <div id="root" data-composition-id="s3" data-width="1080" data-height="1920">
+    <div id="s3-wrap" class="clip" data-start="0" data-duration="11.45" data-layout-allow-overflow style="position:absolute;inset:0">
+      <div id="s3-stage" class="stage">
+        <div id="s3-bg" style="position:absolute; inset:0; background:#172f55"></div>
+        <svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg" style="position:absolute;left:0;top:0">
+          <g id="s3-mapwrap"><g id="s3-zoom"><g transform="translate(330,470) scale(0.95)">
+            <g id="s3-map"></g>
+            <text x="262" y="400" text-anchor="middle" font-family="Lalezar" font-size="78" fill="#F4F6F9" direction="rtl">الهند</text>
+            <g id="s3-flag"><g id="s3-flag-slot" transform="translate(214,150) scale(0.55)"></g></g>
+            <g id="s3-ben"><circle id="s3-dot" cx="478" cy="298" r="28" fill="#8c2f2f" stroke="#0c1a30" stroke-linejoin="round" stroke-width="7"/>
+              <rect x="376" y="96" width="220" height="92" rx="10" fill="#F4F6F9" stroke="#0c1a30" stroke-linejoin="round" stroke-width="7"/>
+              <text x="486" y="160" text-anchor="middle" font-family="Noto Kufi Arabic" font-weight="800" font-size="46" fill="#0c1a30" direction="rtl">البنغال</text>
+              <path d="M478 190 V266" fill="none" stroke="#0c1a30" stroke-linejoin="round" stroke-width="6"/></g>
+          </g></g></g>
+        </svg>
+        <div id="s3-count" class="count">الملف الأول</div>
+        <div id="s3-ttl" class="ttl">مجاعة البنغال</div>
+        <div id="s3-year" class="card disp" style="left:60px; top:446px; width:330px; height:170px; font-size:128px; line-height:176px">١٩٤٣</div>
+        <div id="s3-c1" class="card kufi" style="left:50px; top:660px; width:250px; height:104px; font-size:48px; font-weight:800; line-height:88px">الجوع</div>
+        <div id="s3-c2" class="card kufi" style="left:76px; top:782px; width:250px; height:104px; font-size:48px; font-weight:800; line-height:88px">المرض</div>
+      </div>
+      <div id="s3-mil" class="plate" data-layout-allow-overlap data-layout-allow-occlusion style="left:120px; top:930px; width:500px; height:220px; font-size:170px; line-height:200px">ملايين</div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    EK.fill("s3-map", EK.india());
+    EK.fill("s3-flag-slot", EK.flag(160, 100));
+    const T = { count: 0.08, ttl: 1.17, year: 2.4, map: 3.0, flag: 5.05, ben: 6.37, mil: 8.4, c1: 9.8, c2: 10.75 };
+    gsap.set("#s3-count, #s3-ttl, #s3-year, #s3-c1, #s3-c2, #s3-mil, #s3-ben", { opacity: 0 });
+    gsap.set("#s3-mapwrap", { y: 1500 }); gsap.set("#s3-flag", { opacity: 0 });
+    // enter: zoom out of file 1 on the desk
+    tl.fromTo("#s3-stage", { clipPath: "circle(0% at 26% 55%)" }, { clipPath: "circle(150% at 26% 55%)", duration: 0.45, ease: "power3.out" }, 0);
+    tl.fromTo("#s3-count", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power2.out" }, T.count);
+    tl.fromTo("#s3-ttl", { opacity: 0, scale: 1.5 }, { opacity: 1, scale: 1, duration: 0.25, ease: "power4.out" }, T.ttl);
+    EK.pop(tl, "#s3-year", T.year, -5);
+    tl.to("#s3-mapwrap", { y: 0, duration: 0.55, ease: "back.out(1.2)" }, T.map);
+    tl.fromTo("#s3-flag", { opacity: 0, y: -160 }, { opacity: 1, y: 0, duration: 0.3, ease: "bounce.out" }, T.flag);
+    // hunger takes Bengal
+    tl.fromTo("#s3-ben", { opacity: 0, scale: 0.3, svgOrigin: "478 298" }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2)" }, T.ben);
+    tl.to("#s3-zoom", { scale: 1.1, duration: 1.6, ease: "power2.out", svgOrigin: "784 753" }, T.ben);
+    tl.to("#s3-dot", { scale: 1.5, duration: 0.3, yoyo: true, repeat: 5, ease: "sine.inOut", svgOrigin: "478 298" }, T.ben + 0.3);
+    EK.stamp(tl, "#s3-mil", "#s3-stage", T.mil, -6);
+    EK.pop(tl, "#s3-c1", T.c1, -4);
+    EK.pop(tl, "#s3-c2", T.c2, 4);
+    window.__timelines["s3"] = tl;
+  </script>
+</template>

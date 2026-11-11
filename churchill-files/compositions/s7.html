@@ -1,0 +1,73 @@
+<template>
+  <style>
+    @font-face { font-family: "Lalezar"; src: url("assets/fonts/Lalezar-Regular.ttf"); font-weight: 400; }
+    @font-face { font-family: "Noto Kufi Arabic"; src: url("assets/fonts/NotoKufiArabic.ttf"); font-weight: 100 900; }
+    #root { position: absolute; inset: 0; overflow: hidden; }
+  </style>
+  <div id="root" data-composition-id="s7" data-width="1080" data-height="1920">
+    <div id="s7-wrap" class="clip" data-start="0" data-duration="15.25" data-layout-allow-overflow style="position:absolute;inset:0">
+      <div id="s7-stage" class="stage">
+        <div id="s7-bg" style="position:absolute; left:0; top:0; width:1080px; height:1150px; background:#172f55"></div>
+        <svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg" style="position:absolute;left:0;top:0">
+          <defs><clipPath id="s7-clip"><rect x="-400" y="0" width="1900" height="1154"/></clipPath></defs>
+          <g fill="none" stroke="#1C385A" stroke-width="6"><path d="M0 150 H1080"/><rect x="60" y="210" width="960" height="880" rx="6"/></g>
+          <g clip-path="url(#s7-clip)"><g id="s7-ch"><g id="s7-ch-slot" transform="translate(300,792) scale(1.15)"></g></g></g>
+          <g id="s7-k1"><g id="s7-k1-slot" transform="translate(590,1018)"></g></g>
+          <g id="s7-k2"><g id="s7-k2-slot" transform="translate(800,1018)"></g></g>
+          <g id="s7-k3"><g id="s7-k3-slot" transform="translate(694,886)"></g></g>
+        </svg>
+        <div id="s7-sign" class="card disp" style="left:250px; top:196px; width:580px; height:140px; background:#a8703f; color:#F4F6F9; font-size:92px; line-height:140px">وزير الحربية</div>
+        <div id="s7-gas" class="card kufi" style="left:520px; top:420px; width:520px; height:128px; font-size:46px; font-weight:800; line-height:112px">غاز مسيل للدموع</div>
+        <div id="s7-order" class="card kufi" style="left:590px; top:596px; width:400px; height:128px; font-size:46px; font-weight:800; line-height:112px">أمر شحن</div>
+        <div id="s7-to" class="card kufi" style="left:640px; top:770px; width:300px; height:90px; font-size:38px; font-weight:800; line-height:76px">إلى العراق</div>
+        <div id="s7-warn" class="ttl" style="top:170px; font-size:190px">انتبه</div>
+        <div id="s7-hist" class="card kufi" style="left:90px; top:372px; width:900px; height:136px; font-size:54px; font-weight:800; line-height:120px">أغلب المؤرخين يقولون:</div>
+        <div id="s7-qm" class="ttl" style="left:560px; right:40px; top:150px; font-size:330px">؟</div>
+      </div>
+      <div id="s7-ok" data-layout-allow-overlap data-layout-allow-occlusion style="border:8px solid #a83232; color:#a83232; background:#F4F6F9; border-radius:10px; position:absolute; text-align:center; direction:rtl; font-family:Lalezar,sans-serif; left:650px; top:592px; width:280px; height:124px; font-size:88px; line-height:112px">موافق</div>
+      <div id="s7-plate" class="plate" data-layout-allow-overlap data-layout-allow-occlusion style="left:420px; top:860px; width:610px; height:270px; font-size:112px; line-height:124px; padding-top:8px">ما انستخدم<br>فعلًا</div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    EK.put("s7-ch-slot", "s7-c", "churchillYoung");
+    ["s7-k1-slot", "s7-k2-slot", "s7-k3-slot"].forEach((k) => EK.fill(k, EK.crate()));
+    const T = { sign: 1.24, q: 2.33, gas: 3.2, ok: 6.0, k1: 6.6, k2: 6.9, k3: 7.2, stop: 8.54, hist: 9.95, plate: 12.25, q2: 13.28, qm: 14.55 };
+    EK.face(tl, "s7-c", "smug");
+    gsap.set("#s7-sign, #s7-gas, #s7-order, #s7-to, #s7-warn, #s7-hist, #s7-qm, #s7-ok, #s7-plate", { opacity: 0 });
+    gsap.set("#s7-k1, #s7-k2", { x: 700 }); gsap.set("#s7-k3", { y: -1200 });
+    EK.whip(tl, "#s7-stage", 1080);
+    tl.fromTo("#s7-sign", { opacity: 1, y: -500, rotation: 5 }, { opacity: 1, y: 0, rotation: -2, duration: 0.45, ease: "bounce.out" }, T.sign - 0.3);
+    EK.blink(tl, "s7-c", 1.9);
+    // his opinion: use tear gas
+    EK.mood(tl, "s7-c", T.q, "annoyed");
+    EK.look(tl, "s7-c", T.gas - 0.1, 9, -4);
+    EK.pop(tl, "#s7-gas", T.gas, 3);
+    // he approves the shipment
+    EK.pop(tl, "#s7-order", T.ok - 0.45, -3);
+    EK.look(tl, "s7-c", T.ok - 0.3, 9, 3);
+    EK.stamp(tl, "#s7-ok", "#s7-stage", T.ok, -8);
+    EK.mood(tl, "s7-c", T.ok + 0.1, "smug");
+    tl.to("#s7-k1", { x: 0, duration: 0.3, ease: "power3.out" }, T.k1 - 0.3);
+    tl.to("#s7-k2", { x: 0, duration: 0.3, ease: "power3.out" }, T.k2 - 0.3);
+    tl.to("#s7-k3", { y: 0, duration: 0.2, ease: "power3.in" }, T.k3 - 0.2);
+    tl.fromTo("#s7-stage", { y: 0 }, { y: 9, duration: 0.05, yoyo: true, repeat: 3, ease: "none", immediateRender: false }, T.k3);
+    EK.pop(tl, "#s7-to", T.k3 + 0.15, -4);
+    EK.look(tl, "s7-c", T.k1, 9, 9);
+    // wait: most historians say it was never used
+    ["#s7-sign", "#s7-gas", "#s7-order", "#s7-ok", "#s7-to"].forEach((s, i) => EK.out(tl, s, T.stop - 0.12 + i * 0.03));
+    tl.fromTo("#s7-warn", { opacity: 0, scale: 2 }, { opacity: 1, scale: 1, duration: 0.2, ease: "power4.out" }, T.stop + 0.05);
+    EK.mood(tl, "s7-c", T.stop + 0.1, "flat");
+    EK.look(tl, "s7-c", T.stop + 0.5, 0, 0);
+    EK.pop(tl, "#s7-hist", T.hist, -2);
+    EK.stamp(tl, "#s7-plate", "#s7-stage", T.plate, -4);
+    EK.mood(tl, "s7-c", T.plate + 0.1, "calm");
+    // but the stance itself raises a question
+    EK.out(tl, "#s7-warn", T.q2); EK.out(tl, "#s7-hist", T.q2 + 0.05);
+    EK.mood(tl, "s7-c", T.q2 + 0.3, "worried", true);
+    tl.fromTo("#s7-qm", { opacity: 0, scale: 0.3, rotation: -20 }, { opacity: 1, scale: 1, rotation: 8, duration: 0.35, ease: "back.out(2.2)" }, T.qm);
+    EK.look(tl, "s7-c", T.qm + 0.1, 9, -8);
+    EK.idle(tl, "s7-c", 0.5, 15.2, 2.5);
+    window.__timelines["s7"] = tl;
+  </script>
+</template>
