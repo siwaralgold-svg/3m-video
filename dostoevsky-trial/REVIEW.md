@@ -1,10 +1,10 @@
-# Review — draft 1 (no voice yet)
+# Review — cut 2 (voice in)
 
-- The script was given, so no storylines were written. The frame is the "محاكمة" series, but the courtroom is not reused: a library desk, the snow square and one-off rooms.
-- Timing is estimated (tools/estimate.py, about 2 words a second, 126.7 s). When the voiceover arrives: save it as assets/voiceover.mp3, transcribe it to assets/transcript.json (228 entries, one per script word, same order), run `python3 tools/build.py`. Scenes, captions and sound effects retime themselves; then check each scene's holds.
-- Measured: `check` passes with no errors or warnings. Draft render 126.7 s; sound hits land about one frame after their picture; −24.4 LUFS with effects only, peak −6.2 dB, no clipping. Sound was measured, not heard.
-- Looked at: about 110 frames across all thirteen scenes, plus the review sheets.
-- Script note: he was 27 on the night of the letter and 28 on the square. The film shows "٢٨ سنة" where the script says it.
-- Weakest shots: s4 and s2's candle room, where three busts share the frame and each is small; the lower third of the snow scenes is empty white under the captions.
-- The friend's breakdown (s8) is played still: small pupils, a slow tilt, then he fades. No joke on it.
+- Voice: ElevenLabs (Hijazi voice), 114.5 s, read from the tagged script; SCRIPT.md holds the same words without tags.
+- Word times: whisper small (219 words) aligned to the 228 script words by letters (tools/align.py); whisper's digits (849, 27, 22, 28) are mapped to the spelled-out numbers. One word ("هو") is interpolated. Captions use the script's spelling.
+- To retime after a new recording: replace assets/voiceover.mp3, transcribe to assets/transcript.whisper.json, run `python3 tools/align.py` and `python3 tools/build.py`.
+- Script change: the first age is "سبعة وعشرين" (he was 27 when he read the letter, 28 on the square); the s2 card says ٢٧.
+- Measured: `check` passes with no errors or warnings. Loudness of the render is in the delivery note. Sound was measured, not heard.
+- Looked at: the review sheets on the voice timing, plus about 110 frames from the first build.
+- Weakest shots: s4 and the candle room in s2, where three busts share the frame; the empty snow under the captions.
 - No music bed: no music source in this session.

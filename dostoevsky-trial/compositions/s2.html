@@ -5,7 +5,7 @@
     #root { position: absolute; inset: 0; overflow: hidden; }
   </style>
   <div id="root" data-composition-id="s2" data-width="1080" data-height="1920">
-    <div id="s2-wrap" class="clip" data-start="0" data-duration="16.65" data-layout-allow-overflow style="position:absolute;inset:0">
+    <div id="s2-wrap" class="clip" data-start="0" data-duration="15.2" data-layout-allow-overflow style="position:absolute;inset:0">
       <!-- A: Saint Petersburg, 1849 -->
       <div id="s2-a" class="stage">
         <svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg" style="position:absolute;left:0;top:0">
@@ -28,7 +28,7 @@
         </svg>
         <div id="s2-ru" class="disp" style="position:absolute; left:60px; right:60px; top:168px; text-align:center; font-size:150px; line-height:1.2; color:#F4F6F9">روسيا</div>
         <div id="s2-year" class="card disp" style="left:330px; top:356px; width:420px; height:176px; font-size:150px; line-height:186px">١٨٤٩</div>
-        <div id="s2-age" class="card disp" style="left:36px; top:650px; width:330px; height:150px; font-size:104px; line-height:156px">٢٨ سنة</div>
+        <div id="s2-age" class="card disp" style="left:36px; top:650px; width:330px; height:150px; font-size:104px; line-height:156px">٢٧ سنة</div>
       </div>
       <!-- B: the secret circle -->
       <div id="s2-b" class="stage">
@@ -67,7 +67,7 @@
     EK.put("s2-f1-slot", "s2-f1", "friend1"); EK.put("s2-f2-slot", "s2-f2", "friend2");
     EK.fill("s2-letter", EK.letter(150, 190));
     const w = EK.clock("s2");
-    const T = { year: w(34), young: w(38), age: w(40), writer: w(43), room: w(47, -0.12), ban: w(53), night: w(55), read: w(59), letter: w(60), rule: w(63), church: w(64) };
+    const T = { year: w(34), young: w(38), age: w(40), writer: w(43), room: w(47, -0.12), ban: w(53), night: w(55), read: w(59), letter: w(60), rule: w(63, -0.1), church: w(64, -0.2) };
     const tl = gsap.timeline({ paused: true });
     EK.face(tl, "s2-fy", "calm"); EK.face(tl, "s2-fz", "calm"); EK.face(tl, "s2-f1", "flat"); EK.face(tl, "s2-f2", "calm");
     gsap.set("#s2-year, #s2-age, #s2-ban, #s2-rule, #s2-church", { opacity: 0 });

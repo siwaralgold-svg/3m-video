@@ -5,7 +5,7 @@
     #root { position: absolute; inset: 0; overflow: hidden; }
   </style>
   <div id="root" data-composition-id="s6" data-width="1080" data-height="1920">
-    <div id="s6-wrap" class="clip" data-start="0" data-duration="7.28" data-layout-allow-overflow style="position:absolute;inset:0">
+    <div id="s6-wrap" class="clip" data-start="0" data-duration="6.5" data-layout-allow-overflow style="position:absolute;inset:0">
       <div id="s6-stage" class="stage">
         <svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg" style="position:absolute;left:0;top:0">
           <g id="s6-bg"></g>
@@ -40,8 +40,8 @@
     tl.to("#s6-fy-sweat", { opacity: 0, duration: 0.2 }, T.ifl);
     tl.fromTo("#s6-if", { opacity: 0, y: 30, filter: "blur(8px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.25, ease: "power3.out" }, T.ifl);
     EK.mood(tl, "s6-fy", T.ifl + 0.2, "sad"); EK.look(tl, "s6-fy", T.ifl + 0.5, 6, -10);
-    tl.to("#s6-if", { opacity: 0, duration: 0.12 }, T.every - 0.14);
-    tl.fromTo("#s6-every", { opacity: 0, scale: 1.5 }, { opacity: 1, scale: 1, duration: 0.22, ease: "power4.out" }, T.every);
+    tl.to("#s6-if", { opacity: 0, duration: 0.1 }, T.every);
+    tl.fromTo("#s6-every", { opacity: 0, scale: 1.5 }, { opacity: 1, scale: 1, duration: 0.22, ease: "power4.out" }, T.every + 0.1);
     EK.stamp(tl, "#s6-life", "#s6-stage", T.life, -4);
     EK.mood(tl, "s6-fy", T.life + 0.05, "calm"); EK.look(tl, "s6-fy", T.life + 0.05, 0, 0);
     EK.blink(tl, "s6-fy", T.life + 0.9);

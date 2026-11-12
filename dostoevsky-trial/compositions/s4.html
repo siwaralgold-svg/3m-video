@@ -5,7 +5,7 @@
     #root { position: absolute; inset: 0; overflow: hidden; }
   </style>
   <div id="root" data-composition-id="s4" data-width="1080" data-height="1920">
-    <div id="s4-wrap" class="clip" data-start="0" data-duration="12.37" data-layout-allow-overflow style="position:absolute;inset:0">
+    <div id="s4-wrap" class="clip" data-start="0" data-duration="12.47" data-layout-allow-overflow style="position:absolute;inset:0">
       <div id="s4-stage" class="stage">
         <svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg" style="position:absolute;left:0;top:0">
           <g id="s4-bg"></g>
@@ -64,7 +64,10 @@
     ["fy", "f1", "f2"].forEach((k) => EK.look(tl, "s4-" + k, T.dress + 0.9, 0, 6));
     EK.pop(tl, "#s4-shirts", T.shirts, -3);
     EK.blink(tl, "s4-fy", T.shirts + 0.9);
-    EK.idle(tl, "s4-fy", T.out + 1.1, DT.D.s4 - 0.1, 2.4); EK.idle(tl, "s4-f1", T.out + 1.2, DT.D.s4 - 0.1, 2.8); EK.idle(tl, "s4-f2", T.out + 1.4, DT.D.s4 - 0.1, 2.1);
+    [["fy", 1.1, 2.4], ["f1", 1.2, 2.8], ["f2", 1.4, 2.1]].forEach(([k, d, per]) => {
+      EK.idle(tl, "s4-" + k, T.out + d, T.dress - 0.15, per);   // breathing stops while the shirt goes on
+      EK.idle(tl, "s4-" + k, T.dress + 1.3, DT.D.s4 - 0.1, per);
+    });
     window.__timelines["s4"] = tl;
   </script>
 </template>

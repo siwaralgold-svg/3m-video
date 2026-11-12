@@ -22,8 +22,8 @@ W = [w["start"] for w in words]; E = [w["end"] for w in words]
 # scene id -> first word index
 SCENES = [("s1", 0), ("s2", 32), ("s3", 65), ("s4", 80), ("s5", 103), ("s6", 127), ("s7", 142),
           ("s8", 155), ("s9", 176), ("s10", 188), ("s11", 204), ("s12", 217)]
-LEAD = 0.3
-S = {sid: (0 if i == 0 else round(W[first] - LEAD, 2)) for i, (sid, first) in enumerate(SCENES)}
+LEAD = {"s3": 0.1}   # how far a scene starts before its first word (default 0.3 s)
+S = {sid: (0 if i == 0 else round(W[first] - LEAD.get(sid, 0.3), 2)) for i, (sid, first) in enumerate(SCENES)}
 ends = [S[sid] for sid, _ in SCENES[1:]] + [round(E[-1] + 2.6, 2)]
 D = {sid: round(ends[i] - S[sid], 2) for i, (sid, _) in enumerate(SCENES)}
 S["s13"] = ends[-1]; D["s13"] = 3.0

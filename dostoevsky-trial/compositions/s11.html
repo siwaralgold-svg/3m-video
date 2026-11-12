@@ -5,7 +5,7 @@
     #root { position: absolute; inset: 0; overflow: hidden; }
   </style>
   <div id="root" data-composition-id="s11" data-width="1080" data-height="1920">
-    <div id="s11-wrap" class="clip" data-start="0" data-duration="6.85" data-layout-allow-overflow style="position:absolute;inset:0">
+    <div id="s11-wrap" class="clip" data-start="0" data-duration="7.05" data-layout-allow-overflow style="position:absolute;inset:0">
       <div id="s11-stage" class="stage">
         <svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg" style="position:absolute;left:0;top:0">
           <defs><clipPath id="s11-clip"><rect x="-400" y="0" width="1880" height="1163"/></clipPath></defs>
@@ -44,10 +44,10 @@
     tl.fromTo("#s11-letter", { scale: 0.3, rotation: -30, svgOrigin: "850 360" }, { scale: 1, rotation: 0, duration: 0.3, ease: "back.out(2)" }, T.letter);
     EK.look(tl, "s11-ts", T.letter + 0.15, 9, -9); EK.blink(tl, "s11-ts", T.letter + 0.7);
     // history's verdict pushes his off the stage
-    tl.to("#s11-fygrp", { y: 0, duration: 0.4, ease: "back.out(1.5)" }, T.history);
-    tl.to("#s11-tsgrp", { x: -820, rotation: -14, svgOrigin: "540 1160", duration: 0.4, ease: "power3.in" }, T.history);
-    EK.mood(tl, "s11-ts", T.history - 0.12, "shock", true);
-    tl.to("#s11-death", { x: -900, rotation: -30, duration: 0.4, ease: "power3.in" }, T.history + 0.05);
+    tl.to("#s11-fygrp", { y: 0, duration: 0.4, ease: "back.out(1.5)" }, T.history + 0.15);
+    tl.to("#s11-tsgrp", { x: -820, rotation: -14, svgOrigin: "540 1160", duration: 0.35, ease: "power3.in" }, T.history - 0.2);
+    EK.mood(tl, "s11-ts", T.history - 0.45, "shock", true);
+    tl.to("#s11-death", { x: -900, rotation: -30, duration: 0.35, ease: "power3.in" }, T.history - 0.15);
     tl.to("#s11-letter", { x: 700, rotation: 40, duration: 0.4, ease: "power3.in" }, T.history + 0.1);
     EK.blink(tl, "s11-fy", T.history + 0.8);
     EK.stamp(tl, "#s11-forever", "#s11-stage", T.forever, 4);
@@ -55,7 +55,7 @@
     tl.set("#s11-books", { opacity: 1 }, T.novels);
     tl.to("#s11-books", { y: 0, duration: 0.35, ease: "back.out(1.8)" }, T.novels);
     EK.look(tl, "s11-fy", T.novels + 0.2, 9, 6); EK.mood(tl, "s11-fy", T.novels + 0.7, "laugh");
-    EK.idle(tl, "s11-ts", 0.4, T.history, 2.2); EK.idle(tl, "s11-fy", T.history + 0.6, DT.D.s11 - 0.1, 2.5);
+    EK.idle(tl, "s11-ts", 0.4, T.history - 0.5, 2.2); EK.idle(tl, "s11-fy", T.history + 0.6, DT.D.s11 - 0.1, 2.5);
     window.__timelines["s11"] = tl;
   </script>
 </template>
