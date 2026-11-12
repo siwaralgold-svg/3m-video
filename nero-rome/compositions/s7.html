@@ -72,7 +72,7 @@
     tl.to("#s7-door", { scaleX: 1, duration: 0.32, ease: "power3.in", svgOrigin: "980 900" }, T.shut - 0.32);
     tl.fromTo("#s7-stage", { x: 0 }, { x: 10, duration: 0.05, yoyo: true, repeat: 5, ease: "none", immediateRender: false }, T.shut);
     tl.to("#s7-bar", { x: 0, duration: 0.14, ease: "power3.in" }, T.latch - 0.14);
-    EK.mood(tl, "s7-n", T.shut + 0.1, "flat"); EK.look(tl, "s7-n", T.latch + 0.1, -8, 2);
+    EK.mood(tl, "s7-n", T.punish, "annoyed"); EK.look(tl, "s7-n", T.latch + 0.1, -8, 2);
     EK.idle(tl, "s7-n", 2.6, 5.3, 1.35);
     window.__timelines["s7"] = tl;
   </script>
