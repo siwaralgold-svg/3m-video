@@ -1,5 +1,9 @@
 # 3m-video
 
+## Wait for the voiceover
+
+Do not build, time or render a narrated video until the user has sent its voiceover file. When they send only a script, do only what they asked with the script (for example, tune its wording), then stop and wait for the recording. Never build a draft on estimated timing: it costs the user tokens and gets redone.
+
 T3M's HyperFrames videos. Each top-level folder is one video project; `brand/` holds the T3M logo and colours; `sfx-library/` holds the shared sound effects.
 
 ## Sound effects: use `sfx-library/` first
