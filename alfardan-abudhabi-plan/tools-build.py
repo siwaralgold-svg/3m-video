@@ -146,17 +146,19 @@ IMG = {
     'watan': ('assets/places/04-qasr-al-watan-crop.jpg', 769, 640),
     'mirzab': ('assets/places/07-al-mirzab-restaurant.jpg', 386, 518),
     'corniche': ('assets/places/06-corniche.webp', 1500, 800),
+    'kayak': ('assets/places/08-jubail-kayak.jpg', 1300, 867),
     'yasbay': ('assets/places/02-yas-bay-waterfront.jpg', 831, 831),
 }
 # id, image, chip, title, extra chip, big-in, shrink (None = leave from big), out, extra-chip time
 STOPS = [
     ('st0', 'airport', 'الوصول', 'مطار زايد الدولي', '6:00 الصبح', 4.62, 6.75, 9.30, 5.45),
-    ('st1', 'jubail', 'المحطة 1', 'ممشى القرم · جزيرة الجبيل', None, 12.72, 14.85, 19.85, None),
+    ('st1', 'jubail', 'المحطة 1', 'ممشى القرم · جزيرة الجبيل', None, 12.72, 14.85, 18.7, None),
     ('st2', 'meylas', 'المحطة 2', 'مطعم ميلس', 'مطبخ إماراتي', 23.10, 25.10, 27.16, 24.67),
     ('st3', 'watan', 'المحطة 3', 'قصر الوطن', None, 28.20, 29.60, 31.42, None),
     ('st4', 'mirzab', 'المحطة 4', 'مطعم المرزاب', 'سي فود', 33.50, 35.40, 36.95, 35.78),
     ('st5', 'corniche', 'المحطة 5', 'كورنيش أبوظبي', 'وقت الغروب', 38.42, 40.40, 43.50, 38.42),
     ('st6', 'yasbay', 'المحطة 6', 'ياس باي', 'عشا على البحر', 46.80, 48.70, 50.40, 47.57),
+    ('st7', 'kayak', 'تجربة', 'كاياك بين أشجار القرم', None, 19.15, None, 21.3, None),
 ]
 BOXW, BOXH, BIGCY = 940, 760, 735
 SLOTH, SLOTCY = 240, 355
