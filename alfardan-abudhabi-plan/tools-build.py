@@ -151,13 +151,12 @@ IMG = {
 # id, image, chip, title, extra chip, big-in, shrink (None = leave from big), out, extra-chip time
 STOPS = [
     ('st0', 'airport', 'الوصول', 'مطار زايد الدولي', '6:00 الصبح', 4.62, 6.75, 9.30, 5.45),
-    ('st1', 'jubail', 'المحطة ١', 'ممشى القرم · جزيرة الجبيل', None, 12.72, 14.85, 18.9, None),
-    ('st2', 'meylas', 'المحطة ٢', 'مطعم ميلس', 'مطبخ إماراتي', 23.10, 25.10, 27.16, 24.67),
-    ('st3', 'watan', 'المحطة ٣', 'قصر الوطن', None, 28.20, 29.60, 31.42, None),
-    ('st4', 'mirzab', 'المحطة ٤', 'مطعم المرزاب', 'سي فود', 33.50, 35.40, 36.95, 35.78),
-    ('st5', 'corniche', 'المحطة ٥', 'كورنيش أبوظبي', 'وقت الغروب', 38.42, 40.40, 43.50, 38.42),
-    ('st6', 'yasbay', 'المحطة ٦', 'ياس باي', 'عشا على البحر', 46.80, 48.70, 50.40, 47.57),
-    ('st7', 'airport', 'العودة', 'مطار زايد الدولي', None, 52.85, None, 54.05, None),
+    ('st1', 'jubail', 'المحطة 1', 'ممشى القرم · جزيرة الجبيل', None, 12.72, 14.85, 19.85, None),
+    ('st2', 'meylas', 'المحطة 2', 'مطعم ميلس', 'مطبخ إماراتي', 23.10, 25.10, 27.16, 24.67),
+    ('st3', 'watan', 'المحطة 3', 'قصر الوطن', None, 28.20, 29.60, 31.42, None),
+    ('st4', 'mirzab', 'المحطة 4', 'مطعم المرزاب', 'سي فود', 33.50, 35.40, 36.95, 35.78),
+    ('st5', 'corniche', 'المحطة 5', 'كورنيش أبوظبي', 'وقت الغروب', 38.42, 40.40, 43.50, 38.42),
+    ('st6', 'yasbay', 'المحطة 6', 'ياس باي', 'عشا على البحر', 46.80, 48.70, 50.40, 47.57),
 ]
 BOXW, BOXH, BIGCY = 940, 760, 735
 SLOTH, SLOTCY = 240, 355
@@ -321,66 +320,6 @@ route = """<template>
 open(os.path.join(P, 'compositions/route.html'), 'w').write(route)
 hosts.append('      <div id="route" data-composition-id="route" data-composition-src="compositions/route.html" data-start="%s" data-duration="%s" data-track-index="6" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index:4"></div>' % (RT0, round(RT1 - RT0, 3)))
 
-# ---------------------------------------------------------------- kayak (on "الكاياك", 19.31)
-KY0, KYD = 18.95, 2.15
-kayak = """<template>
-  <style>
-    #root { position: absolute; inset: 0; overflow: hidden; }
-    #ky-wrap { position: absolute; inset: 0; }
-    #ky-move { position: absolute; left: 0; top: 225px; width: 560px; height: 350px; }
-    #ky-svg { position: absolute; inset: 0; width: 100%%; height: 100%%; overflow: visible; }
-  </style>
-  <div id="root" data-composition-id="kayak" data-width="1080" data-height="1920">
-    <div id="ky-wrap" class="clip" data-start="0" data-duration="%(dur)s" data-layout-allow-overflow>
-      <div id="ky-move">
-        <svg id="ky-svg" viewBox="0 0 480 300" xmlns="http://www.w3.org/2000/svg" stroke-linejoin="round" stroke-linecap="round">
-          <g id="ky-wake" fill="none" stroke="#ffffff" stroke-width="6">
-            <path d="M455 236 q 18 -10 36 0" /><path d="M500 250 q 16 -9 32 0" /><path d="M470 262 q 14 -8 28 0" />
-          </g>
-          <g id="ky-bob">
-            <path d="M22 200 L458 200 Q240 256 22 200 Z" fill="#f28c28" stroke="#0c1a30" stroke-width="7" />
-            <path d="M22 200 Q240 176 458 200 Z" fill="#ffb347" stroke="#0c1a30" stroke-width="7" />
-            <g id="ky-body">
-              <path d="M222 128 Q250 116 278 128 L284 198 L216 198 Z" fill="#e23d3d" stroke="#0c1a30" stroke-width="7" />
-              <path d="M250 124 L250 196" stroke="#0c1a30" stroke-width="5" />
-              <circle cx="248" cy="92" r="27" fill="#e8b98a" stroke="#0c1a30" stroke-width="7" />
-              <path d="M221 88 A27 27 0 0 1 275 88 Z" fill="#ffffff" stroke="#0c1a30" stroke-width="7" />
-              <path d="M222 88 L196 92" stroke="#0c1a30" stroke-width="9" />
-              <circle cx="236" cy="99" r="4" fill="#0c1a30" />
-              <path d="M230 110 q 7 5 14 0" fill="none" stroke="#0c1a30" stroke-width="4" />
-            </g>
-            <g id="ky-paddle">
-              <path d="M112 152 L384 152" stroke="#0c1a30" stroke-width="10" />
-              <ellipse cx="100" cy="152" rx="30" ry="15" fill="#ffd23f" stroke="#0c1a30" stroke-width="7" />
-              <ellipse cx="396" cy="152" rx="30" ry="15" fill="#ffd23f" stroke="#0c1a30" stroke-width="7" />
-              <circle cx="212" cy="152" r="12" fill="#e8b98a" stroke="#0c1a30" stroke-width="6" />
-              <circle cx="284" cy="152" r="12" fill="#e8b98a" stroke="#0c1a30" stroke-width="6" />
-            </g>
-          </g>
-          <path id="ky-water" d="M8 244 Q8 214 44 220 q 22 -14 44 0 t 44 0 t 44 0 t 44 0 t 44 0 t 44 0 t 44 0 t 44 0 t 40 0 Q472 214 472 244 Q472 272 436 272 L44 272 Q8 272 8 244 Z" fill="#2f9fd0" stroke="#0c1a30" stroke-width="7" />
-          <path d="M70 246 q 16 -8 32 0 M190 252 q 16 -8 32 0 M320 246 q 16 -8 32 0" fill="none" stroke="#bfe8fa" stroke-width="5" />
-        </svg>
-      </div>
-    </div>
-  </div>
-  <script>
-    (function () {
-      const tl = gsap.timeline({ paused: true });
-      const D = %(dur)s, strokes = 7, sd = D / strokes;
-      tl.fromTo("#ky-move", { x: 1100 }, { x: -600, duration: D, ease: "none" }, 0);
-      tl.fromTo("#ky-bob", { y: 3 }, { y: -7, duration: sd, ease: "sine.inOut", yoyo: true, repeat: strokes - 1 }, 0);
-      tl.fromTo("#ky-paddle", { rotation: -30, svgOrigin: "248 152" }, { rotation: 30, svgOrigin: "248 152", duration: sd, ease: "sine.inOut", yoyo: true, repeat: strokes - 1 }, 0);
-      tl.fromTo("#ky-body", { rotation: -4, svgOrigin: "250 198" }, { rotation: 4, svgOrigin: "250 198", duration: sd, ease: "sine.inOut", yoyo: true, repeat: strokes - 1 }, 0);
-      tl.fromTo("#ky-wake", { opacity: 0.2, x: 0 }, { opacity: 1, x: 14, duration: sd / 2, ease: "sine.inOut", yoyo: true, repeat: strokes * 2 - 1 }, 0);
-      window.__timelines["kayak"] = tl;
-    })();
-  </script>
-</template>
-""" % dict(dur=KYD)
-open(os.path.join(P, 'compositions/kayak.html'), 'w').write(kayak)
-hosts.append('      <div id="kayak" data-composition-id="kayak" data-composition-src="compositions/kayak.html" data-start="%s" data-duration="%s" data-track-index="7" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index:4"></div>' % (KY0, KYD))
-sfx.append(('sfx-kayak', 'whoosh_soft_13', round(KY0 + 0.05, 3), 0.676))
-
 # ---------------------------------------------------------------- hook (0.15 - 4.4)
 hook = '''<template>
   <style>
@@ -444,7 +383,7 @@ recap = '''<template>
   </style>
   <div id="root" data-composition-id="recap" data-width="1080" data-height="1920">
     <div id="rc-wrap" class="clip" data-start="0" data-duration="%(dur)s">
-      <div id="rc-title">خلصنا <b>٦ محطات</b> في يوم واحد</div>
+      <div id="rc-title">خلصنا <b>6 محطات</b> في يوم واحد</div>
       <div id="rc-row">
         %(thumbs)s
       </div>
