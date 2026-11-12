@@ -1,0 +1,76 @@
+<template>
+  <style>
+    @font-face { font-family: "Lalezar"; src: url("assets/fonts/Lalezar-Regular.ttf"); font-weight: 400; }
+    @font-face { font-family: "Noto Kufi Arabic"; src: url("assets/fonts/NotoKufiArabic.ttf"); font-weight: 100 900; }
+    #root { position: absolute; inset: 0; overflow: hidden; }
+  </style>
+  <div id="root" data-composition-id="s3" data-width="1080" data-height="1920">
+    <div id="s3-wrap" class="clip" data-start="0" data-duration="11.27" data-layout-allow-overflow style="position:absolute;inset:0">
+      <div id="s3-stage" class="stage">
+        <div id="s3-bg" style="position:absolute; inset:0; background:#172f55"></div>
+        <svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg" style="position:absolute;left:0;top:0"><defs><clipPath id="s3-clip"><rect x="-1400" y="0" width="3900" height="1154"/></clipPath></defs><rect y="1150" width="1080" height="770" fill="#13294B"/>
+          <g clip-path="url(#s3-clip)"><g id="s3-cw"><g id="s3-city" transform="translate(54,1150) scale(0.9)"></g>
+            <g id="s3-f1"><g class="s3-fl" transform="translate(171,846) scale(1.25)"></g></g>
+            <g id="s3-f2"><g class="s3-fl" transform="translate(468,792) scale(1.5)"></g></g>
+            <g id="s3-f3"><g class="s3-fl" transform="translate(752,878) scale(1.15)"></g></g>
+            <g id="s3-f4"><g class="s3-fl" transform="translate(932,812) scale(1.3)"></g></g>
+          </g></g>
+          <g clip-path="url(#s3-clip)">
+            <g id="s3-ca"><g id="s3-ca-slot" transform="translate(190,1010) scale(0.46)"></g></g>
+            <g id="s3-cb"><g id="s3-cb-slot" transform="translate(890,1010) scale(0.46)"></g></g>
+          </g>
+        </svg>
+        <div id="s3-count" class="count">الملف الأول</div>
+        <div id="s3-ttl" class="ttl">الحريق</div>
+        <div id="s3-rome" class="card disp" style="left:70px; top:440px; width:330px; height:160px; font-size:120px; line-height:168px">روما</div>
+        <div id="s3-year" class="card disp" style="left:680px; top:440px; width:330px; height:160px; font-size:120px; line-height:168px">٦٤ م</div>
+        <div id="s3-say" class="card kufi" style="left:210px; top:470px; width:660px; height:140px; font-size:64px; font-weight:800; line-height:122px">«نيرون وراها!»</div>
+        <div id="s3-where" class="card disp" style="left:190px; top:440px; width:700px; height:210px; font-size:150px; line-height:214px">وين كان؟</div>
+        <div id="s3-note" class="note">إعادة بناء تخيّلية</div>
+      </div>
+      <div id="s3-six" class="plate" data-layout-allow-overlap data-layout-allow-occlusion style="left:220px; top:450px; width:640px; height:210px; font-size:160px; line-height:192px">ستة أيام</div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    EK.fill("s3-city", EK.rome());
+    document.querySelectorAll(".s3-fl").forEach((g) => { g.innerHTML = EK.flame(); });
+    EK.put("s3-ca-slot", "s3-a", "citizen"); EK.put("s3-cb-slot", "s3-b", "citizen2");
+    const T = { count: 0.04, ttl: 1.15, rome: 2.13, year: 2.86, fire: 4.54, six: 6.25, ppl: 7.18, nero: 8.19, where: 9.41 };
+    EK.face(tl, "s3-a", "angry"); EK.face(tl, "s3-b", "worried");
+    gsap.set("#s3-count, #s3-ttl, #s3-rome, #s3-year, #s3-six, #s3-say, #s3-where", { opacity: 0 });
+    gsap.set("#s3-cw", { y: 900 }); gsap.set("#s3-ca, #s3-cb", { y: 520 });
+    const FO = ["171 846", "468 792", "752 878", "932 812"];
+    FO.forEach((o, i) => gsap.set("#s3-f" + (i + 1), { scale: 0, svgOrigin: o }));
+    // enter: zoom out of file 1 on the bench
+    tl.fromTo("#s3-stage", { clipPath: "circle(0% at 16% 54%)" }, { clipPath: "circle(150% at 16% 54%)", duration: 0.45, ease: "power3.out" }, 0);
+    tl.fromTo("#s3-count", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power2.out" }, T.count);
+    tl.fromTo("#s3-ttl", { opacity: 0, scale: 1.5 }, { opacity: 1, scale: 1, duration: 0.25, ease: "power4.out" }, T.ttl);
+    tl.to("#s3-cw", { y: 0, duration: 0.55, ease: "back.out(1.2)" }, T.rome - 0.25);
+    EK.pop(tl, "#s3-rome", T.rome, -5);
+    EK.pop(tl, "#s3-year", T.year, 5);
+    // the fire eats the city, roof by roof
+    [1, 3, 0, 2].forEach((k, i) => {
+      const s = "#s3-f" + (k + 1), o = FO[k], t = T.fire + i * 0.32;
+      tl.to(s, { scale: 1, duration: 0.3, ease: "back.out(2.5)", svgOrigin: o }, t);
+      tl.to(s, { scaleY: 1.16, scaleX: 0.92, duration: 0.22 + i * 0.03, yoyo: true, repeat: 5, ease: "sine.inOut", svgOrigin: o }, t + 0.3);
+      tl.to(s, { scale: 1.3, duration: 0.25, ease: "back.out(2)", svgOrigin: o, overwrite: true }, T.six - 0.05 + i * 0.03);
+      tl.to(s, { scaleY: 1.46, scaleX: 1.2, duration: 0.24 + i * 0.03, yoyo: true, repeat: 19, ease: "sine.inOut", svgOrigin: o }, T.six + 0.25 + i * 0.03);
+    });
+    EK.out(tl, "#s3-rome", T.six - 0.3); EK.out(tl, "#s3-year", T.six - 0.25);
+    EK.stamp(tl, "#s3-six", "#s3-stage", T.six, -5);
+    // people say: Nero is behind it
+    EK.out(tl, "#s3-six", T.ppl - 0.1);
+    tl.to("#s3-ca", { y: 0, duration: 0.35, ease: "back.out(1.6)" }, T.ppl);
+    tl.to("#s3-cb", { y: 0, duration: 0.35, ease: "back.out(1.6)" }, T.ppl + 0.15);
+    EK.look(tl, "s3-a", T.ppl + 0.4, 8, -4); EK.look(tl, "s3-b", T.ppl + 0.5, -8, -4);
+    EK.pop(tl, "#s3-say", T.nero - 0.25, -3);
+    EK.mood(tl, "s3-b", T.nero, "angry");
+    // but where was he?
+    EK.out(tl, "#s3-say", T.where - 0.1);
+    EK.pop(tl, "#s3-where", T.where + 0.1, 4);
+    EK.mood(tl, "s3-a", T.where + 0.3, "flat"); EK.mood(tl, "s3-b", T.where + 0.45, "worried");
+    EK.blink(tl, "s3-a", 10.6);
+    window.__timelines["s3"] = tl;
+  </script>
+</template>

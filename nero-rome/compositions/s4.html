@@ -1,0 +1,57 @@
+<template>
+  <style>
+    @font-face { font-family: "Lalezar"; src: url("assets/fonts/Lalezar-Regular.ttf"); font-weight: 400; }
+    @font-face { font-family: "Noto Kufi Arabic"; src: url("assets/fonts/NotoKufiArabic.ttf"); font-weight: 100 900; }
+    #root { position: absolute; inset: 0; overflow: hidden; }
+  </style>
+  <div id="root" data-composition-id="s4" data-width="1080" data-height="1920">
+    <div id="s4-wrap" class="clip" data-start="0" data-duration="9.6" data-layout-allow-overflow style="position:absolute;inset:0">
+      <div id="s4-stage" class="stage">
+        <div id="s4-bg" style="position:absolute; inset:0; background:#172f55"></div>
+        <svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg" style="position:absolute;left:0;top:0">
+          <g id="s4-map">
+            <path d="M1100 560 L600 560 L500 680 L430 800 L400 900 L420 1010 L470 1090 L560 1160 L1100 1160Z" fill="#a8703f" stroke="#0c1a30" stroke-linejoin="round" stroke-linecap="round" stroke-width="8"/>
+            <path id="s4-dash" d="M770 800 L548 930" fill="none" stroke="#F4F6F9" stroke-width="9" stroke-dasharray="24 18" stroke-linecap="round"/>
+            <g id="s4-rome"><g id="s4-fl"><g id="s4-fl-slot" transform="translate(790,830) scale(0.8)"></g></g>
+              <rect x="680" y="590" width="220" height="92" rx="10" fill="#F4F6F9" stroke="#0c1a30" stroke-linejoin="round" stroke-linecap="round" stroke-width="7"/>
+              <text x="790" y="656" text-anchor="middle" font-family="Noto Kufi Arabic" font-weight="800" font-size="48" fill="#0c1a30" direction="rtl">روما</text></g>
+            <g id="s4-ant"><circle cx="500" cy="930" r="92" fill="#F4F6F9" stroke="#0c1a30" stroke-linejoin="round" stroke-linecap="round" stroke-width="8"/>
+              <g id="s4-ne-slot" transform="translate(500,958) scale(0.3)"></g>
+              <rect x="130" y="900" width="240" height="92" rx="10" fill="#F4F6F9" stroke="#0c1a30" stroke-linejoin="round" stroke-linecap="round" stroke-width="7"/>
+              <text x="250" y="966" text-anchor="middle" font-family="Noto Kufi Arabic" font-weight="800" font-size="48" fill="#0c1a30" direction="rtl">أنتيوم</text></g>
+          </g>
+        </svg>
+        <div id="s4-tac" class="card kufi" style="left:220px; top:186px; width:640px; height:112px; font-size:50px; font-weight:800; line-height:96px">المؤرخ تاسيتوس</div>
+        <div id="s4-c1" class="card kufi" style="left:130px; top:340px; width:820px; height:130px; font-size:58px; font-weight:800; line-height:112px">غيابه ما يثبت براءته</div>
+        <div id="s4-c2" class="card kufi" style="left:130px; top:340px; width:820px; height:130px; font-size:58px; font-weight:800; line-height:112px">التهمة: بلا دليل حاسم</div>
+      </div>
+      <div id="s4-out" class="plate" data-layout-allow-overlap data-layout-allow-occlusion style="left:190px; top:336px; width:700px; height:190px; font-size:150px; line-height:172px">خارج روما</div>
+      <div id="s4-rumor" class="rstamp" data-layout-allow-overlap data-layout-allow-occlusion style="left:170px; top:700px; width:740px; height:270px; font-size:200px; line-height:244px">شائعات</div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    EK.fill("s4-fl-slot", EK.flame());
+    EK.put("s4-ne-slot", "s4-n", "nero");
+    const T = { tac: 0.57, out: 1.66, fair: 2.75, absent: 4.22, but: 6.14, proof: 7.6, rumor: 8.46 };
+    EK.face(tl, "s4-n", "calm");
+    gsap.set("#s4-tac, #s4-out, #s4-c1, #s4-c2, #s4-rumor, #s4-ant, #s4-dash", { opacity: 0 });
+    EK.whip(tl, "#s4-stage", -1080);
+    EK.pop(tl, "#s4-tac", T.tac, -3);
+    tl.to("#s4-fl", { scaleY: 1.16, scaleX: 0.92, duration: 0.24, yoyo: true, repeat: 37, ease: "sine.inOut", svgOrigin: "790 830" }, 0.3);
+    // outside Rome: his pin lands down the coast
+    tl.fromTo("#s4-ant", { opacity: 0, scale: 0.3, svgOrigin: "500 930" }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2)" }, T.out - 0.45);
+    tl.to("#s4-dash", { opacity: 1, duration: 0.2 }, T.out - 0.2);
+    EK.stamp(tl, "#s4-out", "#s4-stage", T.out, -5);
+    // fairness: absence is not innocence
+    EK.out(tl, "#s4-out", T.fair + 0.9);
+    EK.pop(tl, "#s4-c1", T.absent, 3);
+    EK.mood(tl, "s4-n", T.absent + 0.3, "flat");
+    // but the charge has no firm proof: rumours
+    EK.out(tl, "#s4-c1", T.but + 0.6);
+    EK.pop(tl, "#s4-c2", T.proof - 0.6, -3);
+    tl.to("#s4-map", { opacity: 0.4, duration: 0.25 }, T.rumor - 0.4);
+    EK.stamp(tl, "#s4-rumor", "#s4-stage", T.rumor, -8);
+    window.__timelines["s4"] = tl;
+  </script>
+</template>

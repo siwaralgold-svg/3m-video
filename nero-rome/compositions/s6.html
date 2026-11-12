@@ -1,0 +1,45 @@
+<template>
+  <style>
+    @font-face { font-family: "Lalezar"; src: url("assets/fonts/Lalezar-Regular.ttf"); font-weight: 400; }
+    @font-face { font-family: "Noto Kufi Arabic"; src: url("assets/fonts/NotoKufiArabic.ttf"); font-weight: 100 900; }
+    #root { position: absolute; inset: 0; overflow: hidden; }
+  </style>
+  <div id="root" data-composition-id="s6" data-width="1080" data-height="1920">
+    <div id="s6-wrap" class="clip" data-start="0" data-duration="4.05" data-layout-allow-overflow style="position:absolute;inset:0">
+      <div id="s6-stage" class="stage">
+        <div id="s6-bg" style="position:absolute; inset:0; background:#172f55"></div>
+        <svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg" style="position:absolute;left:0;top:0"><rect y="1150" width="1080" height="770" fill="#13294B"/>
+          <path id="s6-arrow" d="M410 1040 H670 M410 1040 l34 -30 M410 1040 l34 30 M670 1040 l-34 -30 M670 1040 l-34 30" fill="none" stroke="#F4F6F9" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+          <g id="s6-hL"><g id="s6-hL-slot" transform="translate(60,1150)"></g><g id="s6-fl"><g id="s6-fl-slot" transform="translate(225,690)"></g></g></g>
+          <g id="s6-hR"><g id="s6-hR-slot" transform="translate(690,1150)"></g></g>
+          <g id="s6-sp"><g id="s6-sp-slot" transform="translate(400,740) scale(0.42)"></g></g>
+        </svg>
+        <div id="s6-count" class="count">بعد الحريق</div>
+        <div id="s6-note" class="note">إعادة بناء تخيّلية</div>
+      </div>
+      <div id="s6-wide" class="plate" data-layout-allow-overlap data-layout-allow-occlusion style="left:190px; top:270px; width:700px; height:176px; font-size:134px; line-height:158px">شوارع أوسع</div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    EK.fill("s6-hL-slot", EK.house(330, 420, "#8b95a1")); EK.fill("s6-hR-slot", EK.house(330, 350, "#6f7a86"));
+    EK.fill("s6-fl-slot", EK.flame()); EK.fill("s6-sp-slot", EK.flame());
+    const T = { streets: 1.23, wider: 1.84, fire: 2.74, spread: 3.3 };
+    gsap.set("#s6-wide, #s6-arrow, #s6-sp", { opacity: 0 });
+    gsap.set("#s6-hL", { x: 130 }); gsap.set("#s6-hR", { x: -130 });
+    EK.whip(tl, "#s6-stage", 1080);
+    tl.to("#s6-fl", { scaleY: 1.16, scaleX: 0.92, duration: 0.24, yoyo: true, repeat: 15, ease: "sine.inOut", svgOrigin: "225 690" }, 0.2);
+    // the houses step apart: a wider street
+    tl.to("#s6-hL", { x: 0, duration: 0.5, ease: "back.out(1.4)" }, T.streets);
+    tl.to("#s6-hR", { x: 0, duration: 0.5, ease: "back.out(1.4)" }, T.streets);
+    tl.fromTo("#s6-arrow", { opacity: 0, scaleX: 0.2, svgOrigin: "540 1040" }, { opacity: 1, scaleX: 1, duration: 0.3, ease: "back.out(2)" }, T.wider - 0.15);
+    EK.stamp(tl, "#s6-wide", "#s6-stage", T.wider, -4);
+    // a spark jumps, and dies in the street
+    tl.set("#s6-sp", { opacity: 1 }, T.fire);
+    tl.to("#s6-sp", { x: 140, duration: 0.7, ease: "none" }, T.fire);
+    tl.to("#s6-sp", { y: -90, duration: 0.25, ease: "power2.out" }, T.fire);
+    tl.to("#s6-sp", { y: 470, duration: 0.45, ease: "power2.in" }, T.fire + 0.25);
+    tl.to("#s6-sp", { opacity: 0, scale: 0.3, duration: 0.25, svgOrigin: "540 1110" }, T.spread + 0.15);
+    window.__timelines["s6"] = tl;
+  </script>
+</template>

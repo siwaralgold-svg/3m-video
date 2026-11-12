@@ -1,0 +1,87 @@
+<template>
+  <style>
+    @font-face { font-family: "Lalezar"; src: url("assets/fonts/Lalezar-Regular.ttf"); font-weight: 400; }
+    @font-face { font-family: "Noto Kufi Arabic"; src: url("assets/fonts/NotoKufiArabic.ttf"); font-weight: 100 900; }
+    #root { position: absolute; inset: 0; overflow: hidden; }
+  </style>
+  <div id="root" data-composition-id="s1" data-width="1080" data-height="1920">
+    <div id="s1-wrap" class="clip" data-start="0" data-duration="11.65" data-layout-allow-overflow style="position:absolute;inset:0">
+      <div id="s1-stage" class="stage">
+        <div id="s1-bg" style="position:absolute; inset:0; background:#13294B"></div>
+        <svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg" style="position:absolute;left:0;top:0"><defs><clipPath id="s1-clip"><rect x="-1400" y="0" width="3900" height="1154"/></clipPath></defs><rect y="1150" width="1080" height="770" fill="#6b4226"/><rect x="-10" y="1150" width="1100" height="46" fill="#a8703f" stroke="#0c1a30" stroke-linejoin="round" stroke-linecap="round" stroke-width="7"/>
+          <g clip-path="url(#s1-clip)">
+            <g id="s1-A">
+              <g id="s1-city" transform="translate(0,1150)"></g>
+              <g id="s1-f1"><g class="s1-fl" transform="translate(130,812) scale(1.3)"></g></g>
+              <g id="s1-f2"><g class="s1-fl" transform="translate(460,756) scale(1.6)"></g></g>
+              <g id="s1-f3"><g class="s1-fl" transform="translate(775,850) scale(1.2)"></g></g>
+              <g id="s1-f4"><g class="s1-fl" transform="translate(975,776) scale(1.4)"></g></g>
+              <g id="s1-ne"><g id="s1-ne-slot" transform="translate(540,800) scale(1.25)"></g></g>
+            </g>
+            <g id="s1-B">
+              <g id="s1-gate" transform="translate(540,1150)"></g>
+              <g id="s1-mo"><g id="s1-mo-slot" transform="translate(420,1000) scale(0.5)"></g></g>
+              <g id="s1-ki"><g id="s1-ki-slot" transform="translate(650,1044) scale(0.38)"></g></g>
+            </g>
+          </g>
+        </svg>
+        <div id="s1-t1" class="ttl" style="top:186px; font-size:104px">الشخص اللي حرق روما</div>
+        <div id="s1-t1b" class="ttl" style="top:318px; font-size:200px">بأكملها</div>
+        <div id="s1-emp" class="card kufi" style="left:250px; top:220px; width:580px; height:124px; font-size:56px; font-weight:800; line-height:108px">إمبراطور روما</div>
+        <div id="s1-t2" class="ttl" style="top:196px; font-size:150px">فتح حدائقه</div>
+        <div id="s1-who" class="card kufi" style="left:210px; top:392px; width:660px; height:112px; font-size:48px; font-weight:800; line-height:96px">للّي احترقت بيوتهم</div>
+      </div>
+      <div id="s1-claim" class="rstamp" data-layout-allow-overlap data-layout-allow-occlusion style="left:170px; top:300px; width:740px; height:240px; font-size:170px; line-height:214px">ادّعوا ذلك</div>
+      <div id="s1-name" class="plate" data-layout-allow-overlap data-layout-allow-occlusion style="left:230px; top:960px; width:620px; height:210px; font-size:170px; line-height:192px">نيرون</div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    EK.fill("s1-city", EK.rome());
+    document.querySelectorAll(".s1-fl").forEach((g) => { g.innerHTML = EK.flame(); });
+    EK.put("s1-ne-slot", "s1-n", "nero");
+    EK.fill("s1-gate", EK.gate("s1-g"));
+    EK.put("s1-mo-slot", "s1-m", "romanMother"); EK.put("s1-ki-slot", "s1-k", "romanChild");
+    const T = { whole: 2.65, claim: 4.32, emp: 5.86, name: 7.14, but: 8.06, gate: 9.24, homes: 10.3 };
+    EK.face(tl, "s1-n", "smug"); EK.face(tl, "s1-m", "sad"); EK.face(tl, "s1-k", "sad");
+    gsap.set("#s1-t1b, #s1-claim, #s1-emp, #s1-name, #s1-t2, #s1-who", { opacity: 0 });
+    gsap.set("#s1-ne", { y: 1000, filter: "brightness(0)" });
+    gsap.set("#s1-B", { x: 1080 }); gsap.set("#s1-mo, #s1-ki", { y: 700 });
+    const FO = ["130 812", "460 756", "775 850", "975 776"];
+    // the hook is on screen at frame 0: the charge as a fact, the city on fire
+    tl.fromTo("#s1-A", { scale: 1.1, svgOrigin: "540 1150" }, { scale: 1, duration: 0.6, ease: "power3.out" }, 0);
+    FO.forEach((o, i) => {
+      tl.fromTo("#s1-f" + (i + 1), { scale: 0.75, svgOrigin: o }, { scale: 1, duration: 0.3, ease: "back.out(2)" }, 0.05 + i * 0.08);
+      tl.to("#s1-f" + (i + 1), { scaleY: 1.14, scaleX: 0.93, duration: 0.21 + i * 0.03, yoyo: true, repeat: 7, ease: "sine.inOut", svgOrigin: o }, 0.4 + i * 0.05);
+      // "all of it": the fire doubles
+      tl.to("#s1-f" + (i + 1), { scale: 1.7, duration: 0.25, ease: "back.out(2)", svgOrigin: o, overwrite: true }, T.whole - 0.05 + i * 0.04);
+      tl.to("#s1-f" + (i + 1), { scaleY: 1.9, scaleX: 1.6, duration: 0.24 + i * 0.03, yoyo: true, repeat: 19, ease: "sine.inOut", svgOrigin: o }, T.whole + 0.3 + i * 0.04);
+    });
+    tl.fromTo("#s1-t1b", { opacity: 0, scale: 1.8 }, { opacity: 1, scale: 1, duration: 0.2, ease: "power4.out" }, T.whole);
+    tl.fromTo("#s1-stage", { y: 0 }, { y: 10, duration: 0.05, yoyo: true, repeat: 3, ease: "none", immediateRender: false }, T.whole + 0.2);
+    // "or so they claimed": a red stamp over the charge
+    tl.to("#s1-t1, #s1-t1b", { opacity: 0.3, duration: 0.2 }, T.claim - 0.5);
+    EK.stamp(tl, "#s1-claim", "#s1-stage", T.claim, -7);
+    // the emperor of Rome, a shadow in front of his city
+    EK.out(tl, "#s1-claim", T.emp - 0.2);
+    tl.to("#s1-t1, #s1-t1b", { opacity: 0, duration: 0.15 }, T.emp - 0.2);
+    EK.pop(tl, "#s1-emp", T.emp, -3);
+    tl.to("#s1-ne", { y: 0, duration: 0.5, ease: "back.out(1.3)" }, T.emp - 0.1);
+    tl.to("#s1-ne", { filter: "brightness(1)", duration: 0.12, ease: "power2.out" }, T.name - 0.02);
+    EK.stamp(tl, "#s1-name", "#s1-stage", T.name + 0.1, -5);
+    EK.mood(tl, "s1-n", T.name + 0.2, "laugh");
+    EK.blink(tl, "s1-n", T.name + 0.65);
+    // "but the same man": the city slides away, the garden gate slides in and opens
+    EK.out(tl, "#s1-name", T.but - 0.05); EK.out(tl, "#s1-emp", T.but);
+    tl.to("#s1-A", { x: -1180, duration: 0.45, ease: "power3.inOut" }, T.but + 0.1);
+    tl.to("#s1-B", { x: 0, duration: 0.45, ease: "power3.inOut" }, T.but + 0.1);
+    tl.fromTo("#s1-t2", { opacity: 0, scale: 1.5 }, { opacity: 1, scale: 1, duration: 0.25, ease: "power4.out" }, T.gate);
+    tl.to("#s1-g-L", { scaleX: 0.14, duration: 0.7, ease: "power2.inOut", svgOrigin: "-200 0" }, T.gate + 0.03);
+    tl.to("#s1-g-R", { scaleX: 0.14, duration: 0.7, ease: "power2.inOut", svgOrigin: "200 0" }, T.gate + 0.08);
+    EK.pop(tl, "#s1-who", T.homes, 3);
+    tl.to("#s1-mo", { y: 0, duration: 0.4, ease: "back.out(1.5)" }, T.homes + 0.05);
+    tl.to("#s1-ki", { y: 0, duration: 0.4, ease: "back.out(1.5)" }, T.homes + 0.2);
+    EK.mood(tl, "s1-m", 11.0, "calm"); EK.mood(tl, "s1-k", 11.15, "calm");
+    window.__timelines["s1"] = tl;
+  </script>
+</template>

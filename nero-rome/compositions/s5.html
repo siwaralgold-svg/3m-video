@@ -1,0 +1,73 @@
+<template>
+  <style>
+    @font-face { font-family: "Lalezar"; src: url("assets/fonts/Lalezar-Regular.ttf"); font-weight: 400; }
+    @font-face { font-family: "Noto Kufi Arabic"; src: url("assets/fonts/NotoKufiArabic.ttf"); font-weight: 100 900; }
+    #root { position: absolute; inset: 0; overflow: hidden; }
+  </style>
+  <div id="root" data-composition-id="s5" data-width="1080" data-height="1920">
+    <div id="s5-wrap" class="clip" data-start="0" data-duration="9.5" data-layout-allow-overflow style="position:absolute;inset:0">
+      <div id="s5-stage" class="stage">
+        <div id="s5-bg" style="position:absolute; inset:0; background:#172f55"></div>
+        <svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg" style="position:absolute;left:0;top:0"><defs><clipPath id="s5-clip"><rect x="-1400" y="0" width="3900" height="1154"/></clipPath></defs><rect y="1150" width="1080" height="770" fill="#13294B"/>
+          <g clip-path="url(#s5-clip)">
+            <g id="s5-A">
+              <g id="s5-mo"><g id="s5-mo-slot" transform="translate(350,900) scale(0.8)"></g></g>
+              <g id="s5-ki"><g id="s5-ki-slot" transform="translate(750,964) scale(0.6)"></g></g>
+            </g>
+            <g id="s5-B">
+              <g id="s5-gate" transform="translate(540,1150)"></g>
+              <g id="s5-mo2-slot" transform="translate(455,1014) scale(0.44)"></g>
+              <g id="s5-ki2-slot" transform="translate(640,1050) scale(0.34)"></g>
+              <g id="s5-bk"><g id="s5-bk-slot" transform="translate(170,1100) scale(1.3)"></g></g>
+              <g id="s5-sk"><g id="s5-sk-slot" transform="translate(910,1088) scale(1.2)"></g></g>
+              <g id="s5-pr"><rect x="640" y="800" width="400" height="104" rx="10" fill="#F4F6F9" stroke="#0c1a30" stroke-linejoin="round" stroke-linecap="round" stroke-width="7"/>
+                <text x="900" y="868" text-anchor="middle" font-family="Noto Kufi Arabic" font-weight="800" font-size="46" fill="#0c1a30" direction="rtl">سعر القمح</text>
+                <path id="s5-arr" d="M676 822 h28 v34 h20 l-34 36 l-34 -36 h20Z" fill="#8c2f2f" stroke="#0c1a30" stroke-linejoin="round" stroke-linecap="round" stroke-width="5"/></g>
+            </g>
+          </g>
+        </svg>
+        <div id="s5-count" class="count">الملف الثاني</div>
+        <div id="s5-ttl" class="ttl">الناجين</div>
+        <div id="s5-c1" class="card kufi" style="left:60px; top:452px; width:340px; height:112px; font-size:50px; font-weight:800; line-height:96px">بلا بيوت</div>
+        <div id="s5-c2" class="card kufi" style="left:680px; top:452px; width:340px; height:112px; font-size:50px; font-weight:800; line-height:96px">بلا أكل</div>
+        <div id="s5-tac" class="card kufi" style="left:210px; top:452px; width:660px; height:112px; font-size:50px; font-weight:800; line-height:96px">تاسيتوس نفسه يقول</div>
+        <div id="s5-note" class="note">إعادة بناء تخيّلية</div>
+      </div>
+      <div id="s5-open" class="plate" data-layout-allow-overlap data-layout-allow-occlusion style="left:180px; top:206px; width:720px; height:200px; font-size:150px; line-height:182px">فتح حدائقه</div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    EK.put("s5-mo-slot", "s5-m", "romanMother"); EK.put("s5-ki-slot", "s5-k", "romanChild");
+    EK.put("s5-mo2-slot", "s5-m2", "romanMother"); EK.put("s5-ki2-slot", "s5-k2", "romanChild");
+    EK.fill("s5-gate", EK.gate("s5-g")); EK.fill("s5-bk-slot", EK.basket()); EK.fill("s5-sk-slot", EK.sack());
+    const T = { count: 0.05, ttl: 1.12, ppl: 2.1, c1: 2.37, c2: 3.16, tac: 4.02, sw: 5.2, open: 5.76, plate: 6.43, food: 7.1, price: 8.16, wheat: 8.86 };
+    EK.face(tl, "s5-m", "sad"); EK.face(tl, "s5-k", "sad"); EK.face(tl, "s5-m2", "sad"); EK.face(tl, "s5-k2", "sad");
+    gsap.set("#s5-count, #s5-ttl, #s5-c1, #s5-c2, #s5-tac, #s5-open, #s5-bk, #s5-sk, #s5-pr", { opacity: 0 });
+    gsap.set("#s5-mo, #s5-ki", { y: 800 }); gsap.set("#s5-B", { x: 1080 });
+    tl.fromTo("#s5-stage", { clipPath: "circle(0% at 50% 54%)" }, { clipPath: "circle(150% at 50% 54%)", duration: 0.45, ease: "power3.out" }, 0);
+    tl.fromTo("#s5-count", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power2.out" }, T.count);
+    tl.fromTo("#s5-ttl", { opacity: 0, scale: 1.5 }, { opacity: 1, scale: 1, duration: 0.25, ease: "power4.out" }, T.ttl);
+    tl.to("#s5-mo", { y: 0, duration: 0.45, ease: "back.out(1.3)" }, T.ppl - 0.15);
+    tl.to("#s5-ki", { y: 0, duration: 0.45, ease: "back.out(1.3)" }, T.ppl);
+    EK.pop(tl, "#s5-c1", T.c1, -4); EK.pop(tl, "#s5-c2", T.c2, 4);
+    EK.look(tl, "s5-k", T.c2 + 0.2, -8, -4); EK.blink(tl, "s5-m", 3.7);
+    EK.out(tl, "#s5-c1", T.tac - 0.15); EK.out(tl, "#s5-c2", T.tac - 0.1);
+    EK.pop(tl, "#s5-tac", T.tac, -2);
+    EK.idle(tl, "s5-m", 2.5, 5.1, 1.3); EK.idle(tl, "s5-k", 2.6, 5.2, 1.3);
+    // Nero opened his gardens to them
+    tl.to("#s5-count, #s5-ttl, #s5-c1, #s5-c2, #s5-tac", { opacity: 0, duration: 0.15 }, T.sw);
+    tl.to("#s5-A", { x: -1180, duration: 0.45, ease: "power3.inOut" }, T.sw);
+    tl.to("#s5-B", { x: 0, duration: 0.45, ease: "power3.inOut" }, T.sw);
+    tl.to("#s5-g-L", { scaleX: 0.14, duration: 0.6, ease: "power2.inOut", svgOrigin: "-200 0" }, T.open);
+    tl.to("#s5-g-R", { scaleX: 0.14, duration: 0.6, ease: "power2.inOut", svgOrigin: "200 0" }, T.open + 0.05);
+    EK.stamp(tl, "#s5-open", "#s5-stage", T.plate, -4);
+    EK.mood(tl, "s5-m2", T.plate + 0.2, "calm"); EK.mood(tl, "s5-k2", T.plate + 0.35, "laugh");
+    // food, and a lower grain price
+    tl.fromTo("#s5-bk", { opacity: 0, y: -300 }, { opacity: 1, y: 0, duration: 0.35, ease: "bounce.out" }, T.food);
+    tl.fromTo("#s5-sk", { opacity: 0, y: -300 }, { opacity: 1, y: 0, duration: 0.35, ease: "bounce.out" }, T.price);
+    tl.fromTo("#s5-pr", { opacity: 0, scale: 0.4, svgOrigin: "840 852" }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2)" }, T.wheat - 0.25);
+    tl.fromTo("#s5-arr", { y: -26 }, { y: 0, duration: 0.3, ease: "bounce.out" }, T.wheat);
+    window.__timelines["s5"] = tl;
+  </script>
+</template>

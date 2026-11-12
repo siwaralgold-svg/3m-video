@@ -1,0 +1,46 @@
+<template>
+  <style>
+    @font-face { font-family: "Lalezar"; src: url("assets/fonts/Lalezar-Regular.ttf"); font-weight: 400; }
+    @font-face { font-family: "Noto Kufi Arabic"; src: url("assets/fonts/NotoKufiArabic.ttf"); font-weight: 100 900; }
+    #root { position: absolute; inset: 0; overflow: hidden; }
+  </style>
+  <div id="root" data-composition-id="s8" data-width="1080" data-height="1920">
+    <div id="s8-wrap" class="clip" data-start="0" data-duration="6.25" data-layout-allow-overflow style="position:absolute;inset:0">
+      <div id="s8-stage" class="stage">
+        <svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg" style="position:absolute;left:0;top:0"><defs><clipPath id="s8-clip"><rect x="-1400" y="0" width="3900" height="1154"/></clipPath></defs>
+          <rect id="s8-hr" x="540" y="190" width="560" height="964" fill="#1C385A"/>
+          <rect id="s8-hl" x="-20" y="190" width="560" height="964" fill="#0c1a30"/>
+          <path d="M540 190 V1150" fill="none" stroke="#0c1a30" stroke-width="7"/>
+          <g clip-path="url(#s8-clip)"><g id="s8-ne"><g id="s8-ne-slot" transform="translate(540,782) scale(1.2)"></g></g></g>
+        </svg>
+        <div id="s8-l1" class="card kufi" style="left:150px; top:190px; width:780px; height:112px; font-size:50px; font-weight:800; line-height:96px">مساعدته ما تمسح ظلمه</div>
+        <div id="s8-l2" class="card kufi" style="left:90px; top:190px; width:900px; height:112px; font-size:50px; font-weight:800; line-height:96px">وظلمه ما يثبت إنه أحرق روما</div>
+        <div id="s8-a" class="card disp" style="left:600px; top:330px; width:420px; height:140px; font-size:92px; line-height:146px">ساعد ناس</div>
+        <div id="s8-b" class="card disp" style="left:60px; top:330px; width:420px; height:140px; font-size:92px; line-height:146px">ظلم ناس</div>
+      </div>
+
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    EK.put("s8-ne-slot", "s8-n", "nero");
+    const T = { a: 0.05, b: 0.99, l1: 2.09, l2: 3.89 };
+    EK.face(tl, "s8-n", "calm");
+    gsap.set("#s8-l1, #s8-l2, #s8-b", { opacity: 0 }); gsap.set("#s8-hl", { opacity: 0 });
+    EK.whip(tl, "#s8-stage", -1080);
+    EK.pop(tl, "#s8-a", T.a + 0.1, 4);
+    EK.look(tl, "s8-n", T.a + 0.3, 8, -2);
+    // and wronged others: the other half goes dark
+    tl.to("#s8-hl", { opacity: 0.6, duration: 0.2 }, T.b - 0.05);
+    EK.stamp(tl, "#s8-b", "#s8-stage", T.b + 0.03, -4);
+    EK.look(tl, "s8-n", T.b + 0.1, -8, 2);
+    EK.mood(tl, "s8-n", T.b + 0.15, "angry");
+    EK.pop(tl, "#s8-l1", T.l1, -2);
+    EK.mood(tl, "s8-n", T.l1 + 0.4, "flat"); EK.look(tl, "s8-n", T.l1 + 0.5, 0, 0);
+    EK.out(tl, "#s8-l1", T.l2 - 0.15);
+    EK.pop(tl, "#s8-l2", T.l2, 2);
+    EK.mood(tl, "s8-n", T.l2 + 0.5, "worried"); EK.blink(tl, "s8-n", 5.5);
+    EK.idle(tl, "s8-n", 2.6, 6.2, 1.8);
+    window.__timelines["s8"] = tl;
+  </script>
+</template>

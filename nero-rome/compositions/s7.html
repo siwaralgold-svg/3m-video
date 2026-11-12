@@ -1,0 +1,79 @@
+<template>
+  <style>
+    @font-face { font-family: "Lalezar"; src: url("assets/fonts/Lalezar-Regular.ttf"); font-weight: 400; }
+    @font-face { font-family: "Noto Kufi Arabic"; src: url("assets/fonts/NotoKufiArabic.ttf"); font-weight: 100 900; }
+    #root { position: absolute; inset: 0; overflow: hidden; }
+  </style>
+  <div id="root" data-composition-id="s7" data-width="1080" data-height="1920">
+    <div id="s7-wrap" class="clip" data-start="0" data-duration="10.9" data-layout-allow-overflow style="position:absolute;inset:0">
+      <div id="s7-stage" class="stage">
+        <div id="s7-bg" style="position:absolute; inset:0; background:#172f55"></div>
+        <svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg" style="position:absolute;left:0;top:0"><defs><clipPath id="s7-clip"><rect x="-1400" y="0" width="3900" height="1154"/></clipPath></defs><rect y="1150" width="1080" height="770" fill="#13294B"/>
+          <g clip-path="url(#s7-clip)">
+            <g id="s7-cell">
+              <rect x="570" y="610" width="460" height="560" fill="#8b95a1" stroke="#0c1a30" stroke-linejoin="round" stroke-linecap="round" stroke-width="8"/>
+              <rect x="620" y="660" width="360" height="510" fill="#1C385A" stroke="#0c1a30" stroke-linejoin="round" stroke-linecap="round" stroke-width="7"/>
+              <g transform="translate(700,1024) scale(0.4)" class="s7-sh"></g><g transform="translate(900,1024) scale(0.4)" class="s7-sh"></g><g transform="translate(800,1000) scale(0.44)" class="s7-sh"></g>
+              <g id="s7-door"><rect x="620" y="660" width="360" height="510" fill="#8a5a33" stroke="#0c1a30" stroke-linejoin="round" stroke-linecap="round" stroke-width="8"/>
+                <path d="M740 660 V1170 M860 660 V1170" fill="none" stroke="#0c1a30" stroke-linejoin="round" stroke-linecap="round" stroke-width="5"/>
+                <g fill="#55606b" stroke="#0c1a30" stroke-linejoin="round" stroke-linecap="round" stroke-width="6"><rect x="620" y="730" width="360" height="40"/><rect x="620" y="1040" width="360" height="40"/></g></g>
+              <g id="s7-bar"><rect x="590" y="872" width="420" height="50" rx="8" fill="#55606b" stroke="#0c1a30" stroke-linejoin="round" stroke-linecap="round" stroke-width="7"/></g>
+            </g>
+            <g id="s7-ne"><g id="s7-ne-slot" transform="translate(540,860)"></g></g>
+          </g>
+        </svg>
+        <div id="s7-count" class="count">الملف الثالث</div>
+        <div id="s7-ttl" class="ttl">الضحايا</div>
+        <div id="s7-b1" class="card kufi" style="left:30px; top:470px; width:370px; height:104px; font-size:46px; font-weight:800; line-height:90px">«هو أحرقها!»</div>
+        <div id="s7-b2" class="card kufi" style="left:720px; top:430px; width:300px; height:104px; font-size:46px; font-weight:800; line-height:90px">«نيرون!»</div>
+        <div id="s7-b3" class="card kufi" style="left:700px; top:640px; width:340px; height:104px; font-size:46px; font-weight:800; line-height:90px">«أحرق روما!»</div>
+        <div id="s7-b4" class="card kufi" style="left:40px; top:680px; width:260px; height:104px; font-size:46px; font-weight:800; line-height:90px">«هو!»</div>
+        <div id="s7-other" class="card kufi" style="left:560px; top:440px; width:480px; height:124px; font-size:56px; font-weight:800; line-height:108px">متّهم غيره</div>
+        <div id="s7-chr" class="card kufi" style="left:560px; top:440px; width:480px; height:124px; font-size:56px; font-weight:800; line-height:108px">المسيحيين</div>
+        <div id="s7-note" class="note">إعادة بناء تخيّلية</div>
+      </div>
+      <div id="s7-enough" class="plate" data-layout-allow-overlap data-layout-allow-occlusion style="left:230px; top:890px; width:620px; height:200px; font-size:160px; line-height:182px">ما يكفي</div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    EK.put("s7-ne-slot", "s7-n", "nero");
+    document.querySelectorAll(".s7-sh").forEach((g) => { g.innerHTML = EK.shadow(); });
+    const T = { count: 0.05, ttl: 1.21, here: 2.2, enough: 3.36, rumors: 3.92, seek: 5.35, other: 6.02, chr: 7.0, punish: 8.67, shut: 9.75, latch: 10.35 };
+    EK.face(tl, "s7-n", "flat");
+    gsap.set("#s7-count, #s7-ttl, #s7-enough, #s7-b1, #s7-b2, #s7-b3, #s7-b4, #s7-other, #s7-chr", { opacity: 0 });
+    gsap.set("#s7-ne", { y: 800 }); gsap.set("#s7-cell", { y: 700 });
+    gsap.set("#s7-door", { scaleX: 0, svgOrigin: "980 900" }); gsap.set("#s7-bar", { x: 520 });
+    tl.fromTo("#s7-stage", { clipPath: "circle(0% at 84% 54%)" }, { clipPath: "circle(150% at 84% 54%)", duration: 0.45, ease: "power3.out" }, 0);
+    tl.fromTo("#s7-count", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power2.out" }, T.count);
+    tl.fromTo("#s7-ttl", { opacity: 0, scale: 1.5 }, { opacity: 1, scale: 1, duration: 0.25, ease: "power4.out" }, T.ttl);
+    // here the defence is not enough
+    tl.to("#s7-ne", { y: 0, duration: 0.45, ease: "back.out(1.3)" }, T.here - 0.15);
+    EK.stamp(tl, "#s7-enough", "#s7-stage", T.enough, -5);
+    EK.mood(tl, "s7-n", T.enough + 0.1, "worried", true);
+    // the rumours did not stop
+    EK.out(tl, "#s7-enough", T.rumors - 0.12);
+    tl.to("#s7-count, #s7-ttl", { opacity: 0, duration: 0.15 }, T.rumors - 0.12);
+    EK.pop(tl, "#s7-b1", T.rumors, -5); EK.pop(tl, "#s7-b2", T.rumors + 0.28, 5); EK.pop(tl, "#s7-b3", T.rumors + 0.56, -3); EK.pop(tl, "#s7-b4", T.rumors + 0.84, 4);
+    EK.look(tl, "s7-n", T.rumors + 0.1, -9, -4); EK.look(tl, "s7-n", T.rumors + 0.4, 9, -5); EK.look(tl, "s7-n", T.rumors + 0.95, -9, 2);
+    EK.mood(tl, "s7-n", T.rumors + 1.05, "annoyed", false);
+    // so he looked for someone else to accuse
+    ["#s7-b1", "#s7-b2", "#s7-b3", "#s7-b4"].forEach((b, i) => EK.out(tl, b, T.seek + 0.3 + i * 0.05));
+    EK.look(tl, "s7-n", T.seek + 0.15, 10, 0);
+    tl.to("#s7-ne", { x: -250, duration: 0.4, ease: "power3.inOut" }, T.other - 0.35);
+    EK.pop(tl, "#s7-other", T.other, 4);
+    EK.mood(tl, "s7-n", T.other + 0.25, "smug");
+    // he blamed the Christians
+    EK.out(tl, "#s7-other", T.chr - 0.15);
+    tl.to("#s7-cell", { y: 0, duration: 0.45, ease: "back.out(1.2)" }, T.chr - 0.25);
+    EK.pop(tl, "#s7-chr", T.chr + 0.1, -3);
+    EK.look(tl, "s7-n", T.chr + 0.3, 10, 6); EK.blink(tl, "s7-n", 8.3);
+    // and punished them: the door shuts, the bar drops across it
+    tl.to("#s7-door", { scaleX: 1, duration: 0.32, ease: "power3.in", svgOrigin: "980 900" }, T.shut - 0.32);
+    tl.fromTo("#s7-stage", { x: 0 }, { x: 10, duration: 0.05, yoyo: true, repeat: 5, ease: "none", immediateRender: false }, T.shut);
+    tl.to("#s7-bar", { x: 0, duration: 0.14, ease: "power3.in" }, T.latch - 0.14);
+    EK.mood(tl, "s7-n", T.shut + 0.1, "flat"); EK.look(tl, "s7-n", T.latch + 0.1, -8, 2);
+    EK.idle(tl, "s7-n", 2.6, 5.3, 1.35);
+    window.__timelines["s7"] = tl;
+  </script>
+</template>
