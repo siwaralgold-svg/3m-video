@@ -5,32 +5,56 @@
     #root { position: absolute; inset: 0; overflow: hidden; }
   </style>
   <div id="root" data-composition-id="s12" data-width="1080" data-height="1920">
-    <div id="s12-wrap" class="clip" data-start="0" data-duration="3.45" data-layout-allow-overflow style="position:absolute;inset:0">
+    <div id="s12-wrap" class="clip" data-start="0" data-duration="9.2" data-layout-allow-overflow style="position:absolute;inset:0">
       <div id="s12-stage" class="stage">
         <svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg" style="position:absolute;left:0;top:0"><defs><clipPath id="s12-clip"><rect x="-400" y="0" width="1900" height="1154"/></clipPath></defs>
-          <g clip-path="url(#s12-clip)"><g id="s12-sh"><g id="s12-sh-slot" transform="translate(540,1050) scale(0.9)"></g></g></g>
-          <g id="s12-p1"><g id="s12-p1-slot" transform="translate(804,500) scale(0.6)"></g></g>
-          <g id="s12-p2"><g id="s12-p2-slot" transform="translate(432,500) scale(0.6)"></g></g>
-          <g id="s12-p3"><g id="s12-p3-slot" transform="translate(60,500) scale(0.6)"></g></g>
+          <g clip-path="url(#s12-clip)">
+            <g id="s12-sh"><g id="s12-sh-slot" transform="translate(540,880) scale(1.1)"></g></g>
+            <g id="s12-w1"><g id="s12-w1-slot" transform="translate(270,1046) scale(0.74)"></g></g>
+            <g id="s12-w2"><g id="s12-w2-slot" transform="translate(810,1046) scale(0.74)"></g></g>
+          </g>
+          <g id="s12-po"><g id="s12-po-slot" transform="translate(130,612) scale(0.5)"></g></g>
+          <g id="s12-ru"><g transform="translate(700,612)"><g fill="#3d4a63" stroke="#0c1a30" stroke-linejoin="round" stroke-linecap="round" stroke-width="7"><path d="M0 240 V60 L50 30 L80 90 L140 40 V240Z"/><path d="M170 240 V110 L230 80 L270 130 L330 100 V240Z"/></g><g fill="#0c1a30"><rect x="40" y="110" width="36" height="46"/><rect x="230" y="150" width="36" height="46"/></g></g></g>
         </svg>
+        <div id="s12-count" class="count">وهنا لازم ننصف</div>
+        <div id="s12-ttl" class="ttl" style="font-size:128px">البناء مو تهمة</div>
+        <div id="s12-c1" class="card kufi" style="left:620px; top:470px; width:420px; height:116px; font-size:48px; font-weight:800; line-height:102px; ">يعمّر بلده</div>
+        <div id="s12-c2" class="card kufi" style="left:40px; top:470px; width:420px; height:116px; font-size:48px; font-weight:800; line-height:102px; ">يحفظ ناسه</div>
+        <div id="s12-b1" class="card kufi" style="left:40px; top:470px; width:380px; height:116px; font-size:50px; font-weight:800; line-height:102px; ">عمّر بيد</div>
+        <div id="s12-b2" style="position:absolute; text-align:center; direction:rtl; font-family:Lalezar, sans-serif; color:#8c2f2f; background:#F4F6F9; border:9px solid #8c2f2f; border-radius:12px; left:640px; top:468px; width:400px; height:122px; font-size:88px; line-height:104px">هدم العالم</div>
       </div>
-      <div id="s12-no" class="plate" data-layout-allow-overlap data-layout-allow-occlusion style="left:110px; top:220px; width:860px; height:210px; font-size:130px; line-height:192px">ما تبرّي إبادة</div>
+      <div id="s12-thx" class="plate" data-layout-allow-overlap data-layout-allow-occlusion style="left:190px; top:612px; width:700px; height:170px; font-size:112px; line-height:152px">التاريخ يشكره</div>
     </div>
   </div>
   <script>
     const tl = gsap.timeline({ paused: true });
 
-    EK.put("s12-sh-slot", "s12-h", "hitler"); EK.face(tl, "s12-h", "smug");
-    EK.fill("s12-p1-slot", EK.poster("jobs")); EK.fill("s12-p2-slot", EK.poster("roads")); EK.fill("s12-p3-slot", EK.poster("trips"));
-    const T = { p1: 0.04, p2: 0.8, p3: 1.42, plate: 2.3, fall: 2.5 };
-    gsap.set("#s12-no, #s12-p1, #s12-p2, #s12-p3", { opacity: 0 });
+    EK.put("s12-sh-slot", "s12-h", "hitler"); EK.put("s12-w1-slot", "s12-a", "worker"); EK.put("s12-w2-slot", "s12-b", "frau");
+    EK.fill("s12-po-slot", EK.poster("roads"));
+    const T = { count: 0.05, ttl: 1.48, c1: 3.24, c2: 3.88, thanks: 4.88, him: 6.2, built: 6.64, broke: 7.53 };
+    EK.face(tl, "s12-h", "smug"); EK.face(tl, "s12-a", "calm"); EK.face(tl, "s12-b", "calm");
+    gsap.set("#s12-count, #s12-ttl, #s12-c1, #s12-c2, #s12-b1, #s12-b2, #s12-thx, #s12-po, #s12-ru", { opacity: 0 });
+    gsap.set("#s12-sh", { y: 800 });
     EK.whip(tl, "#s12-stage", -1080);
-    [["#s12-p1", "912 644", T.p1, 4], ["#s12-p2", "540 644", T.p2, -3], ["#s12-p3", "168 644", T.p3, 3]].forEach((p, i) => {
-      tl.fromTo(p[0], { opacity: 0, scale: 0.4, rotation: p[3] - 12, svgOrigin: p[1] }, { opacity: 1, scale: 1, rotation: p[3], duration: 0.3, ease: "back.out(2)" }, p[2]);
-      tl.to(p[0], { y: 1300, rotation: 40, duration: 0.5, ease: "power2.in", svgOrigin: p[1] }, T.fall + i * 0.12);
-    });
-    EK.stamp(tl, "#s12-no", "#s12-stage", T.plate, -4);
-    EK.look(tl, "s12-h", T.plate - 0.3, 0, -9); EK.mood(tl, "s12-h", T.plate + 0.05, "shock", true);
+    tl.fromTo("#s12-count", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power2.out" }, T.count);
+    EK.title(tl, "#s12-ttl", T.ttl);
+    // whoever builds his country and keeps his people safe is thanked by history
+    EK.pop(tl, "#s12-c1", T.c1, 4); EK.look(tl, "s12-a", T.c1, 9, -8); EK.look(tl, "s12-b", T.c1, 6, -8);
+    EK.pop(tl, "#s12-c2", T.c2, -4); EK.look(tl, "s12-a", T.c2, -6, -8); EK.look(tl, "s12-b", T.c2, -9, -8);
+    EK.stamp(tl, "#s12-thx", "#s12-stage", T.thanks, -4);
+    EK.mood(tl, "s12-a", T.thanks + 0.1, "laugh"); EK.mood(tl, "s12-b", T.thanks + 0.2, "laugh");
+    // but this one built with one hand and wrecked the world with the other
+    EK.out(tl, "#s12-c1", T.him - 0.3); EK.out(tl, "#s12-c2", T.him - 0.25); EK.out(tl, "#s12-thx", T.him - 0.2);
+    tl.to("#s12-w1, #s12-w2", { y: 640, duration: 0.3, ease: "power2.in" }, T.him - 0.3);
+    tl.to("#s12-sh", { y: 0, duration: 0.4, ease: "back.out(1.4)" }, T.him - 0.1);
+    EK.pop(tl, "#s12-b1", T.built, -4);
+    tl.fromTo("#s12-po", { opacity: 0, scale: 0.4, svgOrigin: "220 732" }, { opacity: 1, scale: 1, rotation: -4, duration: 0.3, ease: "back.out(2)" }, T.built + 0.1);
+    EK.look(tl, "s12-h", T.built + 0.1, 9, 0);
+    EK.stamp(tl, "#s12-b2", "#s12-stage", T.broke, 5);
+    tl.fromTo("#s12-ru", { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.3, ease: "power2.out" }, T.broke + 0.1);
+    EK.look(tl, "s12-h", T.broke + 0.1, -9, 0); EK.mood(tl, "s12-h", T.broke + 0.3, "shock", true);
+    EK.blink(tl, "s12-a", 2.4); EK.blink(tl, "s12-b", 1.2);
+    EK.idle(tl, "s12-a", 0.5, 5.7, 2.6); EK.idle(tl, "s12-b", 0.5, 5.7, 2.6); EK.idle(tl, "s12-h", 6.8, 9.2, 2.4);
     window.__timelines["s12"] = tl;
   </script>
 </template>

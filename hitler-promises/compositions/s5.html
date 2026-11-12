@@ -5,7 +5,7 @@
     #root { position: absolute; inset: 0; overflow: hidden; }
   </style>
   <div id="root" data-composition-id="s5" data-width="1080" data-height="1920">
-    <div id="s5-wrap" class="clip" data-start="0" data-duration="7.75" data-layout-allow-overflow style="position:absolute;inset:0">
+    <div id="s5-wrap" class="clip" data-start="0" data-duration="7.45" data-layout-allow-overflow style="position:absolute;inset:0">
       <div id="s5-stage" class="stage">
         <div id="s5-bg" style="position:absolute; inset:0; background:#e9dfc6"></div>
         <svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg" style="position:absolute;left:0;top:0"><rect y="1154" width="1080" height="766" fill="#3d4a63"/><path d="M0 1154 H1080" fill="none" stroke="#0c1a30" stroke-linejoin="round" stroke-linecap="round" stroke-width="8"/><rect x="22" y="22" width="1036" height="1876" fill="none" stroke="#0c1a30" stroke-linejoin="round" stroke-linecap="round" stroke-width="10"/>
@@ -27,16 +27,16 @@
     const tl = gsap.timeline({ paused: true });
 
     EK.fill("s5-ship-slot", EK.ship()); EK.fill("s5-car-slot", EK.car());
-    const T = { count: 0.08, ttl: 1.24, trip: 2.16, price: 3.6, car: 6.22 };
+    const T = { count: 0.06, ttl: 1.04, trip: 2.02, price: 3.08, car: 5.76 };
     gsap.set("#s5-count, #s5-ttl, #s5-trip, #s5-price, #s5-carc, #s5-car", { opacity: 0 });
     // enter: the poster rises from below
     tl.fromTo("#s5-stage", { y: 1920 }, { y: 0, duration: 0.45, ease: "power3.out" }, 0);
     tl.fromTo("#s5-count", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power2.out" }, T.count);
     EK.title(tl, "#s5-ttl", T.ttl);
     // the cruise ship sails and bobs
-    tl.fromTo("#s5-ship", { x: -120 }, { x: 420, duration: 7.5, ease: "none" }, 0.2);
+    tl.fromTo("#s5-ship", { x: -120 }, { x: 420, duration: 7.2, ease: "none" }, 0.2);
     tl.fromTo("#s5-ship-slot", { rotation: -2.5, svgOrigin: "300 806" }, { rotation: 2.5, duration: 0.9, yoyo: true, repeat: 7, ease: "sine.inOut" }, 0.2);
-    tl.fromTo("#s5-waves", { x: 0 }, { x: -60, duration: 7.5, ease: "none" }, 0.2);
+    tl.fromTo("#s5-waves", { x: 0 }, { x: -60, duration: 7.2, ease: "none" }, 0.2);
     EK.pop(tl, "#s5-trip", T.trip, 5);
     EK.stamp(tl, "#s5-price", "#s5-stage", T.price, -5);
     // and one more promise: a car for every home

@@ -5,7 +5,7 @@
     #root { position: absolute; inset: 0; overflow: hidden; }
   </style>
   <div id="root" data-composition-id="s4" data-width="1080" data-height="1920">
-    <div id="s4-wrap" class="clip" data-start="0" data-duration="5.75" data-layout-allow-overflow style="position:absolute;inset:0">
+    <div id="s4-wrap" class="clip" data-start="0" data-duration="5.45" data-layout-allow-overflow style="position:absolute;inset:0">
       <div id="s4-stage" class="stage">
         <div id="s4-bg" style="position:absolute; inset:0; background:#e9dfc6"></div>
         <svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg" style="position:absolute;left:0;top:0"><rect y="1154" width="1080" height="766" fill="#55606b"/><path d="M0 1154 H1080" fill="none" stroke="#0c1a30" stroke-linejoin="round" stroke-linecap="round" stroke-width="8"/><rect x="22" y="22" width="1036" height="1876" fill="none" stroke="#0c1a30" stroke-linejoin="round" stroke-linecap="round" stroke-width="10"/>
@@ -25,13 +25,13 @@
     const tl = gsap.timeline({ paused: true });
 
     EK.fill("s4-car-slot", EK.car());
-    const T = { count: 0.07, ttl: 1.17, plate: 2.2 };
+    const T = { count: 0.03, ttl: 0.93, plate: 1.96 };
     gsap.set("#s4-count, #s4-ttl, #s4-km", { opacity: 0 });
     EK.whip(tl, "#s4-stage", -1080);
     tl.fromTo("#s4-count", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power2.out" }, T.count);
     EK.title(tl, "#s4-ttl", T.ttl);
     // the car drives up the new road
-    tl.fromTo("#s4-car", { y: 260, scale: 1.25, svgOrigin: "540 1130" }, { y: -372, scale: 0.16, duration: 5.2, ease: "power1.out" }, 0.4);
+    tl.fromTo("#s4-car", { y: 260, scale: 1.25, svgOrigin: "540 1130" }, { y: -372, scale: 0.16, duration: 4.9, ease: "power1.out" }, 0.4);
     EK.stamp(tl, "#s4-km", "#s4-stage", T.plate, 5);
     window.__timelines["s4"] = tl;
   </script>

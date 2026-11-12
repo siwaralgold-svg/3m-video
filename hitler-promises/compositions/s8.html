@@ -5,7 +5,7 @@
     #root { position: absolute; inset: 0; overflow: hidden; }
   </style>
   <div id="root" data-composition-id="s8" data-width="1080" data-height="1920">
-    <div id="s8-wrap" class="clip" data-start="0" data-duration="7.05" data-layout-allow-overflow style="position:absolute;inset:0">
+    <div id="s8-wrap" class="clip" data-start="0" data-duration="6.85" data-layout-allow-overflow style="position:absolute;inset:0">
       <div id="s8-stage" class="stage">
         <svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg" style="position:absolute;left:0;top:0">
           <path id="s8-line" d="M110 770 H970" fill="none" stroke="#F4F6F9" stroke-width="10" stroke-linecap="round"/>
@@ -26,7 +26,7 @@
   <script>
     const tl = gsap.timeline({ paused: true });
 
-    const T = { count: 0.02, ttl: 0.04, line: 0.4, plan: 0.84, first: 2.24, him: 3.39, plate: 3.95, prop: 5.44 };
+    const T = { count: 0.02, ttl: 0.05, line: 0.3, plan: 0.68, first: 2.14, him: 3.48, plate: 3.93, prop: 5.28 };
     gsap.set("#s8-count, #s8-ttl, #s8-c1, #s8-c2, #s8-c3, #s8-before, #s8-prop, #s8-d1, #s8-d2, #s8-d3", { opacity: 0 });
     EK.whip(tl, "#s8-stage", -1080);
     tl.fromTo("#s8-count", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power2.out" }, T.count);

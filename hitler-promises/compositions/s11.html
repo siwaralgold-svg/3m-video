@@ -5,7 +5,7 @@
     #root { position: absolute; inset: 0; overflow: hidden; }
   </style>
   <div id="root" data-composition-id="s11" data-width="1080" data-height="1920">
-    <div id="s11-wrap" class="clip" data-start="0" data-duration="5.45" data-layout-allow-overflow style="position:absolute;inset:0">
+    <div id="s11-wrap" class="clip" data-start="0" data-duration="6.0" data-layout-allow-overflow style="position:absolute;inset:0">
       <div id="s11-stage" class="stage">
         <div id="s11-bg" style="position:absolute; inset:0; background:#0a1322"></div>
         <svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg" style="position:absolute;left:0;top:0">
@@ -28,7 +28,7 @@
     const tl = gsap.timeline({ paused: true });
 
     EK.fill("s11-helm", EK.helmet());
-    const T = { ttl: 0.05, mil: 1.78, ger: 3.2, rub: 4.91 };
+    const T = { ttl: 0.05, mil: 1.91, ger: 3.33, rub: 5.39 };
     gsap.set("#s11-count, #s11-ttl, #s11-ger, #s11-rub, #s11-mil", { opacity: 0 });
     gsap.set("#s11-ru", { y: 1200 });
     tl.fromTo("#s11-count", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 0.1);

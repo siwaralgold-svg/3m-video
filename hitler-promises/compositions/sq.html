@@ -1,0 +1,50 @@
+<template>
+  <style>
+    @font-face { font-family: "Lalezar"; src: url("assets/fonts/Lalezar-Regular.ttf"); font-weight: 400; }
+    @font-face { font-family: "Noto Kufi Arabic"; src: url("assets/fonts/NotoKufiArabic.ttf"); font-weight: 100 900; }
+    #root { position: absolute; inset: 0; overflow: hidden; }
+  </style>
+  <div id="root" data-composition-id="sq" data-width="1080" data-height="1920">
+    <div id="sq-wrap" class="clip" data-start="0" data-duration="7.85" data-layout-allow-overflow style="position:absolute;inset:0">
+      <div id="sq-stage" class="stage">
+        <svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg" style="position:absolute;left:0;top:0"><defs><clipPath id="sq-clip"><rect x="-400" y="0" width="1900" height="1154"/></clipPath></defs>
+          <g clip-path="url(#sq-clip)">
+            <g id="sq-sh"><g id="sq-sh-slot" transform="translate(540,800) scale(1.3)"></g></g>
+            <g id="sq-w1"><g id="sq-w1-slot" transform="translate(205,1010) scale(0.66)"></g></g>
+            <g id="sq-w2"><g id="sq-w2-slot" transform="translate(875,1010) scale(0.66)"></g></g>
+          </g>
+        </svg>
+        <div id="sq-t1" class="ttl" style="top:196px; font-size:104px">سؤال ما ينسأل كثير</div>
+        <div id="sq-t2" class="ttl" style="top:170px; font-size:96px">كيف ملايين الناس العاديين<br>صفّقوا له؟</div>
+      </div>
+      <div id="sq-three" class="plate" data-layout-allow-overlap data-layout-allow-occlusion style="left:250px; top:930px; width:580px; height:210px; font-size:150px; line-height:192px">٣ أسباب</div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+
+    EK.put("sq-sh-slot", "sq-h", "hitler"); EK.put("sq-w1-slot", "sq-a", "worker"); EK.put("sq-w2-slot", "sq-b", "frau");
+    const T = { t1: 0.15, t2: 2.16, ppl: 2.5, clap: 4.1, three: 6.74 };
+    EK.face(tl, "sq-h", "annoyed"); EK.face(tl, "sq-a", "calm"); EK.face(tl, "sq-b", "calm");
+    gsap.set("#sq-t1, #sq-t2, #sq-three", { opacity: 0 });
+    gsap.set("#sq-w1, #sq-w2", { y: 560 });
+    // enter: light comes back to the wall
+    tl.fromTo("#sq-stage", { clipPath: "circle(0% at 50% 42%)" }, { clipPath: "circle(150% at 50% 42%)", duration: 0.45, ease: "power3.out" }, 0);
+    EK.title(tl, "#sq-t1", T.t1);
+    tl.to("#sq-t1", { opacity: 0, scale: 0.7, duration: 0.12, ease: "power2.in" }, T.t2 - 0.2);
+    EK.title(tl, "#sq-t2", T.t2);
+    // ordinary people rise and cheer
+    tl.to("#sq-w1", { y: 0, duration: 0.45, ease: "back.out(1.6)" }, T.ppl);
+    tl.to("#sq-w2", { y: 0, duration: 0.45, ease: "back.out(1.6)" }, T.ppl + 0.2);
+    EK.look(tl, "sq-a", T.ppl + 0.5, 7, -8); EK.look(tl, "sq-b", T.ppl + 0.7, -7, -8);
+    EK.mood(tl, "sq-h", T.ppl + 0.6, "smug");
+    EK.mood(tl, "sq-a", T.clap, "laugh"); EK.mood(tl, "sq-b", T.clap + 0.15, "laugh");
+    tl.to("#sq-w1", { y: -26, duration: 0.16, yoyo: true, repeat: 5, ease: "sine.inOut" }, T.clap + 0.35);
+    tl.to("#sq-w2", { y: -26, duration: 0.16, yoyo: true, repeat: 5, ease: "sine.inOut" }, T.clap + 0.5);
+    // the defence says they had three reasons
+    EK.stamp(tl, "#sq-three", "#sq-stage", T.three, -5);
+    EK.blink(tl, "sq-h", 1.4); EK.blink(tl, "sq-a", 6.2); EK.blink(tl, "sq-b", 7.2);
+    EK.idle(tl, "sq-h", 0.5, 7.8, 2.4);
+    window.__timelines["sq"] = tl;
+  </script>
+</template>
