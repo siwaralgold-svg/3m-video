@@ -88,28 +88,29 @@ for chunk in GROUPS.split("|"):
     assert " ".join(x["text"] for x in g) == chunk.strip(), (chunk, [x["text"] for x in g])
     groups.append(g); k += n
 assert k == len(words)
-cap_html, cap_data = [], []
+cap_html = []
 for g, ws in enumerate(groups):
-    gs = max(0.15, ws[0]['start'] - 0.06)
+    gs = max(0.15, ws[0]['start'] - 0.08)
     ge = ws[-1]['end'] + 0.05
     if g + 1 < len(groups):
-        ge = min(ge + 0.25, groups[g + 1][0]['start'] - 0.06)
+        ge = min(ge + 0.25, groups[g + 1][0]['start'] - 0.08)
     ge = min(ge, END - 0.02)
     spans = ''.join('<span class="cw%s" id="c%d-%d" data-ws="%.3f">%s</span> ' %
                     (' key' if w['text'] in KEY else '', g, k, w['start'], w['text']) for k, w in enumerate(ws))
-    cap_html.append('      <div class="cg" id="cg%d" data-gs="%.3f" data-ge="%.3f"><span class="cpill">%s</span></div>' % (g, gs, ge, spans.strip()))
+    cap_html.append('      <div class="cg" id="cg%d" data-gs="%.3f" data-ge="%.3f"><span class="cline">%s</span></div>' % (g, gs, ge, spans.strip()))
 
-captions = '''<template>
+captions = """<template>
   <style>
     @font-face { font-family: "Noto Kufi Arabic"; src: url("assets/fonts/NotoKufiArabic.ttf"); font-weight: 100 900; }
+    @font-face { font-family: "Lalezar"; src: url("assets/fonts/Lalezar-Regular.ttf"); font-weight: 400; }
     #root { position: absolute; inset: 0; overflow: visible; }
     #cap-wrap { position: absolute; inset: 0; }
-    .cg { position: absolute; left: 0; right: 0; top: 1168px; text-align: center; direction: rtl; opacity: 0; overflow: visible; }
-    .cpill { display: inline-block; max-width: 940px; padding: 10px 34px 18px; border-radius: 26px;
-      background: rgba(10, 14, 24, 0.74); font-family: "Noto Kufi Arabic", sans-serif; font-weight: 800;
-      font-size: 60px; line-height: 1.45; color: #fff; }
-    .cw { display: inline-block; color: rgba(255, 255, 255, 0.5); }
-    .cw.key { color: rgba(242, 193, 78, 0.55); }
+    .cg { position: absolute; left: 0; right: 0; top: 1130px; text-align: center; direction: rtl; opacity: 0; overflow: visible; }
+    .cline { display: inline-block; max-width: 960px; font-family: "Noto Kufi Arabic", sans-serif; font-weight: 900;
+      font-size: 70px; line-height: 1.5; color: #fff; -webkit-text-stroke: 14px #0a0e18; paint-order: stroke fill;
+      text-shadow: 0 10px 22px rgba(0, 0, 0, 0.55); }
+    .cw { display: inline-block; opacity: 0; margin: 0 4px; }
+    .cw.key { color: #f2c14e; font-family: "Lalezar", sans-serif; font-weight: 400; font-size: 96px; line-height: 1; }
   </style>
   <div id="root" data-composition-id="cap" data-width="1080" data-height="1920">
     <div id="cap-wrap" class="clip" data-start="0" data-duration="%(END)s" data-layout-allow-overflow>
@@ -121,20 +122,20 @@ captions = '''<template>
       const tl = gsap.timeline({ paused: true });
       document.querySelectorAll("#cap-wrap .cg").forEach((g) => {
         const gs = +g.dataset.gs, ge = +g.dataset.ge;
-        tl.fromTo(g, { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, gs);
+        tl.set(g, { opacity: 1 }, gs);
         g.querySelectorAll(".cw").forEach((w) => {
-          const ws = +w.dataset.ws, key = w.classList.contains("key");
-          tl.to(w, { color: key ? "#f2c14e" : "#ffffff", duration: 0.08, ease: "none" }, ws);
-          if (key) tl.fromTo(w, { scale: 1 }, { scale: 1.12, duration: 0.12, ease: "power2.out", yoyo: true, repeat: 1 }, ws);
+          const ws = Math.max(gs, +w.dataset.ws - 0.04), key = w.classList.contains("key");
+          if (key) tl.fromTo(w, { opacity: 0, y: 40, scale: 0.4, rotation: -8 }, { opacity: 1, y: 0, scale: 1, rotation: 0, duration: 0.28, ease: "back.out(2.6)" }, ws);
+          else tl.fromTo(w, { opacity: 0, y: 28, scale: 0.8 }, { opacity: 1, y: 0, scale: 1, duration: 0.18, ease: "back.out(1.8)" }, ws);
         });
-        tl.to(g, { opacity: 0, duration: 0.12, ease: "power2.in" }, ge - 0.12);
+        tl.to(g, { opacity: 0, y: -18, duration: 0.12, ease: "power2.in" }, ge - 0.12);
         tl.set(g, { opacity: 0, visibility: "hidden" }, ge);
       });
       window.__timelines["cap"] = tl;
     })();
   </script>
 </template>
-''' % {'END': END, 'groups': '\n'.join(cap_html)}
+""" % {'END': END, 'groups': '\n'.join(cap_html)}
 open(os.path.join(P, 'compositions/cap.html'), 'w').write(captions)
 
 # ---------------------------------------------------------------- place cards
@@ -159,7 +160,7 @@ STOPS = [
     ('st7', 'airport', 'العودة', 'مطار زايد الدولي', None, 52.85, None, 54.05, None),
 ]
 BOXW, BOXH, BIGCY = 940, 760, 735
-SLOTH, SLOTCY = 290, 335
+SLOTH, SLOTCY = 240, 355
 PIN = '<svg class="pin" viewBox="0 0 24 24" width="46" height="46"><path d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z" fill="#f2c14e"/></svg>'
 hosts, sfx = [], []
 whooshes = ['whoosh_soft_01', 'whoosh_soft_13', 'whoosh_soft_21']
@@ -179,8 +180,8 @@ for n, (sid, im, chip, title, extra, tin, tsh, tout, tex) in enumerate(STOPS):
     if tsh is not None:
         shrink_js = '''
       tl.to("#%(s)s-scrim", { opacity: 0, duration: 0.4, ease: "power2.out" }, %(sh)s);
-      tl.to("#%(s)s-bar, #%(s)s-chip", { opacity: 0, duration: 0.2, ease: "power2.in" }, %(sh)s);
-      tl.to("#%(s)s-card", { y: %(dy)s, scale: %(sm).4f, duration: 0.62, ease: "power3.inOut" }, %(sh)s);
+      tl.to("#%(s)s-bar, #%(s)s-chip, #%(s)s-back", { opacity: 0, duration: 0.2, ease: "power2.in" }, %(sh)s);
+      tl.to("#%(s)s-card", { y: %(dy)s, scale: %(sm).4f, duration: 0.6, ease: "back.inOut(1.2)" }, %(sh)s);
       tl.fromTo("#%(s)s-label", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.3, ease: "power2.out" }, %(sh2)s);
       tl.to("#%(s)s-card, #%(s)s-label", { opacity: 0, y: "-=40", duration: 0.35, ease: "power2.in" }, %(out)s);''' % dict(
             s=sid, sh=lt(tsh), sh2=lt(tsh + 0.45), dy=dy, sm=small, out=lt(tout))
@@ -188,7 +189,8 @@ for n, (sid, im, chip, title, extra, tin, tsh, tout, tex) in enumerate(STOPS):
     else:
         shrink_js = '''
       tl.to("#%(s)s-scrim", { opacity: 0, duration: 0.35, ease: "power2.in" }, %(out)s);
-      tl.to("#%(s)s-card", { opacity: 0, scale: 0.94, duration: 0.35, ease: "power2.in" }, %(out)s);''' % dict(s=sid, out=lt(tout))
+      tl.to("#%(s)s-chip", { opacity: 0, duration: 0.2, ease: "power2.in" }, %(out)s);
+      tl.to("#%(s)s-card, #%(s)s-back", { opacity: 0, y: 160, rotation: -6, scale: 0.86, duration: 0.38, ease: "power2.in" }, %(out)s);''' % dict(s=sid, out=lt(tout))
     extra_js = ''
     if extra:
         # the extra chip sits on the big card while it is big, then under the small label
@@ -202,6 +204,9 @@ for n, (sid, im, chip, title, extra, tin, tsh, tout, tex) in enumerate(STOPS):
     #%(s)s-scrim { position: absolute; inset: 0; background: rgba(8, 12, 20, 0.58); opacity: 0; }
     #%(s)s-card { position: absolute; left: %(l)spx; top: %(t)spx; width: %(w)spx; height: %(h)spx; border-radius: 30px;
       border: 8px solid #fff; overflow: hidden; background: #0e1726; box-shadow: 0 24px 60px rgba(0,0,0,0.45); opacity: 0; }
+    #%(s)s-back { position: absolute; left: %(l)spx; top: %(t)spx; width: %(w)spx; height: %(h)spx; border-radius: 30px; background: #f2c14e; opacity: 0; }
+    #%(s)s-shine { position: absolute; top: -10%%; left: 0; width: 34%%; height: 120%%; opacity: 0.0;
+      background: linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,0.55), rgba(255,255,255,0)); }
     #%(s)s-img { position: absolute; inset: 0; width: 100%%; height: 100%%; object-fit: cover; }
     #%(s)s-bar { position: absolute; left: 0; right: 0; bottom: 0; padding: 18px 28px 26px; direction: rtl;
       background: rgba(10, 14, 24, 0.8); display: flex; align-items: center; gap: 14px; justify-content: flex-start; }
@@ -219,8 +224,10 @@ for n, (sid, im, chip, title, extra, tin, tsh, tout, tex) in enumerate(STOPS):
   <div id="root" data-composition-id="%(s)s" data-width="1080" data-height="1920">
     <div id="%(s)s-wrap" class="clip" data-start="0" data-duration="%(dur)s" data-layout-allow-overlap>
       <div id="%(s)s-scrim"></div>
+      <div id="%(s)s-back"></div>
       <div id="%(s)s-card">
         <img id="%(s)s-img" src="%(src)s" alt="%(title)s" />
+        <div id="%(s)s-shine"></div>
         <div id="%(s)s-bar">%(pin)s<span data-var-text="%(s)s-title">%(title)s</span></div>
       </div>
       <div id="%(s)s-chip">%(chip)s</div>
@@ -232,9 +239,14 @@ for n, (sid, im, chip, title, extra, tin, tsh, tout, tex) in enumerate(STOPS):
     (function () {
       const tl = gsap.timeline({ paused: true });
       tl.fromTo("#%(s)s-scrim", { opacity: 0 }, { opacity: 1, duration: 0.35, ease: "power2.out" }, 0);
-      tl.fromTo("#%(s)s-card", { opacity: 0, y: 110, scale: 0.9 }, { opacity: 1, y: 0, scale: 1, duration: 0.55, ease: "power3.out" }, 0);
-      tl.fromTo("#%(s)s-img", { scale: 1.1 }, { scale: 1, duration: %(kb)s, ease: "none" }, 0);
-      tl.fromTo("#%(s)s-chip", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2)" }, 0.3);%(extra_js)s%(shrink_js)s
+      tl.fromTo("#%(s)s-back", { opacity: 0, y: 260, rotation: 12, scale: 0.8 }, { opacity: 1, y: 0, rotation: %(rot)s, scale: 1, duration: 0.62, ease: "back.out(1.3)" }, 0.05);
+      tl.fromTo("#%(s)s-card", { opacity: 0 }, { opacity: 1, duration: 0.18, ease: "none" }, 0);
+      tl.fromTo("#%(s)s-card", { y: 300, rotation: %(rot2)s, scale: 0.78 }, { y: 0, rotation: 0, scale: 1, duration: 0.62, ease: "back.out(1.5)" }, 0);
+      tl.fromTo("#%(s)s-img", { scale: 1.35 }, { scale: 1.1, duration: 0.9, ease: "power3.out" }, 0);
+      tl.to("#%(s)s-img", { scale: 1, duration: %(kb)s, ease: "none" }, 0.9);
+      tl.fromTo("#%(s)s-bar", { yPercent: 100 }, { yPercent: 0, duration: 0.42, ease: "power3.out" }, 0.32);
+      tl.fromTo("#%(s)s-shine", { xPercent: -160, skewX: -18, opacity: 1 }, { xPercent: 420, skewX: -18, opacity: 1, duration: 0.75, ease: "power2.inOut" }, 0.42);
+      tl.fromTo("#%(s)s-chip", { opacity: 0, scale: 0.3, rotation: -14 }, { opacity: 1, scale: 1, rotation: 0, duration: 0.36, ease: "back.out(2.6)" }, 0.38);%(extra_js)s%(shrink_js)s
       tl.to("#%(s)s-x", { opacity: 0, duration: 0.25, ease: "power2.in" }, %(xout)s);
       window.__timelines["%(s)s"] = tl;
     })();
@@ -242,7 +254,7 @@ for n, (sid, im, chip, title, extra, tin, tsh, tout, tex) in enumerate(STOPS):
 </template>
 ''' % dict(s=sid, l=left, t=top, w=w, h=h, src=src, title=title, chip=chip, pin=PIN, dur=dur,
            fs=50 if len(title) < 16 else 44, ct=top - 34, cr=left + 30, slt=small_label_top,
-           extra=extra_html, extra_js=extra_js, shrink_js=shrink_js, kb=dur,
+           extra=extra_html, extra_js=extra_js, shrink_js=shrink_js, kb=round(max(dur - 0.9, 0.3), 3), rot=(-4 if n % 2 == 0 else 4), rot2=(8 if n % 2 == 0 else -8),
            xl=left + 30, xt=top + 34 if True else 0, xout=lt(tsh if tsh else tout) if extra else 0)
     if not extra:
         html = html.replace('\n      tl.to("#%s-x", { opacity: 0, duration: 0.25, ease: "power2.in" }, 0);' % sid, '')
@@ -252,6 +264,62 @@ for n, (sid, im, chip, title, extra, tin, tsh, tout, tex) in enumerate(STOPS):
     wname = whooshes[n % 3]
     d, pk = WH[wname]
     sfx.append((('sfx-in-%d' % n), wname, round(tin + 0.30 - pk + 1 / FPS, 3), d))
+
+# ---------------------------------------------------------------- route tracker
+RT0, RT1 = 11.55, 52.75
+RX = [900 - k * 144 for k in range(6)]
+RY = 205
+dots = ''.join('<div class="rt-dot" id="rt-d%d" style="left:%dpx"></div>' % (k, RX[k] - 15) for k in range(6))
+mv = []
+for k in range(6):
+    tin = STOPS[k + 1][5]
+    t_arr = round(tin + 0.3 - RT0, 3)
+    if k == 0:
+        mv.append('tl.fromTo("#rt-pin", { opacity: 0, y: -70 }, { opacity: 1, y: 0, duration: 0.4, ease: "bounce.out" }, %s);' % round(t_arr - 0.4, 3))
+    else:
+        mv.append('tl.to("#rt-pin", { x: %d, duration: 0.8, ease: "power2.inOut" }, %s);' % (RX[k] - RX[0], round(t_arr - 0.8, 3)))
+        mv.append('tl.to("#rt-fill", { scaleX: %.4f, duration: 0.8, ease: "power2.inOut" }, %s);' % (k / 5, round(t_arr - 0.8, 3)))
+    mv.append('tl.to("#rt-d%d", { backgroundColor: "#f2c14e", borderColor: "#f2c14e", duration: 0.12, ease: "none" }, %s);' % (k, t_arr))
+    mv.append('tl.fromTo("#rt-d%d", { scale: 1 }, { scale: 1.7, duration: 0.16, ease: "power2.out", yoyo: true, repeat: 1 }, %s);' % (k, t_arr))
+route = """<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; }
+    #rt-wrap { position: absolute; inset: 0; }
+    #rt-box { position: absolute; inset: 0; }
+    #rt-line, #rt-fill { position: absolute; left: %(x1)spx; top: %(ly)spx; width: %(lw)spx; height: 8px; border-radius: 4px; }
+    #rt-line { background: rgba(255, 255, 255, 0.45); }
+    #rt-fill { background: #f2c14e; }
+    .rt-dot { position: absolute; top: %(dy)spx; width: 30px; height: 30px; border-radius: 50%%; background: #0e1726; border: 5px solid #fff; opacity: 0; }
+    #rt-pin { position: absolute; left: %(px)spx; top: %(py)spx; width: 56px; height: 56px; opacity: 0; }
+  </style>
+  <div id="root" data-composition-id="route" data-width="1080" data-height="1920">
+    <div id="rt-wrap" class="clip" data-start="0" data-duration="%(dur)s">
+      <div id="rt-box">
+        <div id="rt-line"></div>
+        <div id="rt-fill"></div>
+        %(dots)s
+        <svg id="rt-pin" viewBox="0 0 24 24"><path d="M12 1.5C7.9 1.5 4.5 4.8 4.5 9c0 5.6 7.5 13.5 7.5 13.5S19.500 14.600 19.500 9c0-4.200-3.400-7.500-7.500-7.500z" fill="#f2c14e" stroke="#0e1726" stroke-width="1.6"/><circle cx="12" cy="9" r="2.800" fill="#0e1726"/></svg>
+      </div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#rt-line", { scaleX: 0, transformOrigin: "100%% 50%%" }, { scaleX: 1, duration: 0.6, ease: "power3.out" }, 0);
+      tl.set("#rt-fill", { scaleX: 0, transformOrigin: "100%% 50%%" }, 0);
+      document.querySelectorAll("#rt-box .rt-dot").forEach((d, k) => {
+        tl.fromTo(d, { opacity: 0, scale: 0 }, { opacity: 1, scale: 1, duration: 0.25, ease: "back.out(2.5)" }, 0.15 + k * 0.07);
+      });
+      %(mv)s
+      tl.to("#rt-box", { opacity: 0, y: -30, duration: 0.3, ease: "power2.in" }, %(out)s);
+      window.__timelines["route"] = tl;
+    })();
+  </script>
+</template>
+""" % dict(x1=RX[5], lw=RX[0] - RX[5], ly=RY - 4, dy=RY - 15, px=RX[0] - 28, py=RY - 68, dots=dots,
+           dur=round(RT1 - RT0, 3), mv='\n      '.join(mv), out=round(RT1 - RT0 - 0.32, 3))
+open(os.path.join(P, 'compositions/route.html'), 'w').write(route)
+hosts.append('      <div id="route" data-composition-id="route" data-composition-src="compositions/route.html" data-start="%s" data-duration="%s" data-track-index="6" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index:4"></div>' % (RT0, round(RT1 - RT0, 3)))
 
 # ---------------------------------------------------------------- hook (0.15 - 4.4)
 hook = '''<template>
@@ -358,7 +426,9 @@ index = '''<!doctype html>
   </head>
   <body>
     <div id="root" data-composition-id="main" data-start="0" data-duration="%(END)s" data-width="1080" data-height="1920">
-      <video id="footage" class="clip" src="assets/footage.mp4" data-start="0" data-duration="%(END)s" data-track-index="0" playsinline data-has-audio="true" data-volume="1" style="z-index:1"></video>
+      <div id="fzoom" style="position:absolute;left:0;top:0;width:1080px;height:1920px;z-index:1">
+        <video id="footage" class="clip" src="assets/footage.mp4" data-start="0" data-duration="%(END)s" data-track-index="0" playsinline data-has-audio="true" data-volume="1"></video>
+      </div>
 
       <div id="hook" data-composition-id="hook" data-composition-src="compositions/hook.html" data-start="0.15" data-duration="4.25" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index:3"></div>
 %(hosts)s
@@ -370,7 +440,15 @@ index = '''<!doctype html>
     </div>
     <script>
       window.__timelines = window.__timelines || {};
-      window.__timelines["main"] = gsap.timeline({ paused: true });
+      (function () {
+        const tl = gsap.timeline({ paused: true });
+        const cuts = [0, 4.367, 11.367, 19.933, 31.5, 37.0, 43.6, 50.5, 53.533, %(END)s];
+        for (let i = 0; i < cuts.length - 1; i++) {
+          const a = cuts[i], d = cuts[i + 1] - a, inward = i %% 2 === 0;
+          tl.fromTo("#fzoom", { scale: inward ? 1 : 1.07, transformOrigin: "50%% 38%%" }, { scale: inward ? 1.07 : 1, duration: d, ease: "none", immediateRender: false }, a);
+        }
+        window.__timelines["main"] = tl;
+      })();
     </script>
   </body>
 </html>

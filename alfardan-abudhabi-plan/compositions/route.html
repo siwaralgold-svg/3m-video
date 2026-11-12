@@ -1,0 +1,57 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; }
+    #rt-wrap { position: absolute; inset: 0; }
+    #rt-box { position: absolute; inset: 0; }
+    #rt-line, #rt-fill { position: absolute; left: 180px; top: 201px; width: 720px; height: 8px; border-radius: 4px; }
+    #rt-line { background: rgba(255, 255, 255, 0.45); }
+    #rt-fill { background: #f2c14e; }
+    .rt-dot { position: absolute; top: 190px; width: 30px; height: 30px; border-radius: 50%; background: #0e1726; border: 5px solid #fff; opacity: 0; }
+    #rt-pin { position: absolute; left: 872px; top: 137px; width: 56px; height: 56px; opacity: 0; }
+  </style>
+  <div id="root" data-composition-id="route" data-width="1080" data-height="1920">
+    <div id="rt-wrap" class="clip" data-start="0" data-duration="41.2">
+      <div id="rt-box">
+        <div id="rt-line"></div>
+        <div id="rt-fill"></div>
+        <div class="rt-dot" id="rt-d0" style="left:885px"></div><div class="rt-dot" id="rt-d1" style="left:741px"></div><div class="rt-dot" id="rt-d2" style="left:597px"></div><div class="rt-dot" id="rt-d3" style="left:453px"></div><div class="rt-dot" id="rt-d4" style="left:309px"></div><div class="rt-dot" id="rt-d5" style="left:165px"></div>
+        <svg id="rt-pin" viewBox="0 0 24 24"><path d="M12 1.5C7.9 1.5 4.5 4.8 4.5 9c0 5.6 7.5 13.5 7.5 13.5S19.500 14.600 19.500 9c0-4.200-3.400-7.500-7.500-7.500z" fill="#f2c14e" stroke="#0e1726" stroke-width="1.6"/><circle cx="12" cy="9" r="2.800" fill="#0e1726"/></svg>
+      </div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#rt-line", { scaleX: 0, transformOrigin: "100% 50%" }, { scaleX: 1, duration: 0.6, ease: "power3.out" }, 0);
+      tl.set("#rt-fill", { scaleX: 0, transformOrigin: "100% 50%" }, 0);
+      document.querySelectorAll("#rt-box .rt-dot").forEach((d, k) => {
+        tl.fromTo(d, { opacity: 0, scale: 0 }, { opacity: 1, scale: 1, duration: 0.25, ease: "back.out(2.5)" }, 0.15 + k * 0.07);
+      });
+      tl.fromTo("#rt-pin", { opacity: 0, y: -70 }, { opacity: 1, y: 0, duration: 0.4, ease: "bounce.out" }, 1.07);
+      tl.to("#rt-d0", { backgroundColor: "#f2c14e", borderColor: "#f2c14e", duration: 0.12, ease: "none" }, 1.47);
+      tl.fromTo("#rt-d0", { scale: 1 }, { scale: 1.7, duration: 0.16, ease: "power2.out", yoyo: true, repeat: 1 }, 1.47);
+      tl.to("#rt-pin", { x: -144, duration: 0.8, ease: "power2.inOut" }, 11.05);
+      tl.to("#rt-fill", { scaleX: 0.2000, duration: 0.8, ease: "power2.inOut" }, 11.05);
+      tl.to("#rt-d1", { backgroundColor: "#f2c14e", borderColor: "#f2c14e", duration: 0.12, ease: "none" }, 11.85);
+      tl.fromTo("#rt-d1", { scale: 1 }, { scale: 1.7, duration: 0.16, ease: "power2.out", yoyo: true, repeat: 1 }, 11.85);
+      tl.to("#rt-pin", { x: -288, duration: 0.8, ease: "power2.inOut" }, 16.15);
+      tl.to("#rt-fill", { scaleX: 0.4000, duration: 0.8, ease: "power2.inOut" }, 16.15);
+      tl.to("#rt-d2", { backgroundColor: "#f2c14e", borderColor: "#f2c14e", duration: 0.12, ease: "none" }, 16.95);
+      tl.fromTo("#rt-d2", { scale: 1 }, { scale: 1.7, duration: 0.16, ease: "power2.out", yoyo: true, repeat: 1 }, 16.95);
+      tl.to("#rt-pin", { x: -432, duration: 0.8, ease: "power2.inOut" }, 21.45);
+      tl.to("#rt-fill", { scaleX: 0.6000, duration: 0.8, ease: "power2.inOut" }, 21.45);
+      tl.to("#rt-d3", { backgroundColor: "#f2c14e", borderColor: "#f2c14e", duration: 0.12, ease: "none" }, 22.25);
+      tl.fromTo("#rt-d3", { scale: 1 }, { scale: 1.7, duration: 0.16, ease: "power2.out", yoyo: true, repeat: 1 }, 22.25);
+      tl.to("#rt-pin", { x: -576, duration: 0.8, ease: "power2.inOut" }, 26.37);
+      tl.to("#rt-fill", { scaleX: 0.8000, duration: 0.8, ease: "power2.inOut" }, 26.37);
+      tl.to("#rt-d4", { backgroundColor: "#f2c14e", borderColor: "#f2c14e", duration: 0.12, ease: "none" }, 27.17);
+      tl.fromTo("#rt-d4", { scale: 1 }, { scale: 1.7, duration: 0.16, ease: "power2.out", yoyo: true, repeat: 1 }, 27.17);
+      tl.to("#rt-pin", { x: -720, duration: 0.8, ease: "power2.inOut" }, 34.75);
+      tl.to("#rt-fill", { scaleX: 1.0000, duration: 0.8, ease: "power2.inOut" }, 34.75);
+      tl.to("#rt-d5", { backgroundColor: "#f2c14e", borderColor: "#f2c14e", duration: 0.12, ease: "none" }, 35.55);
+      tl.fromTo("#rt-d5", { scale: 1 }, { scale: 1.7, duration: 0.16, ease: "power2.out", yoyo: true, repeat: 1 }, 35.55);
+      tl.to("#rt-box", { opacity: 0, y: -30, duration: 0.3, ease: "power2.in" }, 40.88);
+      window.__timelines["route"] = tl;
+    })();
+  </script>
+</template>
