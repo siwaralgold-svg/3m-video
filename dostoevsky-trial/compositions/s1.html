@@ -1,0 +1,90 @@
+<template>
+  <style>
+    @font-face { font-family: "Lalezar"; src: url("assets/fonts/Lalezar-Regular.ttf"); font-weight: 400; }
+    @font-face { font-family: "Noto Kufi Arabic"; src: url("assets/fonts/NotoKufiArabic.ttf"); font-weight: 100 900; }
+    #root { position: absolute; inset: 0; overflow: hidden; }
+  </style>
+  <div id="root" data-composition-id="s1" data-width="1080" data-height="1920">
+    <div id="s1-wrap" class="clip" data-start="0" data-duration="17.89" data-layout-allow-overflow style="position:absolute;inset:0">
+      <div id="s1-stage" class="stage">
+        <svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg" style="position:absolute;left:0;top:0">
+          <defs><clipPath id="s1-clip"><rect x="-200" y="0" width="1480" height="1163"/></clipPath></defs>
+          <g id="s1-bg"></g>
+          <g clip-path="url(#s1-clip)">
+            <g id="s1-fygrp"><g id="s1-fy-slot" transform="translate(540,900) scale(1.5)"></g></g>
+            <g id="s1-arm">
+              <path d="M800 1200 Q880 1100 850 980" fill="none" stroke="#0c1a30" stroke-width="84" stroke-linecap="round"/>
+              <path d="M800 1200 Q880 1100 850 980" fill="none" stroke="#2f2a3d" stroke-width="68" stroke-linecap="round"/>
+              <g id="s1-letter" transform="translate(850,830) rotate(8)"></g>
+              <circle cx="850" cy="960" r="44" fill="#efc6a2" stroke="#0c1a30" stroke-width="8"/>
+            </g>
+          </g>
+          <g id="s1-desk"></g>
+          <g id="s1-gavel" transform="translate(1500,1020)"><g id="s1-gavel-in"></g></g>
+          <g id="s1-burst" fill="none" stroke="#F4F6F9" stroke-width="12" stroke-linecap="round" opacity="0"><path d="M880 1110 L820 1050 M900 1150 L800 1160 M1060 1110 L1076 1040"/></g>
+        </svg>
+        <div id="s1-name" class="disp" style="position:absolute; left:20px; right:20px; top:190px; text-align:center; font-size:172px; line-height:1.2; color:#F4F6F9">دوستويفسكي</div>
+        <div id="s1-t1" class="disp" style="position:absolute; left:60px; right:60px; top:172px; text-align:center; font-size:112px; line-height:1.2; color:#9fb4d0">محاكمة</div>
+        <div id="s1-t2" class="disp" style="position:absolute; left:20px; right:20px; top:286px; text-align:center; font-size:176px; line-height:1.2; color:#F4F6F9">دوستويفسكي</div>
+        <div id="s1-before" class="card kufi" style="left:230px; top:176px; width:620px; height:124px; font-size:58px; font-weight:800; line-height:106px">انحاكم قبلنا</div>
+        <div id="s1-death" class="plate" style="left:200px; top:330px; width:680px; height:216px; font-size:176px; line-height:200px">الإعدام</div>
+        <div id="s1-charge" class="disp" style="position:absolute; left:60px; right:60px; top:176px; text-align:center; font-size:170px; line-height:1.2; color:#F4F6F9">التهمة؟</div>
+        <div id="s1-read" class="card disp" style="left:120px; top:392px; width:840px; height:150px; font-size:96px; line-height:150px">قرأ رسالة بصوت عالي</div>
+      </div>
+    </div>
+  </div>
+  <script>
+    EK.fill("s1-bg", EK.library()); EK.fill("s1-desk", EK.desk());
+    EK.put("s1-fy-slot", "s1-fy", "fyodorOld");
+    EK.fill("s1-gavel-in", EK.gavel()); EK.fill("s1-letter", EK.letter(200, 250));
+    const w = EK.clock("s1");
+    // anchors: script word starts in this scene's time
+    const T = { stopped: w(4), sit: w(7), gavel: w(10), name2: w(12), must: w(13), before: w(22), death: w(26), charge: w(27), read: w(28), letter: w(29) };
+    const tl = gsap.timeline({ paused: true });
+    EK.face(tl, "s1-fy", "flat");
+    gsap.set("#s1-t1, #s1-t2, #s1-before, #s1-death, #s1-charge, #s1-read", { opacity: 0 });
+    gsap.set("#s1-gavel-in", { rotation: 72, svgOrigin: "0 0" });
+    gsap.set("#s1-arm", { y: 420 });
+    // the name is already there on frame 0 and lands
+    tl.fromTo("#s1-name", { scale: 1.1 }, { scale: 1, duration: 0.3, ease: "power4.out" }, 0);
+    tl.fromTo("#s1-fygrp", { y: 60 }, { y: 0, duration: 0.45, ease: "power3.out" }, 0);
+    EK.shake(tl, "#s1-stage", 0.28, 6);
+    EK.blink(tl, "s1-fy", 1.0);
+    // "the name stopped you, right?"
+    EK.mood(tl, "s1-fy", T.stopped, "smug"); EK.blink(tl, "s1-fy", T.stopped + 1.0);
+    // "then sit down": a slow nod
+    tl.to("#s1-fy-head", { y: 16, duration: 0.18, ease: "power2.in" }, T.sit + 0.25);
+    tl.to("#s1-fy-head", { y: 0, duration: 0.4, ease: "back.out(2)" }, T.sit + 0.43);
+    // the gavel opens the trial
+    EK.look(tl, "s1-fy", T.gavel - 0.45, 9, -3);
+    tl.to("#s1-gavel-in", { rotation: 0, duration: 0.2, ease: "power4.in" }, T.gavel - 0.2);
+    tl.set("#s1-burst", { opacity: 1 }, T.gavel); tl.to("#s1-burst", { opacity: 0, duration: 0.3 }, T.gavel + 0.03);
+    EK.shake(tl, "#s1-stage", T.gavel, 11);
+    EK.mood(tl, "s1-fy", T.gavel, "shock");
+    tl.to("#s1-name", { opacity: 0, duration: 0.1 }, T.gavel);
+    tl.fromTo("#s1-t1", { opacity: 0 }, { opacity: 1, duration: 0.15 }, T.gavel + 0.06);
+    tl.fromTo("#s1-t2", { opacity: 0, scale: 1.6 }, { opacity: 1, scale: 1, duration: 0.22, ease: "power4.out" }, T.name2 - 0.1);
+    tl.to("#s1-gavel-in", { rotation: 72, duration: 0.45, ease: "power2.inOut" }, T.gavel + 0.4);
+    EK.mood(tl, "s1-fy", T.gavel + 1.0, "flat"); EK.look(tl, "s1-fy", T.gavel + 1.0, 0, 0);
+    // "but first you must know something"
+    tl.to("#s1-t1, #s1-t2", { opacity: 0, duration: 0.14 }, T.must + 0.2);
+    tl.to("#s1-fygrp", { scale: 1.07, transformOrigin: "540px 1150px", duration: 0.5, ease: "power2.out" }, T.must + 0.3);
+    EK.blink(tl, "s1-fy", T.must + 1.0);
+    EK.pop(tl, "#s1-before", T.before, -4);
+    EK.look(tl, "s1-fy", T.before + 0.15, 0, -9);
+    // sentenced to death
+    EK.stamp(tl, "#s1-death", "#s1-stage", T.death, 5);
+    EK.mood(tl, "s1-fy", T.death + 0.05, "worried");
+    // and the charge?
+    tl.to("#s1-before, #s1-death", { opacity: 0, duration: 0.12 }, T.charge - 0.14);
+    tl.to("#s1-fygrp", { scale: 1, duration: 0.3, ease: "power2.out" }, T.charge - 0.1);
+    tl.fromTo("#s1-charge", { opacity: 0, scale: 1.6 }, { opacity: 1, scale: 1, duration: 0.22, ease: "power4.out" }, T.charge);
+    EK.mood(tl, "s1-fy", T.charge + 0.1, "smug"); EK.look(tl, "s1-fy", T.charge + 0.1, 0, 0);
+    EK.pop(tl, "#s1-read", T.read + 0.05, 3);
+    tl.to("#s1-arm", { y: 0, duration: 0.35, ease: "back.out(1.7)" }, T.letter);
+    EK.look(tl, "s1-fy", T.letter + 0.25, 9, 3); EK.mood(tl, "s1-fy", T.letter + 0.9, "calm");
+    EK.blink(tl, "s1-fy", T.letter + 1.6);
+    EK.idle(tl, "s1-fy", 0.5, DT.D.s1 - 0.1, 2.5);
+    window.__timelines["s1"] = tl;
+  </script>
+</template>

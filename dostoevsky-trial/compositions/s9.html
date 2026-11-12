@@ -1,0 +1,59 @@
+<template>
+  <style>
+    @font-face { font-family: "Lalezar"; src: url("assets/fonts/Lalezar-Regular.ttf"); font-weight: 400; }
+    @font-face { font-family: "Noto Kufi Arabic"; src: url("assets/fonts/NotoKufiArabic.ttf"); font-weight: 100 900; }
+    #root { position: absolute; inset: 0; overflow: hidden; }
+  </style>
+  <div id="root" data-composition-id="s9" data-width="1080" data-height="1920">
+    <div id="s9-wrap" class="clip" data-start="0" data-duration="6.14" data-layout-allow-overflow style="position:absolute;inset:0">
+      <div id="s9-stage" class="stage">
+        <svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg" style="position:absolute;left:0;top:0">
+          <rect width="1080" height="1920" fill="#13294B"/>
+          <path d="M-10 900 L200 640 L330 800 L520 560 L760 860 L900 720 L1090 900 V1200 H-10Z" fill="#172f55" stroke="#0c1a30" stroke-width="7" stroke-linejoin="round"/>
+          <path d="M520 560 L600 660 L540 650 L500 700 L460 636Z M200 640 L250 702 L200 696 L160 690Z M900 720 L950 770 L900 770 L860 760Z" fill="#dfe7f1" stroke="#0c1a30" stroke-width="6" stroke-linejoin="round"/>
+          <path d="M-10 1010 Q260 950 540 1000 Q820 950 1090 1010 V1930 H-10Z" fill="#dfe7f1" stroke="#0c1a30" stroke-width="8"/>
+          <g id="s9-pines"></g>
+          <g id="s9-fyup"><g id="s9-fy-slot" transform="translate(540,900) scale(1.4)"></g></g>
+          <g id="s9-snow"></g>
+          <g id="s9-chain">
+            <g fill="none" stroke="#0c1a30" stroke-width="30" stroke-linecap="round"><path d="M250 1060 Q540 1200 800 1090"/></g>
+            <g fill="none" stroke="#7b8494" stroke-width="14" stroke-linecap="round" stroke-dasharray="34 22"><path d="M250 1060 Q540 1200 800 1090"/></g>
+            <rect x="170" y="1010" width="110" height="80" rx="18" fill="#636c7c" stroke="#0c1a30" stroke-width="8"/>
+            <circle cx="880" cy="1080" r="92" fill="#39414f" stroke="#0c1a30" stroke-width="9"/><path d="M830 1040 Q850 1010 890 1008" fill="none" stroke="#7b8494" stroke-width="10" stroke-linecap="round"/>
+          </g>
+        </svg>
+        <div id="s9-years" class="card disp" style="left:300px; top:180px; width:480px; height:196px; font-size:150px; line-height:200px">٤ سنين</div>
+        <div id="s9-labor" class="card kufi" style="left:620px; top:470px; width:400px; height:108px; font-size:52px; font-weight:800; line-height:92px">أشغال شاقة</div>
+        <div id="s9-sib" class="sign" style="left:50px; top:440px; width:400px; height:150px; font-size:104px; line-height:150px">سيبيريا</div>
+      </div>
+    </div>
+  </div>
+  <script>
+    EK.fill("s9-snow", EK.snow());
+    EK.fill("s9-pines", `<g transform="translate(110,1040)">${EK.pine(330)}</g><g transform="translate(960,1050)">${EK.pine(380)}</g><g transform="translate(250,1010)">${EK.pine(200)}</g><g transform="translate(830,1020)">${EK.pine(220)}</g>`);
+    EK.put("s9-fy-slot", "s9-fy", "fyodorK");
+    const w = EK.clock("s9");
+    const T = { years: w(179), labor: w(181), sib: w(184), chain: w(185, 0.2) };
+    const tl = gsap.timeline({ paused: true });
+    EK.face(tl, "s9-fy", "flat");
+    gsap.set("#s9-years, #s9-labor, #s9-sib", { opacity: 0 });
+    gsap.set("#s9-chain", { y: -1400 });
+    // the land comes down from above; he walks into it
+    tl.fromTo("#s9-stage", { y: -560, filter: "blur(14px)" }, { y: 0, filter: "blur(0px)", duration: 0.4, ease: "power4.out" }, 0);
+    tl.fromTo("#s9-fyup", { x: -900 }, { x: 0, duration: 0.8, ease: "power2.out" }, 0.2);
+    tl.fromTo("#s9-fy-rig", { y: 0 }, { y: -14, duration: 0.12, yoyo: true, repeat: 5, ease: "sine.inOut", immediateRender: false }, 0.2);
+    tl.fromTo("#s9-years", { opacity: 0, scale: 2.4, rotation: -10 }, { opacity: 1, scale: 1, rotation: -3, duration: 0.17, ease: "power3.in" }, T.years - 0.17);
+    EK.shake(tl, "#s9-stage", T.years, 7);
+    EK.pop(tl, "#s9-labor", T.labor, 4); EK.mood(tl, "s9-fy", T.labor + 0.2, "annoyed");
+    tl.fromTo("#s9-sib", { opacity: 0, y: -300, rotation: -14 }, { opacity: 1, y: 0, rotation: -4, duration: 0.3, ease: "back.out(1.6)" }, T.sib - 0.1);
+    EK.look(tl, "s9-fy", T.sib + 0.15, -9, -5);
+    // the shackles
+    tl.to("#s9-chain", { y: 0, duration: 0.24, ease: "power3.in" }, T.chain - 0.24);
+    tl.fromTo("#s9-chain", { y: 0 }, { y: -26, duration: 0.11, yoyo: true, repeat: 1, ease: "power1.out", immediateRender: false }, T.chain);
+    EK.shake(tl, "#s9-stage", T.chain, 9);
+    EK.mood(tl, "s9-fy", T.chain + 0.05, "sad"); EK.look(tl, "s9-fy", T.chain + 0.1, 0, 9);
+    EK.blink(tl, "s9-fy", T.chain + 0.9);
+    EK.idle(tl, "s9-fy", 1.1, DT.D.s9 - 0.1, 2.4);
+    window.__timelines["s9"] = tl;
+  </script>
+</template>

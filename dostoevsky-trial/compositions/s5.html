@@ -1,0 +1,80 @@
+<template>
+  <style>
+    @font-face { font-family: "Lalezar"; src: url("assets/fonts/Lalezar-Regular.ttf"); font-weight: 400; }
+    @font-face { font-family: "Noto Kufi Arabic"; src: url("assets/fonts/NotoKufiArabic.ttf"); font-weight: 100 900; }
+    #root { position: absolute; inset: 0; overflow: hidden; }
+  </style>
+  <div id="root" data-composition-id="s5" data-width="1080" data-height="1920">
+    <div id="s5-wrap" class="clip" data-start="0" data-duration="13.83" data-layout-allow-overflow style="position:absolute;inset:0">
+      <div id="s5-stage" class="stage">
+        <svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg" style="position:absolute;left:0;top:0">
+          <g id="s5-bg"></g>
+          <!-- A: the first three at the posts -->
+          <g id="s5-posts">
+            <g id="s5-p1"><g transform="translate(880,1170)" id="s5-post1"></g><g id="s5-a-up"><g id="s5-a-slot" transform="translate(880,960) scale(0.8)"></g></g><g id="s5-r1" fill="none" stroke-linecap="round"><path d="M770 1090 H990 M776 1130 H984" stroke="#0c1a30" stroke-width="20"/><path d="M770 1090 H990 M776 1130 H984" stroke="#b08a56" stroke-width="9"/></g></g>
+            <g id="s5-p2"><g transform="translate(540,1170)" id="s5-post2"></g><g id="s5-b-up"><g id="s5-b-slot" transform="translate(540,960) scale(0.8)"></g></g><g id="s5-r2" fill="none" stroke-linecap="round"><path d="M430 1090 H650 M436 1130 H644" stroke="#0c1a30" stroke-width="20"/><path d="M430 1090 H650 M436 1130 H644" stroke="#b08a56" stroke-width="9"/></g></g>
+            <g id="s5-p3"><g transform="translate(200,1170)" id="s5-post3"></g><g id="s5-c-up"><g id="s5-c-slot" transform="translate(200,960) scale(0.8)"></g></g><g id="s5-r3" fill="none" stroke-linecap="round"><path d="M90 1090 H310 M96 1130 H304" stroke="#0c1a30" stroke-width="20"/><path d="M90 1090 H310 M96 1130 H304" stroke="#b08a56" stroke-width="9"/></g></g>
+          </g>
+          <!-- B: the sixth in line -->
+          <g id="s5-fyin"><g id="s5-fy-slot" transform="translate(540,900) scale(1.4)"></g></g>
+          <g id="s5-snow"></g>
+          <g id="s5-queue">
+            <g id="s5-batch" fill="none" stroke="#F4F6F9" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"><path d="M150 372 V352 H540 V372"/></g>
+            <g stroke="#0c1a30" stroke-width="7">
+              <circle cx="865" cy="430" r="44" fill="#7b8494"/><circle cx="735" cy="430" r="44" fill="#7b8494"/><circle cx="605" cy="430" r="44" fill="#7b8494"/>
+              <circle cx="475" cy="430" r="44" fill="#f4f6f9"/><circle cx="345" cy="430" r="44" fill="#f4f6f9"/><circle id="s5-six" cx="215" cy="430" r="44" fill="#f4f6f9"/>
+            </g>
+            <g font-family="Lalezar" font-size="60" text-anchor="middle" fill="#0c1a30"><text x="865" y="452">١</text><text x="735" y="452">٢</text><text x="605" y="452">٣</text><text x="475" y="452">٤</text><text x="345" y="452">٥</text><text id="s5-sixn" x="215" y="452">٦</text></g>
+          </g>
+        </svg>
+        <div id="s5-first" class="disp" style="position:absolute; left:60px; right:60px; top:176px; text-align:center; font-size:150px; line-height:1.2; color:#F4F6F9">أول ثلاثة</div>
+        <div id="s5-sixth" class="disp" style="position:absolute; left:60px; right:60px; top:168px; text-align:center; font-size:128px; line-height:1.2; color:#F4F6F9">السادس في الطابور</div>
+        <div id="s5-next" class="card kufi" style="left:120px; top:500px; width:440px; height:104px; font-size:50px; font-weight:800; line-height:88px">الدفعة الجاية</div>
+        <div id="s5-min" class="plate" style="left:150px; top:210px; width:780px; height:230px; font-size:170px; line-height:214px">دقيقة وحدة</div>
+      </div>
+    </div>
+  </div>
+  <script>
+    EK.fill("s5-bg", EK.square()); EK.fill("s5-snow", EK.snow());
+    ["1", "2", "3"].forEach((n) => EK.fill("s5-post" + n, EK.post(640)));
+    EK.put("s5-a-slot", "s5-a", "friend3"); EK.put("s5-b-slot", "s5-b", "friend1"); EK.put("s5-c-slot", "s5-c", "friend2");
+    EK.put("s5-fy-slot", "s5-fy", "fyodor");
+    const w = EK.clock("s5");
+    const T = { call: w(103), first: w(104), tie: w(106), blind: w(109), sixth: w(111, -0.1), tag: w(113), next: w(117), his: w(119), count: w(120), min: w(125) };
+    const tl = gsap.timeline({ paused: true });
+    ["a", "b", "c", "fy"].forEach((k) => { EK.face(tl, "s5-" + k, "worried"); tl.set("#s5-" + k + "-shroud", { opacity: 1 }, 0); });
+    gsap.set("#s5-first, #s5-sixth, #s5-next, #s5-min, #s5-queue", { opacity: 0 });
+    gsap.set("#s5-fyin", { x: 1300 });
+    gsap.set("#s5-r1, #s5-r2, #s5-r3, #s5-batch", { opacity: 0 });
+    // A: three are called out, tied, blindfolded
+    EK.whip(tl, "#s5-stage", -1080);
+    ["a", "b", "c"].forEach((k, i) => {
+      tl.fromTo("#s5-" + k + "-up", { y: 420 }, { y: 0, duration: 0.34, ease: "back.out(1.6)" }, T.call + i * 0.2);
+      tl.set("#s5-r" + (i + 1), { opacity: 1 }, T.tie + i * 0.22);
+      tl.fromTo("#s5-r" + (i + 1), { scaleX: 0, transformOrigin: "50% 50%" }, { scaleX: 1, duration: 0.16, ease: "power3.out" }, T.tie + i * 0.22);
+      tl.fromTo("#s5-" + k + "-body", { scaleX: 1 }, { scaleX: 0.93, duration: 0.07, yoyo: true, repeat: 1, ease: "sine.inOut", transformOrigin: "50% 100%", immediateRender: false }, T.tie + i * 0.22);
+      EK.blind(tl, "s5-" + k, T.blind + i * 0.24);
+    });
+    tl.fromTo("#s5-first", { opacity: 0, scale: 1.5 }, { opacity: 1, scale: 1, duration: 0.22, ease: "power4.out" }, T.first);
+    EK.look(tl, "s5-a", T.tie, -8, 6); EK.look(tl, "s5-c", T.tie + 0.3, 8, 6); EK.mood(tl, "s5-b", T.tie + 0.4, "sad");
+    // B: the posts slide away; he is number six
+    tl.to("#s5-first", { opacity: 0, duration: 0.12 }, T.sixth - 0.1);
+    tl.to("#s5-posts", { x: -1250, duration: 0.42, ease: "power3.inOut" }, T.sixth);
+    tl.to("#s5-fyin", { x: 0, duration: 0.42, ease: "power3.inOut" }, T.sixth);
+    tl.fromTo("#s5-sixth", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.22, ease: "power3.out" }, T.tag - 0.1);
+    tl.fromTo("#s5-queue", { opacity: 0 }, { opacity: 1, duration: 0.15 }, T.tag + 0.1);
+    EK.look(tl, "s5-fy", T.tag + 0.3, -8, -8); EK.blink(tl, "s5-fy", T.tag + 1.0);
+    tl.set("#s5-batch", { opacity: 1 }, T.next); EK.pop(tl, "#s5-next", T.next, -4);
+    tl.to("#s5-six", { fill: "#CEA532", scale: 1.3, svgOrigin: "215 430", duration: 0.2, ease: "back.out(3)" }, T.his);
+    tl.to("#s5-sixn", { scale: 1.3, svgOrigin: "215 430", duration: 0.2, ease: "back.out(3)" }, T.his);
+    EK.mood(tl, "s5-fy", T.his + 0.05, "shock", true);
+    // one minute left
+    tl.to("#s5-sixth, #s5-next, #s5-queue", { opacity: 0, duration: 0.14 }, T.count + 0.1);
+    EK.mood(tl, "s5-fy", T.count + 0.2, "worried", true); EK.look(tl, "s5-fy", T.count + 0.6, 6, -10);
+    EK.stamp(tl, "#s5-min", "#s5-stage", T.min, -4);
+    EK.look(tl, "s5-fy", T.min + 0.3, 0, -9); EK.blink(tl, "s5-fy", T.min + 1.0);
+    ["a", "b", "c"].forEach((k, i) => EK.idle(tl, "s5-" + k, T.call + 0.6 + i * 0.2, T.sixth, 2.2 + i * 0.3));
+    EK.idle(tl, "s5-fy", T.sixth + 0.5, DT.D.s5 - 0.1, 2.2);
+    window.__timelines["s5"] = tl;
+  </script>
+</template>
