@@ -1,0 +1,80 @@
+<template>
+  <style>
+    @font-face { font-family: "Lalezar"; src: url("assets/fonts/Lalezar-Regular.ttf"); font-weight: 400; }
+    @font-face { font-family: "Noto Kufi Arabic"; src: url("assets/fonts/NotoKufiArabic.ttf"); font-weight: 100 900; }
+    @font-face { font-family: "Courier Prime"; src: url("assets/fonts/CourierPrime-Bold.ttf"); font-weight: 700; }
+    #root { position: absolute; inset: 0; overflow: hidden; }
+  </style>
+  <div id="root" data-composition-id="s3" data-width="1080" data-height="1920">
+    <div id="s3-wrap" class="clip" data-start="0" data-duration="12.7" data-layout-allow-overflow style="position:absolute;inset:0">
+      <div id="s3-stage" class="stage">
+        <svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg">
+          <!-- the bank window -->
+          <g id="s3-a">
+            <g id="s3-win-slot"></g>
+            <g id="s3-cu"><g id="s3-cu-slot" transform="translate(860,1180)"></g></g>
+            <g id="s3-chq"><g id="s3-chq-slot" transform="scale(0.55)"></g></g>
+          </g>
+          <!-- from door to door: each one points at the next -->
+          <g id="s3-b">
+            <g id="s3-world"></g>
+            <g id="s3-cu2"><g id="s3-cu2-slot" transform="translate(860,1180)"></g></g>
+          </g>
+        </svg>
+        <div id="s3-st" class="rajea" style="left:330px; top:425px; width:420px; height:200px; font-size:150px; line-height:176px">راجع</div>
+        <div id="s3-kw" class="ttl" style="top:270px; font-size:190px">الكويت</div>
+        <div id="s3-yr" class="num" style="top:510px; font-size:300px; line-height:320px">1982</div>
+      </div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    const G = 16.15, t = (g) => g - G, S = MK.S;
+    MK.fill("s3-win-slot", MK.tellerWindow("s3-w", 360));
+    MK.fill("s3-cu-slot", MK.man("s3-c", { arm: "l" }));
+    MK.fill("s3-chq-slot", MK.cheque("s3-ch"));
+    const mark = `<rect x="-70" y="-6" width="110" height="52" rx="8" fill="none" stroke="${MK.RED}" stroke-width="9" transform="rotate(-10)"/>`;
+    MK.fill("s3-cu2-slot", MK.man("s3-c2") + `<g transform="translate(-20,-215) rotate(-8) scale(0.5)">${MK.cheque("s3-ch2", mark)}</g>`);
+    let world = "";
+    for (let i = 0; i < 3; i++) {
+      const ox = -1080 * i;
+      world += `<rect x="${ox + 50}" y="430" width="660" height="750" fill="${MK.STONE}" ${S(8)}/><rect x="${ox + 30}" y="400" width="700" height="50" rx="6" fill="${MK.OLIVE}" ${S(8)}/>` +
+        `<rect x="${ox + 540}" y="540" width="120" height="130" rx="6" fill="${MK.SHADE}" ${S(7)}/><path d="M${ox + 600} 540 v130 M${ox + 540} 605 h120" ${S(6)} fill="none"/>` +
+        `<rect x="${ox + 170}" y="610" width="320" height="570" fill="#2A2D1A" ${S(8)}/>` +
+        `<g id="s3-o${i}"><g transform="translate(${ox + 330},1180) scale(1.25)">${MK.man("s3-ow" + i, { arm: "l" })}</g></g>` +
+        `<g id="s3-d${i}"><rect x="${ox + 170}" y="610" width="320" height="570" fill="#8A6B3C" ${S(8)}/><rect x="${ox + 200}" y="650" width="260" height="210" rx="6" fill="none" ${S(6)}/><circle cx="${ox + 450}" cy="910" r="13" fill="${MK.PAPER}" ${S(5)}/></g>`;
+    }
+    MK.fill("s3-world", world);
+    MK.pivot("#s3-chq", "0 0"); MK.pivot("#s3-world", "0 1180");
+    for (let i = 0; i < 3; i++) { MK.pivot("#s3-d" + i, (-1080 * i + 170) + " 890"); MK.pivot("#s3-ow" + i + "-arm", "-56 -285"); gsap.set("#s3-ow" + i + "-arm", { rotation: -80 }); gsap.set("#s3-o" + i, { opacity: 0 }); }
+    gsap.set("#s3-st, #s3-kw, #s3-yr", { opacity: 0 });
+    gsap.set("#s3-b", { x: -1200 });
+    // imagine you go to cash a cheque
+    tl.fromTo("#s3-cu", { x: 420 }, { x: 0, duration: 0.6, ease: "power2.out" }, t(16.3));
+    tl.fromTo("#s3-chq", { x: 1058, y: 895 }, { x: 638, y: 895, duration: 0.6, ease: "power2.out" }, t(16.3));
+    tl.to("#s3-chq", { x: 400, y: 836, duration: 0.3, ease: "power2.inOut" }, t(17.3));
+    // they tell you: the cheque bounced
+    tl.to("#s3-chq", { x: 540, y: 525, scale: 4.3, rotation: -4, duration: 0.45, ease: "back.out(1.3)" }, t(18.0));
+    MK.stamp(tl, "#s3-st", "#s3-stage", t(19.07), -12);
+    // you go to the one who wrote it
+    tl.to("#s3-a", { x: 1250, duration: 0.4, ease: "power3.in" }, t(19.42));
+    tl.to("#s3-st", { x: 1250, duration: 0.4, ease: "power3.in" }, t(19.42));
+    tl.to("#s3-b", { x: 0, duration: 0.45, ease: "power3.out" }, t(19.6));
+    const open = (i, at) => { tl.to("#s3-d" + i, { scaleX: 0.08, duration: 0.3, ease: "power2.out" }, at); tl.to("#s3-o" + i, { opacity: 1, duration: 0.15 }, at + 0.05); };
+    const point = (i, at) => tl.to("#s3-ow" + i + "-arm", { rotation: 0, duration: 0.3, ease: "back.out(2.5)" }, at);
+    const walk = (at, d) => tl.fromTo("#s3-cu2", { y: 0 }, { y: -16, duration: d / 6, yoyo: true, repeat: 5, ease: "sine.inOut", immediateRender: false }, at);
+    open(0, t(20.2)); point(0, t(22.1));
+    // you go to him: and I am owed by a third
+    tl.to("#s3-world", { x: 1080, duration: 0.55, ease: "power2.inOut" }, t(22.95)); walk(t(22.95), 0.55);
+    open(1, t(23.55)); point(1, t(24.81));
+    tl.to("#s3-world", { x: 2160, duration: 0.45, ease: "power2.inOut" }, t(25.2)); walk(t(25.2), 0.45);
+    open(2, t(25.6)); point(2, t(25.95));
+    // this is what happened in Kuwait in eighty-two
+    tl.to("#s3-cu2", { opacity: 0, duration: 0.2 }, t(26.05));
+    tl.to("#s3-world", { x: 720, scale: 1 / 3, duration: 0.55, ease: "power3.inOut" }, t(26.1));
+    tl.fromTo("#s3-kw", { opacity: 0, scale: 1.5 }, { opacity: 1, scale: 1, duration: 0.25, ease: "power4.out" }, t(26.84));
+    tl.to("#s3-yr", { opacity: 1, duration: 0.1 }, t(27.3));
+    MK.count(tl, "#s3-yr", 1900, 1982, t(27.3), 1.0, "", true);
+    window.__timelines["s3"] = tl;
+  </script>
+</template>

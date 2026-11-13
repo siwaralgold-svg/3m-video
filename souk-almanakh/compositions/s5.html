@@ -1,0 +1,46 @@
+<template>
+  <style>
+    @font-face { font-family: "Lalezar"; src: url("assets/fonts/Lalezar-Regular.ttf"); font-weight: 400; }
+    @font-face { font-family: "Noto Kufi Arabic"; src: url("assets/fonts/NotoKufiArabic.ttf"); font-weight: 100 900; }
+    @font-face { font-family: "Courier Prime"; src: url("assets/fonts/CourierPrime-Bold.ttf"); font-weight: 700; }
+    #root { position: absolute; inset: 0; overflow: hidden; }
+  </style>
+  <div id="root" data-composition-id="s5" data-width="1080" data-height="1920">
+    <div id="s5-wrap" class="clip" data-start="0" data-duration="5.6" data-layout-allow-overflow style="position:absolute;inset:0">
+      <div id="s5-stage" class="stage">
+        <svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0 1180 Q260 1090 540 1150 Q820 1100 1080 1180 Z" fill="#D3BD8B" stroke="#23261A" stroke-width="8"/>
+          <g id="s5-cam"><g id="s5-c1-slot" transform="translate(320,1180) scale(1.3)"></g><g id="s5-c2-slot" transform="translate(790,1180) scale(-1.1,1.1)"></g></g>
+          <g id="s5-bld"><g id="s5-pk-slot" transform="translate(540,1180)"></g></g>
+        </svg>
+        <div id="s5-jb" class="card" style="left:110px; top:470px; width:250px; height:100px; font-size:54px; line-height:80px">جبلة</div>
+        <div id="s5-sign" class="plate" style="left:220px; top:400px; width:640px; height:180px; font-size:128px; line-height:160px">سوق المناخ</div>
+      </div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    const G = 31.6, t = (g) => g - G;
+    MK.fill("s5-c1-slot", MK.camel("s5-ca")); MK.fill("s5-c2-slot", MK.camel("s5-cb"));
+    MK.fill("s5-pk-slot", MK.park("s5-pk", 4, 640, 125));
+    gsap.set("#s5-jb, #s5-sign", { opacity: 0 });
+    // camels kneeling on the sand, then the car park goes up floor by floor
+    tl.fromTo("#s5-cam", { y: 0 }, { y: -8, duration: 0.5, yoyo: true, repeat: 1, ease: "sine.inOut", immediateRender: false }, 0.1);
+    tl.to("#s5-cam", { opacity: 0, y: 30, duration: 0.25, ease: "power2.in" }, t(32.6));
+    for (let i = 0; i < 4; i++) {
+      tl.fromTo("#s5-pk-f" + i, { y: -1300 }, { y: 0, duration: 0.22, ease: "power3.in" }, t(32.75) + i * 0.3);
+      MK.shake(tl, "#s5-stage", t(32.97) + i * 0.3, 6);
+    }
+    tl.fromTo("#s5-pk-ac", { opacity: 0, y: -60 }, { opacity: 1, y: 0, duration: 0.25, ease: "back.out(2)" }, t(33.95));
+    MK.pop(tl, "#s5-jb", t(33.85), -4);
+    // built over a resting ground for camels
+    tl.to("#s5-bld", { opacity: 0.22, duration: 0.3 }, t(34.7));
+    tl.to("#s5-jb", { opacity: 0, duration: 0.2 }, t(34.7));
+    tl.to("#s5-cam", { opacity: 1, y: 0, duration: 0.3, ease: "power2.out" }, t(34.75));
+    tl.to("#s5-bld", { opacity: 1, duration: 0.3 }, t(35.95));
+    tl.to("#s5-cam", { opacity: 0, duration: 0.3 }, t(35.95));
+    // and that is where the name came from
+    MK.stamp(tl, "#s5-sign", "#s5-stage", t(36.6), -4);
+    window.__timelines["s5"] = tl;
+  </script>
+</template>

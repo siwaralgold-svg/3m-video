@@ -1,0 +1,71 @@
+<template>
+  <style>
+    @font-face { font-family: "Lalezar"; src: url("assets/fonts/Lalezar-Regular.ttf"); font-weight: 400; }
+    @font-face { font-family: "Noto Kufi Arabic"; src: url("assets/fonts/NotoKufiArabic.ttf"); font-weight: 100 900; }
+    @font-face { font-family: "Courier Prime"; src: url("assets/fonts/CourierPrime-Bold.ttf"); font-weight: 700; }
+    #root { position: absolute; inset: 0; overflow: hidden; }
+  </style>
+  <div id="root" data-composition-id="s8" data-width="1080" data-height="1920">
+    <div id="s8-wrap" class="clip" data-start="0" data-duration="8.4" data-layout-allow-overflow style="position:absolute;inset:0">
+      <div id="s8-stage" class="stage">
+        <svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg">
+          <!-- the cheque goes from hand to hand until the lines are a web -->
+          <g id="s8-net"><g id="s8-lines"></g><g id="s8-nodes"></g><g id="s8-chq"><g id="s8-chq-slot" transform="scale(0.5)"></g></g></g>
+          <!-- the scale: the car park against London -->
+          <g id="s8-scale">
+            <rect x="527" y="800" width="26" height="380" fill="#8A6B3C" stroke="#23261A" stroke-width="7"/>
+            <rect x="440" y="1150" width="200" height="30" rx="6" fill="#8A6B3C" stroke="#23261A" stroke-width="7"/>
+            <g id="s8-beam"><rect x="240" y="788" width="600" height="24" rx="12" fill="#A8854C" stroke="#23261A" stroke-width="7"/><circle cx="540" cy="800" r="22" fill="#353A20" stroke="#23261A" stroke-width="7"/></g>
+            <g id="s8-panL"><path d="M260 806 L160 986 M260 806 L360 986" stroke="#23261A" stroke-width="6" fill="none"/><g id="s8-tw-slot" transform="translate(260,980) scale(0.62)"></g><rect x="140" y="980" width="240" height="22" rx="11" fill="#353A20" stroke="#23261A" stroke-width="7"/></g>
+            <g id="s8-panR"><path d="M820 806 L720 986 M820 806 L920 986" stroke="#23261A" stroke-width="6" fill="none"/><g id="s8-pk-slot" transform="translate(820,980)"></g><rect x="700" y="980" width="240" height="22" rx="11" fill="#353A20" stroke="#23261A" stroke-width="7"/></g>
+          </g>
+        </svg>
+        <div id="s8-lon" class="card" style="left:170px; top:1014px; width:180px; height:66px; font-size:36px; line-height:50px">لندن</div>
+        <div id="s8-kw" class="card" style="left:720px; top:1014px; width:200px; height:66px; font-size:36px; line-height:50px">الكويت</div>
+      </div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    const G = 48.9, t = (g) => g - G;
+    const N = 6, CX = 540, CY = 560, RAD = 300, P = [];
+    for (let k = 0; k < N; k++) { const a = (-90 + k * 60) * Math.PI / 180; P.push([CX + RAD * Math.cos(a), CY + RAD * Math.sin(a)]); }
+    let nodes = "", lines = "";
+    P.forEach((p, k) => { nodes += `<g id="s8-n${k}"><g transform="translate(${p[0]},${p[1] + 84}) scale(0.4)">${MK.man("s8-m" + k)}</g></g>`; });
+    const ring = [], chords = [];
+    for (let i = 0; i < N; i++) for (let j = i + 1; j < N; j++) {
+      const id = `s8-l-${i}-${j}`;
+      lines += `<path id="${id}" d="M${P[i][0]} ${P[i][1]} L${P[j][0]} ${P[j][1]}" stroke="#5B6236" stroke-width="7" stroke-linecap="round" fill="none"/>`;
+      (j - i === 1 || (i === 0 && j === N - 1) ? ring : chords).push("#" + id);
+    }
+    MK.fill("s8-lines", lines); MK.fill("s8-nodes", nodes); MK.fill("s8-chq-slot", MK.cheque("s8-c"));
+    MK.fill("s8-tw-slot", MK.tower("s8-tw")); MK.fill("s8-pk-slot", MK.park("s8-pk", 3, 190, 46));
+    MK.pivot("#s8-beam", "540 800"); MK.pivot("#s8-chq", "0 0"); MK.pivot("#s8-net", CX + " " + CY); P.forEach((p, k) => MK.pivot("#s8-n" + k, p[0] + " " + p[1]));
+    gsap.set("#s8-chq", { x: P[0][0], y: P[0][1] - 20 });
+    gsap.set("#s8-scale, #s8-lon, #s8-kw", { opacity: 0 });
+    // hand to hand: each hop leaves a line behind it
+    const hops = [t(49.6), t(50.9), t(51.64), t(52.04), t(52.24), t(52.44)];
+    const edge = (a, b) => "#s8-l-" + Math.min(a, b) + "-" + Math.max(a, b);
+    hops.forEach((h, k) => {
+      const to = (k + 1) % N, d = k < 3 ? 0.35 : 0.18;
+      tl.to("#s8-chq", { x: P[to][0], y: P[to][1] - 20, duration: d, ease: "power2.inOut" }, h);
+      MK.draw(tl, edge(k, to), h, d);
+      tl.fromTo("#s8-n" + to, { scale: 1 }, { scale: 1.18, duration: 0.1, yoyo: true, repeat: 1, ease: "power2.out", immediateRender: false }, h + d);
+    });
+    // the cheque became money: every hand tied to every other
+    chords.forEach((c, i) => MK.draw(tl, c, t(52.72) + i * 0.07, 0.25));
+    tl.to("#s8-chq", { x: CX, y: CY, scale: 1.7, duration: 0.35, ease: "back.out(1.6)" }, t(52.72));
+    tl.fromTo("#s8-chq", { rotation: 0 }, { rotation: 360, duration: 0.5, ease: "power2.out", immediateRender: false }, t(53.2));
+    // Kuwait's shares outweigh London's markets
+    tl.to("#s8-net", { scale: 0.62, y: -125, duration: 0.45, ease: "power3.inOut" }, t(54.0));
+    tl.fromTo("#s8-scale", { opacity: 0, y: 200 }, { opacity: 1, y: 0, duration: 0.4, ease: "back.out(1.4)" }, t(54.15));
+    MK.pop(tl, "#s8-kw", t(54.5), 3); MK.pop(tl, "#s8-lon", t(56.6), -3);
+    tl.to("#s8-beam", { rotation: 13, duration: 0.5, ease: "back.out(2.4)" }, t(55.86));
+    tl.to("#s8-panR", { y: 63, duration: 0.5, ease: "back.out(2.4)" }, t(55.86));
+    tl.to("#s8-panL", { y: -63, duration: 0.5, ease: "back.out(2.4)" }, t(55.86));
+    tl.to("#s8-kw", { y: 63, duration: 0.5, ease: "back.out(2.4)" }, t(55.86));
+    tl.fromTo("#s8-lon", { y: -63 }, { y: -63, duration: 0.01 }, t(56.6));
+    MK.shake(tl, "#s8-stage", t(56.1), 6);
+    window.__timelines["s8"] = tl;
+  </script>
+</template>

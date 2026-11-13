@@ -1,0 +1,82 @@
+<template>
+  <style>
+    @font-face { font-family: "Lalezar"; src: url("assets/fonts/Lalezar-Regular.ttf"); font-weight: 400; }
+    @font-face { font-family: "Noto Kufi Arabic"; src: url("assets/fonts/NotoKufiArabic.ttf"); font-weight: 100 900; }
+    @font-face { font-family: "Courier Prime"; src: url("assets/fonts/CourierPrime-Bold.ttf"); font-weight: 700; }
+    #root { position: absolute; inset: 0; overflow: hidden; }
+  </style>
+  <div id="root" data-composition-id="s11" data-width="1080" data-height="1920">
+    <div id="s11-wrap" class="clip" data-start="0" data-duration="11.25" data-layout-allow-overflow style="position:absolute;inset:0">
+      <div id="s11-stage" class="stage">
+        <!-- A: the official statement and the trading board going dark -->
+        <div id="s11-A" style="position:absolute; inset:0">
+          <div id="s11-paper" class="card" style="left:190px; top:185px; width:700px; height:560px; border-radius:6px">
+            <div class="disp" style="font-size:104px; line-height:150px; font-weight:400; margin-top:24px">بيان رسمي</div>
+            <div id="s11-date" style="font-family:'Courier Prime','Noto Kufi Arabic',sans-serif; font-weight:700; font-size:54px; line-height:84px; direction:rtl; height:84px">23 أغسطس 1982</div>
+            <div style="margin:18px 70px 0; height:8px; background:#B9AB84; border-radius:4px"></div>
+          </div>
+          <div id="s11-no" class="disp" style="position:absolute; left:250px; top:520px; width:580px; height:170px; text-align:center; font-size:118px; line-height:146px; color:#23261A; border:11px solid #23261A; border-radius:16px; background:#F6EEDA">ما في إنقاذ</div>
+          <svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg" style="position:absolute; left:0; top:0; overflow:visible">
+            <rect x="140" y="830" width="800" height="310" rx="14" fill="#23261A" stroke="#23261A" stroke-width="8"/>
+            <g id="s11-cells"></g>
+            <rect x="500" y="1140" width="80" height="40" fill="#353A20" stroke="#23261A" stroke-width="7"/>
+          </svg>
+        </div>
+        <!-- B: the mountain of cheques and the two counters -->
+        <div id="s11-B" style="position:absolute; inset:0">
+          <svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg" style="position:absolute; left:0; top:0; overflow:visible"><g id="s11-heap"></g></svg>
+          <div id="s11-n1" class="num" style="top:180px; font-size:220px; line-height:230px">0</div>
+          <div id="s11-chk" class="ttl" style="top:395px; font-size:110px">شيك</div>
+          <div id="s11-n2" class="num" style="top:560px; font-size:106px; line-height:130px; color:#C23B2B">$0</div>
+        </div>
+        <!-- C: the banks go dark, all but one -->
+        <div id="s11-C" style="position:absolute; inset:0">
+          <svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg" style="position:absolute; left:0; top:0; overflow:visible"><g id="s11-banks"></g></svg>
+          <div id="s11-bust" class="rajea" style="left:230px; top:186px; width:620px; height:170px; font-size:118px; line-height:140px; background:#F6EEDA">مفلسة فنيًا</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    const G = 66.5, t = (g) => g - G;
+    let cells = "";
+    for (let r = 0; r < 4; r++) for (let c = 0; c < 8; c++) cells += `<rect class="s11-cell" x="${170 + c * 94}" y="${856 + r * 66}" width="78" height="46" rx="5" fill="#F6EEDA"/>`;
+    MK.fill("s11-cells", cells);
+    let heap = ""; const rows = [8, 7, 6, 5, 4, 3]; let n = 0;
+    rows.forEach((cnt, r) => { for (let k = 0; k < cnt; k++) { const x = 540 + (k - (cnt - 1) / 2) * 118, y = 1136 - r * 64; heap += `<g class="s11-hc" id="s11-h${n}"><g transform="translate(${x},${y}) rotate(${(n * 37) % 21 - 10}) scale(0.5)">${MK.cheque("s11-hq" + n)}</g></g>`; n++; } });
+    MK.fill("s11-heap", heap);
+    let banks = ""; const bx = [220, 540, 860], by = [720, 1150];
+    for (let i = 0; i < 6; i++) banks += `<g id="s11-b${i}"><g transform="translate(${bx[i % 3]},${by[Math.floor(i / 3)]})">${MK.bank("s11-bk" + i, 250, 280)}</g></g>`;
+    MK.fill("s11-banks", banks);
+    gsap.set("#s11-B, #s11-C, #s11-no, #s11-chk, #s11-bust, #s11-n2", { opacity: 0 });
+    tl.set("#s11-A", { opacity: 0 }, t(69.0)); tl.set("#s11-B", { opacity: 1 }, t(69.0));
+    tl.set("#s11-B", { opacity: 0 }, t(73.7)); tl.set("#s11-C", { opacity: 1 }, t(73.7));
+    // the government said: no rescue
+    tl.fromTo("#s11-paper", { rotation: -2 }, { rotation: -2, duration: 0.01 }, 0);
+    MK.type(tl, "#s11-date", "23 أغسطس 1982", 0.3, 0.55);
+    MK.stamp(tl, "#s11-no", "#s11-stage", t(67.08), -6);
+    // and trading stopped: the board goes dark
+    tl.to(".s11-cell", { fill: "#3A3F25", duration: 0.05, stagger: { each: 0.022, from: "start" } }, t(68.3));
+    // twenty-nine thousand cheques
+    MK.count(tl, "#s11-n1", 0, 29000, t(69.1), 1.2);
+    for (let i = 0; i < n; i++) tl.fromTo("#s11-h" + i, { y: -1300 }, { y: 0, duration: 0.3, ease: "power2.in" }, t(69.05) + i * 0.045);
+    MK.pop(tl, "#s11-chk", t(70.42));
+    // about ninety-four billion dollars
+    tl.set("#s11-n2", { opacity: 1 }, t(71.4));
+    MK.count(tl, "#s11-n2", 0, 94000000000, t(71.4), 1.6, "$");
+    tl.fromTo("#s11-n2", { scale: 1 }, { scale: 1.1, duration: 0.1, yoyo: true, repeat: 1, ease: "power2.out", immediateRender: false }, t(73.0));
+    MK.shake(tl, "#s11-stage", t(73.0), 7);
+    // every bank but one: technically insolvent
+    for (let i = 0; i < 6; i++) MK.pivot("#s11-b" + i, bx[i % 3] + " " + by[Math.floor(i / 3)]);
+    tl.fromTo("#s11-b4", { scale: 1 }, { scale: 1.14, duration: 0.14, yoyo: true, repeat: 1, ease: "power2.out", immediateRender: false }, t(75.2));
+    [0, 1, 2, 3, 5].forEach((i, k) => {
+      const at = t(76.18) + k * 0.1;
+      tl.to(`#s11-bk${i}-win`, { fill: "#2A2D1A", duration: 0.08 }, at);
+      tl.to(`#s11-bk${i}-body`, { fill: "#A39A7A", duration: 0.08 }, at);
+      tl.to("#s11-b" + i, { y: 12, duration: 0.15, ease: "power2.out" }, at);
+    });
+    MK.stamp(tl, "#s11-bust", "#s11-stage", t(76.85), -4);
+    window.__timelines["s11"] = tl;
+  </script>
+</template>

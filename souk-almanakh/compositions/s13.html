@@ -1,0 +1,51 @@
+<template>
+  <style>
+    @font-face { font-family: "Lalezar"; src: url("assets/fonts/Lalezar-Regular.ttf"); font-weight: 400; }
+    @font-face { font-family: "Noto Kufi Arabic"; src: url("assets/fonts/NotoKufiArabic.ttf"); font-weight: 100 900; }
+    @font-face { font-family: "Courier Prime"; src: url("assets/fonts/CourierPrime-Bold.ttf"); font-weight: 700; }
+    #root { position: absolute; inset: 0; overflow: hidden; }
+  </style>
+  <div id="root" data-composition-id="s13" data-width="1080" data-height="1920">
+    <div id="s13-wrap" class="clip" data-start="0" data-duration="4.95" data-layout-allow-overflow style="position:absolute;inset:0">
+      <div id="s13-stage" class="stage">
+        <svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg">
+          <g id="s13-court">
+            <g id="s13-pk-slot" transform="translate(380,1160)"></g>
+            <g id="s13-dock-slot" transform="translate(380,1180)"></g>
+            <rect x="650" y="1146" width="160" height="34" rx="8" fill="#8A6B3C" stroke="#23261A" stroke-width="7"/>
+            <g id="s13-gv"><g id="s13-gv-slot" transform="translate(985,1060)"></g></g>
+          </g>
+          <g id="s13-chq"><g id="s13-chq-slot" transform="translate(540,900) rotate(-4) scale(2.9)"></g></g>
+        </svg>
+        <div id="s13-a" class="kufi" style="position:absolute; left:0; width:1080px; top:190px; text-align:center; font-weight:800; font-size:64px; line-height:96px; color:#5B6236">المتهم</div>
+        <div id="s13-b" class="ttl" style="top:280px; font-size:176px">سوق المناخ</div>
+        <div id="s13-v" class="ttl" style="top:190px; font-size:250px">الحكم</div>
+        <div id="s13-you" class="plate" data-layout-allow-overlap data-layout-allow-occlusion style="left:240px; top:700px; width:600px; height:400px; font-size:340px; line-height:372px">لك</div>
+      </div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    const G = 91.55, t = (g) => g - G;
+    MK.fill("s13-pk-slot", MK.park("s13-pk", 3, 400, 104)); MK.fill("s13-dock-slot", MK.dock("s13-dock", 580));
+    MK.fill("s13-gv-slot", MK.gavel("s13-g")); MK.fill("s13-chq-slot", MK.cheque("s13-c"));
+    gsap.set("#s13-a, #s13-b, #s13-v, #s13-you, #s13-chq", { opacity: 0 });
+    MK.pivot("#s13-gv", "985 1060"); MK.pivot("#s13-chq", "540 900");
+    gsap.set("#s13-gv", { rotation: -18 });
+    // the accused: Souk Al-Manakh, in the dock
+    tl.fromTo("#s13-a", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.2, ease: "power3.out" }, t(91.7));
+    tl.fromTo("#s13-b", { opacity: 0, scale: 1.5 }, { opacity: 1, scale: 1, duration: 0.25, ease: "power4.out" }, t(92.5));
+    // the gavel comes down
+    tl.to("#s13-gv", { rotation: 12, duration: 0.3, ease: "power2.out" }, t(92.55));
+    tl.to("#s13-gv", { rotation: -90, duration: 0.13, ease: "power3.in" }, t(93.0) - 0.13);
+    MK.shake(tl, "#s13-stage", t(93.0), 12);
+    tl.to("#s13-gv", { rotation: -72, duration: 0.25, ease: "power2.out" }, t(93.0) + 0.05);
+    // and the verdict... is yours, written on the cheque that came back
+    tl.to("#s13-court", { y: 900, opacity: 0, duration: 0.3, ease: "power2.in" }, t(93.78) - 0.3);
+    tl.to("#s13-a, #s13-b", { opacity: 0, y: -60, duration: 0.2, ease: "power2.in" }, t(93.78) - 0.25);
+    tl.fromTo("#s13-v", { opacity: 0, scale: 1.5 }, { opacity: 1, scale: 1, duration: 0.25, ease: "power4.out" }, t(93.78));
+    tl.fromTo("#s13-chq", { opacity: 1, x: 1300, rotation: 30 }, { opacity: 1, x: 0, rotation: 0, duration: 0.45, ease: "back.out(1.2)" }, t(93.85));
+    MK.stamp(tl, "#s13-you", "#s13-stage", t(94.66), -5);
+    window.__timelines["s13"] = tl;
+  </script>
+</template>

@@ -1,0 +1,63 @@
+<template>
+  <style>
+    @font-face { font-family: "Lalezar"; src: url("assets/fonts/Lalezar-Regular.ttf"); font-weight: 400; }
+    @font-face { font-family: "Noto Kufi Arabic"; src: url("assets/fonts/NotoKufiArabic.ttf"); font-weight: 100 900; }
+    @font-face { font-family: "Courier Prime"; src: url("assets/fonts/CourierPrime-Bold.ttf"); font-weight: 700; }
+    #root { position: absolute; inset: 0; overflow: hidden; }
+  </style>
+  <div id="root" data-composition-id="s12" data-width="1080" data-height="1920">
+    <div id="s12-wrap" class="clip" data-start="0" data-duration="13.8" data-layout-allow-overflow style="position:absolute;inset:0">
+      <div id="s12-stage" class="stage">
+        <svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg">
+          <defs><marker id="s12-mk" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="4" markerHeight="4" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#23261A"/></marker></defs>
+          <path id="s12-a1" d="M420 500 Q270 560 240 800" stroke="#23261A" stroke-width="13" stroke-linecap="round" fill="none" marker-end="url(#s12-mk)"/>
+          <path id="s12-a2" d="M380 1090 Q540 1150 700 1090" stroke="#23261A" stroke-width="13" stroke-linecap="round" fill="none" marker-end="url(#s12-mk)"/>
+          <path id="s12-a3" d="M850 700 Q830 520 680 480" stroke="#23261A" stroke-width="13" stroke-linecap="round" fill="none" marker-end="url(#s12-mk)"/>
+          <g id="s12-T"><g id="s12-T-slot" transform="translate(540,640) scale(0.78)"></g></g>
+          <g id="s12-C"><g id="s12-C-slot" transform="translate(230,1140)"></g></g>
+          <g id="s12-G"><g id="s12-G-slot" transform="translate(850,1140) scale(0.78)"></g></g>
+          <g id="s12-chq"><g id="s12-chq-slot" transform="scale(0.5)"></g></g>
+        </svg>
+        <div id="s12-q" class="ttl" style="left:390px; right:390px; top:650px; font-size:330px; line-height:380px">؟</div>
+        <div id="s12-lt" class="card" style="left:440px; top:214px; width:200px; height:72px; font-size:38px; line-height:54px">التاجر</div>
+        <div id="s12-lc" class="card" style="left:150px; top:808px; width:160px; height:72px; font-size:38px; line-height:54px">الكل</div>
+        <div id="s12-lg" class="card" style="left:740px; top:724px; width:220px; height:72px; font-size:38px; line-height:54px">الحكومة</div>
+      </div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    const G = 77.75, t = (g) => g - G;
+    MK.fill("s12-T-slot", MK.man("s12-t", { arm: "l" }) + `<g transform="translate(34,-170) rotate(8) scale(0.36)">${MK.cheque("s12-tc")}</g>`);
+    MK.fill("s12-C-slot", `<g transform="translate(-78,-14) scale(0.5)">${MK.man("s12-c1")}</g><g transform="translate(78,-14) scale(0.5)">${MK.man("s12-c2")}</g><g transform="scale(0.58)">${MK.man("s12-c0", { arm: "r" })}</g>`);
+    MK.fill("s12-G-slot", MK.man("s12-g", { arm: "l", bisht: true }));
+    MK.fill("s12-chq-slot", MK.cheque("s12-c"));
+    MK.pivot("#s12-T", "540 640"); MK.pivot("#s12-C", "230 1140"); MK.pivot("#s12-G", "850 1140"); MK.pivot("#s12-chq", "0 0");
+    MK.pivot("#s12-t-arm", "-56 -285"); MK.pivot("#s12-c0-arm", "56 -285"); MK.pivot("#s12-g-arm", "-56 -285");
+    gsap.set("#s12-t-arm, #s12-g-arm", { rotation: -80 }); gsap.set("#s12-c0-arm", { rotation: 80 });
+    gsap.set("#s12-q, #s12-lt, #s12-lc, #s12-lg, #s12-chq, #s12-a1, #s12-a2, #s12-a3", { opacity: 0 });
+    // so... who is the accused?
+    ["#s12-T", "#s12-C", "#s12-G"].forEach((s, i) => tl.fromTo(s, { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2)" }, t(77.9) + i * 0.12));
+    tl.fromTo("#s12-q", { opacity: 0, scale: 0.3, rotation: 20 }, { opacity: 1, scale: 1, rotation: -6, duration: 0.35, ease: "back.out(2.2)" }, t(78.79));
+    const speak = (who, lbl, at) => { tl.fromTo(who, { scale: 1 }, { scale: 1.12, duration: 0.14, yoyo: true, repeat: 1, ease: "power2.out", immediateRender: false }, at); MK.pop(tl, lbl, at + 0.05, -3); };
+    const accuse = (armSel, rot, arrow, at) => {
+      tl.to(armSel, { rotation: rot, duration: 0.3, ease: "back.out(2.5)" }, at);
+      tl.set(arrow, { opacity: 1 }, at + 0.1); MK.draw(tl, arrow, at + 0.1, 0.35);
+    };
+    // the trader says: everyone was doing it
+    speak("#s12-T", "#s12-lt", t(79.62)); accuse("#s12-t-arm", -42, "#s12-a1", t(80.7));
+    // everyone says: the government saw and kept quiet
+    speak("#s12-C", "#s12-lc", t(82.1)); accuse("#s12-c0-arm", 0, "#s12-a2", t(83.1));
+    // the government says: I barred the banks, what more could I do?
+    speak("#s12-G", "#s12-lg", t(84.83)); accuse("#s12-g-arm", 42, "#s12-a3", t(86.0));
+    tl.fromTo("#s12-G", { y: 0 }, { y: -18, duration: 0.14, yoyo: true, repeat: 1, ease: "power2.out", immediateRender: false }, t(87.3));
+    // the same loop: the cheque goes round and round
+    const stops = [[540, 440], [230, 960], [850, 900]];
+    gsap.set("#s12-chq", { x: stops[0][0], y: stops[0][1] });
+    tl.to("#s12-chq", { opacity: 1, duration: 0.1 }, t(88.1));
+    let at = t(88.2);
+    for (let k = 1; k <= 9; k++) { const d = Math.max(0.2, 0.46 - k * 0.03); const p = stops[k % 3]; tl.to("#s12-chq", { x: p[0], y: p[1], duration: d, ease: "power1.inOut" }, at); at += d; }
+    tl.to("#s12-q", { rotation: 714, duration: 3.0, ease: "power1.in" }, t(88.2));
+    window.__timelines["s12"] = tl;
+  </script>
+</template>

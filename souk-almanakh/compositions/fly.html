@@ -1,0 +1,38 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; }
+    .fly { position: absolute; inset: 0; }
+    .fly-m { position: absolute; left: 0; top: -290px; width: 3200px; height: 2500px; }
+    .fly-c { position: absolute; inset: 0; background: #F6EEDA; border: 16px solid #23261A; border-radius: 40px; overflow: hidden; }
+    .fly-c i { position: absolute; display: block; }
+    .fly-c .b { left: 0; right: 0; top: 0; height: 330px; background: #5B6236; border-bottom: 16px solid #23261A; }
+    .fly-c .l1 { left: 260px; top: 900px; width: 1700px; height: 36px; border-radius: 18px; background: #B9AB84; }
+    .fly-c .l2 { left: 260px; top: 1250px; width: 1250px; height: 36px; border-radius: 18px; background: #B9AB84; }
+    .fly-c .bx { right: 260px; top: 760px; width: 700px; height: 400px; border-radius: 30px; background: #EADFC0; border: 14px solid #23261A; }
+  </style>
+  <div id="root" data-composition-id="fly" data-width="1080" data-height="1920">
+    <div id="fly-00" class="clip fly" data-start="15.87" data-duration="0.56" data-layout-ignore><div id="fly-00-m" class="fly-m"><div class="fly-c" style="transform: rotate(-7deg)"><i class="b"></i><i class="l1"></i><i class="l2"></i><i class="bx"></i></div></div></div>
+    <div id="fly-01" class="clip fly" data-start="28.57" data-duration="0.56" data-layout-ignore><div id="fly-01-m" class="fly-m"><div class="fly-c" style="transform: rotate(6deg)"><i class="b"></i><i class="l1"></i><i class="l2"></i><i class="bx"></i></div></div></div>
+    <div id="fly-02" class="clip fly" data-start="31.32" data-duration="0.56" data-layout-ignore><div id="fly-02-m" class="fly-m"><div class="fly-c" style="transform: rotate(-7deg)"><i class="b"></i><i class="l1"></i><i class="l2"></i><i class="bx"></i></div></div></div>
+    <div id="fly-03" class="clip fly" data-start="36.92" data-duration="0.56" data-layout-ignore><div id="fly-03-m" class="fly-m"><div class="fly-c" style="transform: rotate(6deg)"><i class="b"></i><i class="l1"></i><i class="l2"></i><i class="bx"></i></div></div></div>
+    <div id="fly-04" class="clip fly" data-start="42.47" data-duration="0.56" data-layout-ignore><div id="fly-04-m" class="fly-m"><div class="fly-c" style="transform: rotate(-7deg)"><i class="b"></i><i class="l1"></i><i class="l2"></i><i class="bx"></i></div></div></div>
+    <div id="fly-05" class="clip fly" data-start="48.62" data-duration="0.56" data-layout-ignore><div id="fly-05-m" class="fly-m"><div class="fly-c" style="transform: rotate(6deg)"><i class="b"></i><i class="l1"></i><i class="l2"></i><i class="bx"></i></div></div></div>
+    <div id="fly-06" class="clip fly" data-start="57.02" data-duration="0.56" data-layout-ignore><div id="fly-06-m" class="fly-m"><div class="fly-c" style="transform: rotate(-7deg)"><i class="b"></i><i class="l1"></i><i class="l2"></i><i class="bx"></i></div></div></div>
+    <div id="fly-07" class="clip fly" data-start="66.22" data-duration="0.56" data-layout-ignore><div id="fly-07-m" class="fly-m"><div class="fly-c" style="transform: rotate(6deg)"><i class="b"></i><i class="l1"></i><i class="l2"></i><i class="bx"></i></div></div></div>
+    <div id="fly-08" class="clip fly" data-start="68.72" data-duration="0.56" data-layout-ignore><div id="fly-08-m" class="fly-m"><div class="fly-c" style="transform: rotate(-7deg)"><i class="b"></i><i class="l1"></i><i class="l2"></i><i class="bx"></i></div></div></div>
+    <div id="fly-09" class="clip fly" data-start="73.42" data-duration="0.56" data-layout-ignore><div id="fly-09-m" class="fly-m"><div class="fly-c" style="transform: rotate(6deg)"><i class="b"></i><i class="l1"></i><i class="l2"></i><i class="bx"></i></div></div></div>
+    <div id="fly-10" class="clip fly" data-start="77.47" data-duration="0.56" data-layout-ignore><div id="fly-10-m" class="fly-m"><div class="fly-c" style="transform: rotate(-7deg)"><i class="b"></i><i class="l1"></i><i class="l2"></i><i class="bx"></i></div></div></div>
+    <div id="fly-11" class="clip fly" data-start="91.27" data-duration="0.56" data-layout-ignore><div id="fly-11-m" class="fly-m"><div class="fly-c" style="transform: rotate(6deg)"><i class="b"></i><i class="l1"></i><i class="l2"></i><i class="bx"></i></div></div></div>
+  </div>
+  <script>
+    // the cheque flies across and covers the frame; the scene cuts underneath at the middle of the pass
+    const tl = gsap.timeline({ paused: true });
+    const cuts = [16.15, 28.85, 31.6, 37.2, 42.75, 48.9, 57.3, 66.5, 69.0, 73.7, 77.75, 91.55];
+    cuts.forEach((c, i) => {
+      const id = "#fly-" + String(i).padStart(2, "0") + "-m";
+      const from = i % 2 === 0 ? -3300 : 1200, to = i % 2 === 0 ? 1200 : -3300;
+      tl.fromTo(id, { x: from }, { x: to, duration: 0.56, ease: "none" }, c - 0.28);
+    });
+    window.__timelines["fly"] = tl;
+  </script>
+</template>

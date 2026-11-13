@@ -1,0 +1,25 @@
+<template>
+  <style>
+    @font-face { font-family: "Lalezar"; src: url("assets/fonts/Lalezar-Regular.ttf"); font-weight: 400; }
+    @font-face { font-family: "Noto Kufi Arabic"; src: url("assets/fonts/NotoKufiArabic.ttf"); font-weight: 100 900; }
+    @font-face { font-family: "Courier Prime"; src: url("assets/fonts/CourierPrime-Bold.ttf"); font-weight: 700; }
+    #root { position: absolute; inset: 0; overflow: hidden; }
+  </style>
+  <div id="root" data-composition-id="s14" data-width="1080" data-height="1920">
+    <div id="s14-wrap" class="clip" data-start="0" data-duration="2.6" data-layout-allow-overflow style="position:absolute;inset:0">
+      <div id="s14-stage" class="stage">
+        <div id="s14-bg" style="position:absolute; inset:0; background:#13294B"></div>
+        <div id="s14-wipe" style="position:absolute; left:0; top:0; width:1080px; height:1920px; background:#CEA532"></div>
+        <div id="s14-logobox" style="position:absolute; left:250px; top:430px; width:580px; height:685px"><img id="s14-logo" src="assets/brand/t3m-logo-light.svg" style="width:580px; height:685px; display:block" /></div>
+      </div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#s14-bg", { clipPath: "circle(0% at 50% 40%)" }, { clipPath: "circle(120% at 50% 40%)", duration: 0.45, ease: "power3.out" }, 0);
+    tl.fromTo("#s14-wipe", { clipPath: "circle(0% at 50% 40%)" }, { clipPath: "circle(120% at 50% 40%)", duration: 0.45, ease: "power3.out" }, 0);
+    tl.to("#s14-wipe", { opacity: 0, duration: 0.3, ease: "power2.out" }, 0.3);
+    tl.fromTo("#s14-logobox", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.5, ease: "back.out(1.7)" }, 0.35);
+    window.__timelines["s14"] = tl;
+  </script>
+</template>

@@ -1,0 +1,52 @@
+<template>
+  <style>
+    @font-face { font-family: "Lalezar"; src: url("assets/fonts/Lalezar-Regular.ttf"); font-weight: 400; }
+    @font-face { font-family: "Noto Kufi Arabic"; src: url("assets/fonts/NotoKufiArabic.ttf"); font-weight: 100 900; }
+    @font-face { font-family: "Courier Prime"; src: url("assets/fonts/CourierPrime-Bold.ttf"); font-weight: 700; }
+    #root { position: absolute; inset: 0; overflow: hidden; }
+  </style>
+  <div id="root" data-composition-id="s7" data-width="1080" data-height="1920">
+    <div id="s7-wrap" class="clip" data-start="0" data-duration="6.15" data-layout-allow-overflow style="position:absolute;inset:0">
+      <div id="s7-stage" class="stage">
+        <svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg">
+          <g id="s7-chq"><g id="s7-chq-slot" transform="translate(540,750) scale(2.4)"></g></g>
+          <path id="s7-ar" d="M920 520 V250" stroke="#5B6236" stroke-width="26" stroke-linecap="round" fill="none"/>
+          <path id="s7-ah" d="M870 290 L920 215 L970 290" stroke="#5B6236" stroke-width="26" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+        <div id="s7-share" class="card" style="left:170px; top:190px; width:600px; height:340px; border-width:9px; outline:6px solid #5B6236; outline-offset:-24px">
+          <div class="disp" style="font-size:92px; line-height:120px; font-weight:400; margin-top:26px; color:#5B6236">سهم</div>
+          <div id="s7-100" class="mono" style="font-size:170px; line-height:160px">100</div>
+        </div>
+        <div id="s7-amt" class="num" style="left:676px; width:180px; top:690px; font-size:58px; line-height:84px">100</div>
+        <div id="s7-date" class="kufi" style="position:absolute; left:250px; width:400px; top:668px; text-align:right; font-weight:800; font-size:44px; line-height:66px; color:#23261A">بعد سنة</div>
+        <div id="s7-eq" class="kufi" style="position:absolute; left:0; width:1080px; top:960px; text-align:center; font-weight:800; font-size:60px; line-height:130px; color:#23261A; white-space:nowrap">
+          <span id="s7-e1" style="display:inline-block"><span class="mono" style="font-size:92px">100</span> اليوم</span>
+          <span id="s7-e2" class="mono" style="display:inline-block; font-size:92px; margin:0 14px">=</span>
+          <span id="s7-e3" style="display:inline-block"><span class="mono" style="font-size:92px; color:#5B6236">160</span> بعد سنة</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    const G = 42.75, t = (g) => g - G;
+    MK.fill("s7-chq-slot", MK.cheque("s7-c"));
+    gsap.set("#s7-ah, #s7-amt", { opacity: 0 });
+    // a share priced at a hundred?
+    MK.count(tl, "#s7-100", 0, 100, t(43.3), 0.6);
+    tl.fromTo("#s7-share", { rotation: -2, scale: 1 }, { rotation: -2, scale: 1.06, duration: 0.1, yoyo: true, repeat: 1, ease: "power2.out" }, t(43.9));
+    // you write a cheque for a hundred and sixty
+    tl.fromTo("#s7-chq", { x: 1200, rotation: 12 }, { x: 0, rotation: 2, duration: 0.45, ease: "back.out(1.2)" }, t(44.14));
+    tl.to("#s7-amt", { opacity: 1, duration: 0.1 }, t(44.7));
+    MK.count(tl, "#s7-amt", 100, 160, t(44.8), 0.8);
+    tl.fromTo("#s7-amt", { scale: 1 }, { scale: 1.3, duration: 0.1, yoyo: true, repeat: 1, ease: "power2.out", immediateRender: false }, t(45.6));
+    // dated a year from now
+    MK.type(tl, "#s7-date", "بعد سنة", t(46.3), 0.5);
+    // 100 today = 160 in a year
+    MK.pop(tl, "#s7-e1", t(46.94)); MK.pop(tl, "#s7-e2", t(47.5)); MK.pop(tl, "#s7-e3", t(47.9));
+    // because you are sure the price will rise
+    MK.draw(tl, "#s7-ar", t(48.3), 0.35);
+    tl.fromTo("#s7-ah", { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.2, ease: "back.out(3)" }, t(48.5));
+    window.__timelines["s7"] = tl;
+  </script>
+</template>
