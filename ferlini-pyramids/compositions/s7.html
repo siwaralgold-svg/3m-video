@@ -1,0 +1,58 @@
+<template>
+  <style>
+    @font-face { font-family: "Lalezar"; src: url("assets/fonts/Lalezar-Regular.ttf"); font-weight: 400; }
+    @font-face { font-family: "Noto Kufi Arabic"; src: url("assets/fonts/NotoKufiArabic.ttf"); font-weight: 100 900; }
+    #root { position: absolute; inset: 0; overflow: hidden; }
+  </style>
+  <div id="root" data-composition-id="s7" data-width="1080" data-height="1920">
+    <div id="s7-wrap" class="clip" data-start="0" data-duration="9.08" data-layout-allow-overflow style="position:absolute;inset:0">
+      <div id="s7-stage" class="stage">
+        <svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg" style="position:absolute;left:0;top:0">
+          <g id="s7-bg"></g>
+          <g id="s7-pyrs"></g>
+          <g id="s7-rob"><g id="s7-rob-in" transform="translate(0,1170)"></g></g>
+          <g id="s7-sand"></g>
+        </svg>
+        <div id="s7-fair" class="card kufi" style="left:160px; top:190px; width:760px; height:136px; font-size:62px; font-weight:800; line-height:116px">وهنا لازم ننصف</div>
+        <div id="s7-cnt" class="count">يُقال: أكثر من</div>
+        <div id="s7-n1" class="ttl" style="font-size:230px; top:216px">٤٠ هرم</div>
+        <div id="s7-n2" class="ttl" style="font-size:230px; top:216px">٤٠ هرم؟</div>
+        <div id="s7-hist" class="card kufi" style="left:190px; top:520px; width:700px; height:120px; font-size:56px; font-weight:800; line-height:100px">المؤرخين مختلفين</div>
+        <div id="s7-rb" class="card disp" style="left:170px; top:186px; width:740px; height:156px; font-size:116px; line-height:160px">لصوص القبور</div>
+        <div id="s7-cent" class="plate" style="left:150px; top:392px; width:780px; height:196px; font-size:138px; line-height:184px">سبقوه بقرون</div>
+      </div>
+    </div>
+  </div>
+  <script>
+    EK.fill("s7-bg", EK.desert()); EK.fill("s7-sand", EK.sand());
+    const P7 = [[330, 1056], [750, 1056], [120, 1104], [540, 1110], [960, 1104]];
+    EK.fill("s7-pyrs", P7.map(([cx, base], i) => `<g id="s7-p${i}">${EK.pyr("s7-p" + i, cx, base, i < 2 ? 200 : 240, i < 2 ? 400 : 480, 8)}</g>`).join(""));
+    P7.forEach((p, i) => [5, 6, 7].slice(i % 2).forEach((r) => document.getElementById(`s7-p${i}-r${r}`).remove()));
+    EK.fill("s7-rob-in", EK.robber());
+    const w = EK.clock("s7");
+    const T = { fair: w(90), said: w(93), n: w(98), but: w(100, 0.12), hist: w(102), rob: w(105), tomb: w(106), cent: w(107, 0.3) };
+    const tl = gsap.timeline({ paused: true });
+    gsap.set("#s7-fair, #s7-cnt, #s7-n1, #s7-n2, #s7-hist, #s7-rb, #s7-cent", { opacity: 0 });
+    gsap.set("#s7-rob", { x: -260 });
+    EK.whip(tl, "#s7-stage", 1080);
+    // fairness first
+    EK.pop(tl, "#s7-fair", T.fair + 0.1, -2);
+    // it is said he wrecked more than forty
+    EK.out(tl, "#s7-fair", T.said + 0.1);
+    tl.fromTo("#s7-cnt", { opacity: 0 }, { opacity: 1, duration: 0.15 }, T.said + 0.1);
+    P7.forEach((p, i) => tl.fromTo("#s7-p" + i, { y: 0 }, { y: -26, duration: 0.11, yoyo: true, repeat: 1, ease: "sine.inOut", immediateRender: false }, T.said + 0.62 + i * 0.1));
+    tl.fromTo("#s7-n1", { opacity: 0, scale: 1.6 }, { opacity: 1, scale: 1, duration: 0.22, ease: "power4.out" }, T.n - 0.1);
+    EK.shake(tl, "#s7-stage", T.n + 0.12, 6);
+    // but historians disagree on the number
+    tl.set("#s7-n1", { opacity: 0 }, T.but); tl.set("#s7-n2", { opacity: 1 }, T.but);
+    tl.fromTo("#s7-n2", { scale: 1.16, rotation: 0 }, { scale: 1, rotation: -3, duration: 0.3, ease: "back.out(3)" }, T.but);
+    EK.pop(tl, "#s7-hist", T.hist, 3);
+    // and tomb robbers were there centuries before him
+    tl.to("#s7-cnt, #s7-n2, #s7-hist", { opacity: 0, duration: 0.14 }, T.rob - 0.1);
+    tl.to("#s7-rob", { x: 330, duration: 1.3, ease: "power1.out" }, T.rob);
+    tl.fromTo("#s7-rob-in", { y: 1170 }, { y: 1152, duration: 0.13, yoyo: true, repeat: 9, ease: "sine.inOut", immediateRender: false }, T.rob);
+    EK.pop(tl, "#s7-rb", T.tomb, -3);
+    EK.stamp(tl, "#s7-cent", "#s7-stage", T.cent, 4);
+    window.__timelines["s7"] = tl;
+  </script>
+</template>

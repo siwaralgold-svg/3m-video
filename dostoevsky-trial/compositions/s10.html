@@ -1,0 +1,63 @@
+<template>
+  <style>
+    @font-face { font-family: "Lalezar"; src: url("assets/fonts/Lalezar-Regular.ttf"); font-weight: 400; }
+    @font-face { font-family: "Noto Kufi Arabic"; src: url("assets/fonts/NotoKufiArabic.ttf"); font-weight: 100 900; }
+    #root { position: absolute; inset: 0; overflow: hidden; }
+    .bk { position: absolute; top: 172px; width: 300px; height: 380px; border: 8px solid #0c1a30; border-radius: 12px; font-family: "Lalezar", sans-serif; color: #F4F6F9; text-align: center; direction: rtl; font-size: 76px; line-height: 88px; display: flex; align-items: center; justify-content: center; }
+    .bk i { position: absolute; right: 0; top: 0; bottom: 0; width: 30px; background: rgba(12,26,48,0.4); border-left: 6px solid #0c1a30; }
+  </style>
+  <div id="root" data-composition-id="s10" data-width="1080" data-height="1920">
+    <div id="s10-wrap" class="clip" data-start="0" data-duration="8.27" data-layout-allow-overflow style="position:absolute;inset:0">
+      <div id="s10-stage" class="stage">
+        <svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg" style="position:absolute;left:0;top:0">
+          <defs><clipPath id="s10-clip"><rect x="-200" y="0" width="1480" height="1163"/></clipPath></defs>
+          <g id="s10-bg"></g>
+          <g clip-path="url(#s10-clip)">
+            <g id="s10-who">
+              <g id="s10-yg"><g id="s10-y-slot" transform="translate(540,930) scale(1.45)"></g></g>
+              <g id="s10-og"><g id="s10-o-slot" transform="translate(540,930) scale(1.45)"></g></g>
+            </g>
+          </g>
+          <g id="s10-desk"></g>
+        </svg>
+        <div id="s10-age" class="card disp" style="left:340px; top:180px; width:400px; height:250px; font-size:230px; line-height:262px">٢٨</div>
+        <div id="s10-strike" style="position:absolute; left:300px; top:290px; width:480px; height:26px; background:#8c2f2f; border:6px solid #0c1a30; border-radius:10px"></div>
+        <div id="s10-b1" class="bk" style="left:720px; background:#8c2f2f"><i></i>الجريمة<br>والعقاب</div>
+        <div id="s10-b2" class="bk" style="left:390px; background:#2b4d7e; font-size:96px"><i></i>الأبله</div>
+        <div id="s10-b3" class="bk" style="left:60px; background:#24493f; font-size:66px; line-height:80px"><i></i>الإخوة<br>كارامازوف</div>
+      </div>
+    </div>
+  </div>
+  <script>
+    EK.fill("s10-bg", EK.library()); EK.fill("s10-desk", EK.desk());
+    EK.put("s10-y-slot", "s10-y", "fyodor"); EK.put("s10-o-slot", "s10-o", "fyodorOld");
+    const w = EK.clock("s10");
+    const T = { die: w(193), age: w(195), strike: w(196, 0.55), back: w(197), b1: w(199, 0.15), b2: w(201, 0.2), b3: w(203) };
+    const tl = gsap.timeline({ paused: true });
+    EK.face(tl, "s10-y", "flat"); EK.face(tl, "s10-o", "calm");
+    gsap.set("#s10-age, #s10-strike, #s10-b1, #s10-b2, #s10-b3", { opacity: 0 });
+    gsap.set("#s10-og", { opacity: 0 });
+    // the stage swings in from the left; the man who should have died at 28
+    EK.whip(tl, "#s10-stage", -1080);
+    EK.blink(tl, "s10-y", 1.0); EK.mood(tl, "s10-y", T.die, "worried");
+    EK.pop(tl, "#s10-age", T.age, 4); EK.look(tl, "s10-y", T.age + 0.2, 0, -10);
+    tl.set("#s10-strike", { opacity: 1 }, T.strike);
+    tl.fromTo("#s10-strike", { scaleX: 0, rotation: -8, transformOrigin: "100% 50%" }, { scaleX: 1, rotation: -8, duration: 0.16, ease: "power3.out" }, T.strike);
+    EK.mood(tl, "s10-y", T.strike + 0.1, "smug");
+    // he came back and wrote: the young face gives way to the one the world knows
+    tl.to("#s10-age, #s10-strike", { opacity: 0, duration: 0.12 }, T.back - 0.05);
+    tl.to("#s10-who", { scaleY: 0.86, scaleX: 1.08, svgOrigin: "540 1160", duration: 0.12, ease: "power2.in" }, T.back);
+    tl.set("#s10-yg", { opacity: 0 }, T.back + 0.12); tl.set("#s10-og", { opacity: 1 }, T.back + 0.12);
+    tl.to("#s10-who", { scaleY: 1.06, scaleX: 0.97, duration: 0.12, ease: "power2.out" }, T.back + 0.12);
+    tl.to("#s10-who", { scaleY: 1, scaleX: 1, duration: 0.4, ease: "elastic.out(1,0.5)" }, T.back + 0.24);
+    [["b1", T.b1, 4, 9], ["b2", T.b2, -3, 0], ["b3", T.b3, 3, -9]].forEach(([id, t, rot, lx]) => {
+      tl.fromTo("#s10-" + id, { opacity: 0, y: -520, rotation: rot * 4 }, { opacity: 1, y: 0, rotation: rot, duration: 0.2, ease: "power3.in" }, t - 0.2);
+      tl.fromTo("#s10-" + id, { y: 0 }, { y: -16, duration: 0.09, yoyo: true, repeat: 1, ease: "power1.out", immediateRender: false }, t);
+      EK.shake(tl, "#s10-who", t, 5);
+      EK.look(tl, "s10-o", t + 0.05, lx, -10);
+    });
+    EK.mood(tl, "s10-o", T.b3 + 0.5, "laugh"); EK.look(tl, "s10-o", T.b3 + 0.9, 0, 0);
+    EK.idle(tl, "s10-y", 0.5, T.back, 2.4); EK.idle(tl, "s10-o", T.back + 0.7, DT.D.s10 - 0.1, 2.5);
+    window.__timelines["s10"] = tl;
+  </script>
+</template>

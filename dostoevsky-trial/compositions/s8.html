@@ -1,0 +1,89 @@
+<template>
+  <style>
+    @font-face { font-family: "Lalezar"; src: url("assets/fonts/Lalezar-Regular.ttf"); font-weight: 400; }
+    @font-face { font-family: "Noto Kufi Arabic"; src: url("assets/fonts/NotoKufiArabic.ttf"); font-weight: 100 900; }
+    #root { position: absolute; inset: 0; overflow: hidden; }
+  </style>
+  <div id="root" data-composition-id="s8" data-width="1080" data-height="1920">
+    <div id="s8-wrap" class="clip" data-start="0" data-duration="10.11" data-layout-allow-overflow style="position:absolute;inset:0">
+      <div id="s8-stage" class="stage">
+        <svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg" style="position:absolute;left:0;top:0">
+          <defs><clipPath id="s8-clip"><rect x="-200" y="0" width="1480" height="1160"/></clipPath></defs>
+          <g id="s8-bg"></g>
+          <g id="s8-posts"></g>
+          <!-- A: the Tsar behind the play -->
+          <g id="s8-a" clip-path="url(#s8-clip)">
+            <g id="s8-tsup"><g id="s8-ts-slot" transform="translate(540,900) scale(1.4)"></g></g>
+            <g id="s8-arm">
+              <path d="M750 1200 Q820 1090 800 960" fill="none" stroke="#0c1a30" stroke-width="82" stroke-linecap="round"/>
+              <path d="M750 1200 Q820 1090 800 960" fill="none" stroke="#2e4a3f" stroke-width="66" stroke-linecap="round"/>
+              <g transform="translate(800,820) rotate(8)"><g id="s8-paper"></g><circle cx="50" cy="84" r="26" fill="#8c2f2f" stroke="#0c1a30" stroke-width="6"/></g>
+              <circle cx="800" cy="950" r="42" fill="#f2c9a4" stroke="#0c1a30" stroke-width="8"/>
+            </g>
+          </g>
+          <!-- B: the friend who did not come back -->
+          <g id="s8-b" clip-path="url(#s8-clip)"><g id="s8-frgrp"><g id="s8-fr-slot" transform="translate(540,900) scale(1.4)"></g></g></g>
+          <!-- stage floor and curtains -->
+          <g id="s8-snow"></g>
+          <g id="s8-floor"><rect x="-10" y="1150" width="1100" height="780" fill="#6b4226"/><rect x="-10" y="1150" width="1100" height="46" fill="#a8703f" stroke="#0c1a30" stroke-width="7"/>
+          <g stroke="#0c1a30" stroke-width="6"><path d="M0 1320 H1080 M0 1480 H1080 M0 1660 H1080"/></g></g>
+          <g id="s8-curL"><path d="M-620 -20 H180 Q130 500 190 1180 H-620Z" fill="#8c2f2f" stroke="#0c1a30" stroke-width="9" stroke-linejoin="round"/><path d="M40 0 Q0 520 50 1170 M-110 0 Q-140 520 -100 1170 M-270 0 Q-290 520 -260 1170 M-430 0 Q-440 520 -420 1170" fill="none" stroke="#6e2424" stroke-width="9" stroke-linecap="round"/></g>
+          <g id="s8-curR"><path d="M1700 -20 H900 Q950 500 890 1180 H1700Z" fill="#8c2f2f" stroke="#0c1a30" stroke-width="9" stroke-linejoin="round"/><path d="M1040 0 Q1080 520 1030 1170 M1190 0 Q1220 520 1180 1170 M1350 0 Q1370 520 1340 1170 M1510 0 Q1520 520 1500 1170" fill="none" stroke="#6e2424" stroke-width="9" stroke-linecap="round"/></g>
+          <path id="s8-val" d="M-10 -10 H1090 V120 Q990 190 900 120 Q810 190 720 120 Q630 190 540 120 Q450 190 360 120 Q270 190 180 120 Q90 190 -10 120Z" fill="#8c2f2f" stroke="#0c1a30" stroke-width="9" stroke-linejoin="round"/>
+        </svg>
+        <div id="s8-play" class="disp" style="position:absolute; left:200px; right:200px; top:196px; text-align:center; font-size:176px; line-height:1.2; color:#F4F6F9">تمثيلية</div>
+        <div id="s8-name" class="sign" style="left:290px; top:1056px; width:500px; height:96px; font-size:60px; line-height:92px">القيصر نيكولاي الأول</div>
+        <div id="s8-break" class="card disp" style="left:250px; top:424px; width:580px; height:136px; font-size:88px; line-height:140px">عشان يكسرهم</div>
+        <div id="s8-mind" class="card disp" style="left:260px; top:210px; width:560px; height:190px; font-size:136px; line-height:194px">فقد عقله</div>
+        <div id="s8-never" class="card kufi" style="left:350px; top:440px; width:380px; height:104px; font-size:52px; font-weight:800; line-height:88px">وما رجع</div>
+      </div>
+    </div>
+  </div>
+  <script>
+    EK.fill("s8-bg", EK.square());
+    EK.fill("s8-posts", [250, 540, 830].map((x) => `<g transform="translate(${x},1170)">${EK.post(560)}</g>`).join("")); EK.fill("s8-snow", EK.snow());
+    EK.put("s8-ts-slot", "s8-ts", "tsar"); EK.put("s8-fr-slot", "s8-fr", "friend2");
+    EK.fill("s8-paper", EK.letter(170, 210));
+    const w = EK.clock("s8");
+    const T = { play: w(158), tsar: w(159), plan: w(160, 0.3), brk: w(165), close: w(166, -0.35), mind: w(170), never: w(174) };
+    const tl = gsap.timeline({ paused: true });
+    EK.face(tl, "s8-ts", "smug"); EK.face(tl, "s8-fr", "worried"); gsap.set("#s8-fr-shroud", { opacity: 1 });
+    gsap.set("#s8-play, #s8-name, #s8-break, #s8-mind, #s8-never", { opacity: 0 });
+    gsap.set("#s8-b", { opacity: 0 }); gsap.set("#s8-tsup", { y: 900 }); gsap.set("#s8-arm", { y: 460 });
+    // the square turns out to be a stage: curtains swing in
+    tl.fromTo("#s8-curL", { x: -300 }, { x: -60, duration: 0.5, ease: "back.out(1.4)" }, T.play - 0.5);
+    tl.fromTo("#s8-curR", { x: 300 }, { x: 60, duration: 0.5, ease: "back.out(1.4)" }, T.play - 0.44);
+    tl.fromTo("#s8-floor", { y: 800 }, { y: 0, duration: 0.4, ease: "power3.out" }, T.play - 0.5);
+    tl.fromTo("#s8-val", { y: -230 }, { y: 0, duration: 0.4, ease: "bounce.out" }, T.play - 0.5);
+    tl.fromTo("#s8-play", { opacity: 0, scale: 1.7 }, { opacity: 1, scale: 1, duration: 0.2, ease: "power4.out" }, T.play);
+    EK.shake(tl, "#s8-stage", T.play + 0.18, 7);
+    // the director steps up
+    tl.to("#s8-tsup", { y: 0, duration: 0.45, ease: "back.out(1.5)" }, T.tsar);
+    tl.fromTo("#s8-name", { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.3, ease: "back.out(1.8)" }, T.tsar + 0.35);
+    EK.blink(tl, "s8-ts", T.tsar + 0.9);
+    tl.to("#s8-arm", { y: 0, duration: 0.35, ease: "back.out(1.7)" }, T.plan);
+    EK.look(tl, "s8-ts", T.plan + 0.2, 9, 0);
+    EK.mood(tl, "s8-ts", T.brk - 0.5, "laugh"); EK.look(tl, "s8-ts", T.brk - 0.5, 0, 0);
+    tl.fromTo("#s8-ts-rig", { y: 0 }, { y: -10, duration: 0.09, yoyo: true, repeat: 7, ease: "sine.inOut", immediateRender: false }, T.brk - 0.3);
+    EK.pop(tl, "#s8-break", T.brk, -5);
+    EK.idle(tl, "s8-ts", T.tsar + 0.5, T.close, 2.4);
+    // curtains close on him, open on the one it broke
+    tl.to("#s8-play, #s8-break, #s8-name", { opacity: 0, duration: 0.12 }, T.close);
+    tl.to("#s8-curL", { x: 400, duration: 0.25, ease: "power3.in" }, T.close);
+    tl.to("#s8-curR", { x: -400, duration: 0.25, ease: "power3.in" }, T.close);
+    tl.set("#s8-a, #s8-posts", { opacity: 0 }, T.close + 0.25); tl.set("#s8-b", { opacity: 1 }, T.close + 0.25);
+    tl.to("#s8-curL", { x: -30, duration: 0.4, ease: "power3.out" }, T.close + 0.3);
+    tl.to("#s8-curR", { x: 30, duration: 0.4, ease: "power3.out" }, T.close + 0.3);
+    EK.look(tl, "s8-fr", T.close + 0.9, -7, 3);
+    EK.pop(tl, "#s8-mind", T.mind, -3);
+    // an empty stare, not a joke: small pupils, a face that stops moving
+    EK.mood(tl, "s8-fr", T.mind + 0.05, "flat");
+    tl.to("#s8-fr-pupils circle", { scale: 0.5, transformOrigin: "50% 50%", duration: 0.2 }, T.mind + 0.15);
+    tl.to("#s8-fr-browL", { rotation: -14, y: -8, duration: 0.2 }, T.mind + 0.25); tl.to("#s8-fr-browR", { rotation: 14, y: -8, duration: 0.2 }, T.mind + 0.28);
+    EK.look(tl, "s8-fr", T.mind + 0.3, 0, -3);
+    tl.to("#s8-fr-rig", { rotation: -5, transformOrigin: "50% 100%", duration: 1.6, ease: "sine.inOut" }, T.mind + 0.4);
+    tl.fromTo("#s8-never", { opacity: 0, y: -30 }, { opacity: 1, y: 0, duration: 0.25, ease: "power3.out" }, T.never);
+    tl.to("#s8-frgrp", { opacity: 0.45, duration: 0.6, ease: "power1.out" }, T.never + 0.1);
+    window.__timelines["s8"] = tl;
+  </script>
+</template>

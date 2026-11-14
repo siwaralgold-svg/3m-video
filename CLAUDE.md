@@ -1,5 +1,9 @@
 # 3m-video
 
+## Wait for the voiceover
+
+Do not build, time or render a narrated video until the user has sent its voiceover file. When they send only a script, do only what they asked with the script (for example, tune its wording), then stop and wait for the recording. Never build a draft on estimated timing: it costs the user tokens and gets redone.
+
 T3M's HyperFrames videos. Each top-level folder is one video project; `brand/` holds the T3M logo and colours; `sfx-library/` holds the shared sound effects.
 
 ## Order of work: script first, video only after the voiceover
@@ -33,3 +37,4 @@ When a video should look like the Edison video, reuse its art style, not its sto
 2. Draw people with `EK.put(slot, prefix, who)`. Add a new person as one entry in the `WHO` table in `kit.js` (skin, suit, hair path, beard, moustache, glasses). Act with `EK.mood`, `EK.blink`, `EK.look` and `EK.idle`.
 3. Draw every new prop and background the same way: flat fills, a #0c1a30 outline at 6–8 px, no gradients, no glow.
 4. Build a new background for the new story. The courtroom belongs to the Edison video only.
+5. `dostoevsky-trial/` is the second video in this style. Its `tools/build.py` writes the scene times, captions and sound-effect starts from the voiceover's word times, and its scenes anchor every beat to a script word with `w(<word index>)`. Use that setup for a narrated video so a new voiceover retimes the whole film.

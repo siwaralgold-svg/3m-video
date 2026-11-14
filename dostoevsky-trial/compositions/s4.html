@@ -1,0 +1,73 @@
+<template>
+  <style>
+    @font-face { font-family: "Lalezar"; src: url("assets/fonts/Lalezar-Regular.ttf"); font-weight: 400; }
+    @font-face { font-family: "Noto Kufi Arabic"; src: url("assets/fonts/NotoKufiArabic.ttf"); font-weight: 100 900; }
+    #root { position: absolute; inset: 0; overflow: hidden; }
+  </style>
+  <div id="root" data-composition-id="s4" data-width="1080" data-height="1920">
+    <div id="s4-wrap" class="clip" data-start="0" data-duration="12.47" data-layout-allow-overflow style="position:absolute;inset:0">
+      <div id="s4-stage" class="stage">
+        <svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg" style="position:absolute;left:0;top:0">
+          <g id="s4-bg"></g>
+          <g id="s4-f1in"><g id="s4-f1-slot" transform="translate(190,960) scale(0.86)"></g></g>
+          <g id="s4-f2in"><g id="s4-f2-slot" transform="translate(890,960) scale(0.86)"></g></g>
+          <g id="s4-fyin"><g id="s4-fy-slot" transform="translate(540,960) scale(1.15)"></g></g>
+          <g id="s4-snow"></g>
+          <g id="s4-scroll">
+            <rect x="300" y="-60" width="480" height="462" fill="#f4f6f9" stroke="#0c1a30" stroke-width="8"/>
+            <rect x="270" y="388" width="540" height="44" rx="22" fill="#c7ccd6" stroke="#0c1a30" stroke-width="8"/>
+            
+          </g>
+        </svg>
+        <div id="s4-cal" class="card" style="left:340px; top:186px; width:400px; height:372px; overflow:hidden">
+          <div class="kufi" style="height:92px; background:#8c2f2f; color:#F4F6F9; font-size:50px; font-weight:800; line-height:84px; border-bottom:7px solid #0c1a30">ديسمبر</div>
+          <div class="disp" style="font-size:236px; line-height:286px; color:#0c1a30">٢٢</div>
+        </div>
+        <div id="s4-sent" class="disp" style="position:absolute; left:300px; top:150px; width:480px; text-align:center; font-size:104px; line-height:116px; color:#0c1a30">الحكم:<br>الإعدام</div>
+        <div id="s4-shot" class="plate" style="left:160px; top:462px; width:760px; height:160px; font-size:120px; line-height:146px">رمياً بالرصاص</div>
+        <div id="s4-shirts" class="card disp" style="left:170px; top:196px; width:740px; height:196px; font-size:132px; line-height:200px">قمصان الموت</div>
+      </div>
+    </div>
+  </div>
+  <script>
+    EK.fill("s4-bg", EK.square()); EK.fill("s4-snow", EK.snow());
+    EK.put("s4-fy-slot", "s4-fy", "fyodor"); EK.put("s4-f1-slot", "s4-f1", "friend1"); EK.put("s4-f2-slot", "s4-f2", "friend2");
+    const w = EK.clock("s4");
+    const T = { cal: w(80, 0.25), out: w(86), read: w(92), sent: w(95), shot: w(96, 0.25), dress: w(98), shirts: w(101) };
+    const tl = gsap.timeline({ paused: true });
+    ["fy", "f1", "f2"].forEach((k) => EK.face(tl, "s4-" + k, "worried"));
+    gsap.set("#s4-cal, #s4-sent, #s4-shot, #s4-shirts", { opacity: 0 });
+    gsap.set("#s4-scroll", { y: -560 });
+    // the square rises; a page of the calendar drops
+    tl.fromTo("#s4-stage", { y: 520, filter: "blur(14px)" }, { y: 0, filter: "blur(0px)", duration: 0.4, ease: "power4.out" }, 0);
+    gsap.set("#s4-fyin, #s4-f1in, #s4-f2in", { x: 1150 });
+    tl.fromTo("#s4-cal", { opacity: 0, y: -420, rotation: -12 }, { opacity: 1, y: 0, rotation: 4, duration: 0.3, ease: "back.out(1.5)" }, T.cal - 0.2);
+    // they are marched out into the snow
+    tl.to("#s4-cal", { opacity: 0, y: -60, duration: 0.18, ease: "power2.in" }, T.out + 0.1);
+    [["f1", 0], ["fy", 0.22], ["f2", 0.44]].forEach(([k, d]) => {
+      const t = T.out + 0.15 + d;
+      tl.to("#s4-" + k + "in", { x: 0, duration: 0.7, ease: "power2.out" }, t);
+      tl.fromTo("#s4-" + k + "-rig", { y: 0 }, { y: -16, duration: 0.11, yoyo: true, repeat: 5, ease: "sine.inOut", immediateRender: false }, t);
+    });
+    EK.look(tl, "s4-f1", T.out + 1.2, 8, -4); EK.look(tl, "s4-f2", T.out + 1.5, -8, -4); EK.blink(tl, "s4-fy", T.out + 1.5);
+    // the sentence is read out
+    tl.to("#s4-scroll", { y: 0, duration: 0.3, ease: "back.out(1.3)" }, T.read);
+    ["fy", "f1", "f2"].forEach((k, i) => EK.look(tl, "s4-" + k, T.read + 0.2 + i * 0.1, k === "f1" ? 8 : k === "f2" ? -8 : 0, -10));
+    tl.fromTo("#s4-sent", { opacity: 0 }, { opacity: 1, duration: 0.12 }, T.sent);
+    EK.stamp(tl, "#s4-shot", "#s4-stage", T.shot, -4);
+    EK.mood(tl, "s4-fy", T.shot + 0.05, "shock", true); EK.mood(tl, "s4-f1", T.shot + 0.16, "shock"); EK.mood(tl, "s4-f2", T.shot + 0.27, "shock", true);
+    // white shirts
+    tl.to("#s4-sent, #s4-shot", { opacity: 0, duration: 0.12 }, T.dress - 0.2);
+    tl.to("#s4-scroll", { y: -560, duration: 0.2, ease: "power2.in" }, T.dress - 0.2);
+    EK.shroud(tl, "s4-f1", T.dress + 0.1); EK.shroud(tl, "s4-fy", T.dress + 0.4); EK.shroud(tl, "s4-f2", T.dress + 0.7);
+    EK.mood(tl, "s4-f1", T.dress + 0.2, "sad"); EK.mood(tl, "s4-fy", T.dress + 0.5, "worried"); EK.mood(tl, "s4-f2", T.dress + 0.8, "sad");
+    ["fy", "f1", "f2"].forEach((k) => EK.look(tl, "s4-" + k, T.dress + 0.9, 0, 6));
+    EK.pop(tl, "#s4-shirts", T.shirts, -3);
+    EK.blink(tl, "s4-fy", T.shirts + 0.9);
+    [["fy", 1.1, 2.4], ["f1", 1.2, 2.8], ["f2", 1.4, 2.1]].forEach(([k, d, per]) => {
+      EK.idle(tl, "s4-" + k, T.out + d, T.dress - 0.15, per);   // breathing stops while the shirt goes on
+      EK.idle(tl, "s4-" + k, T.dress + 1.3, DT.D.s4 - 0.1, per);
+    });
+    window.__timelines["s4"] = tl;
+  </script>
+</template>

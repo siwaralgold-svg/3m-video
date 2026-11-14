@@ -1,0 +1,72 @@
+<template>
+  <style>
+    @font-face { font-family: "Lalezar"; src: url("assets/fonts/Lalezar-Regular.ttf"); font-weight: 400; }
+    @font-face { font-family: "Noto Kufi Arabic"; src: url("assets/fonts/NotoKufiArabic.ttf"); font-weight: 100 900; }
+    #root { position: absolute; inset: 0; overflow: hidden; }
+  </style>
+  <div id="root" data-composition-id="s11" data-width="1080" data-height="1920">
+    <div id="s11-wrap" class="clip" data-start="0" data-duration="6.09" data-layout-allow-overflow style="position:absolute;inset:0">
+      <div id="s11-stage" class="stage">
+        <svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg" style="position:absolute;left:0;top:0">
+          <defs><clipPath id="s11-clip"><rect x="-200" y="0" width="1480" height="1163"/></clipPath></defs>
+          <g id="s11-bg"></g>
+          <g id="s11-rub" transform="translate(390,1130)"></g>
+          <g id="s11-big"></g>
+          <g id="s11-chap"></g>
+          <g id="s11-med"><defs><clipPath id="s11-mclip"><circle cx="176" cy="330" r="124"/></clipPath></defs>
+            <circle cx="176" cy="330" r="124" fill="#24426e" stroke="#0c1a30" stroke-width="8"/>
+            <g clip-path="url(#s11-mclip)"><g id="s11-q-slot" transform="translate(176,392) scale(0.50)"></g></g>
+            <circle cx="176" cy="330" r="124" fill="none" stroke="#0c1a30" stroke-width="8"/></g>
+          <g clip-path="url(#s11-clip)"><g id="s11-fegrp"><g id="s11-fe-slot" transform="translate(830,1010) scale(1.12)"></g></g></g>
+          <g id="s11-sand"></g>
+          <g id="s11-br" transform="translate(390,790)"></g>
+        </svg>
+        <div id="s11-qn" class="card kufi" style="left:26px; top:470px; width:300px; height:84px; font-size:42px; font-weight:800; line-height:68px">أماني شخيتو</div>
+        <div id="s11-ever" class="plate" style="left:440px; top:200px; width:540px; height:220px; font-size:176px; line-height:204px">للأبد</div>
+        <div id="s11-sale" class="card disp" style="left:150px; top:420px; width:480px; height:200px; font-size:156px; line-height:204px">للبيع</div>
+      </div>
+    </div>
+  </div>
+  <script>
+    EK.fill("s11-bg", EK.desert()); EK.fill("s11-sand", EK.sand());
+    EK.fill("s11-big", EK.pyr("s11-p", 390, 1124, 480, 600, 8)); EK.fill("s11-chap", EK.chapel(390, 1130, 1.15));
+    EK.fill("s11-rub", EK.rubble(220)); EK.put("s11-q-slot", "s11-q", "queen"); EK.put("s11-fe-slot", "s11-fe", "ferlini");
+    EK.fill("s11-br", EK.bracelet(80));
+    const w = EK.clock("s11");
+    const T = { built: w(145), keep: w(149), name: w(150), ever: w(152), man: w(153), wreck: w(154), sell: w(156) };
+    const tl = gsap.timeline({ paused: true });
+    EK.face(tl, "s11-q", "calm"); EK.face(tl, "s11-fe", "smug");
+    gsap.set("#s11-qn, #s11-ever, #s11-sale", { opacity: 0 });
+    gsap.set("#s11-med", { scale: 0, transformOrigin: "176px 330px" });
+    gsap.set("#s11-rub", { scale: 0, transformOrigin: "50% 100%" }); gsap.set("#s11-br", { scale: 0, transformOrigin: "50% 50%" });
+    gsap.set("#s11-fegrp", { y: 900 }); gsap.set("#s11-chap", { opacity: 0 });
+    tl.fromTo("#s11-stage", { y: -520, filter: "blur(14px)" }, { y: 0, filter: "blur(0px)", duration: 0.36, ease: "power4.out" }, 0);
+    // a civilisation built the pyramid, course by course
+    for (let r = 0; r < 8; r++) tl.fromTo("#s11-p-r" + r, { y: -1100 }, { y: 0, duration: 0.2, ease: "power2.in" }, T.built + 0.1 + r * 0.115);
+    tl.to("#s11-chap", { opacity: 1, duration: 0.1 }, T.built + 1.12);
+    // to keep its queen's name for ever
+    tl.to("#s11-med", { scale: 1, duration: 0.3, ease: "back.out(2)" }, T.keep);
+    EK.pop(tl, "#s11-qn", T.name + 0.1, -3);
+    EK.stamp(tl, "#s11-ever", "#s11-stage", T.ever, 4);
+    // and a man tore it down
+    tl.to("#s11-fegrp", { y: 0, duration: 0.36, ease: "back.out(1.4)" }, T.man);
+    EK.look(tl, "s11-fe", T.man + 0.3, -10, -4);
+    for (let r = 0; r < 8; r++) {
+      const dir = r % 2 ? 1 : -1, t = T.wreck + (7 - r) * 0.035;
+      tl.to("#s11-p-r" + r, { x: dir * (60 + r * 22), y: r * 62 + 20, rotation: dir * (14 + r * 5), duration: 0.34, ease: "power2.in", transformOrigin: "50% 50%" }, t);
+      tl.to("#s11-p-r" + r, { opacity: 0, duration: 0.1 }, t + 0.28);
+    }
+    tl.to("#s11-chap", { opacity: 0, duration: 0.1 }, T.wreck + 0.3);
+    tl.to("#s11-rub", { scale: 1, duration: 0.22, ease: "back.out(1.6)" }, T.wreck + 0.3);
+    EK.shake(tl, "#s11-stage", T.wreck + 0.3, 11);
+    EK.mood(tl, "s11-q", T.wreck + 0.1, "sad");
+    tl.to("#s11-ever", { y: 2100, rotation: 26, duration: 0.5, ease: "power2.in" }, T.wreck + 0.1);
+    tl.to("#s11-med, #s11-qn", { opacity: 0, y: 80, duration: 0.3, ease: "power2.in" }, T.wreck + 0.35);
+    // to sell her gold
+    tl.to("#s11-br", { scale: 1, duration: 0.28, ease: "back.out(2)" }, T.sell - 0.1);
+    EK.pop(tl, "#s11-sale", T.sell + 0.05, -6);
+    EK.mood(tl, "s11-fe", T.sell + 0.1, "laugh");
+    EK.idle(tl, "s11-fe", T.man + 0.5, DT.D.s11 - 0.05, 2.2);
+    window.__timelines["s11"] = tl;
+  </script>
+</template>

@@ -1,0 +1,55 @@
+<template>
+  <style>
+    @font-face { font-family: "Lalezar"; src: url("assets/fonts/Lalezar-Regular.ttf"); font-weight: 400; }
+    @font-face { font-family: "Noto Kufi Arabic"; src: url("assets/fonts/NotoKufiArabic.ttf"); font-weight: 100 900; }
+    #root { position: absolute; inset: 0; overflow: hidden; }
+  </style>
+  <div id="root" data-composition-id="s12" data-width="1080" data-height="1920">
+    <div id="s12-wrap" class="clip" data-start="0" data-duration="7.44" data-layout-allow-overflow style="position:absolute;inset:0">
+      <div id="s12-stage" class="stage">
+        <svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg" style="position:absolute;left:0;top:0">
+          <defs><clipPath id="s12-clip"><rect x="-200" y="0" width="1480" height="1163"/></clipPath></defs>
+          <g id="s12-bg"></g>
+          <g clip-path="url(#s12-clip)"><g id="s12-fygrp"><g id="s12-fy-slot" transform="translate(540,930) scale(1.4)"></g></g></g>
+          <g id="s12-desk"></g>
+          <g transform="translate(1500,1020)"><g id="s12-gavel"></g></g>
+          <g id="s12-burst" fill="none" stroke="#F4F6F9" stroke-width="12" stroke-linecap="round" opacity="0"><path d="M880 1110 L820 1050 M900 1150 L800 1160 M1060 1110 L1076 1040"/></g>
+        </svg>
+        <div id="s12-turn" class="disp" style="position:absolute; left:60px; right:60px; top:176px; text-align:center; font-size:176px; line-height:1.2; color:#F4F6F9">جا دورك</div>
+        <div id="s12-judge" class="disp" style="position:absolute; left:40px; right:40px; top:162px; text-align:center; font-size:104px; line-height:1.2; color:#9fb4d0">لو كنت أنت القاضي</div>
+        <div id="s12-verdict" class="plate" data-layout-allow-overlap style="left:160px; top:326px; width:760px; height:206px; font-size:168px; line-height:190px">وش حكمك؟</div>
+        <div id="s12-cta" class="card kufi" style="left:190px; top:1090px; width:700px; height:100px; font-size:48px; font-weight:800; line-height:84px">اكتب حكمك في التعليقات</div>
+      </div>
+    </div>
+  </div>
+  <script>
+    EK.fill("s12-bg", EK.library()); EK.fill("s12-desk", EK.desk());
+    EK.put("s12-fy-slot", "s12-fy", "fyodorOld"); EK.fill("s12-gavel", EK.gavel());
+    const w = EK.clock("s12");
+    const T = { turn: w(218), judge: w(222), gavel: w(225), verdict: w(227), cta: +(DT.E[227] - DT.S.s12 + 0.5).toFixed(3) };
+    const tl = gsap.timeline({ paused: true });
+    EK.face(tl, "s12-fy", "calm");
+    gsap.set("#s12-turn, #s12-judge, #s12-verdict, #s12-cta", { opacity: 0 });
+    gsap.set("#s12-gavel", { rotation: 72, svgOrigin: "0 0" });
+    // he leans toward the viewer
+    tl.fromTo("#s12-fygrp", { y: 60 }, { y: 0, duration: 0.4, ease: "power3.out" }, 0);
+    tl.fromTo("#s12-turn", { opacity: 0, scale: 1.6 }, { opacity: 1, scale: 1, duration: 0.22, ease: "power4.out" }, T.turn);
+    tl.to("#s12-fygrp", { scale: 1.04, transformOrigin: "540px 1160px", duration: 0.5, ease: "power2.out" }, T.turn + 0.1);
+    EK.mood(tl, "s12-fy", T.turn + 0.3, "smug"); EK.blink(tl, "s12-fy", T.turn + 1.1);
+    // the gavel is raised, and waits
+    tl.to("#s12-turn", { opacity: 0, duration: 0.12 }, T.judge - 0.14);
+    tl.fromTo("#s12-judge", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.22, ease: "power3.out" }, T.judge);
+    tl.to("#s12-gavel", { rotation: 30, duration: 0.35, ease: "back.out(2)" }, T.gavel);
+    EK.look(tl, "s12-fy", T.gavel + 0.15, 9, -6);
+    tl.to("#s12-gavel", { rotation: 0, duration: 0.14, ease: "power4.in" }, T.verdict - 0.14);
+    tl.set("#s12-burst", { opacity: 1 }, T.verdict); tl.to("#s12-burst", { opacity: 0, duration: 0.3 }, T.verdict + 0.03);
+    EK.stamp(tl, "#s12-verdict", "#s12-stage", T.verdict, -4);
+    EK.mood(tl, "s12-fy", T.verdict + 0.05, "shock"); EK.look(tl, "s12-fy", T.verdict + 0.05, 0, 0);
+    tl.to("#s12-gavel", { rotation: 72, duration: 0.5, ease: "power2.inOut" }, T.verdict + 0.5);
+    EK.mood(tl, "s12-fy", T.cta, "calm");
+    tl.fromTo("#s12-cta", { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.3, ease: "back.out(1.6)" }, T.cta);
+    EK.blink(tl, "s12-fy", T.cta + 0.9);
+    EK.idle(tl, "s12-fy", 0.5, DT.D.s12 - 0.1, 2.4);
+    window.__timelines["s12"] = tl;
+  </script>
+</template>

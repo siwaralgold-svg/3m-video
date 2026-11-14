@@ -1,0 +1,66 @@
+<template>
+  <style>
+    @font-face { font-family: "Lalezar"; src: url("assets/fonts/Lalezar-Regular.ttf"); font-weight: 400; }
+    @font-face { font-family: "Noto Kufi Arabic"; src: url("assets/fonts/NotoKufiArabic.ttf"); font-weight: 100 900; }
+    #root { position: absolute; inset: 0; overflow: hidden; }
+  </style>
+  <div id="root" data-composition-id="s2" data-width="1080" data-height="1920">
+    <div id="s2-wrap" class="clip" data-start="0" data-duration="5.47" data-layout-allow-overflow style="position:absolute;inset:0">
+      <div id="s2-stage" class="stage">
+        <svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg" style="position:absolute;left:0;top:0">
+          <defs><clipPath id="s2-clip"><rect x="-200" y="0" width="1480" height="1074"/></clipPath></defs>
+          <g id="s2-bg"></g>
+          <g id="s2-pyrs"></g>
+          <g clip-path="url(#s2-clip)"><g id="s2-fegrp"><g id="s2-fe-slot" transform="translate(540,930) scale(1.45)"></g></g></g>
+          <g id="s2-table"></g>
+          <g id="s2-f1" transform="translate(105,950)"></g>
+          <g id="s2-f2" transform="translate(312,950)"></g>
+          <g id="s2-gavel" transform="translate(1500,940)"><g id="s2-gavel-in"></g></g>
+          <g id="s2-burst" fill="none" stroke="#F4F6F9" stroke-width="12" stroke-linecap="round" opacity="0"><path d="M880 1030 L820 970 M900 1070 L800 1080 M1060 1030 L1076 960"/></g>
+        </svg>
+
+        <div id="s2-sign" class="sign" style="left:150px; top:182px; width:780px; height:170px; font-size:128px; line-height:172px">محكمة التاريخ</div>
+      </div>
+    </div>
+  </div>
+  <script>
+    // the open-air court: the beheaded pyramids behind, a stone table in front
+    EK.fill("s2-bg", EK.desert()); EK.fill("s2-table", EK.table(1070));
+    EK.fill("s2-pyrs", [[150, 1090, 230, 420, 8], [930, 1090, 250, 450, 8]].map(([cx, base, pw, ph, n], i) => EK.pyr("s2-p" + i, cx, base, pw, ph, n)).join(""));
+    [0, 1].forEach((i) => [5, 6, 7].forEach((r) => document.getElementById(`s2-p${i}-r${r}`).remove()));
+    EK.put("s2-fe-slot", "s2-fe", "ferlini");
+    EK.fill("s2-gavel-in", EK.gavel()); EK.fill("s2-f1", EK.file("١")); EK.fill("s2-f2", EK.file("٢"));
+    const w = EK.clock("s2");
+
+    const T = { stand: w(30), sign: w(32), gavel: w(33), f1: w(35, 0.1), f2: w(36) };
+    const tl = gsap.timeline({ paused: true });
+    EK.face(tl, "s2-fe", "flat");
+    gsap.set("#s2-sign", { opacity: 0 });
+    gsap.set("#s2-gavel-in", { rotation: 72, svgOrigin: "0 0" });
+    gsap.set("#s2-f1, #s2-f2", { y: -400 });   // y counts from the frame top: the files rest at 950
+    EK.whip(tl, "#s2-stage", 1080);
+    EK.blink(tl, "s2-fe", 0.7);
+    // today he is the one standing
+    tl.fromTo("#s2-fe-rig", { y: 0 }, { y: -22, duration: 0.12, yoyo: true, repeat: 1, ease: "sine.inOut", immediateRender: false }, T.stand);
+    EK.mood(tl, "s2-fe", T.stand + 0.05, "annoyed");
+    // before the court of history
+    tl.fromTo("#s2-sign", { opacity: 0, y: -360, rotation: -7 }, { opacity: 1, y: 0, rotation: -2, duration: 0.3, ease: "back.out(1.5)" }, T.sign - 0.1);
+    EK.look(tl, "s2-fe", T.sign + 0.1, 0, -10);
+    tl.to("#s2-gavel-in", { rotation: 0, duration: 0.2, ease: "power4.in" }, T.gavel - 0.2);
+    tl.set("#s2-burst", { opacity: 1 }, T.gavel); tl.to("#s2-burst", { opacity: 0, duration: 0.3 }, T.gavel + 0.03);
+    EK.shake(tl, "#s2-stage", T.gavel, 11);
+    EK.mood(tl, "s2-fe", T.gavel, "shock");
+    tl.to("#s2-gavel-in", { rotation: 72, duration: 0.45, ease: "power2.inOut" }, T.gavel + 0.35);
+    EK.mood(tl, "s2-fe", T.gavel + 0.75, "worried"); EK.look(tl, "s2-fe", T.gavel + 0.75, 0, 0);
+    // two files land on the table
+    tl.to("#s2-f1", { y: 950, duration: 0.24, ease: "power3.in" }, T.f1 - 0.24);
+    tl.fromTo("#s2-f1", { rotation: 0 }, { rotation: -5, duration: 0.16, ease: "back.out(3)", transformOrigin: "50% 100%", immediateRender: false }, T.f1);
+    EK.shake(tl, "#s2-stage", T.f1, 7); EK.look(tl, "s2-fe", T.f1 + 0.05, -10, 6);
+    tl.to("#s2-f2", { y: 950, duration: 0.24, ease: "power3.in" }, T.f2 - 0.24);
+    tl.fromTo("#s2-f2", { rotation: 0 }, { rotation: 5, duration: 0.16, ease: "back.out(3)", transformOrigin: "50% 100%", immediateRender: false }, T.f2);
+    EK.shake(tl, "#s2-stage", T.f2, 7); EK.look(tl, "s2-fe", T.f2 + 0.05, -8, 8);
+    EK.mood(tl, "s2-fe", T.f2 + 0.08, "shock", true);
+    EK.idle(tl, "s2-fe", 0.5, DT.D.s2 - 0.05, 2.5);
+    window.__timelines["s2"] = tl;
+  </script>
+</template>

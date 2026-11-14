@@ -1,0 +1,65 @@
+<template>
+  <style>
+    @font-face { font-family: "Lalezar"; src: url("assets/fonts/Lalezar-Regular.ttf"); font-weight: 400; }
+    @font-face { font-family: "Noto Kufi Arabic"; src: url("assets/fonts/NotoKufiArabic.ttf"); font-weight: 100 900; }
+    #root { position: absolute; inset: 0; overflow: hidden; }
+  </style>
+  <div id="root" data-composition-id="s4" data-width="1080" data-height="1920">
+    <div id="s4-wrap" class="clip" data-start="0" data-duration="5.98" data-layout-allow-overflow style="position:absolute;inset:0">
+      <div id="s4-stage" class="stage">
+        <svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg" style="position:absolute;left:0;top:0">
+          <defs><clipPath id="s4-clip"><rect x="-200" y="0" width="1480" height="1163"/></clipPath></defs>
+          <g id="s4-bg"></g>
+          <g id="s4-pyrs"></g>
+          <g clip-path="url(#s4-clip)">
+            <g id="s4-fegrp"><g id="s4-fe-slot" transform="translate(540,930) scale(1.5)"></g></g>
+            <g id="s4-arm">
+              <path d="M820 1200 Q900 1100 870 990" fill="none" stroke="#0c1a30" stroke-width="84" stroke-linecap="round"/>
+              <path d="M820 1200 Q900 1100 870 990" fill="none" stroke="#4a4038" stroke-width="68" stroke-linecap="round"/>
+              <g id="s4-permit" transform="translate(880,830) rotate(8)"></g>
+              <circle cx="870" cy="966" r="44" fill="#f0c6a2" stroke="#0c1a30" stroke-width="8"/>
+            </g>
+          </g>
+          <g id="s4-sand"></g>
+          <g id="s4-bag" transform="translate(170,1190)"></g>
+        </svg>
+        <div id="s4-doc" class="card disp" style="left:300px; top:182px; width:480px; height:150px; font-size:116px; line-height:156px">طبيب</div>
+        <div id="s4-army" class="card kufi" style="left:210px; top:352px; width:660px; height:100px; font-size:52px; font-weight:800; line-height:84px">في جيش محمد علي</div>
+        <div id="s4-gold" class="plate" style="left:120px; top:196px; width:840px; height:200px; font-size:132px; line-height:188px">عينه على الذهب</div>
+        <div id="s4-per" class="card disp" style="left:150px; top:190px; width:780px; height:160px; font-size:108px; line-height:164px">تصريح من الحاكم</div>
+      </div>
+    </div>
+  </div>
+  <script>
+    EK.fill("s4-bg", EK.desert()); EK.fill("s4-sand", EK.sand());
+    EK.fill("s4-pyrs", EK.pyr("s4-p0", 150, 1080, 200, 360, 7) + EK.pyr("s4-p1", 940, 1070, 180, 320, 7));
+    EK.put("s4-fe-slot", "s4-fe", "ferlini"); EK.fill("s4-bag", EK.bag()); EK.fill("s4-permit", EK.permit(200, 250));
+    const w = EK.clock("s4");
+    const T = { doc: w(49), army: w(51), eye: w(55), gold: w(57), pocket: w(59), permit: w(60) };
+    const tl = gsap.timeline({ paused: true });
+    EK.face(tl, "s4-fe", "calm");
+    gsap.set("#s4-doc, #s4-army, #s4-gold, #s4-per", { opacity: 0 });
+    gsap.set("#s4-arm", { y: 460 }); gsap.set("#s4-bag", { scale: 0, transformOrigin: "50% 100%" });
+    tl.fromTo("#s4-stage", { y: 520, filter: "blur(14px)" }, { y: 0, filter: "blur(0px)", duration: 0.4, ease: "power4.out" }, 0);
+    // a doctor in Muhammad Ali's army
+    tl.to("#s4-bag", { scale: 1, duration: 0.3, ease: "back.out(2)" }, T.doc - 0.05);
+    EK.pop(tl, "#s4-doc", T.doc, -3);
+    EK.look(tl, "s4-fe", T.doc + 0.15, -9, 6); EK.blink(tl, "s4-fe", T.doc + 0.6);
+    EK.pop(tl, "#s4-army", T.army, 2);
+    EK.look(tl, "s4-fe", T.army + 0.3, 0, 0);
+    // but his eye is on the gold
+    tl.to("#s4-doc, #s4-army", { opacity: 0, duration: 0.12 }, T.eye + 0.08);
+    tl.to("#s4-bag", { scale: 0, duration: 0.18, ease: "power2.in" }, T.eye);
+    EK.mood(tl, "s4-fe", T.eye + 0.1, "smug"); EK.look(tl, "s4-fe", T.eye + 0.2, 0, -10);
+    EK.stamp(tl, "#s4-gold", "#s4-stage", T.gold, 4);
+    EK.mood(tl, "s4-fe", T.gold + 0.05, "laugh");
+    // and in his pocket, a permit from the governor
+    EK.out(tl, "#s4-gold", T.pocket + 0.34);
+    tl.to("#s4-arm", { y: 0, duration: 0.32, ease: "back.out(1.7)" }, T.pocket + 0.05);
+    EK.look(tl, "s4-fe", T.pocket + 0.25, 10, 2);
+    EK.pop(tl, "#s4-per", T.permit, -3);
+    EK.mood(tl, "s4-fe", T.permit + 0.25, "smug");
+    EK.idle(tl, "s4-fe", 0.5, DT.D.s4 - 0.05, 2.4);
+    window.__timelines["s4"] = tl;
+  </script>
+</template>
