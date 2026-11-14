@@ -1,0 +1,22 @@
+<template>
+  <style>
+    @font-face { font-family: "Lalezar"; src: url("assets/fonts/Lalezar-Regular.ttf"); font-weight: 400; }
+    @font-face { font-family: "Noto Kufi Arabic"; src: url("assets/fonts/NotoKufiArabic.ttf"); font-weight: 100 900; }
+    #root { position: absolute; inset: 0; overflow: hidden; }
+  </style>
+  <div id="root" data-composition-id="s8" data-width="1080" data-height="1920">
+    <div id="s8-wrap" class="clip" data-start="0" data-duration="2.8" data-layout-allow-overflow style="position:absolute;inset:0">
+      <div id="s8-bg" style="position:absolute; inset:0; background:#13294B"></div>
+      <div id="s8-wipe" style="position:absolute; left:0; top:0; width:1080px; height:1920px; background:#CEA532"></div>
+      <div id="s8-logobox" style="position:absolute; left:250px; top:430px; width:580px; height:685px"><img id="s8-logo" src="assets/brand/t3m-logo-light.svg" style="width:580px; height:685px; display:block" /></div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#s8-bg", { clipPath: "circle(0% at 50% 40%)" }, { clipPath: "circle(120% at 50% 40%)", duration: 0.45, ease: "power3.out" }, 0);
+    tl.fromTo("#s8-wipe", { clipPath: "circle(0% at 50% 40%)" }, { clipPath: "circle(120% at 50% 40%)", duration: 0.45, ease: "power3.out" }, 0);
+    tl.to("#s8-wipe", { opacity: 0, duration: 0.3, ease: "power2.out" }, 0.3);
+    tl.fromTo("#s8-logobox", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.5, ease: "back.out(1.7)" }, 0.35);
+    window.__timelines["s8"] = tl;
+  </script>
+</template>

@@ -1,0 +1,78 @@
+<template>
+  <style>
+    @font-face { font-family: "Lalezar"; src: url("assets/fonts/Lalezar-Regular.ttf"); font-weight: 400; }
+    @font-face { font-family: "Noto Kufi Arabic"; src: url("assets/fonts/NotoKufiArabic.ttf"); font-weight: 100 900; }
+    #root { position: absolute; inset: 0; overflow: hidden; }
+  </style>
+  <div id="root" data-composition-id="s7" data-width="1080" data-height="1920">
+    <div id="s7-wrap" class="clip" data-start="0" data-duration="12.75" data-layout-allow-overflow style="position:absolute;inset:0">
+      <div id="s7-stage" class="stage">
+        <svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg" style="position:absolute;left:0;top:0">
+          <defs><clipPath id="s7-floor"><rect x="-200" y="0" width="1480" height="1163"/></clipPath></defs>
+          <g id="s7-fort"><g id="s7-fort-in" transform="translate(282,540) scale(0.62)"></g></g>
+          <g id="s7-book"><g id="s7-book-in" transform="translate(800,424) scale(0.66)"></g></g>
+          <g clip-path="url(#s7-floor)">
+            <g id="s7-qgrp"><g id="s7-q-slot" transform="translate(282,872) scale(0.92)"></g><g id="s7-qbox"></g></g>
+            <g id="s7-mgrp"><g id="s7-m-slot" transform="translate(800,872) scale(0.92)"></g><g id="s7-mbox"></g>
+              <text id="s7-mn" x="800" y="1102" text-anchor="middle" font-family="Noto Kufi Arabic" font-weight="800" font-size="40" fill="#F4F6F9" direction="rtl">ابن ممّاتي</text>
+              <text id="s7-mq" x="800" y="1104" text-anchor="middle" font-family="Noto Kufi Arabic" font-weight="800" font-size="46" fill="#F4F6F9" direction="rtl">؟؟؟</text>
+            </g>
+          </g>
+        </svg>
+        <div id="s7-joke" class="card disp" style="left:150px; top:380px; width:270px; height:130px; font-size:100px; line-height:122px">نكتة</div>
+        <div id="s7-ttl" class="ttl" style="font-size:120px; top:250px">مين يوقف هنا؟</div>
+        <div id="s7-cta" class="card kufi" style="left:210px; top:462px; width:660px; height:84px; font-size:38px; font-weight:800; line-height:66px">اكتب حكمك في التعليقات</div>
+      </div>
+      <div id="s7-plate" class="plate" data-layout-allow-overlap data-layout-allow-occlusion style="left:110px; top:222px; width:860px; height:200px; font-size:136px; line-height:180px">الحكم... لك أنت</div>
+    </div>
+  </div>
+  <script>
+    EK.put("s7-q-slot", "s7-q", "qaraqush");
+    EK.put("s7-m-slot", "s7-m", "mammati");
+    EK.fill("s7-qbox", EK.box(40, 1000, 480, 160, "قراقوش"));
+    EK.fill("s7-mbox", EK.box(560, 1000, 480, 160, ""));
+    EK.fill("s7-fort-in", EK.fort());
+    EK.fill("s7-book-in", EK.booklet("s7-bk"));
+    // anchors (local = absolute - 78.85)
+    const T = { fort: 0.75, joke: 1.99, mam: 2.61, book: 3.5, forgot: 4.04, who: 5.05, pq: 7.09, pm: 8.49, hukm: 9.65, lak: 10.37 };
+    const tl = gsap.timeline({ paused: true });
+    EK.face(tl, "s7-q", "calm"); EK.face(tl, "s7-m", "smug");
+    gsap.set("#s7-fort, #s7-book, #s7-joke, #s7-ttl, #s7-cta, #s7-plate, #s7-mq", { opacity: 0 });
+    gsap.set("#s7-mgrp", { y: 760 });
+    tl.fromTo("#s7-stage", { scale: 1.14, transformOrigin: "540px 800px" }, { scale: 1, duration: 0.45, ease: "power3.out" }, 0);
+    // a man who built a citadel is remembered by a joke
+    tl.fromTo("#s7-fort", { opacity: 0, y: 160, svgOrigin: "282 540" }, { opacity: 1, y: 0, duration: 0.35, ease: "back.out(1.8)" }, T.fort - 0.1);
+    EK.look(tl, "s7-q", T.fort + 0.1, 0, -9);
+    tl.fromTo("#s7-joke", { opacity: 0, scale: 2.4, rotation: -24 }, { opacity: 1, scale: 1, rotation: -9, duration: 0.16, ease: "power3.in" }, T.joke - 0.16);
+    tl.fromTo("#s7-stage", { y: 0 }, { y: 8, duration: 0.05, yoyo: true, repeat: 3, ease: "none", immediateRender: false }, T.joke);
+    EK.mood(tl, "s7-q", T.joke + 0.1, "annoyed");
+    // a man who wrote a joke: his name is forgotten
+    tl.to("#s7-mgrp", { y: 0, duration: 0.45, ease: "back.out(1.3)" }, T.mam);
+    EK.look(tl, "s7-q", T.mam + 0.3, 9, 2);
+    tl.fromTo("#s7-book", { opacity: 0, scale: 0.3, rotation: 16, svgOrigin: "800 424" }, { opacity: 1, scale: 1, rotation: 5, duration: 0.3, ease: "back.out(2)" }, T.book);
+    tl.to("#s7-mn", { opacity: 0, duration: 0.12 }, T.forgot + 0.05);
+    tl.fromTo("#s7-mq", { opacity: 0 }, { opacity: 1, duration: 0.12 }, T.forgot + 0.17);
+    EK.mood(tl, "s7-m", T.forgot + 0.2, "worried", true);
+    // who should stand here?
+    tl.to("#s7-fort, #s7-joke, #s7-book", { opacity: 0, y: -60, duration: 0.2, ease: "power2.in" }, T.who - 0.1);
+    tl.fromTo("#s7-ttl", { opacity: 0, scale: 1.5 }, { opacity: 1, scale: 1, duration: 0.25, ease: "power4.out" }, T.who + 0.15);
+    EK.look(tl, "s7-q", T.who + 0.3, 0, 0);
+    EK.mood(tl, "s7-q", T.who + 0.6, "flat");
+    tl.to("#s7-qgrp", { y: -26, duration: 0.25, ease: "back.out(2.5)" }, T.pq);
+    tl.to("#s7-mgrp", { opacity: 0.35, duration: 0.2 }, T.pq);
+    EK.mood(tl, "s7-q", T.pq + 0.1, "worried");
+    tl.to("#s7-qgrp", { y: 0, opacity: 0.35, duration: 0.2 }, T.pm);
+    tl.to("#s7-mgrp", { y: -26, opacity: 1, duration: 0.25, ease: "back.out(2.5)" }, T.pm);
+    EK.mood(tl, "s7-m", T.pm + 0.1, "shock");
+    // the verdict is yours
+    tl.to("#s7-qgrp", { opacity: 1, duration: 0.2 }, T.hukm - 0.1);
+    tl.to("#s7-mgrp", { y: 0, duration: 0.2 }, T.hukm - 0.1);
+    tl.to("#s7-ttl", { opacity: 0, duration: 0.12 }, T.hukm - 0.05);
+    EK.stamp(tl, "#s7-plate", "#s7-stage", T.hukm + 0.3, -3);
+    EK.mood(tl, "s7-q", T.hukm + 0.4, "flat"); EK.mood(tl, "s7-m", T.hukm + 0.5, "flat", false);
+    tl.fromTo("#s7-cta", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.3, ease: "back.out(1.8)" }, T.lak + 0.35);
+    EK.blink(tl, "s7-q", 11.6); EK.blink(tl, "s7-m", 11.8);
+    EK.idle(tl, "s7-q", 0.5, 12.7, 2.6); EK.idle(tl, "s7-m", 3.1, 12.7, 2.9);
+    window.__timelines["s7"] = tl;
+  </script>
+</template>

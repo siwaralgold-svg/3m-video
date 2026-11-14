@@ -1,0 +1,101 @@
+<template>
+  <style>
+    @font-face { font-family: "Lalezar"; src: url("assets/fonts/Lalezar-Regular.ttf"); font-weight: 400; }
+    @font-face { font-family: "Noto Kufi Arabic"; src: url("assets/fonts/NotoKufiArabic.ttf"); font-weight: 100 900; }
+    #root { position: absolute; inset: 0; overflow: hidden; }
+  </style>
+  <div id="root" data-composition-id="s6" data-width="1080" data-height="1920">
+    <div id="s6-wrap" class="clip" data-start="0" data-duration="12.05" data-layout-allow-overflow style="position:absolute;inset:0">
+      <div id="s6-stage" class="stage">
+        <div id="s6-a" style="position:absolute; inset:0">
+          <svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg" style="position:absolute;left:0;top:0">
+            <defs><clipPath id="s6-floor"><rect x="-200" y="0" width="1480" height="1163"/></clipPath></defs>
+            <g clip-path="url(#s6-floor)">
+              <g id="s6-q-slot" transform="translate(290,900) scale(0.86)"></g><g id="s6-qbox"></g>
+              <g id="s6-wgrp">
+                <g id="s6-w-slot" transform="translate(800,920) scale(0.82)"></g>
+                <g id="s6-block"><path d="M690 960 Q650 800 720 690 M910 960 Q950 800 880 690" fill="none" stroke="#0c1a30" stroke-width="56" stroke-linecap="round"/><path d="M690 960 Q650 800 720 690 M910 960 Q950 800 880 690" fill="none" stroke="#d9a67c" stroke-width="42" stroke-linecap="round"/>
+                  <rect x="680" y="560" width="240" height="140" rx="6" fill="#aab6c8" stroke="#0c1a30" stroke-linejoin="round" stroke-linecap="round" stroke-width="8"/><path d="M700 600 H760 M840 660 H900" fill="none" stroke="#0c1a30" stroke-linejoin="round" stroke-linecap="round" stroke-width="5"/></g>
+                <g id="s6-wbox"></g>
+              </g>
+            </g>
+          </svg>
+          <div id="s6-hard" class="card disp" style="left:70px; top:462px; width:400px; height:140px; font-size:100px; line-height:132px">كان شديد</div>
+        </div>
+        <div id="s6-b" style="position:absolute; inset:0">
+          <svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg" style="position:absolute;left:0;top:0">
+            <defs><clipPath id="s6-floor2"><rect x="-200" y="0" width="1480" height="1163"/></clipPath><clipPath id="s6-tclip"><rect x="74" y="454" width="232" height="212" rx="8"/></clipPath></defs>
+            <g clip-path="url(#s6-floor2)">
+              <g id="s6-k-slot" transform="translate(790,866)"></g><g id="s6-kbox"></g>
+              <g id="s6-salgrp"><g id="s6-sal-slot" transform="translate(280,930) scale(0.8)"></g><g id="s6-salbox"></g></g>
+            </g>
+            <g id="s6-key"><g transform="translate(512,720)">
+              <rect x="-14" y="30" width="28" height="170" fill="#c9ccd2" stroke="#0c1a30" stroke-linejoin="round" stroke-linecap="round" stroke-width="7"/><path d="M14 150 H50 V176 H14 M14 190 H40" fill="#c9ccd2" stroke="#0c1a30" stroke-linejoin="round" stroke-linecap="round" stroke-width="7"/>
+              <circle cx="0" cy="0" r="46" fill="#c9ccd2" stroke="#0c1a30" stroke-linejoin="round" stroke-linecap="round" stroke-width="8"/><circle cx="0" cy="0" r="18" fill="#13294B" stroke="#0c1a30" stroke-linejoin="round" stroke-linecap="round" stroke-width="7"/></g></g>
+            <g id="s6-thumb">
+              <rect x="70" y="450" width="240" height="220" rx="12" fill="#F4F6F9" stroke="#0c1a30" stroke-linejoin="round" stroke-linecap="round" stroke-width="7"/>
+              <g clip-path="url(#s6-tclip)"><g id="s6-t-slot" transform="translate(190,640) scale(0.46)"></g></g>
+              <g id="s6-x"><path d="M100 480 L280 640 M280 480 L100 640" fill="none" stroke="#0c1a30" stroke-width="40" stroke-linecap="round"/><path d="M100 480 L280 640 M280 480 L100 640" fill="none" stroke="#8c2f2f" stroke-width="24" stroke-linecap="round"/></g>
+            </g>
+          </svg>
+          <div id="s6-say" class="card" style="left:50px; top:470px; width:500px; height:250px"><div class="kufi" style="font-size:42px; font-weight:800; line-height:80px; color:#55606b">هالحكايات…</div><div class="disp" style="font-size:124px; line-height:140px">بعيد تصير</div></div>
+          <div id="s6-state" class="card kufi" style="left:424px; top:940px; width:176px; height:80px; font-size:42px; font-weight:800; line-height:64px">الدولة</div>
+        </div>
+        <div id="s6-count" class="count">وهنا لازم</div>
+        <div id="s6-ttl" class="ttl">ننصف</div>
+      </div>
+    </div>
+  </div>
+  <script>
+    EK.put("s6-q-slot", "s6-q", "qaraqush");
+    EK.put("s6-w-slot", "s6-w", "worker");
+    EK.put("s6-k-slot", "s6-k", "khallikan");
+    EK.put("s6-sal-slot", "s6-sal", "saladin");
+    EK.put("s6-t-slot", "s6-t", "qaraqush");
+    EK.fill("s6-qbox", EK.box(60, 1000, 450, 160, "قراقوش"));
+    EK.fill("s6-wbox", EK.box(580, 1000, 450, 160, "عامل البنا"));
+    EK.fill("s6-kbox", EK.box(560, 1000, 470, 160, "ابن خلّكان"));
+    EK.fill("s6-salbox", EK.box(50, 1000, 440, 160, "صلاح الدين"));
+    // anchors (local = absolute - 66.8)
+    const T = { count: 0.02, ttl: 0.98, stern: 1.62, hard: 2.64, work: 3.22, tired: 4.18, cut: 5.38, name: 6.39, say: 8.1, sal: 9.14, key: 10.16, x: 11.16 };
+    const tl = gsap.timeline({ paused: true });
+    EK.face(tl, "s6-q", "flat"); EK.face(tl, "s6-w", "flat"); EK.face(tl, "s6-k", "calm"); EK.face(tl, "s6-sal", "calm"); EK.face(tl, "s6-t", "goofy");
+    gsap.set("#s6-t-pL", { x: 13, y: 5 }); gsap.set("#s6-t-pR", { x: -13, y: 5 });
+    gsap.set("#s6-hard, #s6-say, #s6-state, #s6-key, #s6-thumb, #s6-x, #s6-ttl", { opacity: 0 });
+    gsap.set("#s6-wgrp", { y: 800 }); gsap.set("#s6-salgrp", { y: 760 }); gsap.set("#s6-b", { x: 1200 });
+    EK.whip(tl, "#s6-stage", 1100);
+    tl.fromTo("#s6-ttl", { opacity: 0, scale: 1.5 }, { opacity: 1, scale: 1, duration: 0.25, ease: "power4.out" }, T.ttl);
+    // Qaraqush was harsh
+    EK.mood(tl, "s6-q", T.stern, "angry");
+    tl.fromTo("#s6-hard", { opacity: 0, scale: 0.4, rotation: -12 }, { opacity: 1, scale: 1, rotation: -4, duration: 0.3, ease: "back.out(2)" }, T.hard);
+    // and the building wore people out
+    tl.to("#s6-wgrp", { y: 0, duration: 0.5, ease: "back.out(1.2)" }, T.work);
+    EK.look(tl, "s6-q", T.work + 0.3, 9, 2);
+    EK.look(tl, "s6-w", T.work + 0.5, -8, 0);
+    EK.mood(tl, "s6-w", T.tired, "sad", true);
+    tl.to("#s6-block", { y: 22, duration: 0.3, ease: "power2.in" }, T.tired);
+    tl.to("#s6-w-rig", { y: 16, duration: 0.3, ease: "power2.in" }, T.tired);
+    // cut to the historian
+    tl.to("#s6-a", { x: -1200, duration: 0.3, ease: "power3.in" }, T.cut);
+    tl.to("#s6-b", { x: 0, duration: 0.38, ease: "power4.out" }, T.cut + 0.12);
+    EK.blink(tl, "s6-k", T.name + 0.2);
+    EK.mood(tl, "s6-k", T.say - 0.5, "annoyed");
+    tl.fromTo("#s6-say", { opacity: 0, scale: 0.4, rotation: -10 }, { opacity: 1, scale: 1, rotation: -3, duration: 0.3, ease: "back.out(2)" }, T.say - 0.3);
+    tl.to("#s6-k-head", { rotation: -4, duration: 0.16, yoyo: true, repeat: 3, ease: "sine.inOut", transformOrigin: "50% 92%" }, T.say);
+    // Saladin would not hand his state to a man like that
+    tl.to("#s6-say", { opacity: 0, scale: 0.6, duration: 0.15, ease: "power2.in" }, T.sal - 0.15);
+    tl.to("#s6-salgrp", { y: 0, duration: 0.45, ease: "back.out(1.3)" }, T.sal);
+    EK.look(tl, "s6-k", T.sal + 0.2, -9, 2);
+    EK.mood(tl, "s6-k", T.sal + 0.4, "calm");
+    tl.fromTo("#s6-key", { opacity: 0, scale: 0.3, rotation: -40, svgOrigin: "512 780" }, { opacity: 1, scale: 1, rotation: 0, duration: 0.3, ease: "back.out(2)" }, T.key);
+    tl.fromTo("#s6-state", { opacity: 0, scale: 0.4 }, { opacity: 1, scale: 1, duration: 0.25, ease: "back.out(2)" }, T.key + 0.25);
+    EK.look(tl, "s6-sal", T.key + 0.1, 9, -3);
+    tl.fromTo("#s6-thumb", { opacity: 0, scale: 0.3, rotation: 14, svgOrigin: "190 560" }, { opacity: 1, scale: 1, rotation: -5, duration: 0.3, ease: "back.out(2)" }, T.x - 0.25);
+    EK.look(tl, "s6-sal", T.x, -6, -9);
+    EK.mood(tl, "s6-sal", T.x + 0.15, "annoyed");
+    tl.fromTo("#s6-x", { opacity: 0, scale: 2.4, svgOrigin: "190 560" }, { opacity: 1, scale: 1, duration: 0.15, ease: "power3.in" }, T.x + 0.2);
+    tl.fromTo("#s6-stage", { y: 0 }, { y: 8, duration: 0.05, yoyo: true, repeat: 3, ease: "none", immediateRender: false }, T.x + 0.35);
+    EK.idle(tl, "s6-q", 0.5, 5.3, 2.4); EK.idle(tl, "s6-k", 5.9, 12.0, 2.9); EK.idle(tl, "s6-sal", 9.7, 12.0, 2.3);
+    window.__timelines["s6"] = tl;
+  </script>
+</template>

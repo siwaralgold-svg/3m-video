@@ -1,0 +1,82 @@
+<template>
+  <style>
+    @font-face { font-family: "Lalezar"; src: url("assets/fonts/Lalezar-Regular.ttf"); font-weight: 400; }
+    @font-face { font-family: "Noto Kufi Arabic"; src: url("assets/fonts/NotoKufiArabic.ttf"); font-weight: 100 900; }
+    #root { position: absolute; inset: 0; overflow: hidden; }
+  </style>
+  <div id="root" data-composition-id="s3" data-width="1080" data-height="1920">
+    <div id="s3-wrap" class="clip" data-start="0" data-duration="14.8" data-layout-allow-overflow style="position:absolute;inset:0">
+      <div id="s3-stage" class="stage">
+        <svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg" style="position:absolute;left:0;top:0">
+          <defs><clipPath id="s3-floor"><rect x="-200" y="0" width="1480" height="1163"/></clipPath><clipPath id="s3-ground"><rect x="0" y="0" width="1080" height="779"/></clipPath></defs>
+          <g clip-path="url(#s3-ground)">
+            <g id="s3-wallL"></g><g id="s3-wallR"></g>
+            <g id="s3-fort"><rect x="392" y="752" width="296" height="40" fill="#6b4226" stroke="#0c1a30" stroke-width="7"/><g id="s3-fort-in" transform="translate(540,754) scale(0.84)"></g></g>
+          </g>
+          <g clip-path="url(#s3-floor)">
+            <g id="s3-salgrp"><g id="s3-sal-slot" transform="translate(810,856) scale(0.95)"></g><g id="s3-salbox"></g></g>
+            <g id="s3-qgrp"><g id="s3-q-slot" transform="translate(262,866) scale(0.92)"></g><g id="s3-qbox"></g></g>
+            <g id="s3-scroll"><g transform="translate(540,950) rotate(-10)">
+              <rect x="-74" y="-24" width="148" height="48" rx="6" fill="#F4F6F9" stroke="#0c1a30" stroke-linejoin="round" stroke-linecap="round" stroke-width="7"/>
+              <rect x="-92" y="-30" width="26" height="60" rx="10" fill="#c9ccd2" stroke="#0c1a30" stroke-linejoin="round" stroke-linecap="round" stroke-width="6"/><rect x="66" y="-30" width="26" height="60" rx="10" fill="#c9ccd2" stroke="#0c1a30" stroke-linejoin="round" stroke-linecap="round" stroke-width="6"/>
+              <path d="M-10 -24 V24" fill="none" stroke="#8c2f2f" stroke-width="12"/></g></g>
+          </g>
+        </svg>
+        <div id="s3-count" class="count">الملف الأول</div>
+        <div id="s3-ttl" class="ttl">القلعة</div>
+        <div id="s3-year" class="card disp" style="left:360px; top:452px; width:360px; height:170px; font-size:128px; line-height:176px">١١٧٦</div>
+        <div id="s3-cairo" class="card disp" style="left:390px; top:660px; width:300px; height:124px; background:#a8703f; color:#F4F6F9; font-size:84px; line-height:112px">القاهرة</div>
+        <div id="s3-who" class="card disp" style="left:180px; top:640px; width:170px; height:210px; font-size:170px; line-height:210px">؟</div>
+      </div>
+      <div id="s3-verdict" class="plate" data-layout-allow-overlap data-layout-allow-occlusion style="left:110px; top:940px; width:860px; height:210px; font-size:128px; line-height:190px">واقفة لين اليوم</div>
+    </div>
+  </div>
+  <script>
+    EK.put("s3-sal-slot", "s3-sal", "saladin");
+    EK.put("s3-q-slot", "s3-q", "qaraqush");
+    EK.fill("s3-salbox", EK.box(600, 1000, 430, 160, "صلاح الدين"));
+    EK.fill("s3-qbox", EK.box(50, 1000, 430, 160, "قراقوش"));
+    EK.fill("s3-fort-in", EK.fort());
+    EK.fill("s3-wallL", EK.wall(20, 420, 700, 90));
+    EK.fill("s3-wallR", EK.wall(660, 1060, 700, 90));
+    // anchors (local = absolute - 17.75)
+    const T = { count: 0.05, ttl: 1.46, year: 2.47, cairo: 4.31, sal: 5.15, fort: 6.27, wall: 7.87, who: 9.99, q: 11.59, verdict: 13.33 };
+    const tl = gsap.timeline({ paused: true });
+    EK.face(tl, "s3-sal", "calm"); EK.face(tl, "s3-q", "calm");
+    gsap.set("#s3-year, #s3-cairo, #s3-who, #s3-verdict, #s3-scroll", { opacity: 0 });
+    gsap.set("#s3-qgrp", { y: 760 }); gsap.set("#s3-salgrp", { y: 760 }); gsap.set("#s3-fort", { y: 420 });
+    gsap.set("#s3-wallL", { scaleX: 0, svgOrigin: "420 745" }); gsap.set("#s3-wallR", { scaleX: 0, svgOrigin: "660 745" });
+    tl.fromTo("#s3-count", { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.3, ease: "back.out(1.6)" }, T.count);
+    tl.fromTo("#s3-ttl", { opacity: 0, scale: 1.5 }, { opacity: 1, scale: 1, duration: 0.25, ease: "power4.out" }, T.ttl);
+    tl.fromTo("#s3-year", { opacity: 0, scale: 0.4, rotation: -14 }, { opacity: 1, scale: 1, rotation: -4, duration: 0.3, ease: "back.out(2)" }, T.year);
+    tl.fromTo("#s3-cairo", { opacity: 1, y: -700, rotation: 6 }, { opacity: 1, y: 0, rotation: 3, duration: 0.45, ease: "bounce.out", immediateRender: false }, T.cairo - 0.2);
+    // Saladin wants a citadel
+    tl.to("#s3-salgrp", { y: 0, duration: 0.5, ease: "back.out(1.3)" }, T.sal);
+    EK.blink(tl, "s3-sal", T.sal + 0.7);
+    tl.to("#s3-year", { opacity: 0, scale: 0.6, duration: 0.15, ease: "power2.in" }, T.fort - 0.3);
+    tl.to("#s3-cairo", { opacity: 0, scale: 0.6, duration: 0.15, ease: "power2.in" }, T.fort - 0.24);
+    EK.look(tl, "s3-sal", T.fort - 0.15, -8, -5);
+    tl.to("#s3-fort", { y: 0, duration: 0.55, ease: "back.out(1.5)" }, T.fort - 0.1);
+    EK.mood(tl, "s3-sal", T.fort + 0.5, "smug");
+    // and a wall around all of Cairo
+    tl.to("#s3-wallL", { scaleX: 1, duration: 0.55, ease: "power3.out" }, T.wall);
+    tl.to("#s3-wallR", { scaleX: 1, duration: 0.55, ease: "power3.out" }, T.wall + 0.3);
+    EK.look(tl, "s3-sal", T.wall + 0.9, 0, 0);
+    EK.blink(tl, "s3-sal", T.wall + 1.5);
+    // who got the job?
+    tl.fromTo("#s3-who", { opacity: 0, scale: 0.3, rotation: 14 }, { opacity: 1, scale: 1, rotation: -6, duration: 0.3, ease: "back.out(2.2)" }, T.who + 0.2);
+    EK.look(tl, "s3-sal", T.who + 0.3, -9, 2);
+    tl.to("#s3-who", { opacity: 0, scale: 0.5, duration: 0.12, ease: "power2.in" }, T.q - 0.14);
+    tl.to("#s3-qgrp", { y: 0, duration: 0.45, ease: "back.out(1.5)" }, T.q);
+    tl.fromTo("#s3-scroll", { opacity: 1, x: 150, y: 30, rotation: 20, svgOrigin: "540 950" }, { opacity: 1, x: -120, y: 0, rotation: 0, duration: 0.4, ease: "power2.out", immediateRender: false }, T.q + 0.35);
+    EK.look(tl, "s3-q", T.q + 0.4, 8, 4);
+    EK.mood(tl, "s3-sal", T.q + 0.5, "calm");
+    EK.mood(tl, "s3-q", T.q + 0.85, "smug");
+    // still standing today
+    EK.stamp(tl, "#s3-verdict", "#s3-stage", T.verdict, -4);
+    EK.look(tl, "s3-q", T.verdict + 0.1, 0, 0);
+    EK.mood(tl, "s3-q", T.verdict + 0.2, "laugh");
+    EK.idle(tl, "s3-sal", 5.7, 14.7, 2.8); EK.idle(tl, "s3-q", 12.1, 14.7, 2.4);
+    window.__timelines["s3"] = tl;
+  </script>
+</template>

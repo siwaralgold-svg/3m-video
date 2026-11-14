@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ar" data-resolution="portrait"
+  data-composition-variables='[{"id":"navy","type":"color","label":"Wall navy","default":"#13294B"},{"id":"gold","type":"color","label":"Verdict gold","default":"#CEA532"},{"id":"light","type":"color","label":"Text light","default":"#F4F6F9"}]'>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script src="assets/kit.js"></script>
+    <style>
+      @font-face { font-family: "Lalezar"; src: url("assets/fonts/Lalezar-Regular.ttf"); font-weight: 400; }
+      @font-face { font-family: "Noto Kufi Arabic"; src: url("assets/fonts/NotoKufiArabic.ttf"); font-weight: 100 900; }
+      :root { --navy: #13294B; --navy2: #1C385A; --gold: #CEA532; --light: #F4F6F9; --ink: #0c1a30; --wood: #8a5a33; --wood2: #6b4226; }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--navy); }
+      #hall { position: absolute; inset: 0; }
+      /* shared scene styles */
+      .stage { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+      .kufi { font-family: "Noto Kufi Arabic", sans-serif; direction: rtl; }
+      .disp { font-family: "Lalezar", sans-serif; direction: rtl; }
+      .count { position: absolute; left: 90px; right: 90px; top: 178px; text-align: center; font-family: "Noto Kufi Arabic", sans-serif; font-weight: 800; font-size: 50px; line-height: 1.3; color: #9fb4d0; direction: rtl; }
+      .ttl { position: absolute; left: 60px; right: 60px; top: 236px; text-align: center; font-family: "Lalezar", sans-serif; font-size: 138px; line-height: 1.15; color: var(--light); direction: rtl; }
+      .plate { position: absolute; text-align: center; font-family: "Lalezar", sans-serif; direction: rtl; color: var(--ink); background: var(--gold); border: 9px solid var(--ink); outline: 7px solid var(--gold); outline-offset: 9px; border-radius: 14px; line-height: 1.2; }
+      .card { position: absolute; text-align: center; direction: rtl; color: var(--ink); background: var(--light); border: 7px solid var(--ink); border-radius: 12px; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="94.4" data-width="1080" data-height="1920">
+      <div id="hall" class="clip" data-start="0" data-duration="94.4" data-track-index="0" data-layout-ignore style="z-index:1">
+        <svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg">
+          <rect width="1080" height="1160" fill="#13294B"/>
+          <g fill="#172f55" stroke="#0c1a30" stroke-width="6" stroke-linejoin="round"><path d="M40 1100 V470 Q40 300 190 190 Q340 300 340 470 V1100Z"/><path d="M390 1100 V470 Q390 300 540 190 Q690 300 690 470 V1100Z"/><path d="M740 1100 V470 Q740 300 890 190 Q1040 300 1040 470 V1100Z"/></g>
+          <g fill="none" stroke="#1C385A" stroke-width="5"><path d="M74 1100 V478 Q74 330 190 240 Q306 330 306 478 V1100"/><path d="M424 1100 V478 Q424 330 540 240 Q656 330 656 478 V1100"/><path d="M774 1100 V478 Q774 330 890 240 Q1006 330 1006 478 V1100"/></g>
+          <rect y="1150" width="1080" height="770" fill="#6b4226"/>
+          <g fill="#7a4c2a" stroke="#0c1a30" stroke-width="6"><rect x="-90" y="1250" width="250" height="150" rx="6"/><rect x="180" y="1250" width="250" height="150" rx="6"/><rect x="450" y="1250" width="250" height="150" rx="6"/><rect x="720" y="1250" width="250" height="150" rx="6"/><rect x="990" y="1250" width="250" height="150" rx="6"/><rect x="40" y="1420" width="250" height="150" rx="6"/><rect x="310" y="1420" width="250" height="150" rx="6"/><rect x="580" y="1420" width="250" height="150" rx="6"/><rect x="850" y="1420" width="250" height="150" rx="6"/><rect x="-90" y="1590" width="250" height="150" rx="6"/><rect x="180" y="1590" width="250" height="150" rx="6"/><rect x="450" y="1590" width="250" height="150" rx="6"/><rect x="720" y="1590" width="250" height="150" rx="6"/><rect x="990" y="1590" width="250" height="150" rx="6"/><rect x="40" y="1760" width="250" height="150" rx="6"/><rect x="310" y="1760" width="250" height="150" rx="6"/><rect x="580" y="1760" width="250" height="150" rx="6"/><rect x="850" y="1760" width="250" height="150" rx="6"/></g>
+          <rect y="1150" width="1080" height="46" fill="#a8703f" stroke="#0c1a30" stroke-width="7"/>
+        </svg>
+      </div>
+
+      <div id="s1" data-composition-id="s1" data-composition-src="compositions/s1.html" data-start="0" data-duration="11.75" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index:2"></div>
+      <div id="s2" data-composition-id="s2" data-composition-src="compositions/s2.html" data-start="11.75" data-duration="6.0" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index:2"></div>
+      <div id="s3" data-composition-id="s3" data-composition-src="compositions/s3.html" data-start="17.75" data-duration="14.8" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index:2"></div>
+      <div id="s4" data-composition-id="s4" data-composition-src="compositions/s4.html" data-start="32.55" data-duration="16.4" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index:2"></div>
+      <div id="s5" data-composition-id="s5" data-composition-src="compositions/s5.html" data-start="48.95" data-duration="17.85" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index:2"></div>
+      <div id="s6" data-composition-id="s6" data-composition-src="compositions/s6.html" data-start="66.8" data-duration="12.05" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index:2"></div>
+      <div id="s7" data-composition-id="s7" data-composition-src="compositions/s7.html" data-start="78.85" data-duration="12.75" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index:2"></div>
+      <div id="s8" data-composition-id="s8" data-composition-src="compositions/s8.html" data-start="91.6" data-duration="2.8" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index:2"></div>
+      <div id="captions" data-composition-id="captions" data-composition-src="compositions/captions.html" data-start="0" data-duration="90.6" data-track-index="2" data-track-kind="captions" data-width="1080" data-height="1920" style="z-index:5"></div>
+      <audio id="voiceover" class="clip" src="assets/voiceover.mp3" data-start="0" data-track-index="10" data-volume="1"></audio>
+      <audio id="sfx-01" class="clip" src="assets/sfx/impact_punch_heavy_000.mp3" data-start="8.159" data-duration="0.563" data-track-index="11" data-volume="0.45"></audio>
+      <audio id="sfx-02" class="clip" src="assets/sfx/swipe_03.mp3" data-start="11.795" data-duration="0.286" data-track-index="11" data-volume="0.3"></audio>
+      <audio id="sfx-03" class="clip" src="assets/sfx/low_thud.mp3" data-start="13.964" data-duration="0.669" data-track-index="11" data-volume="0.3"></audio>
+      <audio id="sfx-04" class="clip" src="assets/sfx/impact_wood_heavy_000.mp3" data-start="16.449" data-duration="0.31" data-track-index="11" data-volume="0.35"></audio>
+      <audio id="sfx-05" class="clip" src="assets/sfx/impact_wood_heavy_002.mp3" data-start="16.728" data-duration="0.31" data-track-index="12" data-volume="0.35"></audio>
+      <audio id="sfx-06" class="clip" src="assets/sfx/impact_wood_heavy_000.mp3" data-start="17.009" data-duration="0.31" data-track-index="11" data-volume="0.35"></audio>
+      <audio id="sfx-07" class="clip" src="assets/sfx/low_thud.mp3" data-start="24.324" data-duration="0.669" data-track-index="11" data-volume="0.3"></audio>
+      <audio id="sfx-08" class="clip" src="assets/sfx/impact_punch_heavy_002.mp3" data-start="31.095" data-duration="0.414" data-track-index="11" data-volume="0.45"></audio>
+      <audio id="sfx-09" class="clip" src="assets/sfx/swipe_07.mp3" data-start="32.596" data-duration="0.272" data-track-index="11" data-volume="0.3"></audio>
+      <audio id="sfx-10" class="clip" src="assets/sfx/whoosh_fast_02.mp3" data-start="38.471" data-duration="0.82" data-track-index="11" data-volume="0.3"></audio>
+      <audio id="sfx-11" class="clip" src="assets/sfx/impact_punch_heavy_003.mp3" data-start="41.305" data-duration="0.421" data-track-index="11" data-volume="0.45"></audio>
+      <audio id="sfx-12" class="clip" src="assets/sfx/low_thud.mp3" data-start="42.824" data-duration="0.669" data-track-index="11" data-volume="0.4"></audio>
+      <audio id="sfx-13" class="clip" src="assets/sfx/rpg_metal_latch.mp3" data-start="43.898" data-duration="0.234" data-track-index="11" data-volume="0.4"></audio>
+      <audio id="sfx-14" class="clip" src="assets/sfx/rpg_handle_coins2.mp3" data-start="45.114" data-duration="0.299" data-track-index="11" data-volume="0.4"></audio>
+      <audio id="sfx-15" class="clip" src="assets/sfx/rpg_book_place1.mp3" data-start="55.169" data-duration="0.277" data-track-index="11" data-volume="0.35"></audio>
+      <audio id="sfx-16" class="clip" src="assets/sfx/rpg_book_open.mp3" data-start="57.393" data-duration="0.151" data-track-index="11" data-volume="0.4"></audio>
+      <audio id="sfx-17" class="clip" src="assets/sfx/rpg_door_close_2.mp3" data-start="61.017" data-duration="0.589" data-track-index="11" data-volume="0.45"></audio>
+      <audio id="sfx-18" class="clip" src="assets/sfx/rpg_book_close.mp3" data-start="64.776" data-duration="0.231" data-track-index="11" data-volume="0.4"></audio>
+      <audio id="sfx-19" class="clip" src="assets/sfx/impact_punch_heavy_000.mp3" data-start="65.939" data-duration="0.563" data-track-index="11" data-volume="0.45"></audio>
+      <audio id="sfx-20" class="clip" src="assets/sfx/swipe_03.mp3" data-start="66.845" data-duration="0.286" data-track-index="11" data-volume="0.3"></audio>
+      <audio id="sfx-21" class="clip" src="assets/sfx/swipe_07.mp3" data-start="72.366" data-duration="0.272" data-track-index="11" data-volume="0.3"></audio>
+      <audio id="sfx-22" class="clip" src="assets/sfx/impact_punch_heavy_003.mp3" data-start="78.325" data-duration="0.421" data-track-index="11" data-volume="0.4"></audio>
+      <audio id="sfx-23" class="clip" src="assets/sfx/impact_wood_heavy_002.mp3" data-start="80.868" data-duration="0.31" data-track-index="11" data-volume="0.35"></audio>
+      <audio id="sfx-24" class="clip" src="assets/sfx/impact_punch_heavy_002.mp3" data-start="88.815" data-duration="0.414" data-track-index="11" data-volume="0.45"></audio>
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = gsap.timeline({ paused: true });
+    </script>
+  </body>
+</html>
