@@ -1,0 +1,66 @@
+<template>
+  <style>
+    @font-face { font-family: "Lalezar"; src: url("assets/fonts/Lalezar-Regular.ttf"); font-weight: 400; }
+    @font-face { font-family: "Noto Kufi Arabic"; src: url("assets/fonts/NotoKufiArabic.ttf"); font-weight: 100 900; }
+    #root { position: absolute; inset: 0; overflow: hidden; }
+  </style>
+  <div id="root" data-composition-id="s12" data-width="1080" data-height="1920">
+    <div id="s12-wrap" class="clip" data-start="0" data-duration="7.6" data-layout-allow-overflow style="position:absolute;inset:0">
+      <div id="s12-stage" class="stage">
+        <svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg" style="position:absolute;left:0;top:0">
+          <defs><clipPath id="s12-clip"><rect x="-200" y="0" width="1480" height="1074"/></clipPath></defs>
+          <g id="s12-bg"></g>
+          <g id="s12-pyrs"></g>
+          <g clip-path="url(#s12-clip)"><g id="s12-fegrp"><g id="s12-fe-slot" transform="translate(540,930) scale(1.45)"></g></g></g>
+          <g id="s12-table"></g>
+          <g id="s12-f1" transform="translate(105,950)"></g>
+          <g id="s12-f2" transform="translate(312,950)"></g>
+          <g id="s12-gavel" transform="translate(1500,940)"><g id="s12-gavel-in"></g></g>
+          <g id="s12-burst" fill="none" stroke="#F4F6F9" stroke-width="12" stroke-linecap="round" opacity="0"><path d="M880 1030 L820 970 M900 1070 L800 1080 M1060 1030 L1076 960"/></g>
+        </svg>
+
+        <div id="s12-a" class="card disp" style="left:70px; top:176px; width:470px; height:128px; font-size:100px; line-height:132px">مكتشف؟</div>
+        <div id="s12-b" class="card disp" style="left:400px; top:322px; width:600px; height:112px; font-size:80px; line-height:116px">لص معه تصريح؟</div>
+        <div id="s12-v" class="plate" style="left:110px; top:196px; width:860px; height:214px; font-size:150px; line-height:200px">الحكم لك أنت</div>
+      </div>
+    </div>
+  </div>
+  <script>
+    // the open-air court: the beheaded pyramids behind, a stone table in front
+    EK.fill("s12-bg", EK.desert()); EK.fill("s12-table", EK.table(1070));
+    EK.fill("s12-pyrs", [[150, 1090, 230, 420, 8], [930, 1090, 250, 450, 8]].map(([cx, base, pw, ph, n], i) => EK.pyr("s12-p" + i, cx, base, pw, ph, n)).join(""));
+    [0, 1].forEach((i) => [5, 6, 7].forEach((r) => document.getElementById(`s12-p${i}-r${r}`).remove()));
+    EK.put("s12-fe-slot", "s12-fe", "ferlini");
+    EK.fill("s12-gavel-in", EK.gavel()); EK.fill("s12-f1", EK.file("١")); EK.fill("s12-f2", EK.file("٢"));
+    const w = EK.clock("s12");
+
+    const T = { a: w(160), b: w(162), verdict: w(165), you: w(167, 0.1) };
+    const tl = gsap.timeline({ paused: true });
+    EK.face(tl, "s12-fe", "flat");
+    gsap.set("#s12-a, #s12-b, #s12-v", { opacity: 0 });
+    gsap.set("#s12-gavel-in", { rotation: 72, svgOrigin: "0 0" });
+    gsap.set("#s12-f1", { rotation: -5, transformOrigin: "50% 100%" }); gsap.set("#s12-f2", { rotation: 5, transformOrigin: "50% 100%" });
+    EK.whip(tl, "#s12-stage", 1080);
+    // a discoverer…
+    EK.pop(tl, "#s12-a", T.a, -5);
+    EK.look(tl, "s12-fe", T.a + 0.1, -9, -8); EK.mood(tl, "s12-fe", T.a + 0.15, "smug");
+    // …or a thief with a permit?
+    EK.pop(tl, "#s12-b", T.b, 4);
+    EK.look(tl, "s12-fe", T.b + 0.1, 9, -8); EK.mood(tl, "s12-fe", T.b + 0.3, "worried", true);
+    EK.blink(tl, "s12-fe", T.b + 1.1);
+    // the verdict is yours: the gavel comes up, and falls on "you"
+    tl.to("#s12-a, #s12-b", { opacity: 0, duration: 0.14 }, T.verdict - 0.1);
+    EK.look(tl, "s12-fe", T.verdict, 9, 2);
+    tl.to("#s12-gavel-in", { rotation: 44, duration: 0.5, ease: "power2.out" }, T.verdict);
+    tl.to("#s12-gavel-in", { rotation: 78, duration: 0.5, ease: "power2.inOut" }, T.you - 0.72);
+    tl.to("#s12-gavel-in", { rotation: 0, duration: 0.2, ease: "power4.in" }, T.you - 0.2);
+    tl.set("#s12-burst", { opacity: 1 }, T.you); tl.to("#s12-burst", { opacity: 0, duration: 0.3 }, T.you + 0.03);
+    EK.stamp(tl, "#s12-v", "#s12-stage", T.you, -3);
+    tl.to("#s12-gavel-in", { rotation: 72, duration: 0.5, ease: "power2.inOut" }, T.you + 0.5);
+    EK.mood(tl, "s12-fe", T.you, "shock");
+    EK.look(tl, "s12-fe", T.you + 0.7, 0, 0); EK.blink(tl, "s12-fe", T.you + 1.5);
+    EK.mood(tl, "s12-fe", T.you + 1.9, "worried");
+    EK.idle(tl, "s12-fe", 0.5, DT.D.s12 - 0.05, 2.5);
+    window.__timelines["s12"] = tl;
+  </script>
+</template>

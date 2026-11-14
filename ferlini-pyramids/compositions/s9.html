@@ -1,0 +1,62 @@
+<template>
+  <style>
+    @font-face { font-family: "Lalezar"; src: url("assets/fonts/Lalezar-Regular.ttf"); font-weight: 400; }
+    @font-face { font-family: "Noto Kufi Arabic"; src: url("assets/fonts/NotoKufiArabic.ttf"); font-weight: 100 900; }
+    #root { position: absolute; inset: 0; overflow: hidden; }
+  </style>
+  <div id="root" data-composition-id="s9" data-width="1080" data-height="1920">
+    <div id="s9-wrap" class="clip" data-start="0" data-duration="6.72" data-layout-allow-overflow style="position:absolute;inset:0">
+      <div id="s9-stage" class="stage">
+        <svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg" style="position:absolute;left:0;top:0">
+          <defs><clipPath id="s9-clip"><rect x="-200" y="0" width="1480" height="1153"/></clipPath></defs>
+          <g id="s9-bg"></g>
+          <g clip-path="url(#s9-clip)">
+            <g id="s9-cugrp"><g id="s9-cu-slot" transform="translate(560,930) scale(1.5)"></g></g>
+            <g id="s9-arm">
+              <path d="M150 1200 Q90 1090 150 960" fill="none" stroke="#0c1a30" stroke-width="84" stroke-linecap="round"/>
+              <path d="M150 1200 Q90 1090 150 960" fill="none" stroke="#4a4038" stroke-width="68" stroke-linecap="round"/>
+              <g id="s9-br" transform="translate(160,830)"></g>
+              <circle cx="152" cy="940" r="44" fill="#f0c6a2" stroke="#0c1a30" stroke-width="8"/>
+            </g>
+          </g>
+          <g id="s9-desk"></g>
+        </svg>
+        <div id="s9-mus" class="sign" style="left:290px; top:176px; width:500px; height:140px; font-size:108px; line-height:142px">المتحف</div>
+        <div id="s9-no" class="card disp" style="left:230px; top:352px; width:620px; height:176px; font-size:134px; line-height:182px">مستحيل!</div>
+        <div id="s9-fake" class="plate" style="left:160px; top:346px; width:760px; height:200px; font-size:156px; line-height:198px">أكيد مزوّر</div>
+      </div>
+    </div>
+  </div>
+  <script>
+    EK.fill("s9-bg", EK.hall()); EK.fill("s9-desk", EK.desk());
+    EK.put("s9-cu-slot", "s9-cu", "curator"); EK.fill("s9-br", EK.bracelet(74));
+    const w = EK.clock("s9");
+    const T = { show: w(116), no: w(119), believe: w(120), said: w(121), imp: w(122), end: w(126, 0.55), sure: w(127), fake: w(128) };
+    const tl = gsap.timeline({ paused: true });
+    EK.face(tl, "s9-cu", "flat");
+    gsap.set("#s9-no, #s9-fake", { opacity: 0 });
+    gsap.set("#s9-arm", { y: 520 });
+    EK.whip(tl, "#s9-stage", -1080);
+    // he showed it to the museums
+    tl.to("#s9-arm", { y: 0, duration: 0.34, ease: "back.out(1.6)" }, T.show);
+    EK.look(tl, "s9-cu", T.show + 0.3, -10, 2); EK.blink(tl, "s9-cu", T.show + 0.9);
+    // they did not believe him
+    EK.mood(tl, "s9-cu", T.no, "annoyed");
+    tl.to("#s9-cu-head", { rotation: -7, duration: 0.13, ease: "sine.inOut", transformOrigin: "50% 92%" }, T.no + 0.56);
+    tl.to("#s9-cu-head", { rotation: 7, duration: 0.2, ease: "sine.inOut" }, T.no + 0.69);
+    tl.to("#s9-cu-head", { rotation: -5, duration: 0.2, ease: "sine.inOut" }, T.no + 0.89);
+    tl.to("#s9-cu-head", { rotation: 0, duration: 0.14, ease: "sine.inOut" }, T.no + 1.09);
+    // "Africa cannot make gold this fine"
+    EK.talk(tl, "s9-cu", T.said, T.end);
+    EK.pop(tl, "#s9-no", T.imp, -4);
+    EK.look(tl, "s9-cu", T.imp + 0.2, 0, 0);
+    EK.face(tl, "s9-cu", "annoyed", T.end + 0.01);
+    // "surely a fake"
+    EK.out(tl, "#s9-no", T.sure);
+    EK.stamp(tl, "#s9-fake", "#s9-stage", T.sure + 0.2, 4);
+    EK.mood(tl, "s9-cu", T.sure + 0.2, "angry");
+    tl.to("#s9-arm", { y: 150, duration: 0.3, ease: "power2.inOut" }, T.sure + 0.45);
+    EK.idle(tl, "s9-cu", 0.5, DT.D.s9 - 0.05, 2.6);
+    window.__timelines["s9"] = tl;
+  </script>
+</template>

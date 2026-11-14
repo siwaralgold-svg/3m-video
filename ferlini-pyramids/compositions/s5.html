@@ -1,0 +1,61 @@
+<template>
+  <style>
+    @font-face { font-family: "Lalezar"; src: url("assets/fonts/Lalezar-Regular.ttf"); font-weight: 400; }
+    @font-face { font-family: "Noto Kufi Arabic"; src: url("assets/fonts/NotoKufiArabic.ttf"); font-weight: 100 900; }
+    #root { position: absolute; inset: 0; overflow: hidden; }
+  </style>
+  <div id="root" data-composition-id="s5" data-width="1080" data-height="1920">
+    <div id="s5-wrap" class="clip" data-start="0" data-duration="7.32" data-layout-allow-overflow style="position:absolute;inset:0">
+      <div id="s5-stage" class="stage">
+        <svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg" style="position:absolute;left:0;top:0">
+          <g id="s5-bg"></g>
+          <g id="s5-back"></g>
+          <g id="s5-rub" transform="translate(540,1136)"></g>
+          <g id="s5-big"></g>
+          <g id="s5-chap"></g>
+          <g id="s5-med"><defs><clipPath id="s5-mclip"><circle cx="172" cy="560" r="136"/></clipPath></defs>
+            <circle cx="172" cy="560" r="136" fill="#24426e" stroke="#0c1a30" stroke-width="8"/>
+            <g clip-path="url(#s5-mclip)"><g id="s5-q-slot" transform="translate(172,622) scale(0.54)"></g></g>
+            <circle cx="172" cy="560" r="136" fill="none" stroke="#0c1a30" stroke-width="8"/></g>
+          <g id="s5-sand"></g>
+        </svg>
+        <div id="s5-top" class="sign" style="left:250px; top:182px; width:580px; height:150px; font-size:112px; line-height:152px">أكبر هرم</div>
+        <div id="s5-q" class="card kufi" style="left:22px; top:716px; width:300px; height:150px; font-size:42px; font-weight:800; line-height:66px; padding-top:6px">الملكة<br>أماني شخيتو</div>
+        <div id="s5-stone" class="plate" style="left:600px; top:196px; width:420px; height:330px; font-size:150px; line-height:158px">حجر<br>حجر</div>
+      </div>
+    </div>
+  </div>
+  <script>
+    EK.fill("s5-bg", EK.desert()); EK.fill("s5-sand", EK.sand());
+    EK.fill("s5-back", EK.pyr("s5-b0", 110, 1070, 150, 270, 6) + EK.pyr("s5-b1", 980, 1070, 160, 290, 6));
+    EK.fill("s5-big", EK.pyr("s5-p", 540, 1130, 620, 760, 10)); EK.fill("s5-chap", EK.chapel(540, 1136, 1.5));
+    EK.fill("s5-rub", EK.rubble(230)); EK.put("s5-q-slot", "s5-q", "queen");
+    const w = EK.clock("s5");
+    const T = { big: w(64), queen: w(67), name: w(68), men: w(70), r9: w(71), s1: w(72), s2: w(73), top: w(75), down: w(76), ground: w(77) };
+    const tl = gsap.timeline({ paused: true });
+    EK.face(tl, "s5-q", "calm");
+    gsap.set("#s5-top, #s5-q, #s5-stone", { opacity: 0 });
+    gsap.set("#s5-med", { scale: 0, transformOrigin: "172px 560px" }); gsap.set("#s5-rub", { scale: 0, transformOrigin: "50% 100%" });
+    EK.whip(tl, "#s5-stage", -1080);
+    // he picked the biggest one: the pyramid of Queen Amanishakheto
+    EK.pop(tl, "#s5-top", T.big, 3);
+    tl.fromTo("#s5-big", { scale: 1 }, { scale: 1.035, duration: 0.14, yoyo: true, repeat: 1, ease: "sine.inOut", transformOrigin: "540px 1130px", immediateRender: false }, T.big);
+    tl.to("#s5-med", { scale: 1, duration: 0.32, ease: "back.out(2)" }, T.queen - 0.05);
+    EK.pop(tl, "#s5-q", T.name, -3);
+    EK.blink(tl, "s5-q", T.name + 0.7);
+    // his workers take it apart, stone by stone, from the top down to the ground
+    tl.to("#s5-top", { opacity: 0, duration: 0.14 }, T.men + 0.1);
+    EK.mood(tl, "s5-q", T.men + 0.35, "worried");
+    const at = [T.r9, T.r9 + 0.21, T.s1, T.s2, T.s2 + 0.3, T.top - 0.14, T.top + 0.16, T.top + 0.46, T.down, T.ground];
+    at.forEach((t, k) => {
+      const r = 9 - k, dir = k % 2 ? 1 : -1;
+      tl.to("#s5-p-r" + r, { x: dir * 760, y: -90 - k * 6, rotation: dir * 28, duration: 0.36, ease: "power2.in", transformOrigin: "50% 50%" }, t);
+      tl.fromTo("#s5-stage", { y: 0 }, { y: 7, duration: 0.05, yoyo: true, repeat: 1, ease: "none", immediateRender: false }, t);
+    });
+    EK.stamp(tl, "#s5-stone", "#s5-stage", T.s2, 5);
+    EK.mood(tl, "s5-q", T.s2 + 0.1, "sad");
+    tl.to("#s5-chap", { opacity: 0, y: 60, duration: 0.2, ease: "power2.in" }, T.ground);
+    tl.to("#s5-rub", { scale: 1, duration: 0.22, ease: "back.out(1.6)" }, T.ground + 0.1);
+    window.__timelines["s5"] = tl;
+  </script>
+</template>

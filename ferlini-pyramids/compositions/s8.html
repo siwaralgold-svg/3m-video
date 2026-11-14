@@ -1,0 +1,51 @@
+<template>
+  <style>
+    @font-face { font-family: "Lalezar"; src: url("assets/fonts/Lalezar-Regular.ttf"); font-weight: 400; }
+    @font-face { font-family: "Noto Kufi Arabic"; src: url("assets/fonts/NotoKufiArabic.ttf"); font-weight: 100 900; }
+    #root { position: absolute; inset: 0; overflow: hidden; }
+  </style>
+  <div id="root" data-composition-id="s8" data-width="1080" data-height="1920">
+    <div id="s8-wrap" class="clip" data-start="0" data-duration="3.9" data-layout-allow-overflow style="position:absolute;inset:0">
+      <div id="s8-stage" class="stage">
+        <div style="position:absolute; inset:0; background:#13294B"></div>
+        <svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg" style="position:absolute;left:0;top:0">
+          <g id="s8-file" data-layout-allow-overlap transform="translate(540,850) scale(2.5)"></g>
+        </svg>
+        <div id="s8-cnt" class="count">الملف الثاني</div>
+        <div id="s8-ttl" class="ttl" style="font-size:210px; top:226px">البيع</div>
+        <div id="s8-sea" style="position:absolute; inset:0">
+          <svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg" style="position:absolute;left:0;top:0">
+            <rect width="1080" height="1920" fill="#13294B"/><circle cx="210" cy="520" r="96" fill="#1C385A"/>
+            <g id="s8-w0"></g>
+            <g id="s8-ship"><g id="s8-ship-in" transform="translate(0,1010)"></g></g>
+            <g id="s8-w1"></g><g id="s8-w2"></g>
+          </svg>
+          <div id="s8-eu" class="sign" style="left:240px; top:186px; width:600px; height:170px; font-size:132px; line-height:172px">← أوروبا</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    EK.fill("s8-file", EK.file("٢")); EK.fill("s8-ship-in", EK.ship());
+    EK.fill("s8-w0", EK.wave(960, "#24426e", 0)); EK.fill("s8-w1", EK.wave(1040, "#1C385A", 60)); EK.fill("s8-w2", EK.wave(1130, "#172f55", 20));
+    const w = EK.clock("s8");
+    const T = { ttl: w(111), took: w(112), eu: w(115) };
+    const tl = gsap.timeline({ paused: true });
+    gsap.set("#s8-ttl, #s8-eu", { opacity: 0 });
+    gsap.set("#s8-sea", { y: 1920 }); gsap.set("#s8-ship", { x: 860 });
+    // the second file
+    tl.fromTo("#s8-stage", { y: 520, filter: "blur(14px)" }, { y: 0, filter: "blur(0px)", duration: 0.36, ease: "power4.out" }, 0);
+    tl.fromTo("#s8-file", { rotation: 9 }, { rotation: -3, duration: 0.4, ease: "back.out(2)", transformOrigin: "50% 50%" }, 0);
+    tl.fromTo("#s8-ttl", { opacity: 0, scale: 1.7 }, { opacity: 1, scale: 1, duration: 0.2, ease: "power4.out" }, T.ttl - 0.08);
+    EK.shake(tl, "#s8-stage", T.ttl + 0.12, 7);
+    // he carried the treasure off to Europe
+    tl.to("#s8-sea", { y: 0, duration: 0.34, ease: "power4.out" }, T.took - 0.2);
+    tl.to("#s8-ship", { x: 420, duration: DT.D.s8 - T.took + 0.2, ease: "none" }, T.took - 0.2);
+    tl.fromTo("#s8-ship-in", { rotation: -3 }, { rotation: 3, duration: 0.55, yoyo: true, repeat: 3, ease: "sine.inOut", transformOrigin: "50% 100%" }, T.took - 0.2);
+    tl.fromTo("#s8-w1", { x: 0 }, { x: -50, duration: 2.2, ease: "none" }, T.took - 0.2);
+    tl.fromTo("#s8-w2", { x: 0 }, { x: 60, duration: 2.2, ease: "none" }, T.took - 0.2);
+    tl.set("#s8-cnt, #s8-ttl", { opacity: 0 }, T.took + 0.15);
+    EK.pop(tl, "#s8-eu", T.eu - 0.05, -3);
+    window.__timelines["s8"] = tl;
+  </script>
+</template>

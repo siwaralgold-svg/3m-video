@@ -1,0 +1,54 @@
+<template>
+  <style>
+    @font-face { font-family: "Lalezar"; src: url("assets/fonts/Lalezar-Regular.ttf"); font-weight: 400; }
+    @font-face { font-family: "Noto Kufi Arabic"; src: url("assets/fonts/NotoKufiArabic.ttf"); font-weight: 100 900; }
+    #root { position: absolute; inset: 0; overflow: hidden; }
+  </style>
+  <div id="root" data-composition-id="s3" data-width="1080" data-height="1920">
+    <div id="s3-wrap" class="clip" data-start="0" data-duration="5.95" data-layout-allow-overflow style="position:absolute;inset:0">
+      <div id="s3-stage" class="stage">
+        <div style="position:absolute; inset:0; background:#13294B"></div>
+        <svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg" style="position:absolute;left:0;top:0">
+          <g id="s3-file" data-layout-allow-overlap transform="translate(540,850) scale(2.5)"></g>
+          <g id="s3-mapgrp"><g transform="translate(215,500) scale(1.08)"><g id="s3-map"></g>
+            <circle cx="350" cy="290" r="15" fill="#F4F6F9" stroke="#0c1a30" stroke-width="6"/>
+            <circle id="s3-ring" cx="388" cy="236" r="34" fill="none" stroke="#8c2f2f" stroke-width="9"/>
+            <circle id="s3-dot" cx="388" cy="236" r="19" fill="#8c2f2f" stroke="#0c1a30" stroke-width="6"/>
+          </g></g>
+        </svg>
+        <div id="s3-cnt" class="count">الملف الأول</div>
+        <div id="s3-ttl" class="ttl" style="font-size:210px; top:226px">الهدم</div>
+        <div id="s3-year" class="disp" style="position:absolute; left:40px; right:40px; top:160px; text-align:center; font-size:270px; line-height:1.2; color:#F4F6F9">١٨٣٤</div>
+        <div id="s3-sud" class="kufi" style="position:absolute; left:262px; top:742px; width:260px; text-align:center; font-size:50px; font-weight:800; color:#0c1a30">السودان</div>
+        <div id="s3-mer" class="card disp" style="left:676px; top:650px; width:250px; height:112px; font-size:84px; line-height:116px">مروي</div>
+        <div id="s3-kha" class="card kufi" style="left:560px; top:852px; width:290px; height:90px; font-size:46px; font-weight:800; line-height:74px">الخرطوم</div>
+      </div>
+    </div>
+  </div>
+  <script>
+    EK.fill("s3-file", EK.file("١")); EK.fill("s3-map", EK.sudan());
+    const w = EK.clock("s3");
+    const T = { cnt: w(37), ttl: w(39), year: w(41), map: w(45), kha: w(47) };
+    const tl = gsap.timeline({ paused: true });
+    gsap.set("#s3-ttl, #s3-year, #s3-sud, #s3-mer, #s3-kha", { opacity: 0 });
+    gsap.set("#s3-mapgrp", { y: 1300 }); gsap.set("#s3-ring", { opacity: 0, transformOrigin: "50% 50%" });
+    // the first file drops and opens the charge
+    tl.fromTo("#s3-file", { y: -650, rotation: -8 }, { y: 850, rotation: 3, duration: 0.3, ease: "power3.in", transformOrigin: "50% 50%" }, 0);
+    EK.shake(tl, "#s3-stage", 0.3, 9);
+    tl.fromTo("#s3-ttl", { opacity: 0, scale: 1.7 }, { opacity: 1, scale: 1, duration: 0.2, ease: "power4.out" }, T.ttl - 0.08);
+    EK.shake(tl, "#s3-stage", T.ttl + 0.12, 7);
+    // the year
+    tl.to("#s3-cnt, #s3-ttl", { opacity: 0, duration: 0.12 }, T.year - 0.3);
+    tl.to("#s3-file", { y: 2800, rotation: 12, duration: 0.3, ease: "power2.in" }, T.year - 0.34);
+    tl.fromTo("#s3-year", { opacity: 0, scale: 1.5 }, { opacity: 1, scale: 1, duration: 0.24, ease: "power4.out" }, T.year - 0.05);
+    // Meroe, north of Khartoum
+    tl.to("#s3-mapgrp", { y: 0, duration: 0.4, ease: "back.out(1.2)" }, T.map - 0.3);
+    tl.fromTo("#s3-sud", { opacity: 0 }, { opacity: 1, duration: 0.15 }, T.map + 0.05);
+    tl.fromTo("#s3-dot", { scale: 0 }, { scale: 1, duration: 0.2, ease: "back.out(3)", transformOrigin: "50% 50%" }, T.map + 0.08);
+    tl.fromTo("#s3-ring", { opacity: 1, scale: 0.5 }, { opacity: 0, scale: 2.4, duration: 0.6, ease: "power2.out" }, T.map + 0.2);
+    tl.fromTo("#s3-ring", { opacity: 1, scale: 0.5 }, { opacity: 0, scale: 2.4, duration: 0.6, ease: "power2.out", immediateRender: false }, T.map + 0.9);
+    EK.pop(tl, "#s3-mer", T.map + 0.12, 4);
+    EK.pop(tl, "#s3-kha", T.kha, -3);
+    window.__timelines["s3"] = tl;
+  </script>
+</template>

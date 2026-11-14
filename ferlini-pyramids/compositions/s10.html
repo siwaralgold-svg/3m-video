@@ -1,0 +1,79 @@
+<template>
+  <style>
+    @font-face { font-family: "Lalezar"; src: url("assets/fonts/Lalezar-Regular.ttf"); font-weight: 400; }
+    @font-face { font-family: "Noto Kufi Arabic"; src: url("assets/fonts/NotoKufiArabic.ttf"); font-weight: 100 900; }
+    #root { position: absolute; inset: 0; overflow: hidden; }
+  </style>
+  <div id="root" data-composition-id="s10" data-width="1080" data-height="1920">
+    <div id="s10-wrap" class="clip" data-start="0" data-duration="7.39" data-layout-allow-overflow style="position:absolute;inset:0">
+      <div id="s10-stage" class="stage">
+        <div id="s10-a" style="position:absolute; inset:0">
+          <svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg" style="position:absolute;left:0;top:0">
+            <defs><clipPath id="s10-clip"><rect x="-200" y="0" width="1480" height="1153"/></clipPath></defs>
+            <g id="s10-bg"></g>
+            <g clip-path="url(#s10-clip)"><g id="s10-kigrp"><g id="s10-ki-slot" transform="translate(500,950) scale(1.45)"></g></g></g>
+            <g id="s10-desk"></g>
+            <g id="s10-br" transform="translate(900,1010)"></g>
+          </svg>
+          <div id="s10-yrs" class="count">بعد سنين</div>
+          <div id="s10-king" class="card disp" style="left:180px; top:250px; width:720px; height:164px; font-size:124px; line-height:168px">ملك بافاريا</div>
+        </div>
+        <div id="s10-b" style="position:absolute; inset:0">
+          <svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg" style="position:absolute;left:0;top:0">
+            <rect width="1080" height="1920" fill="#13294B"/>
+            <rect x="-10" y="770" width="1100" height="1160" fill="#172f55" stroke="#0c1a30" stroke-width="7"/>
+            <g id="s10-m1"><g id="s10-m1-in" transform="translate(790,772) scale(0.92)"></g><g id="s10-g1" transform="translate(790,676)"></g></g>
+            <g id="s10-m2"><g id="s10-m2-in" transform="translate(290,772) scale(0.92)"></g><g id="s10-g2" transform="translate(290,676)"></g></g>
+            <g id="s10-sud">
+              <path d="M-10 1150 Q270 1120 540 1146 Q810 1116 1090 1150 V1930 H-10Z" fill="#8a5a33" stroke="#0c1a30" stroke-width="8"/>
+              <g id="s10-stump"></g>
+              <g id="s10-chest" transform="translate(600,1182) scale(0.62)"></g>
+            </g>
+          </svg>
+          <div id="s10-today" class="count">كنز الملكة لليوم</div>
+          <div id="s10-de" class="plate" style="left:190px; top:284px; width:700px; height:168px; font-size:128px; line-height:158px">في ألمانيا</div>
+          <div id="s10-s1" class="sign" style="left:650px; top:796px; width:280px; height:96px; font-size:70px; line-height:98px">ميونخ</div>
+          <div id="s10-s2" class="sign" style="left:150px; top:796px; width:280px; height:96px; font-size:70px; line-height:98px">برلين</div>
+          <div id="s10-not" class="card kufi" style="left:40px; top:1006px; width:460px; height:110px; font-size:48px; font-weight:800; line-height:92px; white-space:nowrap">مو في السودان</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    EK.fill("s10-bg", EK.hall()); EK.fill("s10-desk", EK.desk());
+    EK.put("s10-ki-slot", "s10-ki", "king"); EK.fill("s10-br", EK.bracelet(74));
+    EK.fill("s10-m1-in", EK.museum()); EK.fill("s10-m2-in", EK.museum()); EK.fill("s10-g1", EK.bracelet(36)); EK.fill("s10-g2", EK.ring(24));
+    EK.fill("s10-stump", EK.pyr("s10-p", 850, 1186, 250, 400, 8)); [5, 6, 7].forEach((r) => document.getElementById("s10-p-r" + r).remove());
+    EK.fill("s10-chest", EK.chest(true));
+    const w = EK.clock("s10");
+    const T = { buy: w(131), king: w(132), rest: w(134), berlin: w(136), today: w(137), de: w(141), not: w(142, -0.1) };
+    const tl = gsap.timeline({ paused: true });
+    EK.face(tl, "s10-ki", "calm");
+    gsap.set("#s10-king, #s10-de, #s10-s1, #s10-s2, #s10-not, #s10-today", { opacity: 0 });
+    gsap.set("#s10-br", { scale: 0, transformOrigin: "50% 50%" });
+    gsap.set("#s10-b", { x: 1080 }); gsap.set("#s10-sud", { y: 1000 });
+    gsap.set("#s10-m2", { y: -900 }); gsap.set("#s10-g1, #s10-g2", { scale: 0, transformOrigin: "50% 50%" });
+    tl.fromTo("#s10-stage", { scale: 1.3, filter: "blur(14px)" }, { scale: 1, filter: "blur(0px)", duration: 0.4, ease: "power4.out", transformOrigin: "540px 900px" }, 0);
+    // years later, the king of Bavaria bought it
+    EK.blink(tl, "s10-ki", 0.6);
+    tl.to("#s10-br", { scale: 1, duration: 0.3, ease: "back.out(2)" }, T.buy);
+    EK.look(tl, "s10-ki", T.buy + 0.1, 10, 8); EK.mood(tl, "s10-ki", T.buy + 0.2, "laugh");
+    EK.pop(tl, "#s10-king", T.king, -3);
+    // and the rest went to Berlin
+    tl.to("#s10-b", { x: 0, duration: 0.3, ease: "power4.out" }, T.rest - 0.1);
+    tl.set("#s10-a", { opacity: 0 }, T.rest + 0.22);
+    tl.fromTo("#s10-s1", { opacity: 0, scale: 0.4 }, { opacity: 1, scale: 1, duration: 0.26, ease: "back.out(2)" }, T.rest + 0.15);
+    tl.to("#s10-g1", { scale: 1, duration: 0.24, ease: "back.out(2.5)" }, T.rest + 0.3);
+    tl.to("#s10-m2", { y: 0, duration: 0.24, ease: "power3.in" }, T.berlin - 0.24);
+    EK.shake(tl, "#s10-b", T.berlin, 7);
+    tl.fromTo("#s10-s2", { opacity: 0, scale: 0.4 }, { opacity: 1, scale: 1, duration: 0.26, ease: "back.out(2)" }, T.berlin + 0.05);
+    tl.to("#s10-g2", { scale: 1, duration: 0.24, ease: "back.out(2.5)" }, T.berlin + 0.2);
+    // to this day the queen's treasure is in Germany, not in Sudan
+    tl.fromTo("#s10-today", { opacity: 0 }, { opacity: 1, duration: 0.15 }, T.today);
+    EK.stamp(tl, "#s10-de", "#s10-b", T.de, -4);
+    tl.to("#s10-sud", { y: 0, duration: 0.3, ease: "back.out(1.3)" }, T.not - 0.25);
+    EK.pop(tl, "#s10-not", T.not + 0.05, -3);
+    EK.idle(tl, "s10-ki", 0.5, T.rest, 2.3);
+    window.__timelines["s10"] = tl;
+  </script>
+</template>
